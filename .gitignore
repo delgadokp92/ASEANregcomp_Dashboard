@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Streamlit
+.streamlit/
+
+# Data (avoid committing sensitive files)
+*.xlsx
+*.csv
+
+# OS
+.DS_Store
