@@ -107,7 +107,7 @@ def build_coverage_matrix(df: pd.DataFrame, treat_partial_as_covered=True) -> pd
 # if not uploaded:
 #     st.info("Upload your Excel file to begin.")
 #     st.stop()
-uploaded_file = "202601_Regulatory Comparison Matrix_test.xlsx"
+uploaded = "202601_Regulatory Comparison Matrix_test.xlsx"
 
 @st.cache_data
 def load_first_sheet(uploaded_file) -> pd.DataFrame:
