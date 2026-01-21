@@ -255,6 +255,52 @@ with tab_map:
         hover_data={"Regulation_Count": True, "Latest_10": True, "Country": False},
     )
 
+    fig.update_traces(
+        hovertemplate=(
+            "<b>%{hovertext}</b><br>"
+            "Regulations: %{z}<br><br>"
+            "%{customdata[0]}<extra></extra>"
+        ),
+        hovertext=by_country["Country"],
+        customdata=by_country[["Latest_10"]].values,
+    )
+
+    outline = by_country.copy()
+    outline["Regulation_Count"] = 1  # dummy value
+    
+    fig2 = px.choropleth(
+        outline,
+        locations="Country",
+        locationmode="country names",
+        color="Regulation_Count",
+    )
+    
+    fig2.update_traces(
+        showscale=False,
+        marker_line_width=1.8,
+        marker_line_color="rgba(255,255,255,0.95)",
+        marker_opacity=0.0,
+        hoverinfo="skip",
+    )
+    
+    fig.add_traces(fig2.data)
+
+    max_count = int(by_country["Regulation_Count"].max()) if not by_country.empty else 1
+    fig.update_coloraxes(cmin=0, cmax=max_count)
+
+    fig.update_geos(
+        scope="asia",
+        fitbounds="locations",
+        projection_type="mercator",
+        showcountries=True,
+    )
+    
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=0, b=0),
+        height=560,
+    )
+
+    
     fig.update_geos(
         scope="asia",
         fitbounds="locations",
