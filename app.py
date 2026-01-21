@@ -1,297 +1,380 @@
 import re
+from pathlib import Path
+from typing import Dict, List, Optional
+
 import pandas as pd
-import streamlit as st
 import plotly.express as px
-
-st.set_page_config(page_title="Payments Consumer Protection Dashboard", layout="wide")
-st.title("Payments Consumer Protection Dashboard")
+import streamlit as st
 
 # =========================
-# Column setup (based on your sheet)
+# App config
 # =========================
-META_COLS = [
-    "Country",
-    "Regulator",
-    "Regulations on consumer protection (payments)",
-    "Year approved/implemented",
-    "Official source links",
-]
+st.set_page_config(page_title="ASEAN Regulatory Dashboard", layout="wide")
+st.title("ASEAN Regulatory Dashboard")
 
-TOPIC_COLS = [
-    "Fair treatment & market conduct",
-    "Safeguarding of Funds",
-    "Transparency & disclosure",
-    "Product design, suitability & distribution",
-    "Pricing & fees",
-    "Consumer data protection & privacy",
-    "Consumer redress & dispute resolution",
-    "Complaints Handling",
-    "Consumer education & awareness",
-    "Vulnerable & special consumer groups",
-    "Reporting requirements",
-    "Sanctions",
-    "Other protections",
-]
-
-ALL_EXPECTED = META_COLS[:-1] + TOPIC_COLS + [META_COLS[-1]]  # include Official source links at end
+DATA_FILE = "CBregs.xlsx"  
 
 
 # =========================
 # Helpers
 # =========================
+ASEAN_FLAG = {
+    "Brunei": "🇧🇳",
+    "Cambodia": "🇰🇭",
+    "Indonesia": "🇮🇩",
+    "Lao PDR": "🇱🇦",
+    "Laos": "🇱🇦",
+    "Malaysia": "🇲🇾",
+    "Myanmar": "🇲🇲",
+    "Philippines": "🇵🇭",
+    "Singapore": "🇸🇬",
+    "Thailand": "🇹🇭",
+    "Viet Nam": "🇻🇳",
+    "Vietnam": "🇻🇳",
+    "Timor-Leste": "🇹🇱",
+}
+
+META_COL_CANDIDATES = {
+    "country": ["Country"],
+    "regulator": ["Regulator"],
+    "year": ["Year", "Year approved/implemented", "Year Approved/Implemented", "Year approved / implemented"],
+    "source": ["Official Source", "Official source", "Official Source links", "Official source links", "Source", "URL", "Link"],
+    "title": [
+        "Regulation / Legal Instrument",
+        "Regulation / Legal instrument",
+        "Primary Legal / Regulatory Framework",
+        "Primary Legal/Regulatory Framework",
+        "Regulations on fraud risk management",
+        "Regulations on consumer protection (payments)",
+        "Regulation",
+        "Legal Instrument",
+    ],
+}
+
 def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
-    # Trim whitespace in headers and collapse multiple spaces
     df = df.copy()
     df.columns = [re.sub(r"\s+", " ", str(c)).strip() for c in df.columns]
     return df
 
-def coerce_year(series: pd.Series) -> pd.Series:
-    """
-    Attempts to extract a 4-digit year from whatever is in the Year column.
-    Keeps NaN if none found.
-    """
-    def extract_year(x):
-        if pd.isna(x):
-            return pd.NA
-        s = str(x).strip()
-        m = re.search(r"(19\d{2}|20\d{2})", s)
-        return int(m.group(1)) if m else pd.NA
-    return series.apply(extract_year).astype("Int64")
+def extract_year(value) -> Optional[int]:
+    if pd.isna(value):
+        return None
+    s = str(value).strip()
+    m = re.search(r"(19\d{2}|20\d{2})", s)
+    return int(m.group(1)) if m else None
 
-def cell_is_covered(x, treat_partial_as_covered=True) -> bool:
-    """
-    Coverage heuristic:
-    - Non-empty text is covered
-    - Treat common negatives as NOT covered
-    - Optionally treat 'Partial' as covered
-    """
-    if pd.isna(x):
-        return False
-    s = str(x).strip()
-    if s == "":
-        return False
-
-    s_low = s.lower()
-
-    # Common "not covered" tokens (extend as needed)
-    negatives = {"no", "none", "n/a", "na", "not applicable", "not covered", "nil", "-"}
-    if s_low in negatives:
-        return False
-
-    # If it’s explicitly partial
-    if "partial" in s_low:
-        return treat_partial_as_covered
-
-    # If it’s explicitly yes/covered
-    if s_low in {"yes", "y", "covered", "in place", "implemented"}:
-        return True
-
-    # Otherwise: any substantive text counts as covered
-    return True
-
-def build_coverage_matrix(df: pd.DataFrame, treat_partial_as_covered=True) -> pd.DataFrame:
-    cov = pd.DataFrame(index=df.index)
-    for c in TOPIC_COLS:
+def pick_first_existing_col(df: pd.DataFrame, candidates: List[str]) -> Optional[str]:
+    for c in candidates:
         if c in df.columns:
-            cov[c] = df[c].apply(lambda x: cell_is_covered(x, treat_partial_as_covered))
-        else:
-            cov[c] = False
-    return cov
+            return c
+    return None
 
+def infer_title_col(df: pd.DataFrame) -> Optional[str]:
+    # 1) Try known title candidates
+    c = pick_first_existing_col(df, META_COL_CANDIDATES["title"])
+    if c:
+        return c
 
-# =========================
-# Load data (file upload to avoid hardcoding paths)
-# =========================
-# uploaded = st.file_uploader("Upload Excel file (.xlsx)", type=["xlsx"])
+    # 2) Fallback: pick first non-meta-ish column with text values
+    known_meta = set(META_COL_CANDIDATES["country"] + META_COL_CANDIDATES["regulator"] +
+                     META_COL_CANDIDATES["year"] + META_COL_CANDIDATES["source"] + ["Regulation ID"])
+    for col in df.columns:
+        if col in known_meta:
+            continue
+        # Heuristic: choose first column that looks like a name/title field (string-ish)
+        if df[col].astype(str).str.len().mean() > 5:
+            return col
+    return None
 
-# if not uploaded:
-#     st.info("Upload your Excel file to begin.")
-#     st.stop()
-uploaded = "202601_Regulatory Comparison Matrix_test.xlsx"
+def safe_linkify(url: str) -> str:
+    url = str(url).strip()
+    if not url or url.lower() in {"nan", "none"}:
+        return ""
+    # Keep as markdown link; display a compact label
+    return f"[Source]({url})"
 
 @st.cache_data
-def load_first_sheet(uploaded_file) -> pd.DataFrame:
-    df = pd.read_excel(uploaded_file, sheet_name=0, engine="openpyxl")
-    df = normalize_columns(df)
-    df = df.dropna(how="all").dropna(axis=1, how="all")
-    return df
+def load_cbregs(file_path: str) -> pd.DataFrame:
+    p = Path(file_path)
+    if not p.exists():
+        # common Streamlit Cloud pattern: relative to app file
+        p = Path(__file__).parent / file_path
 
-df_raw = load_first_sheet(uploaded)
+    xls = pd.ExcelFile(p, engine="openpyxl")
+    frames = []
 
-# Basic validation
-missing = [c for c in ALL_EXPECTED if c not in df_raw.columns]
-if missing:
-    st.warning(
-        "Some expected columns were not found. The app will still run, but those fields will be empty/ignored.\n\n"
-        + "Missing:\n- " + "\n- ".join(missing)
-    )
+    for sheet in xls.sheet_names:
+        df = pd.read_excel(p, sheet_name=sheet, engine="openpyxl")
+        df = normalize_columns(df).dropna(how="all").dropna(axis=1, how="all")
 
-df = df_raw.copy()
+        country_col = pick_first_existing_col(df, META_COL_CANDIDATES["country"])
+        regulator_col = pick_first_existing_col(df, META_COL_CANDIDATES["regulator"])
+        year_col = pick_first_existing_col(df, META_COL_CANDIDATES["year"])
+        source_col = pick_first_existing_col(df, META_COL_CANDIDATES["source"])
+        title_col = infer_title_col(df)
 
-# Coerce Year
-if "Year approved/implemented" in df.columns:
-    df["Year (parsed)"] = coerce_year(df["Year approved/implemented"])
-else:
-    df["Year (parsed)"] = pd.Series([pd.NA] * len(df), dtype="Int64")
+        # Build standardized view while retaining originals for the country modal
+        out = df.copy()
+        out["Category"] = sheet
+
+        out["Country_std"] = out[country_col] if country_col else pd.NA
+        out["Regulator_std"] = out[regulator_col] if regulator_col else pd.NA
+        out["Year_raw"] = out[year_col] if year_col else pd.NA
+        out["Year"] = out["Year_raw"].apply(extract_year).astype("Int64")
+
+        if title_col:
+            out["Regulation_Title"] = out[title_col].astype(str)
+        else:
+            out["Regulation_Title"] = pd.NA
+
+        if source_col:
+            out["Source_URL"] = out[source_col].astype(str)
+        else:
+            out["Source_URL"] = pd.NA
+
+        frames.append(out)
+
+    all_df = pd.concat(frames, ignore_index=True)
+
+    # Clean
+    all_df["Country_std"] = all_df["Country_std"].astype(str).str.strip()
+    all_df["Regulator_std"] = all_df["Regulator_std"].astype(str).str.strip()
+    all_df["Regulation_Title"] = all_df["Regulation_Title"].astype(str).str.strip()
+
+    # Treat "nan" strings produced by astype(str)
+    for c in ["Country_std", "Regulator_std", "Regulation_Title", "Source_URL"]:
+        all_df.loc[all_df[c].str.lower().isin(["nan", "none"]), c] = pd.NA
+
+    return all_df
+
+
+def latest_regs_by_country(df: pd.DataFrame, country: str, n: int = 10) -> pd.DataFrame:
+    d = df[df["Country_std"] == country].copy()
+    d = d.dropna(subset=["Regulation_Title"])
+    # Year might be NA; put those last
+    d["Year_sort"] = d["Year"].fillna(-1).astype(int)
+    d = d.sort_values(["Year_sort", "Regulation_Title"], ascending=[False, True])
+    return d.head(n)[["Year", "Regulation_Title", "Category", "Regulator_std", "Source_URL"]]
+
+
+def build_hover_list(df_country_latest: pd.DataFrame) -> str:
+    if df_country_latest.empty:
+        return "No regulations found."
+    lines = []
+    for _, r in df_country_latest.iterrows():
+        y = r["Year"]
+        y_txt = str(int(y)) if pd.notna(y) else "—"
+        title = str(r["Regulation_Title"])
+        lines.append(f"{y_txt} — {title}")
+    # Plotly hover supports <br>
+    return "<br>".join(lines)
+
 
 # =========================
-# Sidebar controls
+# Load data
 # =========================
-st.sidebar.header("Filters")
+df_all = load_cbregs(DATA_FILE)
 
-treat_partial_as_covered = st.sidebar.toggle("Count 'Partial' as covered", value=True)
-
-countries = sorted([c for c in df.get("Country", pd.Series(dtype=str)).dropna().unique()])
-regulators = sorted([r for r in df.get("Regulator", pd.Series(dtype=str)).dropna().unique()])
-
-sel_countries = st.sidebar.multiselect("Country", options=countries, default=countries)
-sel_regulators = st.sidebar.multiselect("Regulator", options=regulators, default=regulators)
-
-# Year range
-years = df["Year (parsed)"].dropna().astype(int)
-if len(years) > 0:
-    y_min, y_max = int(years.min()), int(years.max())
-    year_range = st.sidebar.slider("Year (parsed) range", min_value=y_min, max_value=y_max, value=(y_min, y_max))
-else:
-    year_range = None
-    st.sidebar.caption("No parseable years found (looking for 4-digit years).")
-
-# Topic filter (show only rows that cover selected topics)
-topic_filter = st.sidebar.multiselect("Must cover topics (optional)", options=TOPIC_COLS)
-
-# Free text search (regulation title/notes)
-search_text = st.sidebar.text_input("Search text (regulations / notes)", value="").strip().lower()
-
-# Apply filters
-f = df.copy()
-
-if "Country" in f.columns and sel_countries:
-    f = f[f["Country"].isin(sel_countries)]
-
-if "Regulator" in f.columns and sel_regulators:
-    f = f[f["Regulator"].isin(sel_regulators)]
-
-if year_range and "Year (parsed)" in f.columns:
-    f = f[f["Year (parsed)"].notna()]
-    f = f[(f["Year (parsed)"] >= year_range[0]) & (f["Year (parsed)"] <= year_range[1])]
-
-if search_text and "Regulations on consumer protection (payments)" in f.columns:
-    f = f[f["Regulations on consumer protection (payments)"].astype(str).str.lower().str.contains(search_text, na=False)]
-
-# Coverage matrix + topic filtering
-cov = build_coverage_matrix(f, treat_partial_as_covered=treat_partial_as_covered)
-if topic_filter:
-    mask = cov[topic_filter].all(axis=1)
-    f = f[mask]
-    cov = cov.loc[f.index]
-
-# Derived metrics
-if len(f) > 0:
-    f = f.copy()
-    f["Topics covered (count)"] = cov.sum(axis=1).astype(int)
-    f["Coverage (%)"] = (f["Topics covered (count)"] / len(TOPIC_COLS) * 100).round(1)
-else:
-    st.warning("No rows match your filters.")
+if df_all.empty:
+    st.error("CBregs.xlsx loaded but produced no rows.")
     st.stop()
 
 # =========================
-# KPI row
+# Sidebar filters (ORDER: Category -> Year -> Country -> Regulator)
 # =========================
-k1, k2, k3, k4 = st.columns(4)
+st.sidebar.header("Filters")
 
-k1.metric("Rows (jurisdictions / entries)", f"{len(f):,}")
+categories = ["All"] + sorted(df_all["Category"].dropna().unique().tolist())
+sel_category = st.sidebar.selectbox("Category (worksheet)", options=categories, index=0)
 
-if "Country" in f.columns:
-    k2.metric("Countries", f"{f['Country'].nunique():,}")
+df_f = df_all.copy()
+if sel_category != "All":
+    df_f = df_f[df_f["Category"] == sel_category]
+
+# Year slider
+years = df_f["Year"].dropna().astype(int)
+if len(years) > 0:
+    y_min, y_max = int(years.min()), int(years.max())
+    sel_year = st.sidebar.slider("Year", min_value=y_min, max_value=y_max, value=(y_min, y_max))
+    df_f = df_f[df_f["Year"].notna()]
+    df_f = df_f[(df_f["Year"] >= sel_year[0]) & (df_f["Year"] <= sel_year[1])]
 else:
-    k2.metric("Countries", "—")
+    st.sidebar.caption("No parseable years found in the current category filter.")
 
-if "Regulator" in f.columns:
-    k3.metric("Regulators", f"{f['Regulator'].nunique():,}")
-else:
-    k3.metric("Regulators", "—")
+countries = sorted(df_f["Country_std"].dropna().unique().tolist())
+sel_countries = st.sidebar.multiselect("Country", options=countries, default=countries)
+if sel_countries:
+    df_f = df_f[df_f["Country_std"].isin(sel_countries)]
 
-k4.metric("Avg coverage", f"{f['Coverage (%)'].mean():.1f}%")
+regulators = sorted(df_f["Regulator_std"].dropna().unique().tolist())
+sel_regulators = st.sidebar.multiselect("Regulator", options=regulators, default=regulators)
+if sel_regulators:
+    df_f = df_f[df_f["Regulator_std"].isin(sel_regulators)]
 
-st.divider()
-
-# =========================
-# Charts
-# =========================
-left, right = st.columns([1.2, 1])
-
-with left:
-    st.subheader("Coverage by topic (share of rows covered)")
-    topic_rates = (cov.mean(axis=0) * 100).round(1).sort_values(ascending=False).reset_index()
-    topic_rates.columns = ["Topic", "Covered %"]
-    fig_topics = px.bar(topic_rates, x="Covered %", y="Topic", orientation="h")
-    st.plotly_chart(fig_topics, use_container_width=True)
-
-with right:
-    st.subheader("Coverage distribution")
-    fig_hist = px.histogram(f, x="Coverage (%)", nbins=12)
-    st.plotly_chart(fig_hist, use_container_width=True)
+# Basic KPI
+k1, k2, k3 = st.columns(3)
+k1.metric("Regulations (rows)", f"{len(df_f):,}")
+k2.metric("Countries", f"{df_f['Country_std'].nunique():,}")
+k3.metric("Regulators", f"{df_f['Regulator_std'].nunique():,}")
 
 st.divider()
 
 # =========================
-# Country / Regulator leaderboards (optional)
+# Tabs (Map default)
 # =========================
-c1, c2 = st.columns(2)
-
-with c1:
-    st.subheader("Average coverage by country")
-    if "Country" in f.columns:
-        by_country = (
-            f.groupby("Country", dropna=False)["Coverage (%)"]
-            .mean()
-            .sort_values(ascending=False)
-            .round(1)
-            .reset_index()
-        )
-        fig_country = px.bar(by_country.head(30), x="Coverage (%)", y="Country", orientation="h")
-        st.plotly_chart(fig_country, use_container_width=True)
-    else:
-        st.caption("Column 'Country' not found.")
-
-with c2:
-    st.subheader("Average coverage by regulator")
-    if "Regulator" in f.columns:
-        by_reg = (
-            f.groupby("Regulator", dropna=False)["Coverage (%)"]
-            .mean()
-            .sort_values(ascending=False)
-            .round(1)
-            .reset_index()
-        )
-        fig_reg = px.bar(by_reg.head(30), x="Coverage (%)", y="Regulator", orientation="h")
-        st.plotly_chart(fig_reg, use_container_width=True)
-    else:
-        st.caption("Column 'Regulator' not found.")
-
-st.divider()
+tab_map, tab_table = st.tabs(["Map", "Table"])
 
 # =========================
-# Table view
+# MAP TAB
 # =========================
-st.subheader("Filtered data (with coverage metrics)")
+with tab_map:
+    st.subheader("Map")
 
-# Show a compact table: meta + metrics + source links
-show_cols = []
-for c in ["Country", "Regulator", "Regulations on consumer protection (payments)", "Year approved/implemented", "Year (parsed)"]:
-    if c in f.columns:
-        show_cols.append(c)
+    # Country counts + hover preview
+    by_country = (
+        df_f.groupby("Country_std", dropna=False)
+        .size()
+        .reset_index(name="Regulation_Count")
+        .rename(columns={"Country_std": "Country"})
+    )
 
-show_cols += ["Topics covered (count)", "Coverage (%)"]
+    # Build hover text = latest 10 regs per country
+    hover_texts = []
+    for c in by_country["Country"].tolist():
+        latest10 = latest_regs_by_country(df_f, c, n=10)
+        hover_texts.append(build_hover_list(latest10))
+    by_country["Latest_10"] = hover_texts
 
-if "Official source links" in f.columns:
-    show_cols.append("Official source links")
+    # Choropleth
+    fig = px.choropleth(
+        by_country,
+        locations="Country",
+        locationmode="country names",
+        color="Regulation_Count",
+        hover_name="Country",
+        hover_data={"Regulation_Count": True, "Latest_10": True, "Country": False},
+    )
+    fig.update_layout(margin=dict(l=0, r=0, t=0, b=0), height=520)
+    st.plotly_chart(fig, use_container_width=True)
 
-st.dataframe(
-    f[show_cols].sort_values(["Coverage (%)", "Topics covered (count)"], ascending=False),
-    use_container_width=True,
-    height=420,
-)
+    st.caption("Hover a country to preview its 10 most recent regulations (based on the current filters).")
 
-with st.expander("Show topic coverage matrix (True/False)"):
-    st.dataframe(cov.astype(bool), use_container_width=True, height=420)
+    # Country selector to open modal (map click is harder without extra packages)
+    map_country = st.selectbox("Open a country details popup", options=["(Select)"] + sorted(by_country["Country"].tolist()))
+    if map_country != "(Select)":
+        st.session_state["selected_country"] = map_country
+
+
+# =========================
+# TABLE TAB
+# =========================
+with tab_table:
+    st.subheader("Table")
+
+    # Build per-country summary table:
+    # columns: Flag, Country (with Regulator), counts per each worksheet name
+    all_sheet_names = sorted(df_all["Category"].dropna().unique().tolist())
+
+    regs_by_country = (
+        df_f.groupby("Country_std")["Regulator_std"]
+        .apply(lambda x: ", ".join(sorted(set([v for v in x.dropna().tolist()]))))
+        .reset_index()
+        .rename(columns={"Country_std": "Country", "Regulator_std": "Regulator(s)"})
+    )
+
+    counts = (
+        df_f.groupby(["Country_std", "Category"])
+        .size()
+        .reset_index(name="Count")
+        .pivot(index="Country_std", columns="Category", values="Count")
+        .fillna(0)
+        .astype(int)
+        .reset_index()
+        .rename(columns={"Country_std": "Country"})
+    )
+
+    t = regs_by_country.merge(counts, on="Country", how="outer").fillna({"Regulator(s)": ""})
+    for s in all_sheet_names:
+        if s not in t.columns:
+            t[s] = 0
+
+    t.insert(0, "Flag", t["Country"].map(lambda x: ASEAN_FLAG.get(str(x), "🏳️")))
+    t = t[["Flag", "Country", "Regulator(s)"] + all_sheet_names].sort_values("Country")
+
+    # Use dataframe selection; show preview + open modal
+    st.caption("Select a row to preview and open a country popup.")
+    event = st.dataframe(
+        t,
+        use_container_width=True,
+        hide_index=True,
+        on_select="rerun",
+        selection_mode="single-row",
+        height=520,
+    )
+
+    if event and event.selection and event.selection.get("rows"):
+        idx = event.selection["rows"][0]
+        selected_country = t.iloc[idx]["Country"]
+        st.session_state["selected_country"] = selected_country
+
+        # Preview
+        st.markdown(f"### Preview: {selected_country}")
+        latest10 = latest_regs_by_country(df_f, selected_country, n=10)
+        if latest10.empty:
+            st.info("No regulations found for this country under the current filters.")
+        else:
+            preview_lines = []
+            for _, r in latest10.iterrows():
+                y = r["Year"]
+                y_txt = str(int(y)) if pd.notna(y) else "—"
+                preview_lines.append(f"- **{y_txt}** — {r['Regulation_Title']}")
+            st.markdown("\n".join(preview_lines))
+
+
+# =========================
+# Country popup (modal)
+# =========================
+@st.dialog("Country regulations")
+def country_dialog(country: str):
+    st.markdown(f"## {ASEAN_FLAG.get(country, '🏳️')} {country}")
+
+    d = df_f[df_f["Country_std"] == country].copy()
+    if d.empty:
+        st.info("No regulations found for this country under the current filters.")
+        return
+
+    # Quick header info
+    regs = sorted(set([x for x in d["Regulator_std"].dropna().tolist()]))
+    st.markdown("**Regulator(s):** " + (", ".join(regs) if regs else "—"))
+    st.markdown(f"**Total regulations (rows):** {len(d):,}")
+
+    # Show grouped by category
+    for cat in sorted(d["Category"].dropna().unique().tolist()):
+        st.markdown(f"### {cat}")
+        dc = d[d["Category"] == cat].copy()
+        dc["Year_sort"] = dc["Year"].fillna(-1).astype(int)
+        dc = dc.sort_values(["Year_sort", "Regulation_Title"], ascending=[False, True])
+
+        # Build a compact display
+        show = dc[["Year", "Regulation_Title", "Regulator_std", "Source_URL"]].copy()
+        show.rename(columns={"Regulator_std": "Regulator"}, inplace=True)
+        show["Source"] = show["Source_URL"].apply(safe_linkify)
+
+        # Render with markdown links
+        for _, r in show.iterrows():
+            y = r["Year"]
+            y_txt = str(int(y)) if pd.notna(y) else "—"
+            title = r["Regulation_Title"] if pd.notna(r["Regulation_Title"]) else "—"
+            reg = r["Regulator"] if pd.notna(r["Regulator"]) else "—"
+            src = r["Source"]
+            # one-line summary
+            st.markdown(f"- **{y_txt}** — {title}  \n  *{reg}*  {src}")
+
+    st.caption("Links shown as 'Source' are taken directly from the 'Official Source' column in CBregs.xlsx.")
+
+
+# Fire dialog if a country is chosen
+if "selected_country" in st.session_state and st.session_state["selected_country"]:
+    country_dialog(st.session_state["selected_country"])
+    # optional: clear after showing (keeps UX from reopening on every rerun)
+    st.session_state["selected_country"] = None
