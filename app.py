@@ -287,15 +287,31 @@ with tab_map:
         hover_texts.append(build_hover_list(latest10))
     by_country["Latest_10"] = hover_texts
 
-    # Choropleth
+    # # Choropleth
+    # fig = px.choropleth(
+    #     by_country,
+    #     locations="Country",
+    #     locationmode="country names",
+    #     color="Regulation_Count",
+    #     hover_name="Country",
+    #     hover_data={"Regulation_Count": True, "Latest_10": True, "Country": False},
+    # )
+
+    # Neutral shading (no ranking): single constant value
+    by_country["_fill"] = 1
+    
     fig = px.choropleth(
         by_country,
         locations="Country",
         locationmode="country names",
-        color="Regulation_Count",
+        color="_fill",  # constant -> no meaningful gradient
         hover_name="Country",
-        hover_data={"Regulation_Count": True, "Latest_10": True, "Country": False},
+        hover_data={"Latest_10": True, "Country": False},  # remove Regulation_Count from hover too
     )
+    
+    # Remove legend/colorbar entirely
+    fig.update_layout(coloraxis_showscale=False)
+
 
 
 
