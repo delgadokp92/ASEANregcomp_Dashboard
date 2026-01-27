@@ -369,35 +369,64 @@ with tab_table:
         .rename(columns={"Country_std": "Country", "Regulator_std": "Regulator(s)"})
     )
 
+    # counts = (
+    #     df_f.groupby(["Country_std", "Category"])
+    #     .size()
+    #     .reset_index(name="Count")
+    #     .pivot(index="Country_std", columns="Category", values="Count")
+    #     .fillna(0)
+    #     .astype(int)
+    #     .reset_index()
+    #     .rename(columns={"Country_std": "Country"})
+    # )
+
     counts = (
-        df_f.groupby(["Country_std", "Category"])
-        .size()
-        .reset_index(name="Count")
-        .pivot(index="Country_std", columns="Category", values="Count")
-        .fillna(0)
-        .astype(int)
-        .reset_index()
-        .rename(columns={"Country_std": "Country"})
-    )
+    df_f.groupby(["Country_std", "Category"])
+    .size()
+    .reset_index(name="Count")
+    .assign(HasReg=True)  # anything present becomes True
+    .pivot(index="Country_std", columns="Category", values="HasReg")
+    .fillna(False)
+    .astype(bool)
+    .reset_index()
+    .rename(columns={"Country_std": "Country"})
+    )    
 
     t = regs_by_country.merge(counts, on="Country", how="outer").fillna({"Regulator(s)": ""})
     for s in all_sheet_names:
         if s not in t.columns:
-            t[s] = 0
+            # t[s] = 0
+            t[s] = False
 
     t.insert(0, "Flag", t["Country"].map(lambda x: ASEAN_FLAG.get(str(x), "🏳️")))
     t = t[["Flag", "Country", "Regulator(s)"] + all_sheet_names].sort_values("Country")
 
     # Use dataframe selection; show preview + open modal
     st.caption("Select a row to preview and open a country popup.")
+    # event = st.dataframe(
+    #     t,
+    #     use_container_width=True,
+    #     hide_index=True,
+    #     on_select="rerun",
+    #     selection_mode="single-row",
+    #     height=520,
+    # )
+
+    CHECK = "✓"
+    BLANK = ""
+
+    for s in all_sheet_names:
+        t[s] = t[s].map(lambda x: CHECK if x else BLANK)
+
     event = st.dataframe(
-        t,
-        use_container_width=True,
-        hide_index=True,
-        on_select="rerun",
-        selection_mode="single-row",
-        height=520,
+    t,
+    use_container_width=True,
+    hide_index=True,
+    on_select="rerun",
+    selection_mode="single-row",
+    height=520,
     )
+
 
     if event and event.selection and event.selection.get("rows"):
         idx = event.selection["rows"][0]
