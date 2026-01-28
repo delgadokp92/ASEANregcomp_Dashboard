@@ -342,17 +342,18 @@ with tab_map:
         fitbounds="locations",
         projection_type="mercator",
         showcountries=True,
-        countrycolor="rgba(255,255,255,0.85)",
+        countrycolor="rgba(255,255,255,0.9)",
         showcoastlines=True,
-        coastlinecolor="rgba(40, 60, 80, 0.55)",
+        coastlinecolor="rgba(255,255,255,0.7)",
         showland=True,
-        landcolor="#6BAF59",        # 🌿 vibrant natural green
+        landcolor="#C8A97E",              
         showocean=True,
-        oceancolor="#2D6ECF",       # 🌊 rich deep ocean blue
+        oceancolor="#0B1F3B",           
         showlakes=True,
-        lakecolor="#5CB3FF",        # 💧 vibrant lighter blue
+        lakecolor="#173B6B",
         bgcolor="rgba(0,0,0,0)",
     )
+
 
 
     fig.update_layout(
