@@ -337,22 +337,24 @@ with tab_map:
     fig.update_yaxes(fixedrange=True)
     
     
+
     fig.update_geos(
         scope="asia",
         fitbounds="locations",
         projection_type="mercator",
         showcountries=True,
-        countrycolor="rgba(255,255,255,0.9)",
+        countrycolor="rgba(255,255,255,0.85)",
         showcoastlines=True,
-        coastlinecolor="rgba(255,255,255,0.7)",
+        coastlinecolor="rgba(255,255,255,0.35)",
         showland=True,
-        landcolor="#C8A97E",              
+        landcolor="rgba(20, 30, 45, 1)",
         showocean=True,
-        oceancolor="#0B1F3B",           
+        oceancolor="rgba(10, 16, 26, 1)",
         showlakes=True,
-        lakecolor="#173B6B",
+        lakecolor="rgba(10, 16, 26, 1)",
         bgcolor="rgba(0,0,0,0)",
     )
+
 
 
 
