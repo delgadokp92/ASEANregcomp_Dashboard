@@ -343,13 +343,13 @@ with tab_map:
         showcountries=True,
         countrycolor="rgba(255,255,255,0.85)",
         showcoastlines=True,
-        coastlinecolor="rgba(255,255,255,0.35)",
+        coastlinecolor="rgba(60, 78, 97, 0.55)",
         showland=True,
-        landcolor="rgba(20, 30, 45, 1)",
+        landcolor="#DDEBC8",
         showocean=True,
-        oceancolor="rgba(10, 16, 26, 1)",
+        oceancolor="#A9D6E5",
         showlakes=True,
-        lakecolor="rgba(10, 16, 26, 1)",
+        lakecolor="#BEE1F2)",
         bgcolor="rgba(0,0,0,0)",
     )
     
