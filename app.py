@@ -693,7 +693,7 @@ def country_dialog(country: str):
             header = f"{y_txt} — {title}"
     
             with st.expander(header, expanded=False):
-                st.markdown(f"**Regulator:** {regulator}")
+                # st.markdown(f"**Regulator:** {regulator}")
                 if src_md:
                     st.markdown(f"**Link:** {src_md}")
     
