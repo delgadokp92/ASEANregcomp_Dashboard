@@ -35,11 +35,12 @@ ASEAN_FLAG = {
 }
 
 META_COL_CANDIDATES = {
-    "country": ["Country"],
-    "regulator": ["Regulator"],
-    "year": ["Year", "Year approved/implemented", "Year Approved/Implemented", "Year approved / implemented"],
-    "source": ["Official Source", "Official source", "Official Source links", "Official source links", "Source", "URL", "Link"],
+    "country": ["country", "Country"],
+    "regulator": ["regulator", "Regulator"],
+    "year": ["year", "Year", "Year approved/implemented", "Year Approved/Implemented", "Year approved / implemented"],
+    "source": ["source", "Official Source", "Official source", "Official Source links", "Official source links", "Source", "URL", "Link"],
     "title": [
+        "title",
         "Regulation / Legal Instrument",
         "Regulation / Legal instrument",
         "Primary Legal / Regulatory Framework",
