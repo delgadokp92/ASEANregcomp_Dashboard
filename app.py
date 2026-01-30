@@ -541,27 +541,93 @@ with tab_table:
     # =========================================================
     else:
         st.caption(f"Showing worksheet fields for: {sel_category}")
+        
+        d = df_f.copy()
+        
+        regs_by_country = (
+            d.groupby("Country_std")["Regulator_std"]
+            .apply(lambda x: ", ".join(sorted(set([v for v in x.dropna().tolist()]))))
+            .reset_index()
+            .rename(columns={"Country_std": "Country", "Regulator_std": "Regulator"})
+        )
 
-        d = df_f.copy()  # already filtered to sel_category earlier in your code
+        cols_to_concat = d.drop(columns=['ID', 'title', 'year', 'Year', 'Year_raw', 'source', 
+                                         'country', 'regulator','Category','Country_std', 'Regulator_std', 
+                                         'Source_URL']).columns
+        provs = (
+            d
+            .drop(columns=['ID', 'title', 'year', 'source'])
+            .groupby(['Country_std','Category'], dropna=False)
+            .agg({
+                c: lambda x: (
+                    pd.NA
+                    if x.dropna().empty
+                    else " | ".join(x.dropna().astype(str).str.strip().unique())
+                )
+                for c in cols_to_concat
+            })
+            .reset_index().rename(columns={"Country_std": "Country"})
+        )
 
-        # Show actual worksheet columns; drop std/helper cols to avoid name collisions (Country/Regulator/Year exist already)
-        drop_cols = {"Category", "Country_std", "Regulator_std", "Year_raw", "Source_URL"}
-        d = d.drop(columns=[c for c in drop_cols if c in d.columns], errors="ignore")
+        t = regs_by_country.merge(provs, on="Country", how="outer").fillna({"Regulator": ""})
+        for s in all_sheet_names:
+            if s not in t.columns:
+                t[s] = False
 
-        # Optional: make official source clickable if that column exists
-        column_config = {}
-        if "Official Source" in d.columns:
-            column_config["Official Source"] = st.column_config.LinkColumn("Official Source", display_text="Source")
-        elif "Official source" in d.columns:
-            column_config["Official source"] = st.column_config.LinkColumn("Official source", display_text="Source")
+        t.insert(0, "Flag", t["Country"].map(lambda x: ASEAN_FLAG.get(str(x), "🏳️")))
+        t = t[["Flag", "Country", "Regulator"] + all_sheet_names].sort_values("Country")
 
-        st.dataframe(
-            d,
+        CHECK, BLANK = "✓", ""
+        for s in all_sheet_names:
+            t[s] = t[s].map(lambda x: CHECK if x else BLANK)
+
+        st.caption("Select a row to preview and open a country popup.")
+        event = st.dataframe(
+            t,
             use_container_width=True,
             hide_index=True,
-            height=560,
-            column_config=column_config,
+            on_select="rerun",
+            selection_mode="single-row",
+            height=520,
         )
+
+        if event and event.selection and event.selection.get("rows"):
+            idx = event.selection["rows"][0]
+            selected_country = t.iloc[idx]["Country"]
+            st.session_state["selected_country"] = selected_country
+
+            st.markdown(f"### Preview: {selected_country}")
+            latest10 = latest_regs_by_country(df_f, selected_country, n=10)
+            if latest10.empty:
+                st.info("No regulations found for this country under the current filters.")
+            else:
+                preview_lines = []
+                for _, r in latest10.iterrows():
+                    y = r["Year"]
+                    y_txt = str(int(y)) if pd.notna(y) else "—"
+                    preview_lines.append(f"- **{y_txt}** — {r['Regulation_Title']}")
+                st.markdown("\n".join(preview_lines))
+
+        # d = df_f.copy()  # already filtered to sel_category earlier in your code
+
+        # # Show actual worksheet columns; drop std/helper cols to avoid name collisions (Country/Regulator/Year exist already)
+        # drop_cols = {"Category", "Country_std", "Regulator_std", "Year_raw", "Source_URL"}
+        # d = d.drop(columns=[c for c in drop_cols if c in d.columns], errors="ignore")
+
+        # # Optional: make official source clickable if that column exists
+        # column_config = {}
+        # if "Official Source" in d.columns:
+        #     column_config["Official Source"] = st.column_config.LinkColumn("Official Source", display_text="Source")
+        # elif "Official source" in d.columns:
+        #     column_config["Official source"] = st.column_config.LinkColumn("Official source", display_text="Source")
+
+        # st.dataframe(
+        #     d,
+        #     use_container_width=True,
+        #     hide_index=True,
+        #     height=560,
+        #     column_config=column_config,
+        # )
 
 
 # =========================
