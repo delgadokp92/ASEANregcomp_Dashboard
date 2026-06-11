@@ -199,22 +199,43 @@ def safe_linkify(url) -> str:
     return url
 
 
-def build_regulations_df(df: pd.DataFrame) -> pd.DataFrame:
-    rows = []
+def html_escape(text: str) -> str:
+    text = str(text)
+    return (
+        text.replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+            .replace('"', "&quot;")
+            .replace("'", "&#39;")
+            .replace("\n", " ")
+            .replace("\r", " ")
+    )
+
+
+def build_regulations_html_table(df: pd.DataFrame) -> str:
+    rows = [
+        '<table class="regulations-table" style="width:100%; border-collapse: collapse; margin-bottom:1rem;">',
+        "<tbody>",
+    ]
     for _, row in df.iterrows():
         title = row.get("Regulation_Title")
-        title = str(title).strip() if pd.notna(title) else "—"
+        title = html_escape(title) if pd.notna(title) else "—"
         year = row.get("Year")
         year_text = str(int(year)) if pd.notna(year) else "—"
         source_url = safe_linkify(row.get("Source_URL"))
-        rows.append(
-            {
-                "Regulation": title,
-                "Year": year_text,
-                "Source": source_url if source_url else "—",
-            }
+        source_html = (
+            f'<a href="{html_escape(source_url)}" target="_blank" rel="noreferrer">Source</a>'
+            if source_url else "—"
         )
-    return pd.DataFrame(rows)
+        rows.append(
+            "<tr>"
+            f"<td style=\"padding:8px 12px 8px 0; vertical-align:top; white-space:normal; word-break:break-word;\">{title}</td>"
+            f"<td style=\"padding:8px 12px; vertical-align:top; white-space:nowrap; text-align:right;\">{year_text}</td>"
+            f"<td style=\"padding:8px 0 8px 12px; vertical-align:top; white-space:nowrap; text-align:center;\">{source_html}</td>"
+            "</tr>"
+        )
+    rows.extend(["</tbody>", "</table>"])
+    return "\n".join(rows)
 
 
 def get_selected_row_index(event):
@@ -632,8 +653,8 @@ def country_dialog(country: str):
     st.markdown("**Regulator:** " + (", ".join(regs) if regs else "—"))
 
     st.markdown("## Regulations")
-    regs_table_df = build_regulations_df(d.sort_values(["Year", "Regulation_Title"], ascending=[False, True]))
-    st.dataframe(regs_table_df, use_container_width=True, hide_index=True)
+    regs_table_html = build_regulations_html_table(d.sort_values(["Year", "Regulation_Title"], ascending=[False, True]))
+    st.markdown(regs_table_html, unsafe_allow_html=True)
 
     st.markdown("## Key Provisions")
 
