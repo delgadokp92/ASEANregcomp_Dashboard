@@ -16,7 +16,7 @@ import streamlit as st
 st.set_page_config(
     page_title="ASEAN Regulatory Dashboard",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
     menu_items={
         "About": "ASEAN Regulatory Dashboard: interactive view of regional regulations.",
     },
@@ -70,6 +70,31 @@ st.markdown(
     }
     .stDataFrame tr:hover td {
         background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+        .stApp {
+            font-size: 14px;
+        }
+        h1 { font-size: 1.4rem !important; }
+        h2 { font-size: 1.2rem !important; }
+        h3 { font-size: 1.05rem !important; }
+
+        /* Tighten table cell padding on small screens */
+        .stDataFrame th,
+        .stDataFrame td {
+            padding: 4px 6px !important;
+            font-size: 12px !important;
+        }
+
+        /* Let the regulations HTML table stack better */
+        .regulations-table td {
+            display: block;
+            width: 100% !important;
+            text-align: left !important;
+            padding: 4px 0 !important;
+        }
     }
     </style>
     """,
@@ -523,7 +548,7 @@ st.divider()
 # =========================
 # Country popup (modal)
 # =========================
-def show_country_modal(country: str):
+def show_country_modal(country: str, key_suffix: str = ""):
     st.divider()
     st.markdown(f"## {ASEAN_FLAG.get(country, '🏳️')} {country}")
 
@@ -559,12 +584,14 @@ def show_country_modal(country: str):
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
         margin=dict(l=0, r=0, t=0, b=0),
-        height=300,
+        height=220,
         showlegend=False,
+        coloraxis_showscale=False,
     )
     st.plotly_chart(
         country_fig,
         use_container_width=True,
+        key=f"country_modal_chart_{country}_{key_suffix}",
         config={
             "displayModeBar": False,
             "scrollZoom": False,
@@ -579,6 +606,25 @@ def show_country_modal(country: str):
             "No regulations found for this country under the current filters."
         )
         return
+
+    # Download button for all country data
+    export_cols = [
+        c for c in d.columns
+        if c not in {"Entry_ID", "Year_raw", "Year_sort", "HasData"}
+    ]
+    export_df = d[export_cols].rename(columns={
+        "Country_std": "Country",
+        "Regulator_std": "Regulator",
+        "Regulation_Title": "Title",
+        "Source_URL": "Source URL",
+    })
+    st.download_button(
+        label=f"Download all data for {country}",
+        data=export_df.to_csv(index=False).encode("utf-8"),
+        file_name=f"{country.lower().replace(' ', '_')}_regulations.csv",
+        mime="text/csv",
+        use_container_width=True,
+    )
 
     regs = sorted(set(d["Regulator_std"].dropna().tolist()))
     if regs:
@@ -757,6 +803,7 @@ with tab_map:
     st.plotly_chart(
         fig,
         use_container_width=True,
+        key="asean_main_map",
         config={
             "displayModeBar": False,
             "scrollZoom": False,
@@ -782,7 +829,7 @@ with tab_map:
         "selected_country" in st.session_state
         and st.session_state["selected_country"]
     ):
-        show_country_modal(st.session_state["selected_country"])
+        show_country_modal(st.session_state["selected_country"], key_suffix="map")
         st.session_state["selected_country"] = None
 
 
@@ -844,13 +891,6 @@ with tab_table:
         if idx is not None:
             selected_country = t.iloc[idx]["Country"]
             st.session_state["selected_country"] = selected_country
-
-    if (
-        "selected_country" in st.session_state
-        and st.session_state["selected_country"]
-    ):
-        show_country_modal(st.session_state["selected_country"])
-        st.session_state["selected_country"] = None
 
     # =========================================================
     # MODE B: Category selected -> show actual worksheet columns
@@ -926,7 +966,7 @@ with tab_table:
         "selected_country" in st.session_state
         and st.session_state["selected_country"]
     ):
-        show_country_modal(st.session_state["selected_country"])
+        show_country_modal(st.session_state["selected_country"], key_suffix="table")
         st.session_state["selected_country"] = None
 
 
