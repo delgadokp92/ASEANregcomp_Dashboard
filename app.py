@@ -3,7 +3,9 @@ import re
 import uuid
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional, cast
+from typing import List, Optional
+
+from streamlit.delta_generator import DeltaGenerator
 from urllib.parse import urlparse
 
 import pandas as pd
@@ -559,7 +561,7 @@ if st.session_state["selected_countries"]:
 st.divider()
 
 # =========================
-# Country popup (modal)
+# Country extender (modal)
 # =========================
 def show_country_modal(country: str, key_suffix: str = ""):
     st.divider()
@@ -862,6 +864,7 @@ IS_AUTHENTICATED = bool(_auth_country and _auth_user)
 # =========================
 # Tabs (Map default)
 # =========================
+tab_editor: Optional[DeltaGenerator] = None
 if IS_AUTHENTICATED:
     tab_map, tab_table, tab_editor, tab_guide = st.tabs(
         ["Map", "Table", "Editor", "Guide"]
@@ -965,7 +968,7 @@ with tab_map:
 
     # Country selector to open the details panel
     map_country = st.selectbox(
-        "Open a country details popup",
+        "Select a country to view details",
         options=["(Select)"] + sorted(by_country["Country"].tolist()),
     )
     if map_country != "(Select)":
@@ -1125,6 +1128,7 @@ with tab_table:
 # EDITOR TAB  (only rendered when IS_AUTHENTICATED)
 # =========================
 if IS_AUTHENTICATED:
+    assert tab_editor is not None  # assigned above in the IS_AUTHENTICATED branch
     with tab_editor:
         st.subheader("Country editor & audit log")
 
@@ -1153,7 +1157,7 @@ if IS_AUTHENTICATED:
             editor_country = _auth_country
             st.success(
                 f"Signed in as **{_auth_user}** · editing "
-                f"{country_flag(editor_country)} **{editor_country}**"
+                f"{country_flag(editor_country or '')} **{editor_country}**"
             )
 
         if not editor_country:
@@ -1165,23 +1169,35 @@ if IS_AUTHENTICATED:
             )
 
             st.markdown(
-                f"#### {country_flag(editor_country)} **{editor_country}** — current records"
+                f"#### {country_flag(editor_country or '')} **{editor_country}** — current records"
             )
 
             preview_cols = [
-                "Entry_ID", "Category", "Regulator_std",
+                "Category", "Regulator_std",
                 "Year", "Regulation_Title", "Source_URL",
             ]
             preview_cols = [c for c in preview_cols if c in country_rows.columns]
             if not country_rows.empty:
+                preview_df = country_rows[preview_cols].rename(columns={
+                    "Regulator_std": "Regulator",
+                    "Regulation_Title": "Title",
+                    "Source_URL": "Source URL",
+                }).copy()
+                # Normalise URLs so LinkColumn gets clean values or None
+                if "Source URL" in preview_df.columns:
+                    preview_df["Source URL"] = preview_df["Source URL"].apply(
+                        lambda u: safe_linkify(u) or None
+                    )
                 st.dataframe(
-                    country_rows[preview_cols].rename(columns={
-                        "Regulator_std": "Regulator",
-                        "Regulation_Title": "Title",
-                        "Source_URL": "Source URL",
-                    }),
+                    preview_df,
                     use_container_width=True,
                     height=min(400, max(220, 60 + len(country_rows) * 30)),
+                    column_config={
+                        "Source URL": st.column_config.LinkColumn(
+                            "Source URL",
+                            display_text="Open",
+                        ),
+                    },
                 )
             else:
                 st.info(
