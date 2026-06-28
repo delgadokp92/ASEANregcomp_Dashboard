@@ -753,6 +753,169 @@ def save_cbregs(df: pd.DataFrame, src_dir: Path) -> None:
         group.to_csv(csv_path, index=False)
 
 
+# =========================
+# Gap Analysis data layer
+# =========================
+_GAP_BENCH_FILE   = "gap_benchmarks.csv"
+_GAP_MAP_FILE     = "gap_mappings.csv"
+_GAP_AUDIT_FILE   = "gap_audit_log.csv"
+
+ASEAN_COUNTRIES_ORDERED = [
+    "Brunei Darussalam", "Cambodia", "Indonesia", "Lao PDR",
+    "Malaysia", "Myanmar", "Philippines", "Singapore",
+    "Thailand", "Timor-Leste", "Viet Nam",
+]
+
+GAP_STATUS_OPTIONS = ["Meets", "Partially meets", "Not assessed"]
+GAP_STATUS_EMOJI   = {"Meets": "✅", "Partially meets": "⚠️", "Not assessed": "—"}
+GAP_STATUS_STYLE   = {
+    "Meets":           "background:#14532d;color:#86efac",
+    "Partially meets": "background:#78350f;color:#fcd34d",
+    "Not assessed":    "background:#0f172a;color:#475569",
+}
+_GAP_BENCH_COLS = [
+    "Benchmark_ID", "Standard", "Category", "Topic", "Provision",
+    "Created_By", "Created_At", "Updated_By", "Updated_At",
+]
+_GAP_MAP_COLS = [
+    "Mapping_ID", "Benchmark_ID", "Country", "Status",
+    "Entry_IDs", "Notes", "Updated_By", "Updated_At",
+]
+
+
+def get_gap_cache_key(src_dir: Path) -> str:
+    b = src_dir / _GAP_BENCH_FILE
+    m = src_dir / _GAP_MAP_FILE
+    return f"{b.stat().st_mtime if b.exists() else 0}_{m.stat().st_mtime if m.exists() else 0}"
+
+
+@st.cache_data
+def load_gap_benchmarks(src_dir: str, cache_key: str) -> pd.DataFrame:
+    path = Path(src_dir) / _GAP_BENCH_FILE
+    if not path.exists():
+        return pd.DataFrame(columns=_GAP_BENCH_COLS)
+    return pd.read_csv(path, dtype=str).fillna("")
+
+
+@st.cache_data
+def load_gap_mappings(src_dir: str, cache_key: str) -> pd.DataFrame:
+    path = Path(src_dir) / _GAP_MAP_FILE
+    if not path.exists():
+        return pd.DataFrame(columns=_GAP_MAP_COLS)
+    return pd.read_csv(path, dtype=str).fillna("")
+
+
+def save_gap_benchmarks(df: pd.DataFrame, src_dir: Path) -> None:
+    df.to_csv(src_dir / _GAP_BENCH_FILE, index=False)
+
+
+def save_gap_mappings(df: pd.DataFrame, src_dir: Path) -> None:
+    df.to_csv(src_dir / _GAP_MAP_FILE, index=False)
+
+
+def append_gap_audit(
+    src_dir: Path, action: str, record_type: str,
+    record_id: str, before: dict, after: dict, user: str,
+) -> None:
+    path = src_dir / _GAP_AUDIT_FILE
+    row = {
+        "Timestamp":   pd.Timestamp.utcnow().isoformat(),
+        "User":        user,
+        "Action":      action,
+        "Record_Type": record_type,
+        "Record_ID":   record_id,
+        "Before":      json.dumps(before, ensure_ascii=False),
+        "After":       json.dumps(after,  ensure_ascii=False),
+    }
+    pd.DataFrame([row]).to_csv(path, mode="a", header=not path.exists(), index=False)
+
+
+def _gap_reg_options(df_all: pd.DataFrame, country: str, category: str = "") -> dict[str, str]:
+    """Return {Entry_ID: display_label} for a country's regulations, optionally filtered by category."""
+    mask = df_all["Country_std"] == country
+    if category and category not in ("", "nan", "All"):
+        mask &= df_all["Category"] == category
+    opts: dict[str, str] = {}
+    for _, r in df_all[mask].dropna(subset=["Regulation_Title"]).iterrows():
+        eid   = str(r["Entry_ID"])
+        title = str(r.get("Regulation_Title", "Untitled"))
+        yr    = r.get("Year", "")
+        yr_s  = f" ({int(float(yr))})" if pd.notna(yr) and str(yr) not in ("", "nan") else ""
+        opts[eid] = f"{title}{yr_s}"
+    return opts
+
+
+def _render_gap_matrix(df_bench: pd.DataFrame, df_map: pd.DataFrame, countries: list[str]) -> None:
+    """Render the gap analysis status matrix: benchmarks (rows) × countries (cols)."""
+    import html as _hl
+    if df_bench.empty:
+        st.info("No benchmarks have been defined yet. Admin can add them in the Benchmarks tab.")
+        return
+
+    status_lk: dict[tuple[str, str], str] = {}
+    if not df_map.empty:
+        for _, r in df_map.iterrows():
+            status_lk[(str(r["Benchmark_ID"]), str(r["Country"]))] = str(r.get("Status", "Not assessed"))
+
+    short_name = {
+        "Brunei Darussalam": "Brunei", "Timor-Leste": "Timor-Leste",
+        "Lao PDR": "Lao PDR",
+    }
+
+    th = (
+        '<th style="min-width:85px;white-space:nowrap">ID</th>'
+        '<th style="min-width:130px">Standard</th>'
+        '<th style="min-width:180px">Topic / Area</th>'
+    )
+    for c in countries:
+        flag = country_flag(c)
+        label = _hl.escape(short_name.get(c, c))
+        th += (
+            f'<th style="text-align:center;min-width:70px;font-size:11px;line-height:1.4">'
+            f'{flag}<br>{label}</th>'
+        )
+
+    rows_html = ""
+    for i, (_, b) in enumerate(df_bench.iterrows()):
+        bid   = str(b.get("Benchmark_ID", ""))
+        std   = str(b.get("Standard", ""))
+        topic = str(b.get("Topic", ""))
+        bg    = "#0d1526" if i % 2 == 0 else "#111e33"
+        cells = (
+            f'<td style="font-weight:700;color:#7dd3fc;white-space:nowrap;font-size:12px">{_hl.escape(bid)}</td>'
+            f'<td style="font-size:11px;color:#94a3b8">{_hl.escape(std)}</td>'
+            f'<td style="font-size:13px">{_hl.escape(topic)}</td>'
+        )
+        for c in countries:
+            status = status_lk.get((bid, c), "Not assessed")
+            emoji  = GAP_STATUS_EMOJI.get(status, "—")
+            style  = GAP_STATUS_STYLE.get(status, GAP_STATUS_STYLE["Not assessed"])
+            cells += f'<td style="{style};text-align:center;font-size:16px;padding:5px 3px">{emoji}</td>'
+        rows_html += f'<tr style="background:{bg}">{cells}</tr>'
+
+    html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+*{{box-sizing:border-box;margin:0;padding:0}}
+body{{background:transparent;font-family:"Source Sans Pro",sans-serif;color:#e2e8f0}}
+table{{width:100%;border-collapse:collapse}}
+thead tr{{background:#1e293b;position:sticky;top:0;z-index:2}}
+th{{padding:8px 10px;text-align:left;color:#94a3b8;font-weight:600;border-bottom:2px solid #334155;vertical-align:middle}}
+td{{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle;word-break:break-word}}
+tr:hover td{{filter:brightness(1.2)}}
+</style></head><body>
+<table id="t"><thead><tr>{th}</tr></thead><tbody>{rows_html}</tbody></table>
+<script>
+(function(){{const tbl=document.getElementById('t');let _lH=0;
+function sh(){{const h=Math.ceil(tbl.getBoundingClientRect().height)+8;
+if(h>0&&h!==_lH){{_lH=h;window.parent.postMessage({{isStreamlitMessage:true,type:'streamlit:setFrameHeight',height:h}},'*');}}}}
+sh();window.addEventListener('load',sh);setTimeout(sh,100);setTimeout(sh,500);
+new ResizeObserver(sh).observe(tbl);}})();
+</script></body></html>"""
+
+    est = max(300, 60 + len(df_bench) * 52)
+    components.html(html, height=est, scrolling=True)
+
+
 @st.dialog("Edit regulation", width="large")
 def edit_regulation_dialog(
     existing_row: pd.Series,
@@ -1256,6 +1419,60 @@ def show_country_comparison(countries: List[str], key_suffix: str = ""):
 
 
 # =========================
+# =========================
+# Gap Analysis dialogs
+# =========================
+@st.dialog("Add benchmark", width="large")
+def _dlg_add_benchmark(df_bench: pd.DataFrame, categories: list[str], src_dir: Path, user: str) -> None:
+    bid   = st.text_input("Benchmark ID *", placeholder="e.g. AML-01")
+    std   = st.text_input("Standard", placeholder="e.g. FATF Recommendations")
+    cat   = st.selectbox("Regulatory category", options=[""] + categories)
+    topic = st.text_input("Topic / Area")
+    prov  = st.text_area("Provision text", height=220)
+    if st.button("Add benchmark", type="primary"):
+        if not bid.strip():
+            st.error("Benchmark ID is required.")
+            return
+        if bid.strip() in df_bench["Benchmark_ID"].tolist():
+            st.error(f"Benchmark ID '{bid.strip()}' already exists.")
+            return
+        now = pd.Timestamp.utcnow().isoformat()
+        new_row = {
+            "Benchmark_ID": bid.strip(), "Standard": std.strip(), "Category": cat,
+            "Topic": topic.strip(), "Provision": prov.strip(),
+            "Created_By": user, "Created_At": now, "Updated_By": user, "Updated_At": now,
+        }
+        save_gap_benchmarks(pd.concat([df_bench, pd.DataFrame([new_row])], ignore_index=True), src_dir)
+        append_gap_audit(src_dir, "add", "benchmark", bid.strip(), {}, new_row, user)
+        st.rerun()
+
+
+@st.dialog("Edit benchmark", width="large")
+def _dlg_edit_benchmark(row: pd.Series, df_bench: pd.DataFrame, categories: list[str], src_dir: Path, user: str) -> None:
+    bid   = str(row["Benchmark_ID"])
+    st.markdown(f"**Benchmark ID:** {bid}")
+    std   = st.text_input("Standard",     value=str(row.get("Standard", "")))
+    cur_cat = str(row.get("Category", ""))
+    cat_opts = [""] + categories
+    cat   = st.selectbox("Regulatory category", options=cat_opts,
+                         index=cat_opts.index(cur_cat) if cur_cat in cat_opts else 0)
+    topic = st.text_input("Topic / Area", value=str(row.get("Topic", "")))
+    prov  = st.text_area("Provision text", value=str(row.get("Provision", "")), height=220)
+    if st.button("Save", type="primary"):
+        before = row.to_dict()
+        now    = pd.Timestamp.utcnow().isoformat()
+        idx    = df_bench.index[df_bench["Benchmark_ID"] == bid].tolist()
+        if idx:
+            for col, val in [("Standard", std.strip()), ("Category", cat),
+                              ("Topic", topic.strip()), ("Provision", prov.strip()),
+                              ("Updated_By", user), ("Updated_At", now)]:
+                df_bench.at[idx[0], col] = val
+            save_gap_benchmarks(df_bench, src_dir)
+            append_gap_audit(src_dir, "edit", "benchmark", bid, before, df_bench.loc[idx[0]].to_dict(), user)
+        st.rerun()
+
+
+# =========================
 # Auth resolution (must happen before tabs are created)
 # =========================
 _qp = get_query_params()
@@ -1272,9 +1489,10 @@ IS_AUTHENTICATED = bool(_auth_country and _auth_user)
 # Tabs (Map default)
 # =========================
 tab_editor: Optional[DeltaGenerator] = None
+tab_gap:    Optional[DeltaGenerator] = None
 if IS_AUTHENTICATED:
-    tab_map, tab_table, tab_editor, tab_guide = st.tabs(
-        ["Map", "Table", "Editor", "Guide"]
+    tab_map, tab_table, tab_gap, tab_editor, tab_guide = st.tabs(
+        ["Map", "Table", "Gap Analysis", "Editor", "Guide"]
     )
 else:
     tab_map, tab_table, tab_guide = st.tabs(["Map", "Table", "Guide"])
@@ -1517,6 +1735,290 @@ with tab_table:
             else:
                 st.caption("No provisions data available for the selected countries and category.")
 
+
+
+# =========================
+# GAP ANALYSIS TAB  (IS_AUTHENTICATED only)
+# =========================
+if IS_AUTHENTICATED:
+    assert tab_gap is not None
+    with tab_gap:
+        _gap_cache   = get_gap_cache_key(resolved_data_dir)
+        _df_bench    = load_gap_benchmarks(str(resolved_data_dir), _gap_cache)
+        _df_maps     = load_gap_mappings(str(resolved_data_dir), _gap_cache)
+        _gap_cats    = sorted(df_all["Category"].dropna().unique().tolist())
+
+        # Gap country: admin can select any; country user is locked to their URL param
+        _gap_country: Optional[str] = None
+        if IS_ADMIN:
+            _gap_country = "Admin"  # Admin sees all; per-country selection handled inside Mappings tab
+        else:
+            _gap_country = _auth_country
+
+        _gsub_overview, _gsub_bench, _gsub_maps = st.tabs(
+            ["Overview", "Benchmarks", "Mappings"]
+        )
+
+        # ── Overview ──────────────────────────────────────────────
+        with _gsub_overview:
+            st.caption(
+                "✅ Meets · ⚠️ Partially meets · — Not assessed. "
+                "Select a benchmark below to see each country's linked regulations."
+            )
+            _render_gap_matrix(_df_bench, _df_maps, ASEAN_COUNTRIES_ORDERED)
+
+            if not _df_bench.empty:
+                st.divider()
+                _bench_labels = (
+                    _df_bench["Benchmark_ID"] + " — " + _df_bench["Topic"]
+                ).tolist()
+                _sel_bench_label = st.selectbox(
+                    "Select benchmark to view details",
+                    options=["(Select)"] + _bench_labels,
+                    key="gap_overview_bench_sel",
+                )
+                if _sel_bench_label != "(Select)":
+                    _sel_bid = _sel_bench_label.split(" — ")[0]
+                    _brow    = _df_bench[_df_bench["Benchmark_ID"] == _sel_bid].iloc[0]
+
+                    st.markdown(f"### {_sel_bid} — {_brow.get('Topic', '')}")
+                    st.caption(f"**Standard:** {_brow.get('Standard', '')}  |  **Category:** {_brow.get('Category', '')}")
+                    with st.expander("Full provision text"):
+                        st.markdown(str(_brow.get("Provision", "")))
+
+                    # Detail rows: one per country
+                    _bench_maps = _df_maps[_df_maps["Benchmark_ID"] == _sel_bid]
+                    detail_rows: list[dict] = []
+                    for _c in ASEAN_COUNTRIES_ORDERED:
+                        _cm = _bench_maps[_bench_maps["Country"] == _c]
+                        if _cm.empty:
+                            detail_rows.append({
+                                "Country": f"{country_flag(_c)} {_c}",
+                                "Status":  "—",
+                                "Regulations": "",
+                                "Notes": "",
+                                "Last updated": "",
+                            })
+                            continue
+                        _m = _cm.iloc[0]
+                        _status  = str(_m.get("Status", "Not assessed"))
+                        _eids    = [e.strip() for e in str(_m.get("Entry_IDs", "")).split(",") if e.strip()]
+                        _reg_regs = df_all[df_all["Entry_ID"].isin(_eids)]
+                        reg_lines = []
+                        for _, _rr in _reg_regs.iterrows():
+                            _t   = str(_rr.get("Regulation_Title", "Regulation"))
+                            _url = str(_rr.get("Source_URL", ""))
+                            _yr  = str(_rr.get("Year", ""))
+                            _yr_s = f" ({int(float(_yr))})" if _yr and _yr not in ("nan", "") else ""
+                            reg_lines.append(
+                                f"[{_t}{_yr_s}]({_url})" if _url and _url != "nan" else f"{_t}{_yr_s}"
+                            )
+                        _notes   = str(_m.get("Notes", ""))
+                        _updated = str(_m.get("Updated_At", ""))[:10]
+                        _by      = str(_m.get("Updated_By", ""))
+                        detail_rows.append({
+                            "Country":      f"{country_flag(_c)} {_c}",
+                            "Status":       GAP_STATUS_EMOJI.get(_status, "—") + " " + _status,
+                            "Regulations":  "\n".join(reg_lines),
+                            "Notes":        _notes if _notes != "nan" else "",
+                            "Last updated": f"{_updated} by {_by}" if _updated and _updated != "nan" else "",
+                        })
+                    _render_provision_table(
+                        detail_rows,
+                        ["Country", "Status", "Regulations", "Notes", "Last updated"],
+                    )
+
+        # ── Benchmarks ────────────────────────────────────────────
+        with _gsub_bench:
+            if IS_ADMIN:
+                _bcol1, _bcol2 = st.columns([4, 1])
+                _bcol1.subheader("Benchmark definitions")
+                if _bcol2.button("＋ Add benchmark", use_container_width=True, type="primary"):
+                    _dlg_add_benchmark(_df_bench, _gap_cats, resolved_data_dir, _auth_user or "Admin")
+
+            if _df_bench.empty:
+                st.info("No benchmarks defined yet.")
+            else:
+                _display_bench = _df_bench[
+                    ["Benchmark_ID", "Standard", "Category", "Topic", "Provision",
+                     "Updated_By", "Updated_At"]
+                ].copy()
+                _bench_event = st.dataframe(
+                    _display_bench,
+                    use_container_width=True,
+                    hide_index=True,
+                    height=min(500, max(120, 40 + len(_df_bench) * 36)),
+                    key="gap_bench_table",
+                    on_select="rerun" if IS_ADMIN else "ignore",
+                    selection_mode="single-row",
+                    column_config={
+                        "Benchmark_ID": st.column_config.TextColumn("ID", width="small"),
+                        "Standard":     st.column_config.TextColumn("Standard", width="medium"),
+                        "Category":     st.column_config.TextColumn("Category", width="small"),
+                        "Topic":        st.column_config.TextColumn("Topic / Area", width="large"),
+                        "Provision":    st.column_config.TextColumn("Provision", width="large"),
+                        "Updated_By":   st.column_config.TextColumn("Updated by", width="small"),
+                        "Updated_At":   st.column_config.TextColumn("Updated at", width="small"),
+                    },
+                )
+                if IS_ADMIN:
+                    _bsel_idx = (
+                        _bench_event.selection.rows
+                        if hasattr(_bench_event, "selection") and _bench_event.selection
+                        else []
+                    )
+                    if _bsel_idx:
+                        _bsel_row = _df_bench.iloc[_bsel_idx[0]]
+                        _bid_sel  = str(_bsel_row["Benchmark_ID"])
+                        _bet_col1, _bet_col2 = st.columns(2)
+                        if _bet_col1.button("✏️ Edit", key="gap_bench_edit_btn", use_container_width=True):
+                            _dlg_edit_benchmark(
+                                _bsel_row, _df_bench, _gap_cats, resolved_data_dir, _auth_user or "Admin"
+                            )
+                        # Delete — only if no mappings reference it
+                        _ref_count = len(_df_maps[_df_maps["Benchmark_ID"] == _bid_sel])
+                        if _ref_count > 0:
+                            _bet_col2.button(
+                                f"🗑 Delete (blocked — {_ref_count} mapping(s))",
+                                disabled=True,
+                                use_container_width=True,
+                                help="Remove all country mappings for this benchmark before deleting.",
+                            )
+                        else:
+                            if _bet_col2.button("🗑 Delete", use_container_width=True, type="secondary",
+                                                key="gap_bench_del_btn"):
+                                _before_del = _bsel_row.to_dict()
+                                _updated_bench = _df_bench[_df_bench["Benchmark_ID"] != _bid_sel].reset_index(drop=True)
+                                save_gap_benchmarks(_updated_bench, resolved_data_dir)
+                                append_gap_audit(
+                                    resolved_data_dir, "delete", "benchmark",
+                                    _bid_sel, _before_del, {}, _auth_user or "Admin"
+                                )
+                                st.rerun()
+
+        # ── Mappings ──────────────────────────────────────────────
+        with _gsub_maps:
+            # Admin picks any country; country user is locked to their own
+            if IS_ADMIN:
+                _map_country = st.selectbox(
+                    "Country", options=ASEAN_COUNTRIES_ORDERED, key="gap_map_country_sel"
+                )
+            else:
+                _map_country = _auth_country or ""
+                st.caption(f"Mapping regulations for: {country_flag(_map_country)} **{_map_country}**")
+
+            if _df_bench.empty:
+                st.info("No benchmarks available. Ask an admin to add benchmarks first.")
+            elif _map_country:
+                _mbench_opts = (
+                    _df_bench["Benchmark_ID"] + " — " + _df_bench["Topic"]
+                ).tolist()
+                _sel_mbl = st.selectbox(
+                    "Select benchmark to map",
+                    options=["(Select)"] + _mbench_opts,
+                    key="gap_map_bench_sel",
+                )
+                if _sel_mbl != "(Select)":
+                    _sel_mbid  = _sel_mbl.split(" — ")[0]
+                    _mbrow     = _df_bench[_df_bench["Benchmark_ID"] == _sel_mbid].iloc[0]
+                    _mcat      = str(_mbrow.get("Category", ""))
+
+                    with st.expander("Benchmark provision", expanded=False):
+                        st.markdown(str(_mbrow.get("Provision", "")))
+
+                    # Current mapping
+                    _exist_map = _df_maps[
+                        (_df_maps["Benchmark_ID"] == _sel_mbid) &
+                        (_df_maps["Country"] == _map_country)
+                    ]
+                    if _exist_map.empty:
+                        _cur_status  = "Not assessed"
+                        _cur_eids: list[str] = []
+                        _cur_notes   = ""
+                        _mapping_id  = str(uuid.uuid4())
+                        _is_new_map  = True
+                    else:
+                        _em = _exist_map.iloc[0]
+                        _cur_status  = str(_em.get("Status", "Not assessed"))
+                        _raw_ids     = str(_em.get("Entry_IDs", ""))
+                        _cur_eids    = [e.strip() for e in _raw_ids.split(",") if e.strip()]
+                        _cur_notes   = str(_em.get("Notes", ""))
+                        _mapping_id  = str(_em.get("Mapping_ID", uuid.uuid4()))
+                        _is_new_map  = False
+                        st.caption(
+                            f"Last updated: {str(_em.get('Updated_At',''))[:10]} "
+                            f"by {_em.get('Updated_By','')}"
+                        )
+
+                    # Regulation options for this country × category
+                    _reg_opts = _gap_reg_options(df_all, _map_country, _mcat)
+                    _lbl_to_id = {v: k for k, v in _reg_opts.items()}
+                    _default_lbls = [_reg_opts[e] for e in _cur_eids if e in _reg_opts]
+
+                    with st.form(key=f"gap_map_form_{_sel_mbid}_{_map_country}"):
+                        _new_status = st.selectbox(
+                            "Compliance status",
+                            options=GAP_STATUS_OPTIONS,
+                            index=GAP_STATUS_OPTIONS.index(_cur_status)
+                                  if _cur_status in GAP_STATUS_OPTIONS else 2,
+                        )
+                        if _reg_opts:
+                            _sel_lbls = st.multiselect(
+                                "Regulations that address this benchmark",
+                                options=list(_reg_opts.values()),
+                                default=_default_lbls,
+                            )
+                        else:
+                            st.info(
+                                f"No regulations found for {_map_country}"
+                                + (f" under category '{_mcat}'" if _mcat else "") + "."
+                                + " Add regulations in the Editor tab first."
+                            )
+                            _sel_lbls = []
+                        _new_notes = st.text_area(
+                            "Notes (optional)",
+                            value=_cur_notes if _cur_notes not in ("", "nan") else "",
+                        )
+                        _submitted = st.form_submit_button("Save mapping", type="primary")
+
+                    if _submitted:
+                        _sel_eids = [_lbl_to_id[l] for l in _sel_lbls if l in _lbl_to_id]
+                        _now      = pd.Timestamp.utcnow().isoformat()
+                        _new_mrow = {
+                            "Mapping_ID":   _mapping_id,
+                            "Benchmark_ID": _sel_mbid,
+                            "Country":      _map_country,
+                            "Status":       _new_status,
+                            "Entry_IDs":    ",".join(_sel_eids),
+                            "Notes":        _new_notes.strip(),
+                            "Updated_By":   _auth_user or "unknown",
+                            "Updated_At":   _now,
+                        }
+                        _before_m = _exist_map.iloc[0].to_dict() if not _is_new_map else {}
+                        if _is_new_map:
+                            _upd_maps = pd.concat(
+                                [_df_maps, pd.DataFrame([_new_mrow])], ignore_index=True
+                            )
+                        else:
+                            _upd_maps = _df_maps.copy()
+                            _midx = _upd_maps.index[
+                                (_upd_maps["Benchmark_ID"] == _sel_mbid) &
+                                (_upd_maps["Country"] == _map_country)
+                            ].tolist()
+                            for _mi in _midx:
+                                for _mk, _mv in _new_mrow.items():
+                                    _upd_maps.at[_mi, _mk] = _mv
+                        save_gap_mappings(_upd_maps, resolved_data_dir)
+                        append_gap_audit(
+                            resolved_data_dir,
+                            "add" if _is_new_map else "edit",
+                            "mapping",
+                            f"{_sel_mbid}:{_map_country}",
+                            _before_m, _new_mrow,
+                            _auth_user or "unknown",
+                        )
+                        st.success("Mapping saved.")
+                        st.rerun()
 
 
 # =========================
