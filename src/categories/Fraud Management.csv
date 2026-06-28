@@ -1,0 +1,263 @@
+Country,Regulator,Issuance,Year,Scope,Detailed requirements (EN),Primary fraud controls,Customer/user protection,Authentication/tech,Incident reporting,Prescribed reporting template?,Contents of reporting template,Enforcement actions for non-compliance,Source_Original,Source_EN,Amendment_Of
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Notice on Reporting of Fraud Incidents (BU/N-3/2022/74),2022.0,"All banks in Brunei Darussalam licensed under  Banking Order, 2006;
+
+All licensed, registered, or regulated financial institutions  and approved operators of payment systems that have been approved to operate in BruneiDarussalam
+
+
+
+
+
+
+","•	Notice on Reporting of Fraud Incidents : Banks must establish their own fraud policy approved by their respective Board of Directors. The policy should define the classification of fraud incidents (material or non-material). Banks shall also notify BDCB within 1 working day upon detection of suspected material fraud, submit report within 5 working days, and provide resolution summary within 10 working days.
+
+
+",Incident reporting timelines; governance policies; technology risk controls; cyber intrusion detection; IT Incident Categorization," In exercising its powers in relation to payment systems under the Oversight Act, the BDCB shall have regard to the interests of the public, and in this respect, the Authority may take into consideration — (a) whether any payment system is, in the opinion of the Authority — (i) financially safe for use by participants; (ii) efficient; and (iii) not materially causing or contributing to increased risk to the financial system; and (b) such other matters as the Authority may consider to be relevant.","TRM framework with fraud‑related IT controls;
+Identification and annual review of critical systems
+Prior notification for new or changed systems;
+Mandatory UAT, VA, and penetration testing;
+Due diligence for third‑party system integrations;
+Maintenance of IT third‑party arrangement lists;
+Ongoing testing and monthly reporting for AI systems","Banks to notify BDCB within 1 working day upon detection of suspected material fraud, submit report within 5 working days, and provide resolution summary within 10 working days
+
+","Yes, as provided under Appendix 1 & Schedule 2 of the BDCB's Notice on Reporting of Fraud Incidents","Date and time incident was discovered.
+Type of fraud incident.
+Optional fields: Possible root cause; Possible impact;
+Possible actions to be taken.
+
+Resolution Summary
+
+Duration to resolve the incident.
+Actions taken to resolve the incident.","Administrative penalties, directives, suspension/revocation (Oversight Act).",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192670269190.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192670269190.pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Notice on Reporting of Fraud Incidents (BU/N-3/2022/74),2023.0,"All banks in Brunei Darussalam licensed under  Banking Order, 2006;
+
+All licensed, registered, or regulated financial institutions  and approved operators of payment systems that have been approved to operate in BruneiDarussalam
+
+
+
+
+
+
+","•	Notice on Reporting of Fraud Incidents : Banks must establish their own fraud policy approved by their respective Board of Directors. The policy should define the classification of fraud incidents (material or non-material). Banks shall also notify BDCB within 1 working day upon detection of suspected material fraud, submit report within 5 working days, and provide resolution summary within 10 working days.
+
+
+",Incident reporting timelines; governance policies; technology risk controls; cyber intrusion detection; IT Incident Categorization," In exercising its powers in relation to payment systems under the Oversight Act, the BDCB shall have regard to the interests of the public, and in this respect, the Authority may take into consideration — (a) whether any payment system is, in the opinion of the Authority — (i) financially safe for use by participants; (ii) efficient; and (iii) not materially causing or contributing to increased risk to the financial system; and (b) such other matters as the Authority may consider to be relevant.","TRM framework with fraud‑related IT controls;
+Identification and annual review of critical systems
+Prior notification for new or changed systems;
+Mandatory UAT, VA, and penetration testing;
+Due diligence for third‑party system integrations;
+Maintenance of IT third‑party arrangement lists;
+Ongoing testing and monthly reporting for AI systems","Banks to notify BDCB within 1 working day upon detection of suspected material fraud, submit report within 5 working days, and provide resolution summary within 10 working days
+
+","Yes, as provided under Appendix 1 & Schedule 2 of the BDCB's Notice on Reporting of Fraud Incidents","Date and time incident was discovered.
+Type of fraud incident.
+Optional fields: Possible root cause; Possible impact;
+Possible actions to be taken.
+
+Resolution Summary
+
+Duration to resolve the incident.
+Actions taken to resolve the incident.","Administrative penalties, directives, suspension/revocation (Oversight Act).",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192670269190.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192670269190.pdf,Notice on Reporting of Fraud Incidents (BU/N-3/2022/74) (2022)
+Brunei Darussalam,,Notice on Technology Risk Management (TRM) (TRS/N-1/2023/2),2023,"All banks in Brunei Darussalam licensed under  Banking Order, 2006;
+
+All licensed, registered, or regulated financial institutions  and approved operators of payment systems that have been approved to operate in BruneiDarussalam","Notice on Technology Risk Management requires incorporation of IT risks into Three Lines of Defence, identification/testing of critical systems, notification of system changes, maintaining 3rd party lists and self-assessments. ",,,,,,,,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192628458350.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192628458350.pdf,
+Brunei Darussalam,,"Payment and Settlement Systems (Oversight) Act, Cap 251",,"All banks in Brunei Darussalam licensed under  Banking Order, 2006;
+
+All licensed, registered, or regulated financial institutions  and approved operators of payment systems that have been approved to operate in BruneiDarussalam","The Oversight Act sets BDCB powers to issue directions, require periodic reports, and oversee payment systems.",,,,,,,,"https://www.bdcb.gov.bn/docs/regulatory/payment-services/Payment%20and%20Settlement%20Systems%20(Oversight)%20Act,%20Cap%20251.pdf","https://www.bdcb.gov.bn/docs/regulatory/payment-services/Payment%20and%20Settlement%20Systems%20(Oversight)%20Act,%20Cap%20251.pdf",
+,,Notice on Early Detection on Cyberintrusion and Incident Reporting (Notice No. TRS/N-1/2020/1),2024.0,"The Notice is issued pursuant to Section 66 of the Banking Order, 2006 and section 66 of the Islamic Banking Order, 2008 and applies to all banks and Islamic banks in Brunei Darussalam.","Provides guidance for banks in determining categories of IT incidents based on the impact severity of IT incidents (IT Incident Categorization). The list is non-exhaustive and is witout prejudice to the generality of the definitions of ""Major IT Incident"" and ""Near-miss IT Incident""",,,,,,,,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17138600253557400.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17138600253557400.pdf,
+,,Brunei Computer Emergency Response Team (BruCERT),2024.0,"Established to enhance national cybersecurity, BruCERT collaborates with BDCB and international bodies to prevent and respond to fraudulent digital activities.",,,,,,,,,https://www.brucert.org.bn,https://www.brucert.org.bn,
+Cambodia,National Bank of Cambodia (NBC),Prakas on Systemic Risk Management of Payment System (B9-06-235);,2010.0,"All banks, Microfinance Institutions, insurers, capital market firms, and other licensed financial institutions, all regulated by NBC, CAFIU, and MEF. ","•	Mandatory verification of customer identity.
+•	Ultimate Beneficial Ownership (UBO): Identify and verify the true owners of accounts or companies.
+•	Enhanced due diligence for government officials, their families, and associates.
+•	Customers must be classified into risk levels (low, medium, high) based on activity and background.
+•	Systems must detect unusual or suspicious transactions.
+•	Automated alerts for large or unusual transfers.
+•	Extra scrutiny for international transactions to prevent money laundering and fraud.
+•	PSPs must implement secure systems to prevent hacking and unauthorized access.
+•	Backup and recovery plans to prevent fraud during outages.
+•	Mandatory reporting to NBC’s Financial Intelligence Unit.
+•	Continuous review of customer activity.
+•	PSPs must provide clear channels for fraud complaints.
+•	Customer funds must be segregated and protected from misuse.","Led by the Cambodia Financial Intelligence Unit (CAFIU) and supported by industry initiatives (ABC) and international AML/CFT standards. CAFIU collects, analyzes, and disseminates Suspicious Transaction Reports (STRs) from banks, insurers, and other financial institutions and coordinates with international bodies like the Asia/Pacific Group on Money Laundering (APG) and Financial Action Task Force (FATF).
+
+","The system relies on KYC, transaction monitoring, suspicious activity reporting, and regulatory inspections to combat fraud across banks, MFIs, insurers, and payment providers.","•	Mandatory identity verification for opening bank accounts, mobile wallets, and insurance policies.
+•	Requires national ID, passport, or business registration documents.
+•	Fingerprint and facial recognition 
+•	Two-Factor Authentication (2FA) combines password/PIN + SMS OTP (one-time password) or app-based token.
+•	Real-time monitoring of unusual or suspicious activity.","Incident reporting is sector-specific: CamCERT for cybersecurity and CAFIU for financial fraud. Reporting channels include online forms, emails, phone hotlines, and structured databases, all designed to strengthen transparency, security, and compliance.
+
+CAIFU requires Suspicious Transaction Reports (STRs) from banks, insurers, and payment service providers. Covered institutions are required to report fraud, money laundering, or unusual financial activity.","NBC requires banks and financial institutions to use standardized reporting templates, prescribed under its Prakas (regulations), for financial, prudential, and compliance reporting. ","•	Balance Sheet 
+o	Assets (cash, deposits, loans, investments)
+o	Liabilities (deposits, borrowings, payables)
+o	Equity (capital, reserves, retained earnings)
+•	Income Statement 
+o	Interest income and expenses
+o	Non-interest income (fees, commissions)
+o	Operating expenses
+o	Net profit/loss
+•	Capital Adequacy Ratio (CAR)
+•	Liquidity Coverage Ratio (LCR)
+•	Loan-to-Deposit Ratio (LDR)
+•	Large Exposure Limits (concentration risk reporting)
+•	Loan classification (standard, substandard, doubtful, loss)
+•	Provisioning requirements
+•	Sectoral distribution of loans (agriculture, trade, services, etc.)
+•	Non-performing loans (NPLs) and recovery actions
+•	Foreign exchange exposure
+•	Interest rate risk
+•	Operational risk events
+•	Anti-Money Laundering (AML) compliance reporting
+•	Loan portfolio by client type (individual, group, SME)
+•	Average loan size
+•	Client outreach (number of borrowers, geographic distribution)
+•	Social performance indicators (if required by NBC)","Revocation, fines, or suspension under NBC Prakas authority.",https://www.nbc.gov.kh/download_files/legislation/prakas_eng/9560B9-06-235.pdf;,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/9560B9-06-235.pdf;,
+Cambodia,,Prakas on Clearing System of Settlement Payment (B9-06-234);,2006,"All banks, Microfinance Institutions, insurers, capital market firms, and other licensed financial institutions, all regulated by NBC, CAFIU, and MEF. ",,,,,,,,,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/4807B9-06-234.pdf;,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/4807B9-06-234.pdf;,
+Cambodia,,Prakas on Third-Party Processors (B-9-010-151),2010,"All banks, Microfinance Institutions, insurers, capital market firms, and other licensed financial institutions, all regulated by NBC, CAFIU, and MEF. ",,,,,,,,,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/595B9-010-151.pdf,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/595B9-010-151.pdf,
+Indonesia,Bank Indonesia (BI); Otoritas Jasa Keuangan (OJK),PBI No. 2/2024 on Information System Security and Cyber Resilience;,2025.0,"Payment service providers (PJP), payment infrastructure providers (PIP), BI-FAST participants; all financial institutions under OJK (LJKs)","OJK mandates anti-fraud strategy across LJKs with four pillars (prevention, detection, investigation/reporting/sanctions, monitoring/evaluation), fraud detection systems, and reporting of significant fraud. BI-FAST PADG requires participants to operate fraud management systems, respond to proactive risk manager (PRM) alerts, and, in the 2025 amendment, implement a central Fraud Detection System (FDS), incident response teams, reconciliation, and enhanced IT protections. ",Fraud management systems; central fraud detection; cyber resilience; transaction monitoring,"Risk-based controls, transaction notifications, transaction limits, alerts for credit card; prevention of suspicious transfers; mechanism to compensate financial losses of 
+electronic money users (PBI No. 23/6/2021)",Strong authentication; security baselines; PRM/FDS analytics; IT minimum protections,KKS and PADG specify incident response and reporting to BI; POJK requires reporting significant fraud to OJK,Yes (BI reporting portal).,"- Operator Identity
+-Incident Classification (type of cyberattack or threat (e.g., malware, phishing, data breach, system outage).
+-Incident Description
+-Impact Assessment (systems or data affected, financial impact or potential for financial loss, operational disruption)
+-Action Taken (Immediate & Ongoing)
+-Timeline (Time of detection, start time of the incident, and time of report submission)
+-Person responsible for the report. 
+","Administrative sanctions by BI/OJK (warnings, fines, suspension, revocation).",https://www.bi.go.id/id/publikasi/peraturan/Documents/PBI_022024.pdf,https://www.bi.go.id/id/publikasi/peraturan/Pages/PBI_022024.aspx,
+Indonesia,,PBI No. 23/6/2021 on Payment Service Providers;,2021,,,,,,,,,,https://www.bi.go.id/en/publikasi/peraturan/Pages/PBI_222321.aspx;,https://www.bi.go.id/en/publikasi/peraturan/Pages/PBI_222321.aspx;,
+Indonesia,,PBI No. 22/23/2020 on Payment System;,2020,,,,,,,,,,https://www.bi.go.id/en/publikasi/peraturan/Pages/PBI_222321.aspx;,https://www.bi.go.id/en/publikasi/peraturan/Pages/PBI_222321.aspx;,
+Indonesia,,OJK POJK No. 12/2024 on Anti-Fraud Strategy,2024,,,,,,,,,,https://www.ojk.go.id/id/regulasi/Documents/Pages/Penerapan-Strategi-Anti-Fraud-Bagi-Lembaga-Jasa-Keuangan/POJK%2012%20Tahun%202024%20Penerapan%20Strategi%20Anti%20Fraud%20bagi%20Lembaga%20Jasa%20Keuangan.pdf,https://www.ojk.go.id/id/regulasi/Documents/Pages/Penerapan-Strategi-Anti-Fraud-Bagi-Lembaga-Jasa-Keuangan/POJK%2012%20Tahun%202024%20Penerapan%20Strategi%20Anti%20Fraud%20bagi%20Lembaga%20Jasa%20Keuangan.pdf,
+Lao PDR,Bank of the Lao PDR (BOL); National Assembly (law),Law on Payment System (Amended) No. 32/NA (2023),2023.0,All payment systems and services operating in Lao PDR,"Establishes legal framework for payment systems oversight; mandates safety, confidentiality, integrity, and reliability; sets roles and responsibilities for operators and participants; empowers BOL to supervise and issue regulations.",Legal obligations to ensure safety and confidentiality; risk management and oversight,"End user is subject to receive qualified, safe, transparent services, and be treated fairly 
+and equally under the law, to be able to provide feedbacks and comments on payment services 
+to payment system operator, payment service provider, or competent authorities, and to be 
+rightful to receive legal protection on his/her rights and benefits",Requires appropriate security measures in payment systems,General requirements for reporting to supervisors per law and subsequent regulations,Not specified; subject to BOL regulations.,"In every year, Payment business operator shall be audited by an external audit firm to 
+certify the accuracy and completeness of accounting, financial reports, internal control system, 
+and effectiveness of operation as well as to receive recommendation on remedial measures. 
+Payment business operator shall select and hire external audit firm as defined by the 
+Bank of the Lao PDR",Penalties and revocation under Law on Payment System.,https://www.bol.gov.la/en/fileupload/18-12-2025_1766051569.pdf,https://www.bol.gov.la/en/fileupload/18-12-2025_1766051569.pdf,
+Malaysia,Bank Negara Malaysia (BNM),Managing Risks of Electronic Banking and Payment Instruments (BNM),2026.0,"RENTAS and FAST participants; financial institutions, payment system operators under BNM oversight","Safeguards electronic‑banking channels and payment instruments through strong authentication, transaction monitoring, and controls to mitigate direct‑debit and instrument‑related risks; RMiT‑aligned technology‑risk, cyber‑resilience, and real‑time fraud‑detection measures, while complying with Participation Rules and RENTAS procedures to ensure operational continuity, reporting of breaches, and secure settlement operations;mandates fair treatment of victims of unauthorised e‑banking transactions, requiring transparent investigation, swift freezing/recovery actions via NSRC/NFP, and accountable resolution processes
+
+
+
+
+This policy document outlines the new requirements for managing technology risks by payment services regulatees (PSRs). It aims to consolidate the technology requirements within the payment sector into a single policy document, primarily for the approved issuers of electronic money (EMI), registered merchant acquirers (MA), and money services businesses (MSB).
+
+
+
+
+","Governance including board‑level oversight of fraud risks and controls for e‑banking channels., BCM/system recovery and  continuous operational resilience with system‑recovery capabilities for RENTAS/FAST participants, compliance reporting including mandatory breach notifications and CRMA obligations for RENTAS/FAST participants, adherence to RMiT technology risk controls","Fraud detection, Authentication controls, E‑banking security
+Cyber‑resilience, Breach reporting, BC/DR requirements
+Settlement‑security rules, CRMA (Cyber Risk Management Assessment), fair treatment of fraud victims, fund freezing and tracing, Rules enhance safety and reliability of payment infrastructure, Clear communication and accountable resolution of unauthorised transaction cases.",ISO20022/MT-MX co-existence guidance; SWIFT access security; ePKI certificates; Real‑time fraud‑detection and continuous transaction monitoring ; ,"Operational incidents managed under Participation Rules and RENTAS procedures; incident escalation, including reporting unauthorised transactions immediately to NSRC; reporting breaches of the Rules to oversight committees and BNM, especially compliance‑related breaches",Not specified; Automated fund tracing and recovery (National Fraud Portal),"Expectation include Date/time, affected system, description, settlement impact, recovery actions, RMiT compliance references, transaction‑level data, victim/scammer details, 
+
+Note: The process in Malaysia is automated due to their National Fraud Portal.",Penalties; suspension from RENTAS/FAST; revocation of approval by BNM.,https://fast.bnm.gov.my/fastweb/public/files/Participation%20Rules%20for%20Payments%20and%20Securities%20-%20April%202023.pdf,https://fast.bnm.gov.my/fastweb/public/files/Participation%20Rules%20for%20Payments%20and%20Securities%20-%20April%202023.pdf,
+Myanmar,Central Bank of Myanmar (CBM),Mobile Financial Services Regulations (2016),2025.0,Mobile financial services providers; ACH participants,"MFS providers must implement security controls, costumer protection, transaction limits, agent management, AML/CFT compliance. CBM-NET ACH rules set operational, security and governance requirements for clearing and settlement.
+
+
+
+
+The law law introduces mandatory licensing for digital platform providers and requires them to retain user data for three years to assist in fraud investigations.","Banks: A comprehensive, board‑approved risk management framework covering risk identification, measurement, monitoring, internal controls, and governance—explicitly linking to managing ML/TF risks and embedding risk‑control practices across the bank.
+
+CBM‑NET ACH Guidelines (Version 1.0, May 2021) — for banks participating in ACH/clearing
+ Participation/eligibility rules plus Operating Standards and Security requirements, including Security Standards, Security Requirements, and System Availability for ACH operations.
+
+Regulation on Mobile Financial Services (MFS Regulation, FIL/R/01/03‑2016) — MFSPs & Agent networks
+(1)Establish and maintain sound and prudent management, administrative/accounting procedures, adequate internal control systems, AML/CT controls, BCP/DRP, and effective audit functions (MFSP “Systems and Internal Controls”)
+(2)Incident reporting: MFSPs must notify CBM within 2 business days of suspected/confirmed fraud, security breaches, outages >2 hours, or loss of confidential data
+(3) Operational safeguards: 100% float in a trust account with daily reconciliation; robust agent governance (non‑exclusivity, due diligence, policies).
+
+Remittance Business Regulations — CBM Notification No. 21/2019 — non‑bank cross‑border remitters
+(1)AML/CFT unit, designated Compliance Officer, FIU training, risk assessments, sanctions screening (UN & domestic), and STR filing; detailed record‑keeping for transactions (customer IDs, purpose, amounts, dates)
+(2) Operational controls & reporting: Daily ERS reporting to CBM, monthly/annual statements, management sign‑offs—governance and monitoring elements
+
+
+
+Security standards; transaction monitoring; agent controls; dispute resolution",Consumer protection and grievance mechanisms within MFS framework,Multi-factor authentication for mobile services; secure ACH operations,"Operational incident/reporting per CBM rules.
+
+Regulation on Mobile Financial Services (MFS Regulation, FIL/R/01/03‑2016) — MFSPs & Agent networks: Incident reporting: MFSPs must notify CBM within 2 business days of suspected/confirmed fraud, security breaches, outages >2 hours, or loss of confidential data
+
+Remittance Business Regulations — CBM Notification No. 21/2019 — non‑bank cross‑border remitters
+(1)AML/CFT unit, designated Compliance Officer, FIU training, risk assessments, sanctions screening (UN & domestic), and STR filing; detailed record‑keeping for transactions (customer IDs, purpose, amounts, dates)
+(2) Operational controls & reporting: Daily ERS reporting to CBM, monthly/annual statements, management sign‑offs—governance and monitoring elements",Yes ( Daily ERS reporting to CBM).,No available data in the open source.,"License revocation, fines, suspension by CBM.",https://www.cbm.gov.mm/sites/default/files/Mobile%20Financial%20Services%20Regulation%202016.pdf,https://www.cbm.gov.mm/sites/default/files/Mobile%20Financial%20Services%20Regulation%202016.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),Anti-Financial Account Scamming Act (RA 12010) and its Implementing Rules and Regulations,2024.0,Banks and non-bank institutions subject to BSP supervision and/or regulation,"See requirements under primary fraud controls, consumer/user protection, authentication/tech, and incident reporting.
+
+In addition, supervised institutions are:
+- required to collect relevant transaction logs, protect them against unauthorized manipulation, and retain them with adequate back-up for a period of at least five (5) years;
+- prohibited from sending clickable links or QR codes via email, instant messaging apps, or SMS
+- required to adopt a shared accountability framework that includes adequate risk management systems and controls, consumer awareness programs, and regular evaluation of third-party service providers involved in financial transactions, among others
+","- Automated and real-time fraud monitoring and detection systems with transaction velocity checks or thresholds, monitoring of mobile device and account information changes, geolocation and behavioral anomalies, and blacklist screening;
+- Customer authentication controls;
+- 24-hour Transaction Pause Period after applying key account changes
+","- Temporary holding of funds subject of a disputed transaction; 
+- Real-time customer notification through secure channels;
+- Mechanisms to enable account holders to verify the identity of recipients of fund transfers; 
+- Self-service facility that enables account holders to suspend their account, block outgoing financial transactions and prevent unauthorized changes to account information
+- Money lock feature
+- Customizable transaction limits
+- Consumer awareness program","- Multi-factor authentication
+- Device fingerprinting/
+- Any of the following: biometric authentication, behavioral biometrics, passwordless authentication, adaptive authentication","- Reportable major cyber-related incidents
+- Disruptions of financial services and operations
+- Report on temporary holding of funds
+- Report on crimes and losses","- None for reportable major cyber-related incidents and disruptions of financial services and operations (but with prescribed contents)
+
+- Yes for the reports on temporary holding of funds and report on crimes and losses","For major cyber-related incidents and disruptions of financial services and operations
+- nature of incident; manner and time of initial detection; impact of the incident based on initial assessment; initial response or actions taken/to be taken; whether the incident resulted in activation of the Business Continuity Plan and/or Crisis Management Plan
+
+For temporary holding of funds
+- trigger to hold funds; status of held funds at the time of reporting; date and time of receipt/transmission of trigger to hold funds; date and time of initiation of hold; date and time of release of held funds; amount on hold in original currency and in PHP; account number subject to hold; name, address, contact number and email address of account owner subject to hold; originating financial institution; amount under dispute in original currency and in PHP; account number of source account; name of account owner of the source account","Monetary penalties, suspension of services, license revocation by BSP.","https://www.bsp.gov.ph/Regulations/Banking%20Laws/AFASA-Booklet-with-IRRs.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2022/1140.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2020/m053.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2022/M-2022-015.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2024/M-2024-030.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2018/c1019.pdf","https://www.bsp.gov.ph/Regulations/Banking%20Laws/AFASA-Booklet-with-IRRs.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2022/1140.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2020/m053.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2022/M-2022-015.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2024/M-2024-030.pdf
+- https://www.bsp.gov.ph/Regulations/Issuances/2018/c1019.pdf",
+Singapore,Monetary Authority of Singapore (MAS),Guidelines on Shared Responsibility Framework (SRF) for e-payments (2024),2024.0,"Banks and relevant payment service providers issuing protected accounts
+
+Major Payments Institutions","SRF clarifies roles of account users, financial institutions and telcos in mitigating seemingly authorised scam transactions, sets duties, processes and allocation of responsibility for losses, and workflow for reporting.
+- MAS provided MPIs with anti-scam measures including preventive measures, detective measures, and remedial measures","ScamShield mobile app, SMS Sender ID Registry regime, bank measures implemented to strengthen anti-malware controls, fraud surveillance, and detection capabilities, public education, through public advisories and sharing best practices
+- Preventive Measures, Detective Measures and Remedial Measures","Consumer Protection (Fair Trading) Act (CPFTA), Protection from Scams Act 2025
+- MPI e-wallet providers should provide e-wallet users with a reporting channel",Measures for high-risk actions; cyber hygiene via sector notices; risk-based approach through digital token,Notice CMG-N01 on Reporting of Suspicious Activities and Incidents of Fraud (revised on 2024),Yes (structured STR/incident reporting).,"Account/dispute details, root cause analysis, user claim, FI actions, liability determination, resolution.","Directions, financial penalties, license revocation under PS Act (MAS), criminal convictions",https://www.mas.gov.sg/-/media/mas-media-library/regulation/guidelines/pso/guidelines-on-shared-responsibility-framework/guidelines-on-shared-responsibility-framework.pdf,https://www.mas.gov.sg/-/media/mas-media-library/regulation/guidelines/pso/guidelines-on-shared-responsibility-framework/guidelines-on-shared-responsibility-framework.pdf,
+Singapore,Monetary Authority of Singapore (MAS),E-Payments User Protection Guidelines (context via MAS consultation/Annex),2024.0,"Banks and relevant payment service providers issuing protected accounts
+
+Major Payments Institutions","SRF clarifies roles of account users, financial institutions and telcos in mitigating seemingly authorised scam transactions, sets duties, processes and allocation of responsibility for losses, and workflow for reporting.
+- MAS provided MPIs with anti-scam measures including preventive measures, detective measures, and remedial measures","ScamShield mobile app, SMS Sender ID Registry regime, bank measures implemented to strengthen anti-malware controls, fraud surveillance, and detection capabilities, public education, through public advisories and sharing best practices
+- Preventive Measures, Detective Measures and Remedial Measures","Consumer Protection (Fair Trading) Act (CPFTA), Protection from Scams Act 2025
+- MPI e-wallet providers should provide e-wallet users with a reporting channel",Measures for high-risk actions; cyber hygiene via sector notices; risk-based approach through digital token,Notice CMG-N01 on Reporting of Suspicious Activities and Incidents of Fraud (revised on 2024),Yes (structured STR/incident reporting).,"Account/dispute details, root cause analysis, user claim, FI actions, liability determination, resolution.","Directions, financial penalties, license revocation under PS Act (MAS), criminal convictions","https://www.mas.gov.sg/-/media/mas-media-library/publications/consultations/pd/2023/eupg/response/annex-b---submissions-to-consultation-paper-on-e-payments-user-protection-guidelines.pdf
+https://www.mas.gov.sg/-/media/mas-media-library/regulation/circulars/pd/circular-on-anti-scam-measures/circular-on-anti-scam-measures-by-major-payment-institutions-issuing-e-wallets.pdf","https://www.mas.gov.sg/-/media/mas-media-library/publications/consultations/pd/2023/eupg/response/annex-b---submissions-to-consultation-paper-on-e-payments-user-protection-guidelines.pdf
+https://www.mas.gov.sg/-/media/mas-media-library/regulation/circulars/pd/circular-on-anti-scam-measures/circular-on-anti-scam-measures-by-major-payment-institutions-issuing-e-wallets.pdf",
+Thailand,Bank of Thailand (BOT),Payment Systems Act B.E. 2560,2017.0,Financial institutions; Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,"Payment service providers must adopt board-approved IT security and fraud risk management policies covering access control, confidentiality, integrity, availability, incident response, and audit. Annual independent IT security audits are required, with results submitted to BOT. In 2023, BOT mandated additional sector-wide anti-fraud measures, including restrictions on communication channels, strengthened authentication, transaction monitoring, and coordinated fraud response mechanisms.
+
+Furthermore, the 2025 draft guidlines requires Payment Service Providers to implement end-to-end digital fraud management frameworks. These include the adoption of board-approved policies and KPIs covering the full fraud lifecycle, from prevention and monitoring to detection, response, and customer remediation. ","Preventive, detective, and responsive controls; Mandatory transaction monitoring; Restrictions on phishing vectors; Ability to suspend or freeze suspicious transactions; Coordination with AML authorities.
+
+Providers are required to implement risk-based customer due diligence (CDD), continuously monitor transactions for suspicious behavior, and apply appropriate authentication measures depending on transaction risk and service channels. ","Mandatory customer alerts and transaction notifications; 24/7 fraud hotlines; Measures to prevent unauthorized transactions and support timely remediation.
+
+",Biometrics for high-value transfers or limit changes; monitoring tech,Mandatory incident recording and reporting to BOT through supervisory channels; Timely notification and post-incident reporting required.,No,"Regulation does not prescribe a single public template; Supervisory reporting typically includes incident type, detection date, affected systems, customer impact, root cause, remedial actions, and control enhancements.","Fines, corrective orders, suspension by BOT.",https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610093.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610093.pdf,
+Thailand,Bank of Thailand (BOT),Notification on Security of Information Technology Systems for Payment Systems/Services (2561),2018.0,Financial institutions; Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,"Payment service providers must adopt board-approved IT security and fraud risk management policies covering access control, confidentiality, integrity, availability, incident response, and audit. Annual independent IT security audits are required, with results submitted to BOT. In 2023, BOT mandated additional sector-wide anti-fraud measures, including restrictions on communication channels, strengthened authentication, transaction monitoring, and coordinated fraud response mechanisms.
+
+Furthermore, the 2025 draft guidlines requires Payment Service Providers to implement end-to-end digital fraud management frameworks. These include the adoption of board-approved policies and KPIs covering the full fraud lifecycle, from prevention and monitoring to detection, response, and customer remediation. ","Preventive, detective, and responsive controls; Mandatory transaction monitoring; Restrictions on phishing vectors; Ability to suspend or freeze suspicious transactions; Coordination with AML authorities.
+
+Providers are required to implement risk-based customer due diligence (CDD), continuously monitor transactions for suspicious behavior, and apply appropriate authentication measures depending on transaction risk and service channels. ","Mandatory customer alerts and transaction notifications; 24/7 fraud hotlines; Measures to prevent unauthorized transactions and support timely remediation.
+
+",Biometrics for high-value transfers or limit changes; monitoring tech,Mandatory incident recording and reporting to BOT through supervisory channels; Timely notification and post-incident reporting required.,No,"Regulation does not prescribe a single public template; Supervisory reporting typically includes incident type, detection date, affected systems, customer impact, root cause, remedial actions, and control enhancements.","Fines, corrective orders, suspension by BOT.",https://www.bot.or.th/en/news-and-media/news/news-20230309.html,https://www.bot.or.th/en/news-and-media/news/news-20230309.html,
+Thailand,Bank of Thailand (BOT),BOT press releases on additional measures to combat financial fraud (2023),2023.0,Financial institutions; Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,"Payment service providers must adopt board-approved IT security and fraud risk management policies covering access control, confidentiality, integrity, availability, incident response, and audit. Annual independent IT security audits are required, with results submitted to BOT. In 2023, BOT mandated additional sector-wide anti-fraud measures, including restrictions on communication channels, strengthened authentication, transaction monitoring, and coordinated fraud response mechanisms.
+
+Furthermore, the 2025 draft guidlines requires Payment Service Providers to implement end-to-end digital fraud management frameworks. These include the adoption of board-approved policies and KPIs covering the full fraud lifecycle, from prevention and monitoring to detection, response, and customer remediation. ","Preventive, detective, and responsive controls; Mandatory transaction monitoring; Restrictions on phishing vectors; Ability to suspend or freeze suspicious transactions; Coordination with AML authorities.
+
+Providers are required to implement risk-based customer due diligence (CDD), continuously monitor transactions for suspicious behavior, and apply appropriate authentication measures depending on transaction risk and service channels. ","Mandatory customer alerts and transaction notifications; 24/7 fraud hotlines; Measures to prevent unauthorized transactions and support timely remediation.
+
+",Biometrics for high-value transfers or limit changes; monitoring tech,Mandatory incident recording and reporting to BOT through supervisory channels; Timely notification and post-incident reporting required.,No,"Regulation does not prescribe a single public template; Supervisory reporting typically includes incident type, detection date, affected systems, customer impact, root cause, remedial actions, and control enhancements.","Fines, corrective orders, suspension by BOT.",https://www.bot.or.th/content/dam/bot/documents/en/news-and-media/news/2023/news-20230310.pdf,https://www.bot.or.th/content/dam/bot/documents/en/news-and-media/news/2023/news-20230310.pdf,
+Thailand,Bank of Thailand (BOT),Guidelines for Digital Fraud Management (2025),2025.0,Financial institutions; Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,"Payment service providers must adopt board-approved IT security and fraud risk management policies covering access control, confidentiality, integrity, availability, incident response, and audit. Annual independent IT security audits are required, with results submitted to BOT. In 2023, BOT mandated additional sector-wide anti-fraud measures, including restrictions on communication channels, strengthened authentication, transaction monitoring, and coordinated fraud response mechanisms.
+
+Furthermore, the 2025 draft guidlines requires Payment Service Providers to implement end-to-end digital fraud management frameworks. These include the adoption of board-approved policies and KPIs covering the full fraud lifecycle, from prevention and monitoring to detection, response, and customer remediation. ","Preventive, detective, and responsive controls; Mandatory transaction monitoring; Restrictions on phishing vectors; Ability to suspend or freeze suspicious transactions; Coordination with AML authorities.
+
+Providers are required to implement risk-based customer due diligence (CDD), continuously monitor transactions for suspicious behavior, and apply appropriate authentication measures depending on transaction risk and service channels. ","Mandatory customer alerts and transaction notifications; 24/7 fraud hotlines; Measures to prevent unauthorized transactions and support timely remediation.
+
+",Biometrics for high-value transfers or limit changes; monitoring tech,Mandatory incident recording and reporting to BOT through supervisory channels; Timely notification and post-incident reporting required.,No,"Regulation does not prescribe a single public template; Supervisory reporting typically includes incident type, detection date, affected systems, customer impact, root cause, remedial actions, and control enhancements.","Fines, corrective orders, suspension by BOT.",https://www.tilleke.com/insights/bank-of-thailand-releases-draft-guidelines-for-digital-fraud-management/,https://www.tilleke.com/insights/bank-of-thailand-releases-draft-guidelines-for-digital-fraud-management/,
+Timor-Leste,Banco Central de Timor-Leste (BCTL),Decree-Law No. 17/2015 on the National Payment System,2015.0,National payment systems; banks; payment service providers and operators,"NPS Decree-Law establishes oversight, legal status of electronic payments and electronic money, settlement finality, and consumer protection. R-TiMOR rules mandate participation and set RTGS governance. Cheque clearing instruction defines netting and settlement, risk controls. E-wallet pilot required safeguarding customer funds, KYC and transaction limits.","General risk‑management requirements (liquidity, credit and settlement risk); AML/CFT obligations and agent‑management rules; e‑wallet pilot imposes KYC and transaction‑value limits",NPS law emphasises consumer protection and payment finality; e‑money must be fully backed and redeemable at par; e‑wallet pilot safeguards customer funds,Banks and payment‑service providers must comply with AML/CFT and KYC rules and may be subject to additional BCTL operational directives,"No specific fraud‑incident reporting regime identified; the NPS law only requires authorised entities to follow operational, reporting and disclosure requirements as set by BCTL",None found (no publicly available standard template),Not applicable,"Administrative sanctions, suspension, revocation by BCTL.",https://www.bancocentral.tl/uploads/documentos/documento_1479943794_3295.pdf,https://www.bancocentral.tl/uploads/documentos/documento_1479943794_3295.pdf,
+Timor-Leste,Banco Central de Timor-Leste (BCTL),Regulation No. 2/2015 approving R-TiMOR (RTGS) rules,2015.0,National payment systems; banks; payment service providers and operators,"NPS Decree-Law establishes oversight, legal status of electronic payments and electronic money, settlement finality, and consumer protection. R-TiMOR rules mandate participation and set RTGS governance. Cheque clearing instruction defines netting and settlement, risk controls. E-wallet pilot required safeguarding customer funds, KYC and transaction limits.","General risk‑management requirements (liquidity, credit and settlement risk); AML/CFT obligations and agent‑management rules; e‑wallet pilot imposes KYC and transaction‑value limits",NPS law emphasises consumer protection and payment finality; e‑money must be fully backed and redeemable at par; e‑wallet pilot safeguards customer funds,Banks and payment‑service providers must comply with AML/CFT and KYC rules and may be subject to additional BCTL operational directives,"No specific fraud‑incident reporting regime identified; the NPS law only requires authorised entities to follow operational, reporting and disclosure requirements as set by BCTL",None found (no publicly available standard template),Not applicable,"Administrative sanctions, suspension, revocation by BCTL.",https://www.bancocentral.tl/uploads/documentos/documento_1477529709_1263.pdf,https://www.bancocentral.tl/uploads/documentos/documento_1477529709_1263.pdf,
+Timor-Leste,Banco Central de Timor-Leste (BCTL),Instruction No. 03/2015 on cheque clearing,2015.0,National payment systems; banks; payment service providers and operators,"NPS Decree-Law establishes oversight, legal status of electronic payments and electronic money, settlement finality, and consumer protection. R-TiMOR rules mandate participation and set RTGS governance. Cheque clearing instruction defines netting and settlement, risk controls. E-wallet pilot required safeguarding customer funds, KYC and transaction limits.","General risk‑management requirements (liquidity, credit and settlement risk); AML/CFT obligations and agent‑management rules; e‑wallet pilot imposes KYC and transaction‑value limits",NPS law emphasises consumer protection and payment finality; e‑money must be fully backed and redeemable at par; e‑wallet pilot safeguards customer funds,Banks and payment‑service providers must comply with AML/CFT and KYC rules and may be subject to additional BCTL operational directives,"No specific fraud‑incident reporting regime identified; the NPS law only requires authorised entities to follow operational, reporting and disclosure requirements as set by BCTL",None found (no publicly available standard template),Not applicable,"Administrative sanctions, suspension, revocation by BCTL.",https://www.bancocentral.tl/uploads/documentos/documento_1474531637_8787.pdf,https://www.bancocentral.tl/uploads/documentos/documento_1474531637_8787.pdf,
+Timor-Leste,Banco Central de Timor-Leste (BCTL),media release on e-wallet pilot protections,2018.0,National payment systems; banks; payment service providers and operators,"NPS Decree-Law establishes oversight, legal status of electronic payments and electronic money, settlement finality, and consumer protection. R-TiMOR rules mandate participation and set RTGS governance. Cheque clearing instruction defines netting and settlement, risk controls. E-wallet pilot required safeguarding customer funds, KYC and transaction limits.","General risk‑management requirements (liquidity, credit and settlement risk); AML/CFT obligations and agent‑management rules; e‑wallet pilot imposes KYC and transaction‑value limits",NPS law emphasises consumer protection and payment finality; e‑money must be fully backed and redeemable at par; e‑wallet pilot safeguards customer funds,Banks and payment‑service providers must comply with AML/CFT and KYC rules and may be subject to additional BCTL operational directives,"No specific fraud‑incident reporting regime identified; the NPS law only requires authorised entities to follow operational, reporting and disclosure requirements as set by BCTL",None found (no publicly available standard template),Not applicable,"Administrative sanctions, suspension, revocation by BCTL.",https://www.bancocentral.tl/uploads/rte/Media%20release/Press%20Release%20Telemor%20E-Wallet.pdf,https://www.bancocentral.tl/uploads/rte/Media%20release/Press%20Release%20Telemor%20E-Wallet.pdf,
+Viet Nam,State Bank of Vietnam (SBV),Circular No. 35/2016/TT-NHNN on safety and confidentiality of internet banking,2016.0,"Credit institutions, foreign bank branches, intermediary payment service providers","Circular 35 sets technical and administrative measures for secure internet and mobile banking, including transaction confirmation methods, monitoring, confidentiality, vulnerability management and customer guidance. Decision 2345 mandates biometric authentication for high-value online transfers, device change alerts, notification, and limits for card payments; SBV issued  guidance 5262 for varying ID scenarios and NFC limitations.","Strong authentication, transaction categorisation, monitoring, alerts, limits",Enhanced authentication shielding customers for high-value transactions,Biometric or electronic ID matching; OTP; NFC/chip ID card integration,Storage of device and authentication logs; operational guidance,Yes (SBV circulars specify formats).,"Institution details, incident nature, authentication failure, financial impact, remedial actions.","Fines, suspension, license revocation by SBV.",https://www.sbv.gov.vn/webcenter/portal/en/home/sm/chitiet/inbaiviet?dDocName=SBV284401,https://www.sbv.gov.vn/webcenter/portal/en/home/sm/chitiet/inbaiviet?dDocName=SBV284401,
+Viet Nam,State Bank of Vietnam (SBV),Decision No. 2345/QD-NHNN (2023) – measures for safe online and card payments,2023.0,"Credit institutions, foreign bank branches, intermediary payment service providers","Circular 35 sets technical and administrative measures for secure internet and mobile banking, including transaction confirmation methods, monitoring, confidentiality, vulnerability management and customer guidance. Decision 2345 mandates biometric authentication for high-value online transfers, device change alerts, notification, and limits for card payments; SBV issued  guidance 5262 for varying ID scenarios and NFC limitations.","Strong authentication, transaction categorisation, monitoring, alerts, limits",Enhanced authentication shielding customers for high-value transactions,Biometric or electronic ID matching; OTP; NFC/chip ID card integration,Storage of device and authentication logs; operational guidance,Yes (SBV circulars specify formats).,"Institution details, incident nature, authentication failure, financial impact, remedial actions.","Fines, suspension, license revocation by SBV.",https://www.sbv.gov.vn/webcenter/portal/en/home/sbv/news/Latestnews/Latestnews_chitiet?dDocName=SBV585456,https://www.sbv.gov.vn/webcenter/portal/en/home/sbv/news/Latestnews/Latestnews_chitiet?dDocName=SBV585456,
+Viet Nam,State Bank of Vietnam (SBV),SBV guidance Document No. 5262/NHNN-CNTT (2024),2024.0,"Credit institutions, foreign bank branches, intermediary payment service providers","Circular 35 sets technical and administrative measures for secure internet and mobile banking, including transaction confirmation methods, monitoring, confidentiality, vulnerability management and customer guidance. Decision 2345 mandates biometric authentication for high-value online transfers, device change alerts, notification, and limits for card payments; SBV issued  guidance 5262 for varying ID scenarios and NFC limitations.","Strong authentication, transaction categorisation, monitoring, alerts, limits",Enhanced authentication shielding customers for high-value transactions,Biometric or electronic ID matching; OTP; NFC/chip ID card integration,Storage of device and authentication logs; operational guidance,Yes (SBV circulars specify formats).,"Institution details, incident nature, authentication failure, financial impact, remedial actions.","Fines, suspension, license revocation by SBV.",http://dttktt.sbv.gov.vn/webcenter/portal/en/home/sm/chitiet/inbaiviet?dDocName=SBV604617,http://dttktt.sbv.gov.vn/webcenter/portal/en/home/sm/chitiet/inbaiviet?dDocName=SBV604617,

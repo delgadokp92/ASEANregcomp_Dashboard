@@ -11,6 +11,7 @@ from urllib.parse import urlparse
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+import streamlit.components.v1 as components
 
 # =========================
 # App config
@@ -18,7 +19,7 @@ import streamlit as st
 st.set_page_config(
     page_title="ASEAN Regulatory Dashboard",
     layout="wide",
-    initial_sidebar_state="auto",
+    initial_sidebar_state="collapsed",
     menu_items={
         "About": "ASEAN Regulatory Dashboard: interactive view of regional regulations.",
     },
@@ -31,6 +32,11 @@ st.markdown(
     .stApp {
         background-color: #071014;
         color: #f8fafc;
+    }
+
+    /* ── Reduce default top padding ── */
+    .block-container {
+        padding-top: 1.5rem !important;
     }
 
     /* ── Typography ── */
@@ -98,29 +104,34 @@ st.markdown(
             padding: 4px 0 !important;
         }
     }
+
     </style>
     """,
     unsafe_allow_html=True,
 )
 st.title("ASEAN Regulatory Dashboard")
-st.caption("v3 • 2026-06-15")
+st.caption("v3.9 • 2026-06-28")
 
-DATA_FILE = Path("src") / "CBregs.xlsx"
+DATA_DIR = Path("src") / "categories"
 ARCHIVE_FILE = Path("src") / "CBregs_audit_log.csv"
 
 
-def resolve_data_path(path: Path) -> Path:
+def resolve_data_dir(path: Path) -> Path:
     candidates = [
         path,
         Path(__file__).resolve().parent / path,
-        Path(__file__).resolve().parent / "src" / path.name,
     ]
     for candidate in candidates:
-        if candidate.exists():
+        if candidate.is_dir():
             return candidate
     raise FileNotFoundError(
-        f"Data file not found. Tried: {', '.join(str(p) for p in candidates)}"
+        f"Data directory not found. Tried: {', '.join(str(p) for p in candidates)}"
     )
+
+
+def get_csv_cache_key(src_dir: Path) -> tuple:
+    csv_files = sorted(src_dir.glob("*.csv"))
+    return tuple((f.name, f.stat().st_mtime) for f in csv_files)
 
 
 # =========================
@@ -179,17 +190,20 @@ def country_flag(country: str) -> str:
 
 
 META_COL_CANDIDATES = {
-    "country": ["country", "Country"],
-    "regulator": ["regulator", "Regulator"],
+    "country": ["Country_std", "country", "Country"],
+    "regulator": ["Regulator_std", "regulator", "Regulator"],
     "year": [
+        "Year_raw",
         "year",
         "Year",
         "Year approved/implemented",
         "Year Approved/Implemented",
         "Year approved / implemented",
     ],
-    "source": ["source", "Official Source", "Official source", "Official Source links", "Official source links", "Source", "URL", "Link"],
+    "source": ["Source_Original", "Source_URL", "source", "Official Source", "Official source", "Official Source links", "Official source links", "Source", "URL", "Link"],
     "title": [
+        "Issuance",
+        "Regulation_Title",
         "title",
         "Regulation / Legal Instrument",
         "Regulation / Legal instrument",
@@ -202,6 +216,27 @@ META_COL_CANDIDATES = {
     ],
 }
 
+_KNOWN_META: set[str] = set(
+    META_COL_CANDIDATES["country"]
+    + META_COL_CANDIDATES["regulator"]
+    + META_COL_CANDIDATES["year"]
+    + META_COL_CANDIDATES["source"]
+    + META_COL_CANDIDATES["title"]
+    + [
+        "Category", "Country_std", "Regulator_std", "Year_raw", "Year",
+        "Year_sort", "Regulation_Title", "Source_URL", "Entry_ID", "HasData", "ID",
+        "Source_Original", "Source_EN", "Amendment_Of",
+    ]
+)
+
+
+def get_provision_cols(df: pd.DataFrame, category: str) -> List[str]:
+    cat_df = df[df["Category"] == category]
+    return [
+        c for c in cat_df.columns
+        if c not in _KNOWN_META and not cat_df[c].isna().all()
+    ]
+
 
 def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
@@ -213,6 +248,9 @@ def extract_year(value) -> Optional[int]:
     if pd.isna(value):
         return None
     s = str(value).strip()
+    # Strip effectivity date qualifiers so "2019 (effective 2022)" → 2019
+    s = re.sub(r'\(effectiv\w*[^)]*\)', '', s, flags=re.IGNORECASE)
+    s = re.sub(r'effectiv\w*\s+\d[^,;|]*', '', s, flags=re.IGNORECASE)
     m = re.search(r"(19\d{2}|20\d{2})", s)
     return int(m.group(1)) if m else None
 
@@ -273,6 +311,218 @@ def html_escape(text: str) -> str:
     )
 
 
+def _render_provision_table(rows: list[dict], columns: list[str]) -> None:
+    """Render a resizable provision table via st.components.v1.html()."""
+    import html as _hl
+
+    # Build <th> cells — each has a drag handle div
+    th_cells = "".join(
+        f'<th><span class="col-label">{_hl.escape(str(c))}</span>'
+        f'<div class="resizer" title="Drag to resize"></div></th>'
+        for c in columns
+    )
+
+    # Build <tr> cells
+    body_rows = []
+    for i, row in enumerate(rows):
+        cells = []
+        for j, col in enumerate(columns):
+            raw = str(row.get(col, ""))
+            val = _hl.escape(raw).replace("\r\n", "<br>").replace("\n", "<br>")
+            cls = "fc" if j == 0 else "vc"
+            cells.append(f'<td class="{cls}">{val}</td>')
+        cls = "r0" if i % 2 == 0 else "r1"
+        body_rows.append(f'<tr class="{cls}">{"".join(cells)}</tr>')
+
+    html = f"""<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+*{{box-sizing:border-box;margin:0;padding:0}}
+body{{background:transparent;font-family:"Source Sans Pro",sans-serif;font-size:14px;color:#e2e8f0}}
+table{{width:100%;border-collapse:collapse;table-layout:fixed}}
+thead tr{{background:#1e293b}}
+th{{position:relative;padding:7px 10px 7px 8px;text-align:left;color:#94a3b8;
+    font-size:13px;font-weight:600;border-bottom:2px solid #334155;
+    white-space:nowrap;overflow:hidden;user-select:none}}
+.col-label{{display:block;overflow:hidden;text-overflow:ellipsis;padding-right:6px}}
+.resizer{{position:absolute;right:0;top:0;bottom:0;width:5px;cursor:col-resize;
+          background:transparent;z-index:1}}
+.resizer:hover,.resizer.active{{background:#3b82f6;opacity:.7}}
+tr.r0{{background:#0d1526}}
+tr.r1{{background:#111e33}}
+tr:hover{{background:#1a2d4a}}
+td{{padding:7px 10px 7px 8px;vertical-align:top;border-bottom:1px solid #1e293b;
+    line-height:1.6;word-break:break-word;overflow-wrap:anywhere}}
+td.fc{{color:#7dd3fc;font-size:13px;font-weight:600;word-break:break-word;overflow-wrap:anywhere}}
+td.vc{{font-size:13.5px}}
+</style>
+</head>
+<body>
+<table id="t">
+  <thead><tr>{th_cells}</tr></thead>
+  <tbody>{"".join(body_rows)}</tbody>
+</table>
+<script>
+(function(){{
+  const tbl = document.getElementById('t');
+  const ths = tbl.querySelectorAll('th');
+
+  // Set initial column widths
+  const total = tbl.parentElement.offsetWidth || 800;
+  const fieldW = Math.min(170, total * 0.18);
+  const otherW = (total - fieldW) / Math.max(1, ths.length - 1);
+  ths[0].style.width = fieldW + 'px';
+  for (let i = 1; i < ths.length; i++) ths[i].style.width = otherW + 'px';
+
+  // Resize logic
+  let active = null, startX = 0, startW = 0;
+  tbl.querySelectorAll('.resizer').forEach(r => {{
+    r.addEventListener('mousedown', e => {{
+      active = r;
+      startX = e.pageX;
+      startW = r.parentElement.offsetWidth;
+      r.classList.add('active');
+      document.body.style.cursor = 'col-resize';
+      e.preventDefault();
+    }});
+  }});
+  document.addEventListener('mousemove', e => {{
+    if (!active) return;
+    const w = Math.max(60, startW + (e.pageX - startX));
+    active.parentElement.style.width = w + 'px';
+  }});
+  document.addEventListener('mouseup', () => {{
+    if (active) {{
+      active.classList.remove('active');
+      active = null;
+      document.body.style.cursor = '';
+    }}
+  }});
+
+  // Report table height to Streamlit so iframe fits exactly
+  let _lastH = 0;
+  function sendHeight() {{
+    const h = Math.ceil(tbl.getBoundingClientRect().height) + 8;
+    if (h > 0 && h !== _lastH) {{ _lastH = h;
+      window.parent.postMessage({{isStreamlitMessage:true,type:'streamlit:setFrameHeight',height:h}}, '*');
+    }}
+  }}
+  sendHeight();
+  window.addEventListener('load', sendHeight);
+  setTimeout(sendHeight, 150);
+  new ResizeObserver(sendHeight).observe(tbl);
+}})();
+</script>
+</body></html>"""
+
+    # Generous initial estimate; JS will correct via getBoundingClientRect
+    est = max(200, 44 + len(rows) * 120)
+    components.html(html, height=est, scrolling=False)
+
+
+def _render_data_table(df: pd.DataFrame, highlighted: set | None = None, row_height: int = 72) -> None:
+    """Render a DataFrame as a resizable HTML table; newlines in cells become <br>.
+    First column (flag) is centred; second column (country) is bold.
+    Rows whose Country value is in `highlighted` are tinted."""
+    import html as _hl
+
+    th_cells = "".join(
+        f'<th><span class="col-label">{_hl.escape(str(c))}</span>'
+        f'<div class="resizer" title="Drag to resize"></div></th>'
+        for c in df.columns
+    )
+
+    body_rows = []
+    for i, (_, row) in enumerate(df.iterrows()):
+        country_val = str(row.get("Country", "")) if "Country" in df.columns else ""
+        is_sel = bool(highlighted and country_val in highlighted)
+        cells = []
+        for j, col in enumerate(df.columns):
+            raw = "" if pd.isna(row[col]) else str(row[col])
+            val = _hl.escape(raw).replace("\r\n", "<br>").replace("\n", "<br>")
+            if j == 0:
+                cells.append(f'<td style="text-align:center;padding:6px 8px;vertical-align:top;">{val}</td>')
+            elif j == 1:
+                cells.append(f'<td style="font-weight:600;padding:6px 10px;vertical-align:top;white-space:nowrap;">{val}</td>')
+            else:
+                cells.append(f'<td class="vc">{val}</td>')
+        cls = "sel" if is_sel else ("r0" if i % 2 == 0 else "r1")
+        body_rows.append(f'<tr class="{cls}">{"".join(cells)}</tr>')
+
+    html = f"""<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+*{{box-sizing:border-box;margin:0;padding:0}}
+body{{background:transparent;font-family:"Source Sans Pro",sans-serif;font-size:14px;color:#e2e8f0}}
+table{{width:100%;border-collapse:collapse;table-layout:fixed}}
+thead tr{{background:#1e293b}}
+th{{position:relative;padding:7px 10px 7px 8px;text-align:left;color:#94a3b8;
+    font-size:13px;font-weight:600;border-bottom:2px solid #334155;
+    white-space:nowrap;overflow:hidden;user-select:none}}
+.col-label{{display:block;overflow:hidden;text-overflow:ellipsis;padding-right:6px}}
+.resizer{{position:absolute;right:0;top:0;bottom:0;width:5px;cursor:col-resize;
+          background:transparent;z-index:1}}
+.resizer:hover,.resizer.active{{background:#3b82f6;opacity:.7}}
+tr.r0{{background:#0d1526}}
+tr.r1{{background:#111e33}}
+tr.sel{{background:#1a3a5c}}
+tr:hover{{background:#1a2d4a}}
+tr.sel:hover{{background:#20446b}}
+td{{padding:6px 10px;vertical-align:top;border-bottom:1px solid #1e293b;
+    line-height:1.6;word-break:break-word;overflow-wrap:anywhere;font-size:13.5px}}
+.vc{{font-size:13.5px}}
+</style>
+</head>
+<body>
+<table id="t">
+  <thead><tr>{th_cells}</tr></thead>
+  <tbody>{"".join(body_rows)}</tbody>
+</table>
+<script>
+(function(){{
+  const tbl = document.getElementById('t');
+  const ths = tbl.querySelectorAll('th');
+  const total = tbl.parentElement.offsetWidth || 900;
+  const flagW = 48, countryW = 140;
+  const rem = total - flagW - countryW;
+  const otherW = ths.length > 2 ? rem / (ths.length - 2) : rem;
+  if (ths.length > 0) ths[0].style.width = flagW + 'px';
+  if (ths.length > 1) ths[1].style.width = countryW + 'px';
+  for (let i = 2; i < ths.length; i++) ths[i].style.width = Math.max(80, otherW) + 'px';
+
+  let active = null, startX = 0, startW = 0;
+  tbl.querySelectorAll('.resizer').forEach(r => {{
+    r.addEventListener('mousedown', e => {{
+      active = r; startX = e.pageX; startW = r.parentElement.offsetWidth;
+      r.classList.add('active'); document.body.style.cursor = 'col-resize'; e.preventDefault();
+    }});
+  }});
+  document.addEventListener('mousemove', e => {{
+    if (!active) return;
+    active.parentElement.style.width = Math.max(48, startW + (e.pageX - startX)) + 'px';
+  }});
+  document.addEventListener('mouseup', () => {{
+    if (active) {{ active.classList.remove('active'); active = null; document.body.style.cursor = ''; }}
+  }});
+  let _lastH = 0;
+  function sendH() {{
+    const h = Math.ceil(tbl.getBoundingClientRect().height) + 8;
+    if (h > 0 && h !== _lastH) {{ _lastH = h;
+      window.parent.postMessage({{isStreamlitMessage:true,type:'streamlit:setFrameHeight',height:h}},'*');
+    }}
+  }}
+  sendH();
+  window.addEventListener('load', sendH);
+  setTimeout(sendH, 150);
+  new ResizeObserver(sendH).observe(tbl);
+}})();
+</script>
+</body></html>"""
+
+    est = min(900, max(150, 44 + len(df) * row_height))
+    components.html(html, height=est, scrolling=False)
+
+
 def build_regulations_html_table(df: pd.DataFrame) -> str:
     rows = [
         '<table class="regulations-table" style="width:100%; border-collapse: collapse; margin-bottom:1rem; table-layout: fixed;">',
@@ -284,10 +534,18 @@ def build_regulations_html_table(df: pd.DataFrame) -> str:
         year = row.get("Year")
         year_text = str(int(year)) if pd.notna(year) else "—"
         source_url = safe_linkify(row.get("Source_URL"))
-        source_html = (
-            f'<a href="{html_escape(source_url)}" target="_blank" rel="noreferrer">Source</a>'
-            if source_url else "—"
-        )
+        source_en_url = safe_linkify(row.get("Source_EN")) if pd.notna(row.get("Source_EN")) else ""
+        if source_url and source_en_url and source_en_url != source_url:
+            source_html = (
+                f'<a href="{html_escape(source_url)}" target="_blank" rel="noreferrer">Source</a>'
+                f' · <a href="{html_escape(source_en_url)}" target="_blank" rel="noreferrer">EN</a>'
+            )
+        elif source_url:
+            source_html = (
+                f'<a href="{html_escape(source_url)}" target="_blank" rel="noreferrer">Source</a>'
+            )
+        else:
+            source_html = "—"
         rows.append(
             "<tr>"
             f"<td style=\"padding:8px 12px 8px 0; vertical-align:top; white-space:normal; word-break:break-word;\">{title}</td>"
@@ -310,16 +568,14 @@ def get_selected_row_indices(event) -> List[int]:
 
 
 @st.cache_data
-def load_cbregs(file_path: Path, file_mtime: float) -> pd.DataFrame:
-    p = Path(file_path)
-    if not p.exists():
-        p = resolve_data_path(p)
-
-    xls = pd.ExcelFile(p, engine="openpyxl")
+def load_cbregs(src_dir: str, cache_key: tuple) -> pd.DataFrame:
+    p = Path(src_dir)
+    csv_files = sorted(p.glob("*.csv"))
     frames = []
 
-    for sheet in xls.sheet_names:
-        df = pd.read_excel(p, sheet_name=sheet, engine="openpyxl")
+    for csv_file in csv_files:
+        sheet = csv_file.stem
+        df = pd.read_csv(csv_file, dtype=object)
         df = normalize_columns(df).dropna(how="all").dropna(axis=1, how="all")
 
         country_col = pick_first_existing_col(df, META_COL_CANDIDATES["country"])
@@ -347,6 +603,18 @@ def load_cbregs(file_path: Path, file_mtime: float) -> pd.DataFrame:
         else:
             out["Source_URL"] = pd.NA
 
+        # Source_EN — English translation URL (same as Source_URL if not available)
+        if "Source_EN" in df.columns:
+            out["Source_EN"] = out["Source_EN"].astype(str)
+        else:
+            out["Source_EN"] = pd.NA
+
+        # Amendment_Of — reference to original regulation for amendments
+        if "Amendment_Of" in df.columns:
+            out["Amendment_Of"] = out["Amendment_Of"].astype(str)
+        else:
+            out["Amendment_Of"] = pd.NA
+
         frames.append(out)
 
     all_df = pd.concat(frames, ignore_index=True)
@@ -357,8 +625,9 @@ def load_cbregs(file_path: Path, file_mtime: float) -> pd.DataFrame:
     all_df["Regulation_Title"] = all_df["Regulation_Title"].astype(str).str.strip()
 
     # Treat "nan" strings produced by astype(str)
-    for c in ["Country_std", "Regulator_std", "Regulation_Title", "Source_URL"]:
-        all_df.loc[all_df[c].str.lower().isin(["nan", "none"]), c] = pd.NA
+    for c in ["Country_std", "Regulator_std", "Regulation_Title", "Source_URL", "Source_EN", "Amendment_Of"]:
+        if c in all_df.columns:
+            all_df.loc[all_df[c].str.lower().isin(["nan", "none", ""]), c] = pd.NA
 
     all_df = ensure_entry_ids(all_df)
     return all_df
@@ -381,6 +650,8 @@ def build_hover_list(df_country_latest: pd.DataFrame) -> str:
         y = r["Year"]
         y_txt = str(int(y)) if pd.notna(y) else "—"
         title = str(r["Regulation_Title"])
+        if len(title) > 60:
+            title = title[:57] + "…"
         lines.append(f"{y_txt} — {title}")
     # Plotly hover supports <br>
     return "<br>".join(lines)
@@ -466,99 +737,227 @@ def get_query_params() -> dict[str, str]:
 
 
 def safe_rerun() -> None:
-    rerun_func = getattr(st, "experimental_rerun", None)
+    rerun_func = getattr(st, "rerun", None) or getattr(st, "experimental_rerun", None)
     if callable(rerun_func):
         rerun_func()
 
 
-def save_cbregs(df: pd.DataFrame, file_path: Path) -> None:
-    file_path = Path(file_path)
-    file_path.parent.mkdir(parents=True, exist_ok=True)
-    with pd.ExcelWriter(file_path, engine="openpyxl", mode="w") as writer:
-        df.to_excel(writer, index=False, sheet_name="All Regulations")
+def save_cbregs(df: pd.DataFrame, src_dir: Path) -> None:
+    src_dir = Path(src_dir)
+    src_dir.mkdir(parents=True, exist_ok=True)
+    for category, group in df.groupby("Category", sort=False):
+        csv_path = src_dir / f"{category}.csv"
+        group.to_csv(csv_path, index=False)
+
+
+@st.dialog("Edit regulation", width="large")
+def edit_regulation_dialog(
+    existing_row: pd.Series,
+    category_choices: List[str],
+    df_all: pd.DataFrame,
+    src_dir: Path,
+    editor_country: str,
+    auth_user: str,
+) -> None:
+    selected_entry_id = str(existing_row["Entry_ID"])
+    save_key = f"edit_saved_{selected_entry_id}"
+    confirm_key = f"confirm_delete_{selected_entry_id}"
+    st.session_state.setdefault(save_key, False)
+    st.session_state.setdefault(confirm_key, False)
+
+    existing_category = (
+        existing_row["Category"]
+        if pd.notna(existing_row["Category"])
+        else category_choices[0]
+    )
+    edit_provision_cols = get_provision_cols(df_all, existing_category)
+
+    def _s(val) -> str:
+        return "" if pd.isna(val) else str(val)
+
+    # Reset field keys when dialog opens for a different entry
+    if st.session_state.get("_dialog_entry_id") != selected_entry_id:
+        st.session_state["_dialog_entry_id"] = selected_entry_id
+        for k in ["_dlg_cat", "_dlg_reg", "_dlg_year", "_dlg_title", "_dlg_url", "_dlg_url_en", "_dlg_amend"]:
+            st.session_state.pop(k, None)
+        for col in edit_provision_cols:
+            st.session_state.pop(f"_dlg_prov_{col}", None)
+
+    # Editable fields (no form — required for real-time change detection)
+    edit_category = st.selectbox(
+        "Category",
+        options=category_choices,
+        index=category_choices.index(existing_category) if existing_category in category_choices else 0,
+        key="_dlg_cat",
+    )
+    edit_regulator  = st.text_input("Regulator",           value=_s(existing_row.get("Regulator_std")),    key="_dlg_reg")
+    edit_year_raw   = st.text_input("Year",                value=_s(existing_row.get("Year_raw")),         key="_dlg_year")
+    edit_title      = st.text_area("Regulation title",     value=_s(existing_row.get("Regulation_Title")), height=120, key="_dlg_title")
+    edit_source_url = st.text_input("Source URL",          value=_s(existing_row.get("Source_URL")),       key="_dlg_url")
+    edit_source_en  = st.text_input("Source URL (English)", value=_s(existing_row.get("Source_EN")),       key="_dlg_url_en")
+
+    _amend_country = str(existing_row.get("Country_std", ""))
+    _amend_cand = df_all[
+        (df_all["Country_std"] == _amend_country) &
+        (df_all["Category"] == edit_category) &
+        df_all["Regulation_Title"].notna() &
+        (df_all["Entry_ID"] != selected_entry_id)
+    ].sort_values(["Year", "Regulation_Title"], ascending=[False, True])
+    _BLANK_OPT = "— (not an amendment)"
+    amend_opts = [_BLANK_OPT] + [
+        f"{r['Regulation_Title']} ({int(r['Year']) if pd.notna(r['Year']) else '?'})"
+        for _, r in _amend_cand.iterrows()
+    ]
+    _cur_amend = _s(existing_row.get("Amendment_Of"))
+    _amend_idx = amend_opts.index(_cur_amend) if _cur_amend in amend_opts else 0
+    edit_amendment_of_sel = st.selectbox(
+        "Amends (leave blank if original)",
+        options=amend_opts,
+        index=_amend_idx,
+        key="_dlg_amend",
+    )
+    edit_amendment_of = "" if edit_amendment_of_sel == _BLANK_OPT else edit_amendment_of_sel
+
+    edit_provision_values: dict[str, str] = {}
+    if edit_provision_cols:
+        st.markdown("**Key provisions**")
+        for col in edit_provision_cols:
+            edit_provision_values[col] = st.text_area(
+                col, value=_s(existing_row.get(col)), height=68, key=f"_dlg_prov_{col}"
+            )
+
+    # Detect changes against the original row
+    orig = {
+        "_dlg_cat":    existing_category,
+        "_dlg_reg":    _s(existing_row.get("Regulator_std")),
+        "_dlg_year":   _s(existing_row.get("Year_raw")),
+        "_dlg_title":  _s(existing_row.get("Regulation_Title")),
+        "_dlg_url":    _s(existing_row.get("Source_URL")),
+        "_dlg_url_en": _s(existing_row.get("Source_EN")),
+        "_dlg_amend":  _cur_amend if _cur_amend in amend_opts else _BLANK_OPT,
+        **{f"_dlg_prov_{col}": _s(existing_row.get(col)) for col in edit_provision_cols},
+    }
+    has_changes = any(st.session_state.get(k, orig[k]) != orig[k] for k in orig)
+
+    if st.button("Save updates", type="primary", disabled=not has_changes, use_container_width=True):
+        updated_df = df_all.copy()
+        row_index = updated_df.index[updated_df["Entry_ID"] == selected_entry_id][0]
+        old_record = serialize_record_for_archive(updated_df.loc[row_index])
+        updated_df.at[row_index, "Category"]      = edit_category
+        updated_df.at[row_index, "Regulator_std"] = edit_regulator.strip() or pd.NA
+        updated_df.at[row_index, "Year_raw"]      = edit_year_raw.strip() or pd.NA
+        updated_df.at[row_index, "Year"]          = extract_year(edit_year_raw)
+        updated_df.at[row_index, "Regulation_Title"] = edit_title.strip()
+        updated_df.at[row_index, "Source_URL"]    = edit_source_url.strip() or pd.NA
+        updated_df.at[row_index, "Source_EN"]     = edit_source_en.strip() or pd.NA
+        updated_df.at[row_index, "Amendment_Of"]  = edit_amendment_of.strip() or pd.NA
+        for col, val in edit_provision_values.items():
+            updated_df.at[row_index, col] = val.strip() or pd.NA
+        save_cbregs(updated_df, src_dir)
+        append_audit_log(
+            action="edit",
+            country=editor_country,
+            entry_id=selected_entry_id,
+            user=auth_user,
+            old_record=old_record,
+            new_record=serialize_record_for_archive(updated_df.loc[row_index]),
+        )
+        st.session_state[save_key] = True
+
+    if st.session_state[save_key]:
+        st.success("Changes saved successfully.")
+
+    if st.button("Close", type="primary", use_container_width=True):
+        st.session_state.pop(save_key, None)
+        for _cat in df_all["Category"].dropna().unique():
+            _cat_key = re.sub(r"[^a-zA-Z0-9]", "_", str(_cat))
+            st.session_state.pop(f"editor_table_{_cat_key}", None)
+        st.rerun()
+
+    # Marker + scoped CSS: only secondary buttons after this point in the dialog are red
+    _arch_marker = f"dlg-arch-{selected_entry_id[:8]}"
+    st.markdown(
+        f'<div id="{_arch_marker}"></div>'
+        f'<style>'
+        f'div:has(>div#{_arch_marker}) ~ div [data-testid="baseButton-secondary"]'
+        f'{{background-color:#dc2626!important;border-color:#dc2626!important;color:#fff!important}}'
+        f'div:has(>div#{_arch_marker}) ~ div [data-testid="baseButton-secondary"]:hover'
+        f'{{background-color:#b91c1c!important;border-color:#b91c1c!important}}'
+        f'</style>',
+        unsafe_allow_html=True,
+    )
+    st.divider()
+    if not st.session_state[confirm_key]:
+        if st.button("Archive and delete this record", type="secondary", use_container_width=True):
+            st.session_state[confirm_key] = True
+            st.rerun()
+    else:
+        st.warning("Are you sure? This record will be permanently removed from the dataset.")
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Yes, delete", type="secondary", use_container_width=True):
+                updated_df = df_all.copy()
+                row_index = updated_df.index[updated_df["Entry_ID"] == selected_entry_id][0]
+                old_record = serialize_record_for_archive(updated_df.loc[row_index])
+                updated_df = updated_df.drop(index=row_index).reset_index(drop=True)
+                save_cbregs(updated_df, src_dir)
+                append_audit_log(
+                    action="delete",
+                    country=editor_country,
+                    entry_id=selected_entry_id,
+                    user=auth_user,
+                    old_record=old_record,
+                    new_record=None,
+                )
+                st.session_state.pop(confirm_key, None)
+                st.rerun()
+        with col2:
+            if st.button("Cancel", type="primary", use_container_width=True):
+                st.session_state[confirm_key] = False
+                st.rerun()
 
 
 # =========================
 # Load data
 # =========================
-resolved_data_path = resolve_data_path(DATA_FILE)
+resolved_data_dir = resolve_data_dir(DATA_DIR)
 
-df_all = load_cbregs(resolved_data_path, resolved_data_path.stat().st_mtime)
+df_all = load_cbregs(str(resolved_data_dir), get_csv_cache_key(resolved_data_dir))
 
 if df_all.empty:
     st.error("Data loaded but produced no rows.")
     st.stop()
 
 # =========================
-# Sidebar filters (ORDER: Category -> Country)
+# Category filter + download (above tabs)
 # =========================
-st.sidebar.header("Filters")
-st.sidebar.write("Refine the dashboard by category and country.")
-
 categories = ["All"] + sorted(df_all["Category"].dropna().unique().tolist())
-sel_category = st.sidebar.selectbox("Category", options=categories, index=0)
 
-# Apply category filter first so subsequent widgets use the right dataset
+def _on_category_change():
+    st.session_state.pop("table_a_country_sel", None)
+    st.session_state.pop("table_b_country_sel", None)
+
+_col_pills, _col_dl = st.columns([5, 1], vertical_alignment="bottom")
+sel_category = _col_pills.pills(
+    "Category",
+    options=categories,
+    default="All",
+    key="category_filter",
+    on_change=_on_category_change,
+) or "All"
+
 df_f = df_all.copy()
 if sel_category != "All":
     df_f = df_f[df_f["Category"] == sel_category]
 
-# Country list
-countries = sorted(df_f["Country_std"].dropna().unique().tolist())
-
-# ---- init defaults (must happen BEFORE widgets with these keys are created)
-st.session_state.setdefault("country_select_all", True)
-st.session_state.setdefault("selected_countries", countries.copy())
-
-# Keep selected list valid when category changes
-st.session_state["selected_countries"] = [
-    c for c in st.session_state["selected_countries"] if c in countries
-]
-if not st.session_state["selected_countries"]:
-    st.session_state["selected_countries"] = countries.copy()
-
-
-def _toggle_select_all():
-    if st.session_state["country_select_all"]:
-        st.session_state["selected_countries"] = countries.copy()
-
-
-def _countries_changed():
-    st.session_state["country_select_all"] = (
-        set(st.session_state["selected_countries"]) == set(countries)
-    )
-
-# ---- widgets
-st.sidebar.checkbox(
-    "Select all countries",
-    key="country_select_all",
-    on_change=_toggle_select_all,
+csv_bytes = df_f.to_csv(index=False).encode("utf-8")
+_col_dl.download_button(
+    "⬇ Export",
+    csv_bytes,
+    "asean_regulations_filtered.csv",
+    "text/csv",
+    use_container_width=True,
 )
-
-st.sidebar.multiselect(
-    "Country",
-    options=countries,
-    key="selected_countries",
-    on_change=_countries_changed,
-)
-
-if countries:
-    csv_bytes = df_f.to_csv(index=False).encode("utf-8")
-    st.sidebar.download_button(
-        "Download filtered data",
-        csv_bytes,
-        "asean_regulations_filtered.csv",
-        "text/csv",
-        use_container_width=True,
-    )
-else:
-    st.sidebar.info("No countries available for the current filter selection.")
-
-# ---- apply filter
-if st.session_state["selected_countries"]:
-    df_f = df_f[df_f["Country_std"].isin(st.session_state["selected_countries"])]
-
-st.divider()
 
 # =========================
 # Country extender (modal)
@@ -576,7 +975,7 @@ def show_country_modal(country: str, key_suffix: str = ""):
         color_continuous_scale=["#facc15", "#facc15"],
         range_color=(0, 1),
     )
-    country_fig.update_traces(showscale=False)
+    country_fig.update_traces(showscale=False, hovertemplate="<extra></extra>")
     country_fig.update_geos(
         scope="asia",
         projection_type="mercator",
@@ -632,6 +1031,8 @@ def show_country_modal(country: str, key_suffix: str = ""):
         "Regulator_std": "Regulator",
         "Regulation_Title": "Title",
         "Source_URL": "Source URL",
+        "Source_EN": "Source URL (EN)",
+        "Amendment_Of": "Amendment Of",
     })
     st.download_button(
         label=f"Download all data for {country}",
@@ -656,8 +1057,22 @@ def show_country_modal(country: str, key_suffix: str = ""):
         year_text = str(int(year)) if pd.notna(year) else "—"
         title = str(row.get("Regulation_Title", "—"))
         source_link = safe_linkify(row.get("Source_URL"))
-        source_text = f" ([Source]({source_link}))" if source_link else ""
-        regulation_lines.append(f"- **{year_text}** — {title}{source_text}")
+        source_en_raw = row.get("Source_EN")
+        source_en_link = safe_linkify(source_en_raw) if pd.notna(source_en_raw) else ""
+        amendment_of = row.get("Amendment_Of")
+
+        src_parts = []
+        if source_link:
+            src_parts.append(f"[Source]({source_link})")
+        if source_en_link and source_en_link != source_link:
+            src_parts.append(f"[EN]({source_en_link})")
+        source_text = f" ({' · '.join(src_parts)})" if src_parts else ""
+
+        amend_text = ""
+        if pd.notna(amendment_of) and str(amendment_of).strip().lower() not in ("nan", "none", ""):
+            amend_text = f" *(amends {amendment_of})*"
+
+        regulation_lines.append(f"- **{year_text}** — {title}{source_text}{amend_text}")
     st.markdown("\n".join(regulation_lines))
 
     st.markdown("### Key provisions")
@@ -676,7 +1091,9 @@ def show_country_modal(country: str, key_suffix: str = ""):
             "Year_sort",
             "Regulation_Title",
             "Source_URL",
-            "ID",
+            "Source_EN",
+            "Amendment_Of",
+            "Entry_ID",
         ]
     )
 
@@ -712,14 +1129,7 @@ def show_country_modal(country: str, key_suffix: str = ""):
             continue
 
         st.markdown(f"#### {cat}")
-        detail_df = pd.DataFrame(rows)
-        detail_height = min(600, max(200, 60 + len(detail_df) * 32))
-        st.dataframe(
-            detail_df,
-            use_container_width=True,
-            hide_index=True,
-            height=detail_height,
-        )
+        _render_provision_table(rows, ["Field", "Values"])
         shown_any_category = True
 
     if not shown_any_category:
@@ -729,8 +1139,8 @@ def show_country_modal(country: str, key_suffix: str = ""):
         )
 
     st.caption(
-        "Links shown as 'Source' are taken directly from the "
-        "'Official Source' column in CBregs.xlsx."
+        "Source links point to the official regulation document. "
+        "EN links open the English translation where available."
     )
 
 
@@ -757,6 +1167,8 @@ def show_country_comparison(countries: List[str], key_suffix: str = ""):
             "Year_sort",
             "Regulation_Title",
             "Source_URL",
+            "Source_EN",
+            "Amendment_Of",
             "ID",
             "Entry_ID",
         ]
@@ -826,14 +1238,7 @@ def show_country_comparison(countries: List[str], key_suffix: str = ""):
             continue
 
         st.markdown(f"#### {cat}")
-        detail_df = pd.DataFrame(rows, columns=["Field"] + col_labels)
-        detail_height = min(600, max(200, 60 + len(detail_df) * 32))
-        st.dataframe(
-            detail_df,
-            use_container_width=True,
-            hide_index=True,
-            height=detail_height,
-        )
+        _render_provision_table(rows, ["Field"] + col_labels)
         shown_any_category = True
 
     if not shown_any_category:
@@ -843,8 +1248,7 @@ def show_country_comparison(countries: List[str], key_suffix: str = ""):
         )
 
     st.caption(
-        "Column headers show the flag and ISO code for each jurisdiction. "
-        "Values are taken directly from CBregs.xlsx."
+        "Column headers show the flag and ISO code for each jurisdiction."
     )
 
 
@@ -878,7 +1282,7 @@ else:
 with tab_map:
     # Country counts + hover preview
     by_country = (
-        df_f.groupby("Country_std", dropna=False)
+        df_f.groupby("Country_std", dropna=True)
         .size()
         .reset_index(name="Regulation_Count")
         .rename(columns={"Country_std": "Country"})
@@ -904,14 +1308,12 @@ with tab_map:
     )
 
     fig.update_traces(
-        hovertemplate="<b>%{location}</b><br>Regulations: %{customdata[0]}<br><br>%{customdata[1]}<extra></extra>",
+        hovertemplate="<b>%{location}</b><br><br>%{customdata[1]}<extra></extra>",
         showscale=False,
     )
     
     fig.update_layout(
-        title_text="ASEAN regulations by country",
-        title_x=0,
-        title_xanchor="left",
+        title_text="",
         hoverlabel=dict(align="left"),
         dragmode=False,
         hovermode="closest",
@@ -969,7 +1371,7 @@ with tab_map:
     # Country selector to open the details panel
     map_country = st.selectbox(
         "Select a country to view details",
-        options=["(Select)"] + sorted(by_country["Country"].tolist()),
+        options=["(Select)"] + sorted(c for c in by_country["Country"].tolist() if pd.notna(c) and str(c) != ""),
     )
     if map_country != "(Select)":
         st.session_state["selected_country"] = map_country
@@ -985,6 +1387,12 @@ with tab_map:
 # =========================
 # TABLE TAB
 # =========================
+def _clear_editor_table_keys() -> None:
+    """Clear persisted editor row-selection keys so the dialog doesn't reopen."""
+    for _k in list(st.session_state.keys()):
+        if _k.startswith("editor_table_"):
+            del st.session_state[_k]
+
 with tab_table:
     all_sheet_names = sorted(df_all["Category"].dropna().unique().tolist())
 
@@ -995,7 +1403,7 @@ with tab_table:
         regs_by_country = (
             df_f.groupby("Country_std")["Regulator_std"]
             .apply(
-                lambda x: ", ".join(sorted(set(x.dropna().tolist())))
+                lambda x: "\n".join(sorted({str(v) for v in x if pd.notna(v)}))
             )
             .reset_index()
             .rename(columns={"Country_std": "Country", "Regulator_std": "Regulator"})
@@ -1018,110 +1426,94 @@ with tab_table:
             if s not in t.columns:
                 t[s] = False
 
-        t.insert(0, "Flag", t["Country"].map(lambda x: country_flag(str(x))))
-        t = t[["Flag", "Country", "Regulator"] + all_sheet_names].sort_values("Country")
+        t["Country"] = t["Country"].fillna("").astype(str)
+        t.insert(0, "Flag", t["Country"].map(country_flag))
+        t = t[["Flag", "Country"] + all_sheet_names].sort_values("Country")
 
         CHECK, BLANK = "✓", ""
         for s in all_sheet_names:
             t[s] = t[s].map(lambda x: CHECK if x else BLANK)
 
-        st.caption("Select one or more rows to open country detail panels below.")
-        table_height = min(700, max(300, 40 + len(t) * 28))
-        event = st.dataframe(
-            t,
-            use_container_width=True,
-            hide_index=True,
-            height=table_height,
-            on_select="rerun",
-            selection_mode="multi-row",
+        country_options = sorted(c for c in t["Country"].tolist() if c)
+        a_sel = st.multiselect(
+            "Select countries to compare",
+            options=country_options,
+            placeholder="Choose one or more countries…",
+            key="table_a_country_sel",
+            on_change=_clear_editor_table_keys,
         )
-
-        selected_indices = get_selected_row_indices(event)
-        if selected_indices:
-            st.session_state["table_selected_countries"] = [
-                t.iloc[i]["Country"] for i in selected_indices
-            ]
+        _render_data_table(t, highlighted=set(a_sel), row_height=36)
+        if a_sel:
+            if len(a_sel) == 1:
+                show_country_modal(a_sel[0], key_suffix="table_0")
+            else:
+                show_country_comparison(a_sel, key_suffix="table_cmp")
 
     # =========================================================
-    # MODE B: Category selected -> show actual worksheet columns
+    # MODE B: Category selected -> country picker then provisions
     # =========================================================
     else:
-        st.caption(f"Showing worksheet fields for: {sel_category}")
-        
         d = df_f.copy()
-        
-        regs_by_country = (
-            d.groupby("Country_std")["Regulator_std"]
-            .apply(
-                lambda x: ", ".join(sorted(set(x.dropna().tolist())))
-            )
-            .reset_index()
-            .rename(columns={"Country_std": "Country", "Regulator_std": "Regulator"})
-        )
 
-        exclude_columns = {
-            "ID", "title", "year", "Year", "Year_raw", "source",
-            "country", "regulator", "Category", "Country_std", "Regulator_std",
-            "Source_URL", "Regulation_Title",
-        }
-        cols_to_concat = [c for c in d.columns if c not in exclude_columns]
-        drop_for_grouping = [
-            c for c in ["ID", "title", "year", "source"] if c in d.columns
-        ]
-        provs = (
-            d
-            .drop(columns=drop_for_grouping)
-            .groupby(['Country_std', 'Category'], dropna=False)
-            .agg({
-                c: lambda x: (
-                    pd.NA
-                    if x.dropna().empty
-                    else " | ".join(x.dropna().astype(str).str.strip().unique())
-                )
-                for c in cols_to_concat
-            })
-            .reset_index().rename(columns={"Country_std": "Country"})
-        )
-
-        t = regs_by_country.merge(provs, on="Country", how="outer").fillna({"Regulator": ""})
-
-        t.insert(0, "Flag", t["Country"].map(lambda x: country_flag(str(x))))
-        extra_cols = [
-            col for col in t.columns
-            if col not in {"Flag", "Country", "Regulator", "Category", "Regulation_Title"}
-        ]
-        t = (
-            t[["Flag", "Country", "Regulator"] + extra_cols]
-            .sort_values("Country")
-            .dropna(axis=1, how="all")
-        )
-
-        st.caption("Select one or more rows to open country detail panels below.")
-        table_height = min(700, max(300, 40 + len(t) * 28))
-        event = st.dataframe(
-            t,
-            use_container_width=True,
-            hide_index=True,
-            height=table_height,
-            on_select="rerun",
-            selection_mode="multi-row",
-        )
-
-        selected_indices = get_selected_row_indices(event)
-        if selected_indices:
-            st.session_state["table_selected_countries"] = [
-                t.iloc[i]["Country"] for i in selected_indices
+        known_meta_b = set(
+            META_COL_CANDIDATES["country"]
+            + META_COL_CANDIDATES["regulator"]
+            + META_COL_CANDIDATES["year"]
+            + META_COL_CANDIDATES["source"]
+            + META_COL_CANDIDATES["title"]
+            + [
+                "Category", "Country_std", "Regulator_std", "Year_raw", "Year",
+                "Year_sort", "Regulation_Title", "Source_URL", "Source_EN",
+                "Amendment_Of", "Entry_ID", "HasData",
             ]
+        )
+        detail_cols_b = [c for c in d.columns if c not in known_meta_b]
 
-    selected_table_countries: List[str] = st.session_state.get(
-        "table_selected_countries", []
-    )
-    if selected_table_countries:
-        if len(selected_table_countries) == 1:
-            show_country_modal(selected_table_countries[0], key_suffix="table_0")
+        country_options = sorted(
+            c for c in d["Country_std"].dropna().unique() if str(c).strip()
+        )
+        b_sel = st.multiselect(
+            "Select a country to view",
+            options=country_options,
+            placeholder="Choose one or more countries…",
+            key="table_b_country_sel",
+            on_change=_clear_editor_table_keys,
+        )
+
+        if not b_sel:
+            st.caption("Select a country above to view its key provisions.")
         else:
-            show_country_comparison(selected_table_countries, key_suffix="table_cmp")
-        st.session_state["table_selected_countries"] = []
+            # Header line — flags + names
+            header = "  ·  ".join(f"{country_flag(c)} {c}" for c in b_sel)
+            st.markdown(f"## {header}")
+
+            # Build one row per provision field, one column per country
+            col_headers = ["Field"] + [f"{country_flag(c)} {c}" for c in b_sel]
+            rows = []
+            for col in detail_cols_b:
+                if col not in d.columns:
+                    continue
+                row: dict = {"Field": col}
+                has_any = False
+                for country in b_sel:
+                    dc = d[d["Country_std"] == country]
+                    vals = (
+                        dc[col].dropna().astype(str).str.strip()
+                        .pipe(lambda s: s[~s.str.lower().isin({"nan", "none", ""})])
+                        .unique().tolist()
+                    )
+                    cell = "\n".join(sorted(vals))
+                    row[f"{country_flag(country)} {country}"] = cell
+                    if cell:
+                        has_any = True
+                if has_any:
+                    rows.append(row)
+
+            if rows:
+                _render_provision_table(rows, col_headers)
+            else:
+                st.caption("No provisions data available for the selected countries and category.")
+
 
 
 # =========================
@@ -1168,37 +1560,69 @@ if IS_AUTHENTICATED:
                 ["Year", "Regulation_Title"], ascending=[False, True]
             )
 
+            category_choices = sorted(df_all["Category"].dropna().unique().tolist())
+
+            regulator_name = (
+                country_rows["Regulator_std"].dropna().astype(str).str.strip()
+                .loc[lambda s: s != ""].iloc[0]
+                if not country_rows["Regulator_std"].dropna().empty
+                else "current records"
+            )
             st.markdown(
-                f"#### {country_flag(editor_country or '')} **{editor_country}** — current records"
+                f"#### {country_flag(editor_country or '')} **{editor_country}** — {regulator_name}"
             )
 
             preview_cols = [
-                "Category", "Regulator_std",
                 "Year", "Regulation_Title", "Source_URL",
             ]
             preview_cols = [c for c in preview_cols if c in country_rows.columns]
             if not country_rows.empty:
-                preview_df = country_rows[preview_cols].rename(columns={
-                    "Regulator_std": "Regulator",
-                    "Regulation_Title": "Title",
-                    "Source_URL": "Source URL",
-                }).copy()
-                # Normalise URLs so LinkColumn gets clean values or None
-                if "Source URL" in preview_df.columns:
-                    preview_df["Source URL"] = preview_df["Source URL"].apply(
-                        lambda u: safe_linkify(u) or None
+                st.caption("Click a row to edit or archive that record.")
+                selected_entry_id = None
+                for cat in sorted(country_rows["Category"].dropna().unique().tolist()):
+                    cat_rows = country_rows[country_rows["Category"] == cat].copy()
+                    cat_preview = cat_rows[preview_cols].rename(columns={
+                        "Regulation_Title": "Title",
+                        "Source_URL": "Source URL",
+                    }).copy()
+                    if "Source URL" in cat_preview.columns:
+                        cat_preview["Source URL"] = cat_preview["Source URL"].apply(
+                            lambda u: safe_linkify(u) or None
+                        )
+                    st.markdown(f"**{cat}**")
+                    cat_key = re.sub(r"[^a-zA-Z0-9]", "_", cat)
+                    cat_event = st.dataframe(
+                        cat_preview,
+                        use_container_width=True,
+                        hide_index=True,
+                        height=min(300, max(80, 40 + len(cat_rows) * 35)),
+                        key=f"editor_table_{cat_key}",
+                        on_select="rerun",
+                        selection_mode="single-row",
+                        column_config={
+                            "Source URL": st.column_config.LinkColumn(
+                                "Source URL",
+                                display_text="Open",
+                            ),
+                        },
                     )
-                st.dataframe(
-                    preview_df,
-                    use_container_width=True,
-                    height=min(400, max(220, 60 + len(country_rows) * 30)),
-                    column_config={
-                        "Source URL": st.column_config.LinkColumn(
-                            "Source URL",
-                            display_text="Open",
-                        ),
-                    },
-                )
+                    indices = get_selected_row_indices(cat_event)
+                    if indices and selected_entry_id is None:
+                        selected_entry_id = cat_rows.iloc[indices[0]]["Entry_ID"]
+
+                if selected_entry_id:
+                    existing_row = country_rows[
+                        country_rows["Entry_ID"] == selected_entry_id
+                    ].iloc[0]
+                    edit_regulation_dialog(
+                        existing_row=existing_row,
+                        category_choices=category_choices,
+                        df_all=df_all,
+                        src_dir=resolved_data_dir,
+                        editor_country=editor_country,
+                        auth_user=str(_auth_user),
+                    )
+
             else:
                 st.info(
                     "No records exist yet for this country. "
@@ -1207,13 +1631,50 @@ if IS_AUTHENTICATED:
 
             st.markdown("---")
             st.markdown("### Add a new regulation")
-            category_choices = sorted(df_all["Category"].dropna().unique().tolist())
+            existing_regulators = sorted(
+                set(country_rows["Regulator_std"].dropna().astype(str).str.strip().tolist())
+            )
+            prefilled_regulator = "; ".join(existing_regulators)
+
+            new_category = st.selectbox(
+                "Category", options=category_choices, key="add_form_category"
+            )
+            add_provision_cols = get_provision_cols(df_all, new_category)
+
+            # Amendment dropdown outside the form so it rerenders when category changes
+            _add_amend_mask = (df_all["Category"] == new_category) & df_all["Regulation_Title"].notna()
+            if editor_country and editor_country != "NA":
+                _add_amend_mask &= df_all["Country_std"] == editor_country
+            _add_amend_cand = df_all[_add_amend_mask].sort_values(
+                ["Year", "Regulation_Title"], ascending=[False, True]
+            )
+            _ADD_BLANK = "— (not an amendment)"
+            add_amend_opts = [_ADD_BLANK] + [
+                f"{r['Regulation_Title']} ({int(r['Year']) if pd.notna(r['Year']) else '?'})"
+                for _, r in _add_amend_cand.iterrows()
+            ]
+            new_amendment_of_sel = st.selectbox(
+                "Amends (leave blank if original)",
+                options=add_amend_opts,
+                key="add_form_amend",
+            )
+            new_amendment_of = "" if new_amendment_of_sel == _ADD_BLANK else new_amendment_of_sel
+
             with st.form("add_regulation_form"):
-                new_category = st.selectbox("Category", options=category_choices, index=0)
-                new_regulator = st.text_input("Regulator", value="")
+                new_regulator = st.text_input(
+                    "Regulator", value=prefilled_regulator, disabled=True
+                )
                 new_year_raw = st.text_input("Year", value="")
                 new_title = st.text_area("Regulation title", value="", height=120)
                 new_source_url = st.text_input("Source URL", value="")
+                new_source_en  = st.text_input("Source URL (English)", value="")
+                add_provision_values: dict[str, str] = {}
+                if add_provision_cols:
+                    st.markdown("**Key provisions**")
+                    for col in add_provision_cols:
+                        add_provision_values[col] = st.text_area(
+                            col, value="", height=68, key=f"add_prov_{col}"
+                        )
                 add_submitted = st.form_submit_button("Add regulation")
 
             if add_submitted:
@@ -1229,11 +1690,15 @@ if IS_AUTHENTICATED:
                     new_row["Year"] = extract_year(new_year_raw)
                     new_row["Regulation_Title"] = new_title.strip()
                     new_row["Source_URL"] = new_source_url.strip() or pd.NA
+                    new_row["Source_EN"]  = new_source_en.strip() or pd.NA
+                    new_row["Amendment_Of"] = new_amendment_of.strip() or pd.NA
+                    for col, val in add_provision_values.items():
+                        new_row[col] = val.strip() or pd.NA
 
                     updated_df = pd.concat(
                         [df_all, pd.DataFrame([new_row])], ignore_index=True, sort=False
                     )
-                    save_cbregs(updated_df, resolved_data_path)
+                    save_cbregs(updated_df, resolved_data_dir)
                     append_audit_log(
                         action="add",
                         country=editor_country,
@@ -1243,118 +1708,6 @@ if IS_AUTHENTICATED:
                         new_record=serialize_record_for_archive(pd.Series(new_row)),
                     )
                     st.success("New regulation added and archived successfully.")
-                    safe_rerun()
-
-            st.markdown("---")
-            st.markdown("### Edit or archive an existing regulation")
-
-            entry_options = ["(Select an existing entry)"]
-            for _, row in country_rows.iterrows():
-                title_excerpt = str(row.get("Regulation_Title", "")).strip()[:80]
-                entry_options.append(f"{row['Entry_ID']} | {title_excerpt}")
-
-            selected_entry_label = st.selectbox(
-                "Select a record to edit", options=entry_options
-            )
-            selected_entry_id = None
-            if selected_entry_label and selected_entry_label != "(Select an existing entry)":
-                selected_entry_id = selected_entry_label.split(" | ", 1)[0]
-
-            if selected_entry_id:
-                existing_row = country_rows[
-                    country_rows["Entry_ID"] == selected_entry_id
-                ].iloc[0]
-                existing_category = (
-                    existing_row["Category"]
-                    if pd.notna(existing_row["Category"])
-                    else category_choices[0]
-                )
-                with st.form("edit_regulation_form"):
-                    edit_category = st.selectbox(
-                        "Category",
-                        options=category_choices,
-                        index=category_choices.index(existing_category)
-                        if existing_category in category_choices
-                        else 0,
-                    )
-                    edit_regulator = st.text_input(
-                        "Regulator",
-                        value=(
-                            ""
-                            if pd.isna(existing_row.get("Regulator_std"))
-                            else str(existing_row.get("Regulator_std"))
-                        ),
-                    )
-                    edit_year_raw = st.text_input(
-                        "Year",
-                        value=(
-                            ""
-                            if pd.isna(existing_row.get("Year_raw"))
-                            else str(existing_row.get("Year_raw"))
-                        ),
-                    )
-                    edit_title = st.text_area(
-                        "Regulation title",
-                        value=(
-                            ""
-                            if pd.isna(existing_row.get("Regulation_Title"))
-                            else str(existing_row.get("Regulation_Title"))
-                        ),
-                        height=120,
-                    )
-                    edit_source_url = st.text_input(
-                        "Source URL",
-                        value=(
-                            ""
-                            if pd.isna(existing_row.get("Source_URL"))
-                            else str(existing_row.get("Source_URL"))
-                        ),
-                    )
-                    save_submitted = st.form_submit_button("Save updates")
-
-                if save_submitted:
-                    updated_df = df_all.copy()
-                    row_index = updated_df.index[
-                        updated_df["Entry_ID"] == selected_entry_id
-                    ][0]
-                    old_record = serialize_record_for_archive(updated_df.loc[row_index])
-
-                    updated_df.at[row_index, "Category"] = edit_category
-                    updated_df.at[row_index, "Regulator_std"] = edit_regulator.strip() or pd.NA
-                    updated_df.at[row_index, "Year_raw"] = edit_year_raw.strip() or pd.NA
-                    updated_df.at[row_index, "Year"] = extract_year(edit_year_raw)
-                    updated_df.at[row_index, "Regulation_Title"] = edit_title.strip()
-                    updated_df.at[row_index, "Source_URL"] = edit_source_url.strip() or pd.NA
-
-                    save_cbregs(updated_df, resolved_data_path)
-                    append_audit_log(
-                        action="edit",
-                        country=editor_country,
-                        entry_id=selected_entry_id,
-                        user=str(_auth_user),
-                        old_record=old_record,
-                        new_record=serialize_record_for_archive(updated_df.loc[row_index]),
-                    )
-                    st.success("Regulation updated and archived successfully.")
-                    safe_rerun()
-
-                if st.button("Archive and delete this record"):
-                    updated_df = df_all.copy()
-                    row_index = updated_df.index[
-                        updated_df["Entry_ID"] == selected_entry_id
-                    ][0]
-                    old_record = serialize_record_for_archive(updated_df.loc[row_index])
-                    updated_df = updated_df.drop(index=row_index).reset_index(drop=True)
-                    save_cbregs(updated_df, resolved_data_path)
-                    append_audit_log(
-                        action="delete",
-                        country=editor_country,
-                        entry_id=selected_entry_id,
-                        user=str(_auth_user),
-                        old_record=old_record,
-                        new_record=None,
-                    )
-                    st.success("Regulation archived and deleted successfully.")
                     safe_rerun()
 
             st.markdown("---")

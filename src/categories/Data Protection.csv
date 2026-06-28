@@ -1,0 +1,936 @@
+Country,Regulator,Issuance,Year,Information asset classification,Data ownership and accountability rules,Data security and confidentiality standards,Consent management standards,Data retention and archiving requirements,Data sharing and interoperability standards,Cross-border data transfer conditions,Data quality and integrity standards,Encryption/cryptography prescriptions,Incident/breach notification timelines,Third-party/outsourcing governance,Data localization rules,"Data Standards (e.g., ISO 20022)",Source_Original,Source_EN,Amendment_Of
+Brunei Darussalam,Authority for Info-communications Technology Industry (AITI),Personal Data Protection Order (PDPO),2025.0,"No explicit taxonomy for information asset classification but the regulation covers the following:
+- personal data: whether true or not, about an individual who can be identified from that data; or from that data and other information to which the organisation has or is likely to have access;
+- anonymised data","
+-An organisation is responsible for personal data in its possession or under its control.
+
+- An organisation shall appoint Data Protection Officer (“DPO”) to oversee compliances with PDPO. An organisation must make available to the public the business contact information of at least one of the individuals designated under the above requirements.
+
+- An organisation to implement PDP policies and communicate them to all staff.",Organisations shall reasonably secure and protect all personal data in their possession or under their control from unauthorised access and processing; and the loss of any storage device containing the personal data.,"Obtaining individual's consent prior to processing of personal data, unless authorised by law or an exception under the new legislation applies. Consent is validly obtained and expressly given or deemed to have been given.
+
+*Standards for valid consent
+- provided with the information required
+- provided his consent for that purpose
+- given in written or other form so as to be accessible for subsequent reference.  (for telephone number)
+
+*Standards for deemed consent
+- voluntarily provides the personal data to the organisation for that purpose
+-reasonable that the individual would voluntarily provide the data.
+
+*Standards for deemed consent by notification
+- the individual does not notify the organisation, before the expiry of the period mentioned in subsection (3)(b}(iii), that the individual does not consent to the proposed collection, use or disclosure of the personal data by the organisation.","Organisations to stop retaining personal data information, as soon as it is assume that the personal data no longer serves the purpose for which it was collected, or any other legal or business purpose.​","Individuals must be notified of the purposes for which their data will be collected, used, or disclosed.",Organisations shall not transfer personal data to a country or territory outside Brunei Darussalam unless there is a similar or better data protection law available. An alternative is to have contracts with specific instruction on data protection across borders.,"An organisation shall make a reasonable  effort that personal data collected by or on behalf  of the organisation is accurate and complete if the
+personal data -
+(a)is likely to be used by the organisation to make a decision that affects the individual to whom the personal data relates; or
+(b)is likely to be disclosed by the organisation to another organisation.",No explicit provision,"Organisation shall conduct, in a reasonable and expeditious manner, an assessment of whether a data breach is a notifiable data breach.
+
+*Notifiable data breaches
+-results in, or is likely to result in, significant harm to an affected individual (if the data breach is in relation to any prescribed personal data or class of personal data relating to the individual; or in other prescribed circumstances
+-is likely to be of a significant scale (if the data breach affects not fewer than the prescribed number of
+affected individuals; or in other prescribed circumstances)
+
+-When an organization becomes aware of a data breach, it must conduct an assessment in a reasonable and expeditious to determine whether the breach is notifiable
+- If a data processor suspects a data breach involving personal data it processes for another organization, it must promptly inform that organization, which is then responsible for assessing whether the breach is notifiable.
+- Once the organization completes the assessment and concludes that the breach is notifiable, it must notify the Authority (AITI) as soon as practicable, and in any case no later than 3 calendar days after the assessment is completed.
+-the organisation shall also notify each affected individual affected by a notifiable data breach ","An organisation has the same obligation under this PDPO in respect of personal data processed on its behalf.
+
+The organisation remains fully responsible for complying with the PDPO for personal data it outsources to a data processor. Legally, it is treated as if the organisation itself carried out the processing.",No explicit provision,No explicit provision,https://www.agc.gov.bn/AGC%20Images/LAWS/Gazette_PDF/2025/EN/S%201_2025%20[E].pdf,https://www.agc.gov.bn/AGC%20Images/LAWS/Gazette_PDF/2025/EN/S%201_2025%20[E].pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Guidelines on Technology Risk Management(TRS/G-2/2022/1),2022.0,"Classification is determined by FIs through the data asset management framework with the following metrics:
+- risk
+- security classification
+- criticality
+
+The regulation covers the following:
+- personal data: whether true or not, about an individual who can be identified from that data; or from that data and other information to which the FI has or is likely to have access
+-sensitive data","-Data Ownership is established through data assset management framework by the financial institutions
+
+-Accountability:
+* Board & Senior Management- on important IT decision and operations in the FIs.
+* Chief Information Officer - responsible to lead the IT management of the organization
+* Chief Information Security Officer- responsible for management of information security and cybersecurity
+* Business Units / System Owners — responsible for maintaining security controls, participate in risk reporting, and enforce segregation of duties
+*End‑users and privileged users — users given access… should be held responsible and accountable for their own account","- FIs should develop a comprehensive data loss prevention strategy to address data breach, theft, and leakage covering the following:
+– Data at endpoints
+– Data in motion (transmitted across networks)
+– Data at rest (servers, databases, storage)
+– Cloud data","- FIs must clearly indicate the purpose of data collection and obtain suitable consent from the customer.
+- If there are changes to this policy affecting data protection, the FI must inform customers, and request renewed consent, as required
+-For changes that require additional consent, the negative consent method must NOT be used.
+The FI must follow up with customers to obtain affirmative consent.
+- FIs must not obtain consent through force or unsolicited means.Instead, they may explain consequences of not providing consent. 
+- FIs must provide clear disclaimers if their systems automatically collect data
+- FIs must review the purpose of personal data usage and ensure it remains consistent with the consented purpose, especially after system or process changes.","- FIs must retain logs for a period required by applicable legislation or regulation relating to log, record, or data retention.
+- Logs must be retained and adequately protected to support potential investigations, including statutory document retention requirements.
+-FIs must determine how long audit trail data will be maintained, aligned with the criticality of the systems, whether stored in-system or archived.
+=
+- FIs must archive logs using built‑in or third‑party archiving tools, and back them up to another storage medium.
+-Central log collection servers are recommended to centralize logs for easier monitoring and retention.
+-FIs must retain customer personal data in accordance with statutory or regulatory requirements for document retention, record keeping, and information protection.
+-Where retention is mandated by law, these requirements must be communicated to customers.","-For Open APIs, data sharing must be limited to public information, read‑only, or one‑way processing
+- Financial institutions should plan how to address compatibility and interoperability issues prior to integration, and ensure data and controls in the system are streamlined. this includes but not limited to the following:
+- assess data structure and capacity of both systems
+- assess potential changes to metadata where applicable
+- optimize and test communication between the two systems or components
+- ensure both systems are updated and security patches are installed
+- review user access matrix for the new components and data, review security configuration of the new components
+- prepare a testing plan that covers both systems, the components, and integration tool,
+-prepare maintenance plans that covers the integrated systems of components of whole system","Notification to  customers if storing personal data on a cloud platform or third party, including another country. Access to customer personal data should be restricted","-FIs should ensure their customer personal data are accurate, current and complete. The FIs should establish relevant process to request or allow customers to review and update their personal data.
+-FIs should implement measures that ensure the confidentiality as well as integrity of audit trail data, such as the use of encryption, digital signatures and strong access controls.
+-All logs should be protected from alteration or unauthorised removal. Access to the logs should be limited only to the designated administrator.
+-FIs must classify data and assign ownership to support proper handling and integrity.","Encryption should cover the following:
+- Sensitive data on servers, databases, endpoints, and storage media must be protected using strong encryption and access control.
+- Communication or transfer of sensitive information must use:
+*Encrypted channels (e.g., SSL, TLS),or (Encryption applied before transmission).
+- Backup tapes/media  before off‑site transport.
+- Digital services such as cards, e-wallets-biometric
+- Audit trails
+- Remote access
+-Personal data sent online
+-NFC
+
+Cryptography
+-Use well-established algorithms (e.g., RSA, AES) endorsed by international bodies.
+-Define appropriate key length, ensure algorithms are rigorously tested, and ensure secure key generation, transmission, protection, and rotation.
+-Keys must be sent through separate secure channels, and distribution media must be destroyed after use.","Within 1 hour after suspected incident has been discovered
+Within 2 hours from the discovery to confirm suspected incident is a near-miss or major IT incident","- If the Fls have to assign a third party to process customer personal data, the Fls should inform the customer on this arrangement and to limit access to personal data such as by using pseudonymisation or encryption.
+-Fls has independent or direct access to relevant audit trails.
+-The integrated third‑party system should not be able to access or extract data directly from the Fls’ main system, unless restricted on request and minimal basis
+- FIs must evaluate third‑party data collection, storage, and protection.
+-Ensure data for the API are separated from the main database.
+-Data given from the API should be stored temporarily on a need basis only; cleared when session ends/idle.
+-If the customer personal data has to be stored on a cloud platform or other third party, such arrangement including country where the customer's personal data is stored should be informed to the customer. Access to customer personal data must be restricted  ",No explicit provision,"No explicit provision. However, the FI is required to observe new and existing laws and regulation in relation to personal data protection",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192888872080.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192888872080.pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Guidelines on IT Third Party Risk Management (TRS/G-3/2022/2),2022.0,"Classification is determined by FIs through the data asset management framework with the following metrics:
+- risk
+- security classification
+- criticality
+
+The regulation covers the following:
+- personal data: whether true or not, about an individual who can be identified from that data; or from that data and other information to which the FI has or is likely to have access
+-sensitive data","-Data Ownership is established through data assset management framework by the financial institutions
+
+-Accountability:
+* Board & Senior Management- on important IT decision and operations in the FIs.
+* Chief Information Officer - responsible to lead the IT management of the organization
+* Chief Information Security Officer- responsible for management of information security and cybersecurity
+* Business Units / System Owners — responsible for maintaining security controls, participate in risk reporting, and enforce segregation of duties
+*End‑users and privileged users — users given access… should be held responsible and accountable for their own account","- FIs should develop a comprehensive data loss prevention strategy to address data breach, theft, and leakage covering the following:
+– Data at endpoints
+– Data in motion (transmitted across networks)
+– Data at rest (servers, databases, storage)
+– Cloud data","- FIs must clearly indicate the purpose of data collection and obtain suitable consent from the customer.
+- If there are changes to this policy affecting data protection, the FI must inform customers, and request renewed consent, as required
+-For changes that require additional consent, the negative consent method must NOT be used.
+The FI must follow up with customers to obtain affirmative consent.
+- FIs must not obtain consent through force or unsolicited means.Instead, they may explain consequences of not providing consent. 
+- FIs must provide clear disclaimers if their systems automatically collect data
+- FIs must review the purpose of personal data usage and ensure it remains consistent with the consented purpose, especially after system or process changes.","- FIs must retain logs for a period required by applicable legislation or regulation relating to log, record, or data retention.
+- Logs must be retained and adequately protected to support potential investigations, including statutory document retention requirements.
+-FIs must determine how long audit trail data will be maintained, aligned with the criticality of the systems, whether stored in-system or archived.
+=
+- FIs must archive logs using built‑in or third‑party archiving tools, and back them up to another storage medium.
+-Central log collection servers are recommended to centralize logs for easier monitoring and retention.
+-FIs must retain customer personal data in accordance with statutory or regulatory requirements for document retention, record keeping, and information protection.
+-Where retention is mandated by law, these requirements must be communicated to customers.","-For Open APIs, data sharing must be limited to public information, read‑only, or one‑way processing
+- Financial institutions should plan how to address compatibility and interoperability issues prior to integration, and ensure data and controls in the system are streamlined. this includes but not limited to the following:
+- assess data structure and capacity of both systems
+- assess potential changes to metadata where applicable
+- optimize and test communication between the two systems or components
+- ensure both systems are updated and security patches are installed
+- review user access matrix for the new components and data, review security configuration of the new components
+- prepare a testing plan that covers both systems, the components, and integration tool,
+-prepare maintenance plans that covers the integrated systems of components of whole system","Notification to  customers if storing personal data on a cloud platform or third party, including another country. Access to customer personal data should be restricted","-FIs should ensure their customer personal data are accurate, current and complete. The FIs should establish relevant process to request or allow customers to review and update their personal data.
+-FIs should implement measures that ensure the confidentiality as well as integrity of audit trail data, such as the use of encryption, digital signatures and strong access controls.
+-All logs should be protected from alteration or unauthorised removal. Access to the logs should be limited only to the designated administrator.
+-FIs must classify data and assign ownership to support proper handling and integrity.","Encryption should cover the following:
+- Sensitive data on servers, databases, endpoints, and storage media must be protected using strong encryption and access control.
+- Communication or transfer of sensitive information must use:
+*Encrypted channels (e.g., SSL, TLS),or (Encryption applied before transmission).
+- Backup tapes/media  before off‑site transport.
+- Digital services such as cards, e-wallets-biometric
+- Audit trails
+- Remote access
+-Personal data sent online
+-NFC
+
+Cryptography
+-Use well-established algorithms (e.g., RSA, AES) endorsed by international bodies.
+-Define appropriate key length, ensure algorithms are rigorously tested, and ensure secure key generation, transmission, protection, and rotation.
+-Keys must be sent through separate secure channels, and distribution media must be destroyed after use.","Within 1 hour after suspected incident has been discovered
+Within 2 hours from the discovery to confirm suspected incident is a near-miss or major IT incident","- If the Fls have to assign a third party to process customer personal data, the Fls should inform the customer on this arrangement and to limit access to personal data such as by using pseudonymisation or encryption.
+-Fls has independent or direct access to relevant audit trails.
+-The integrated third‑party system should not be able to access or extract data directly from the Fls’ main system, unless restricted on request and minimal basis
+- FIs must evaluate third‑party data collection, storage, and protection.
+-Ensure data for the API are separated from the main database.
+-Data given from the API should be stored temporarily on a need basis only; cleared when session ends/idle.
+-If the customer personal data has to be stored on a cloud platform or other third party, such arrangement including country where the customer's personal data is stored should be informed to the customer. Access to customer personal data must be restricted  ",No explicit provision,"No explicit provision. However, the FI is required to observe new and existing laws and regulation in relation to personal data protection",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17175008245725090.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17175008245725090.pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Notice on Early Detection of Cyber Intrusion and Incident Reporting (FTU/N-1/2017/1),2023.0,"Classification is determined by FIs through the data asset management framework with the following metrics:
+- risk
+- security classification
+- criticality
+
+The regulation covers the following:
+- personal data: whether true or not, about an individual who can be identified from that data; or from that data and other information to which the FI has or is likely to have access
+-sensitive data","-Data Ownership is established through data assset management framework by the financial institutions
+
+-Accountability:
+* Board & Senior Management- on important IT decision and operations in the FIs.
+* Chief Information Officer - responsible to lead the IT management of the organization
+* Chief Information Security Officer- responsible for management of information security and cybersecurity
+* Business Units / System Owners — responsible for maintaining security controls, participate in risk reporting, and enforce segregation of duties
+*End‑users and privileged users — users given access… should be held responsible and accountable for their own account","- FIs should develop a comprehensive data loss prevention strategy to address data breach, theft, and leakage covering the following:
+– Data at endpoints
+– Data in motion (transmitted across networks)
+– Data at rest (servers, databases, storage)
+– Cloud data","- FIs must clearly indicate the purpose of data collection and obtain suitable consent from the customer.
+- If there are changes to this policy affecting data protection, the FI must inform customers, and request renewed consent, as required
+-For changes that require additional consent, the negative consent method must NOT be used.
+The FI must follow up with customers to obtain affirmative consent.
+- FIs must not obtain consent through force or unsolicited means.Instead, they may explain consequences of not providing consent. 
+- FIs must provide clear disclaimers if their systems automatically collect data
+- FIs must review the purpose of personal data usage and ensure it remains consistent with the consented purpose, especially after system or process changes.","- FIs must retain logs for a period required by applicable legislation or regulation relating to log, record, or data retention.
+- Logs must be retained and adequately protected to support potential investigations, including statutory document retention requirements.
+-FIs must determine how long audit trail data will be maintained, aligned with the criticality of the systems, whether stored in-system or archived.
+=
+- FIs must archive logs using built‑in or third‑party archiving tools, and back them up to another storage medium.
+-Central log collection servers are recommended to centralize logs for easier monitoring and retention.
+-FIs must retain customer personal data in accordance with statutory or regulatory requirements for document retention, record keeping, and information protection.
+-Where retention is mandated by law, these requirements must be communicated to customers.","-For Open APIs, data sharing must be limited to public information, read‑only, or one‑way processing
+- Financial institutions should plan how to address compatibility and interoperability issues prior to integration, and ensure data and controls in the system are streamlined. this includes but not limited to the following:
+- assess data structure and capacity of both systems
+- assess potential changes to metadata where applicable
+- optimize and test communication between the two systems or components
+- ensure both systems are updated and security patches are installed
+- review user access matrix for the new components and data, review security configuration of the new components
+- prepare a testing plan that covers both systems, the components, and integration tool,
+-prepare maintenance plans that covers the integrated systems of components of whole system","Notification to  customers if storing personal data on a cloud platform or third party, including another country. Access to customer personal data should be restricted","-FIs should ensure their customer personal data are accurate, current and complete. The FIs should establish relevant process to request or allow customers to review and update their personal data.
+-FIs should implement measures that ensure the confidentiality as well as integrity of audit trail data, such as the use of encryption, digital signatures and strong access controls.
+-All logs should be protected from alteration or unauthorised removal. Access to the logs should be limited only to the designated administrator.
+-FIs must classify data and assign ownership to support proper handling and integrity.","Encryption should cover the following:
+- Sensitive data on servers, databases, endpoints, and storage media must be protected using strong encryption and access control.
+- Communication or transfer of sensitive information must use:
+*Encrypted channels (e.g., SSL, TLS),or (Encryption applied before transmission).
+- Backup tapes/media  before off‑site transport.
+- Digital services such as cards, e-wallets-biometric
+- Audit trails
+- Remote access
+-Personal data sent online
+-NFC
+
+Cryptography
+-Use well-established algorithms (e.g., RSA, AES) endorsed by international bodies.
+-Define appropriate key length, ensure algorithms are rigorously tested, and ensure secure key generation, transmission, protection, and rotation.
+-Keys must be sent through separate secure channels, and distribution media must be destroyed after use.","Within 1 hour after suspected incident has been discovered
+Within 2 hours from the discovery to confirm suspected incident is a near-miss or major IT incident","- If the Fls have to assign a third party to process customer personal data, the Fls should inform the customer on this arrangement and to limit access to personal data such as by using pseudonymisation or encryption.
+-Fls has independent or direct access to relevant audit trails.
+-The integrated third‑party system should not be able to access or extract data directly from the Fls’ main system, unless restricted on request and minimal basis
+- FIs must evaluate third‑party data collection, storage, and protection.
+-Ensure data for the API are separated from the main database.
+-Data given from the API should be stored temporarily on a need basis only; cleared when session ends/idle.
+-If the customer personal data has to be stored on a cloud platform or other third party, such arrangement including country where the customer's personal data is stored should be informed to the customer. Access to customer personal data must be restricted  ",No explicit provision,"No explicit provision. However, the FI is required to observe new and existing laws and regulation in relation to personal data protection",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192628458350.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192628458350.pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Notice on Technology Risk Management (TRS/N-1/2023/2),2024.0,"Classification is determined by FIs through the data asset management framework with the following metrics:
+- risk
+- security classification
+- criticality
+
+The regulation covers the following:
+- personal data: whether true or not, about an individual who can be identified from that data; or from that data and other information to which the FI has or is likely to have access
+-sensitive data","-Data Ownership is established through data assset management framework by the financial institutions
+
+-Accountability:
+* Board & Senior Management- on important IT decision and operations in the FIs.
+* Chief Information Officer - responsible to lead the IT management of the organization
+* Chief Information Security Officer- responsible for management of information security and cybersecurity
+* Business Units / System Owners — responsible for maintaining security controls, participate in risk reporting, and enforce segregation of duties
+*End‑users and privileged users — users given access… should be held responsible and accountable for their own account","- FIs should develop a comprehensive data loss prevention strategy to address data breach, theft, and leakage covering the following:
+– Data at endpoints
+– Data in motion (transmitted across networks)
+– Data at rest (servers, databases, storage)
+– Cloud data","- FIs must clearly indicate the purpose of data collection and obtain suitable consent from the customer.
+- If there are changes to this policy affecting data protection, the FI must inform customers, and request renewed consent, as required
+-For changes that require additional consent, the negative consent method must NOT be used.
+The FI must follow up with customers to obtain affirmative consent.
+- FIs must not obtain consent through force or unsolicited means.Instead, they may explain consequences of not providing consent. 
+- FIs must provide clear disclaimers if their systems automatically collect data
+- FIs must review the purpose of personal data usage and ensure it remains consistent with the consented purpose, especially after system or process changes.","- FIs must retain logs for a period required by applicable legislation or regulation relating to log, record, or data retention.
+- Logs must be retained and adequately protected to support potential investigations, including statutory document retention requirements.
+-FIs must determine how long audit trail data will be maintained, aligned with the criticality of the systems, whether stored in-system or archived.
+=
+- FIs must archive logs using built‑in or third‑party archiving tools, and back them up to another storage medium.
+-Central log collection servers are recommended to centralize logs for easier monitoring and retention.
+-FIs must retain customer personal data in accordance with statutory or regulatory requirements for document retention, record keeping, and information protection.
+-Where retention is mandated by law, these requirements must be communicated to customers.","-For Open APIs, data sharing must be limited to public information, read‑only, or one‑way processing
+- Financial institutions should plan how to address compatibility and interoperability issues prior to integration, and ensure data and controls in the system are streamlined. this includes but not limited to the following:
+- assess data structure and capacity of both systems
+- assess potential changes to metadata where applicable
+- optimize and test communication between the two systems or components
+- ensure both systems are updated and security patches are installed
+- review user access matrix for the new components and data, review security configuration of the new components
+- prepare a testing plan that covers both systems, the components, and integration tool,
+-prepare maintenance plans that covers the integrated systems of components of whole system","Notification to  customers if storing personal data on a cloud platform or third party, including another country. Access to customer personal data should be restricted","-FIs should ensure their customer personal data are accurate, current and complete. The FIs should establish relevant process to request or allow customers to review and update their personal data.
+-FIs should implement measures that ensure the confidentiality as well as integrity of audit trail data, such as the use of encryption, digital signatures and strong access controls.
+-All logs should be protected from alteration or unauthorised removal. Access to the logs should be limited only to the designated administrator.
+-FIs must classify data and assign ownership to support proper handling and integrity.","Encryption should cover the following:
+- Sensitive data on servers, databases, endpoints, and storage media must be protected using strong encryption and access control.
+- Communication or transfer of sensitive information must use:
+*Encrypted channels (e.g., SSL, TLS),or (Encryption applied before transmission).
+- Backup tapes/media  before off‑site transport.
+- Digital services such as cards, e-wallets-biometric
+- Audit trails
+- Remote access
+-Personal data sent online
+-NFC
+
+Cryptography
+-Use well-established algorithms (e.g., RSA, AES) endorsed by international bodies.
+-Define appropriate key length, ensure algorithms are rigorously tested, and ensure secure key generation, transmission, protection, and rotation.
+-Keys must be sent through separate secure channels, and distribution media must be destroyed after use.","Within 1 hour after suspected incident has been discovered
+Within 2 hours from the discovery to confirm suspected incident is a near-miss or major IT incident","- If the Fls have to assign a third party to process customer personal data, the Fls should inform the customer on this arrangement and to limit access to personal data such as by using pseudonymisation or encryption.
+-Fls has independent or direct access to relevant audit trails.
+-The integrated third‑party system should not be able to access or extract data directly from the Fls’ main system, unless restricted on request and minimal basis
+- FIs must evaluate third‑party data collection, storage, and protection.
+-Ensure data for the API are separated from the main database.
+-Data given from the API should be stored temporarily on a need basis only; cleared when session ends/idle.
+-If the customer personal data has to be stored on a cloud platform or other third party, such arrangement including country where the customer's personal data is stored should be informed to the customer. Access to customer personal data must be restricted  ",No explicit provision,"No explicit provision. However, the FI is required to observe new and existing laws and regulation in relation to personal data protection",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17138597502782500.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17138597502782500.pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Market Conduct Notice – Notice No. FCI/N2/2021/1,2021.0,No explicit provision,No explicit provision,"Banks and financial institutions must have a written privacy policy with proper controls to protect customers’ personal data, keep these policies updated, and clearly inform customers about what data is collected, how it is used, and how it is stored. Customers must be given the choice to consent or refuse, be told the implications of refusal, and institutions must limit data collection to what is necessary and retain it only as needed or legally required.",No explicit provision,"Where possible, banks and financial institutions shall limit the
+amount of personal data collected to only what is necessary for its intended
+purpose and may only be retained for the duration of its intended usage or
+where legally required to do so.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111191990032740.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111191990032740.pdf,
+Cambodia,National Bank of Cambodia (NBC),Prakas on the Management of Payment Service Providers,2017.0,No explicit provision ,"Legal entities interested to provide payment services must submit an application to NBC with the following requirements:
+- A description of the procedures for documenting, reviewing, monitoring and restricting the use of critical data
+-A description of the principles and methods for collecting data related to transactions and fraud","Legal entities interested to provide payment services must submit an application to NBC with the following requirements:
+-Security policy, which includes a detailed assessment of the risks associated with payment services, including fraud, illegal use of personal data and sensitive data, along with a description of the security controls and measures to mitigate those risks.
+
+Providers applying for a license on payment services must provide a description of the process in place to file, monitor, track and restrict access to sensitive payment data",No explicit provision ,"- payment service institution shall be entitled to store and process data after obtaining approval from the NBC
+-Payment service institution shall set up contingency plan including data recovery system",No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,"-A Payment Services Provider shall guarantee that any third party acting on their behalf
+comply with the legislation",No explicit provision ,No explicit provision ,https://www.nbc.gov.kh/download_files/legislation/prakas_kh/Prakas_NBC14_017_161_Payment-Service-Provider_Khmer.pdf,https://www.nbc.gov.kh/download_files/legislation/prakas_kh/Prakas_NBC14_017_161_Payment-Service-Provider_Khmer.pdf,
+Cambodia,National Bank of Cambodia (NBC),Prakas on Third-Party Processors,2010.0,No explicit provision ,"- Third‑party processors operate “on behalf of a Bank”
+- respective liabilities shall be duly allocated between banks and processors",No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,"-Third party/ outsourcing one or more parts of their payment transactions services through one or more third‑party processors is allowed subject to prior approval from the National Bank of Cambodia
+* a third‑party processor may act on behalf of a bank to provide:
+-Managing or operating of Bank customers’ accounts”
+-A sending and receiving point for payment orders … accessed directly by the Bank’s customers",No explicit provision ,No explicit provision ,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/595B9-010-151.pdf,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/595B9-010-151.pdf,
+Cambodia,Ministry of Commerce,Law on Electronic Commerce,2019.0,No explicit provision ,No explicit provision ,"Any person that holds personal information in electronic form shall use all means to ensure that the information is protected by such security safeguards as it is reasonable in every circumstances to avoid the loss, access, use, modification, leak or disclosure of those information, except with the permission of the owner of the information or any other party authorized by law.",No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,https://data.opendevelopmentcambodia.net/en/laws_record/law-on-e-commerce,https://data.opendevelopmentcambodia.net/en/laws_record/law-on-e-commerce,
+Indonesia,Ministry of Communication and Informatics,Personal Data Protection (PDP Law),2022.0,"Personal data is classified into the following:
+Special category Personal Data :Personal  Data which, if processed, may have a greater  impact on the Personal Data Subject,  including discriminatory treatment and  greater loss to a Personal Data Subject. This includes health data, biometric information,genetic data, criminal records,
+General category Personal Data: Includes full name, gender, citizenship, religion, marriage status, cellular telephone number, IP address","-A Personal Data Subject shall have the right to
+acquire Information on the full identity, the legal
+grounds, the purpose of the request and the use of
+Personal Data, and the accountability of the party
+requesting the Personal Data.
+- Personal Data controllers is responsible for processing personal data
+-Where Personal Data is processed by 2 (two)  or more Personal Data Controllers, there is an agreement among the Personal  Data Controllers, which defines the role,
+responsibilities, and  relationship  between the Personal Data Controllers; interrelated purposes and methods of
+processing Personal Data are jointly determined; and
+a contact person is jointly appointed.
+
+-A Personal Data Controller and a Personal  Data Processor must appoint an official or officer that protects Personal Data ","-Personal Data shall be processed by protecting the security of Personal Data against unauthorized access, unauthorized disclosure, unlawful alteration, misuse, destruction, and/or removal of the Personal Data
+-A Personal Data Controller must protect and ensure the security of Personal Data he/she processes by:
+a. preparing and taking technical and operational measures to protect Personal Data from disruption of the processing of Personal Data that is against the law and regulations
+b. determining the extent of security of Personal Data, bearing in mind the nature and risks of the Personal Data duly protected in the processing of Personal Data
+
+-A Personal Data Controller must protect Personal Data from unauthorized access.
+
+-In processing Personal Data, a Personal Data Controller must maintain its confidentiality","
+'-The basis upon which Personal Data is
+processed shall include explicit valid consent from the Personal Data Subject for 1 (one) or several specific purposes that has been delivered by the Personal Data Controller to the Personal Data Subject
+
+-Personal Data Controller must notify:
+a. the legality of the processing of Personal Data;
+b. the purpose for which the Personal Data is processed;
+c. the type and relevance of the Personal Data to be processed;
+d. the retention period of documents containing the Personal Data;
+e. the details of the Information collected;
+
+Consent to process Personal Data must be given via written or recorded consent.  Consent may be given electronically or nonelectronically. ","Processing of personal data should include retention period of documents containing personal data; a personal data controller should cease processing if retention period has lapsed.
+
+Notice of the storage, transfer, erasure, or destruction of Personal Data under must be sent to the Personal Data Subject. ","Covers regulations on:
+domestic data sharing
+international/cross-border sharing","- a Personal Data Controller must ensure that the country of domicile of the Personal Data Controller and/or the Personal Data processor who receives transferred Personal Data has a Personal Data Protection level equal to or higher than the one regulated by this Law. If the provision is not met, the Personal Data Controller must ensure that adequate and binding Personal Data Protection protocols apply.  If the provisions are still not
+met, the Personal Data Controller must obtain approval from the Personal Data Subject.","Personal Data shall be processed in a manner that is accurate,  complete,
+not  misleading, up to date, and accountable",No explicit provision,No explicit provision,No explicit provision,No explicit provision,"A Personal Data Subject shall have the right to acquire and/or use Personal Data concerning him/her from a Personal Data Controller in a structured, commonly used and/or electronic system-readable format",https://peraturan.go.id/id/uu-no-27-tahun-2022,https://www.abnrlaw.com/lib/files/IND-ENG-UU%2027-2022%20Pelindungan%20Data%20Pribadi%20%28ABNR%29.pdf,
+Indonesia,Bank Indonesia (BI),BI Regulation No. 23/6/PBI/2021 — Payment Service Providers (PJP),2021.0,"No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs, Participants, and Connected Parties are required to maintain the confidentiality and security of user data and/or information.
+The obligation to maintain the confidentiality and security of user data and/or information is stipulated in several regulations, including:
+1. Cooperation between PSPs and Participants with Supporting Service Providers
+2. The operation of payment system data infrastructure
+3. Consumer protection
+4. Risk management and information technology security standards
+Such obligations shall be carried out in accordance with the provisions of laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs and Participants, in conducting data and/or information exchange involving parties other than PSPs and/or Participants, may carry out such exchange directly and/or indirectly through the payment system data infrastructure, provided that it does not conflict with the provisions of laws and regulations, including personal data protection, as well as Bank Indonesia regulations.","PSPs and Participants, in transferring data and/or information to parties outside the territory of the Unitary State of the Republic of Indonesia, may do so provided that it does not conflict with the provisions of laws and regulations, including personal data protection, as well as Bank Indonesia regulations.
+
+In the event that such data and/or information transfer is contrary to the provisions of laws and regulations, including personal data protection, and Bank Indonesia regulations, Bank Indonesia may suspend the data and/or information transfer conducted by such PSPs and Participants.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs are required to submit ad hoc reports. One type of ad hoc report is a cyber incident report, which must be submitted no later than 3 (three) calendar days after the cyber incident occurs.
+
+In addition, PSPs must notify Bank Indonesia of any disruption events and cyber incidents no later than 1 (one) hour after such disruption or cyber incident is known to the PSP.","PSPs may enter into cooperation with Supporting Service Providers. Such cooperation must be set out in a cooperation agreement, one of the contents of which relates to security and confidentiality. Prior to entering into cooperation, PSPs are required to conduct due diligence on the Supporting Service Providers with whom they intend to cooperate. One of the aspects covered in the due diligence process is compliance with applicable laws and regulations, including those relating to personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.",https://www.bi.go.id/id/publikasi/peraturan/Documents/PBI_230621.pdf,https://www.bi.go.id/id/publikasi/peraturan/Documents/PBI_230621.pdf,
+Indonesia,Bank Indonesia (BI),BI Regulation No.10 of 2025 — The Regulation of the Payment Service Industry (PISP),2025.0,"No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs, Participants, and Connected Parties are required to maintain the confidentiality and security of user data and/or information.
+The obligation to maintain the confidentiality and security of user data and/or information is stipulated in several regulations, including:
+1. Cooperation between PSPs and Participants with Supporting Service Providers
+2. The operation of payment system data infrastructure
+3. Consumer protection
+4. Risk management and information technology security standards
+Such obligations shall be carried out in accordance with the provisions of laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs and Participants, in conducting data and/or information exchange involving parties other than PSPs and/or Participants, may carry out such exchange directly and/or indirectly through the payment system data infrastructure, provided that it does not conflict with the provisions of laws and regulations, including personal data protection, as well as Bank Indonesia regulations.","PSPs and Participants, in transferring data and/or information to parties outside the territory of the Unitary State of the Republic of Indonesia, may do so provided that it does not conflict with the provisions of laws and regulations, including personal data protection, as well as Bank Indonesia regulations.
+
+In the event that such data and/or information transfer is contrary to the provisions of laws and regulations, including personal data protection, and Bank Indonesia regulations, Bank Indonesia may suspend the data and/or information transfer conducted by such PSPs and Participants.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs are required to submit ad hoc reports. One type of ad hoc report is a cyber incident report, which must be submitted no later than 3 (three) calendar days after the cyber incident occurs.
+
+In addition, PSPs must notify Bank Indonesia of any disruption events and cyber incidents no later than 1 (one) hour after such disruption or cyber incident is known to the PSP.","PSPs may enter into cooperation with Supporting Service Providers. Such cooperation must be set out in a cooperation agreement, one of the contents of which relates to security and confidentiality. Prior to entering into cooperation, PSPs are required to conduct due diligence on the Supporting Service Providers with whom they intend to cooperate. One of the aspects covered in the due diligence process is compliance with applicable laws and regulations, including those relating to personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.",https://www.bi.go.id/id/publikasi/peraturan/Pages/PBI_102025.aspx#,https://www.bi.go.id/id/publikasi/peraturan/Pages/PBI_102025.aspx#,
+Indonesia,Bank Indonesia (BI),"Regulation of the Member of the 
+Board of Governance No. 32 of 2025 — The Regulation of the Payment Service Industry (PISP)",2025.0,"No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs, Participants, and Connected Parties are required to maintain the confidentiality and security of user data and/or information.
+The obligation to maintain the confidentiality and security of user data and/or information is stipulated in several regulations, including:
+1. Cooperation between PSPs and Participants with Supporting Service Providers
+2. The operation of payment system data infrastructure
+3. Consumer protection
+4. Risk management and information technology security standards
+Such obligations shall be carried out in accordance with the provisions of laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs and Participants, in conducting data and/or information exchange involving parties other than PSPs and/or Participants, may carry out such exchange directly and/or indirectly through the payment system data infrastructure, provided that it does not conflict with the provisions of laws and regulations, including personal data protection, as well as Bank Indonesia regulations.","PSPs and Participants, in transferring data and/or information to parties outside the territory of the Unitary State of the Republic of Indonesia, may do so provided that it does not conflict with the provisions of laws and regulations, including personal data protection, as well as Bank Indonesia regulations.
+
+In the event that such data and/or information transfer is contrary to the provisions of laws and regulations, including personal data protection, and Bank Indonesia regulations, Bank Indonesia may suspend the data and/or information transfer conducted by such PSPs and Participants.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","PSPs are required to submit ad hoc reports. One type of ad hoc report is a cyber incident report, which must be submitted no later than 3 (three) calendar days after the cyber incident occurs.
+
+In addition, PSPs must notify Bank Indonesia of any disruption events and cyber incidents no later than 1 (one) hour after such disruption or cyber incident is known to the PSP.","PSPs may enter into cooperation with Supporting Service Providers. Such cooperation must be set out in a cooperation agreement, one of the contents of which relates to security and confidentiality. Prior to entering into cooperation, PSPs are required to conduct due diligence on the Supporting Service Providers with whom they intend to cooperate. One of the aspects covered in the due diligence process is compliance with applicable laws and regulations, including those relating to personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.","No explicit provisions are stipulated, however, the matter remains subject to the applicable laws and regulations on personal data protection.",https://www.bi.go.id/id/publikasi/peraturan/Pages/PADG_322025.aspx,https://www.bi.go.id/id/publikasi/peraturan/Pages/PADG_322025.aspx,
+Indonesia,Otoritas Jasa Keuangan (OJK),POJK 22/2023,2023.0,No explicit provision,No explicit provision,PUJK must have and implement written Consumer Protection policies and procedures on protection of Consumer data and/or information,No explicit provision,PUJK must have and implement written Consumer Protection policies and procedures on  mechanisms for the use and deletion of consumer data and/or information.,No explicit provision,No explicit provision,"PUJK has the right to obtain and ensure information and/or documents concerning consumers are clear, accurate, truthful, and not misleading.",No explicit provision,No explicit provision,PUJK must ensure that third parties acting for or on behalf of PUJK comply with consumer protection provisions.,No explicit provision,No explicit provision,https://peraturan.bpk.go.id/Details/302699/peraturan-ojk-no-22-tahun-2023,https://peraturan.bpk.go.id/Details/302699/peraturan-ojk-no-22-tahun-2023,
+Indonesia,Bank Indonesia,BI Regulation No. 3/2023 – BI’s Consumer Protection (Amendment),2023.0,No explicit provision,No explicit provision,"- Providers are required to provide Consumers with access to and copies of Consumer personal data in accordance with the provisions of laws and regulations on personal data protection; Providers are required to ensure that consumers have the right to may terminate, delete, and/or destroy consumer personal data in accordance with the provisions of laws and regulations on personal data protection","-Providers are prohibited from providing Consumers’ data
+and/or information to other parties unless consumers provide written consent",No explicit provision,The consent from Consumers is required to be secured by Providers before providing Consumers’ data and/or information to other parties.,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"-If the Provider collaborates with another party to manage Consumer data and/or information, the Provider is required to ensure that the other party maintains the confidentiality and security of Consumer data and/or information.",No explicit provision,No explicit provision,https://www.bi.go.id/en/publikasi/peraturan/Documents/PBI_032023_EN.pdf,https://www.bi.go.id/en/publikasi/peraturan/Documents/PBI_032023_EN.pdf,
+Indonesia,Bank Indonesia,Board of Governors Member Regulation No. 20 of 2023 — Procedures for BI Consumer Protection Implementation (PADG 20/2023),2023.0,No explicit provision,No explicit provision,"- Providers are required to provide Consumers with access to and copies of Consumer personal data in accordance with the provisions of laws and regulations on personal data protection; Providers are required to ensure that consumers have the right to may terminate, delete, and/or destroy consumer personal data in accordance with the provisions of laws and regulations on personal data protection","-Providers are prohibited from providing Consumers’ data
+and/or information to other parties unless consumers provide written consent",No explicit provision,The consent from Consumers is required to be secured by Providers before providing Consumers’ data and/or information to other parties.,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"-If the Provider collaborates with another party to manage Consumer data and/or information, the Provider is required to ensure that the other party maintains the confidentiality and security of Consumer data and/or information.",No explicit provision,No explicit provision,https://www.bi.go.id/id/publikasi/peraturan/Pages/PADG_202023.aspx,https://www.bi.go.id/id/publikasi/peraturan/Pages/PADG_202023.aspx,
+Lao PDR,Ministry of Technology and Communications (MTC),"Electronic Data Protection Law No.25/NA, 2017",2017.0,"Types of Electronic Data:
+=General Information: is data of an individual, legal entity or organization that can be accessed, used and disclosed, but the source of the data must be correctly stated.
+=Specific/Sensitvie information is information that no individual, legal entity, or organization is allowed to access, use, or disclose without permission from the owner of the information or the relevant organization. Specific information includes government information (official information) and personal information."," - Data owner: owns electronic data;
+ - Data controller: responsible for managing electronic data, such as a ministry, an Internet data center, a telecommunications service provider, an Internet service provider, a bank; it must protect the data under its responsibility so that unauthorized persons cannot access, use, disclose, copy, modify, or delete the data.","To protect electronic data, data controllers must take the following measures:
+1. Leveling of government information security;
+2. Electronic data storage;
+3. Security of access to information;
+4. Data security encryption;
+5. Data breach response.","- The State attaches importance to electronic data protection to ensure the safe use of data and to limit the use or disclosure of data of individuals, legal entities or organizations to the public without permission.
+- A person, legal entity or organization that wants to collect data must inform the data owner of the purpose, details of the data to be collected, who will manage it and the rights of the data owner.","-The data controller may retain electronic data for the period necessary for the purpose of collection and other purposes. Thereafter, personal data may be deleted or access blocked, unless otherwise provided by law.
+-The data controller shall delete the electronic data it has collected at the request of the data subject or upon the termination of the purpose of use, the expiry of the collection period",prohibition on Sending or transferring electronic information without authorization from the owner of the information;,"A person, legal entity or organization may not send or transfer personal data and official data outside the Lao PDR without the consent of the data owner or if it is contrary to the law.","Data owners and data managers must check and ensure the accuracy and integrity of data to ensure that the content of electronic data does not conflict with laws and regulations and does not affect socio-economic development, national security, peace and order in society","When sending or transferring important electronic data, such as financial, banking, investment, and accounting data through a computer system, the data controller must encrypt the data and use an electronic certificate approved by the Ministry of Posts, Telecommunications, and Communications to prevent unauthorized persons from accessing, reading, destroying, using, disclosing, sending, transferring, modifying, deleting, altering, and doing other things that cause damage.","To respond to a data breach, take the following actions:
+
+1. The data controller shall use prevention and remediation methods when notified by an individual, legal entity or organization about the transmission of information that may cause or create unrest in society;
+
+2. The data controller shall coordinate with relevant sectors to collect information and evidence about the intrusion, such as the date, time, location, form and volume of the intrusion, the impact and source of the intrusion for resolution; in cases where resolution is not possible, the incident shall be reported to the Computer Emergency Response Center of the Ministry of Posts, Telecommunications and Communications;
+
+3. The Computer Emergency Response Center coordinates with the information security management unit of the data controller and relevant domestic and foreign sectors to prevent and resolve incidents in a timely manner.","The data controller may not provide personal data it has collected, stored or managed to a third party without the consent of the data owner or with the request of the relevant competent state agency as provided by law.",No explicit provision,No explicit provision,https://www.laoofficialgazette.gov.la/kcfinder/upload/files/0918570.pdf,https://mtc.gov.la/index.php?r=site%2Fdetail&id=346,
+Lao PDR,Bank of the Lao P.D.R (BOL),Law on Payment System (Amended) No.45/NA,2023.0,No explicit provision ,Payment service provider and Retail Payment System Operator's duties include keeping all information of the transactions related to the operation of its payment system,-Payment service providers must comply with Know-Your-Customer (KYC) and user’s information confidentiality principle as stipulated in the law.,- Payment system operators/service providers are prohibited to disclose end user’s information/legal entity/organization without consent or permission,"Information, documents and/or electronic records shall be kept at least for a period of Ten years following the completion of documents or transactions or expiration of contracts.",No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,"Payment System Operator(PSO) and Payment Service Provider (PSP) has the right to hire external outsourcer to provide payment service on its behalf, and to be responsible for damages caused by the external outsourcer as such damages were caused by Payment System Operator(PSO) and Payment Service Provider (PSP)",No explicit provision,No explicit provision,https://www.bol.gov.la/en/fileupload/18-12-2025_1766051569.pdf,https://www.bol.gov.la/en/fileupload/18-12-2025_1766051569.pdf,
+Lao PDR,Bank of the Lao P.D.R (BOL),Decree on Financial Consumer Protection (Decree No. 225/GOV),2020.0,No explicit provision ,"- Service Provider shall store the customer's data and shall not disclosure to other person without permission or non authorised organisation concerned.
+- Service provider may disclose information of customer to third party if it is consented in written from consumer
+- Service Provider must keep consumer's information confidentially.","-The information of consumer (financial information, passwords) is personal data. Service provider shall store the customer's data and shall not disclose such information without permission or non-authorized organization concerned
+-Service provider shall inform and instruct the clients about safeguard the password.
+-In case the passwords of consumer is leaked or disclosed without permission, service provider shall record and inform to affected consumer immediately. In the case the leaked and disclosed information cause significant or widespread affects, the service provider shall make record and report to the financial customer protection supervisory authority immediately.
+- Service provider must report on consumer protection activity to the Bank of the Lao PDR on a regular basis. In case of any problem that may affect a wide range of consumers, it sahll be reported to the Bank of the Lao PDR as urgency","- Service Provider shall store the customer's data and shall not disclosure to other person without permission or non authorised organisation concerned.
+- Service provider may disclose information of customer to third party if it is consented in written from consumer","Service provider shall store the customer's data and shall not disclosure to other person without permission. The customer's data might be stored in hardcopy and electric forms.
+Service provider shall inform and instruct the clients about safeguard the password.",No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,"In case the passwords of consume is leaked or disclosed without permission, service provider shall record and inform the affected  consumer immediately. In the case the leaked and disclosed information cause significant or widespread affects, the service provider shall make record and report to the finnancial consumer protection supervisory authority immediately.",-Service provider may disclose information of consumer to third party if it is consented in written from consumer. ,No explicit provision,No explicit provision,http://www.lsp.moic.gov.la/index.php?r=site%2Fdisplaylegal&id=505#mlist,https://www.bol.gov.la/en/fileupload/05-01-2026_1767584786.pdf,
+Lao PDR,Bank of the Lao P.D.R (BOL),Decision on the Payment Service System No.511/BOL Dated 19 June 2025,2025.0,No explicit provision ,No explicit provision ,No explicit provision ,,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,No explicit provision ,"in emergency case that have widespread affected, such as the struck of IT system, PSP shall report to Payment Systems Oversight Department within 24 hours. ","Payment Service Provider (PSP) can hire the external outsoucer to manage some of their IT system and PSP must ensure the continnuety, safety, integrity and damages to their customer caused by using external outsourcer as such damages were caused by themselves.
+
+PSP who hire the external outsoucer to provide service on behalf of them, must:
+1. Have the rule that identify the process and procedures of selecting, monitoring, assessment and auditing the external outsourcer, the assessment also including consumer confidentially, Data privacy and effect on their services
+2. Have a service agreement between PSP and the external outsourcer that identify rights and duties of internal control staff, external audit and Payment Systems Oversight Department staff for inspection the operational and internal control of the external outsourcer in payment service
+3. Have a clear Business Continuety Management (BCM), Business Continuety Plan (BCP) and Disaster Recovery Plan (DRP)
+4. Assessment on the possible risk (in case of using foreign external outsourcer to store, process or operate the data or transactions) including information access risk, cross-border compliance, and create an action plan to handle with those risks",Customer data must be stored and located in Lao PDR  (shall have physical data center),"BOL issued the Decision on Standard of Message Specification for Payment Systems No.1098/BOL, 2023
+
+https://www.bol.gov.la/fileupload/21-12-2023_1703141176.pdf ",https://www.bol.gov.la/fileupload/30-06-2025_1751250479.pdf,https://www.bol.gov.la/fileupload/30-06-2025_1751250479.pdf,
+Malaysia,Bank Negara Malaysia (BNM),Risk Management in Technology (RMiT) policy document,2025.0,risk classification of all information assets / systems is based on its criticality,data owners are accountable and responsible for identifying and appropriately classifying data,"A financial institution must establish appropriate governance requirements commensurate with the risk and complexity. At a minimum, due regard shall be given to the adequacy and configuration of security controls throughout the project life cycle to mitigate cybersecurity breaches or exposure of confidential data","To mitigate privacy concerns, the financial institution must seek consent from the customer prior to effecting the customer device profiling..","A financial institution should assess the potential impact and formalise
+arrangements with cloud service providers to comply with local laws and
+regulatory requirements for incident investigation and law enforcement
+purposes. This would include adhering to data retention requirements and data access procedural arrangements to ensure the confidentiality and privacy of the customers are protected",No explicit provision,"Risk assessments must cover location of cloud infrastructure, including geo‑political and legal risks that may impede compliance.
+CIRP must include readiness to manage incidents where data resides in a foreign jurisdiction.","As part of risk assessment report, a financial institution must have controls must protect the integrity of transactions and information, including:
+
+end‑to‑end encryption
+multilayer network security
+absence of single points of failure
+audit trail capabilities","Adopt industry‑standard encryption algorithms, digital signatures, random number generation;Conduct annual review of cryptographic standards.;Maintain cryptographic inventory mapped to systems.
+
+A financial institution must conduct due diligence and evaluate the
+cryptographic controls associated with the technology used in order to protect the confidentiality, integrity, authentication, authorisation and nonrepudiation of information","A financial institution must notify BNM of cyber incidents according to Operational Risk Reporting, BCM, Merchant Acquiring policies, and any other relevant policies.
+Customer Information Breaches-Within 1 working day upon the tabling of the investigation report to the Board.","Data accessible by third parties must be clearly identified, and safeguards must be implemented to protect and control third‑party access.
+Board and senior management must oversee risks when engaging third‑party providers.","Institutions must ensure cloud usage does not impair compliance with local Malaysian laws, including in foreign jurisdictions.",Must follow internationally recognized security and cryptography standards.,https://www.bnm.gov.my/documents/20124/938039/pd-rmit-nov25.pdf,https://www.bnm.gov.my/documents/20124/938039/pd-rmit-nov25.pdf,
+Malaysia,Personal Data Protection Commissioner (PDPC),Personal Data Protection Act 2010 (PDPA),2024.0,"The law covers the following:
+- personal data:information relating to an identifiable individual in commercial transactions.
+-sensitive personal data: data relating to health, religion, political views, criminal offences, or other categories determined by the Minister.","Data user is defined as someone who processes any personal data or has control over or authorizes the processing of any personal data, but does not include a data processor","A data user shall take practical steps to protect personal data from loss, misuse, modification, unauthorized or accidental access or disclosure, alteration, or destruction,Consider the nature/sensitivity of the data and potential harm, the storage location/environment and the security features of the equipment storing the data, and ensure reliability, integrity, and competence of personnel with access and secure transfer of personal data","• Data user must inform the data subject via written notice
+ (a) that personal data of the data subject is being processed by or on behalf of the data user, and shall provide a description of the personal data to that data subject;
+(b) the purpose
+(c) any information available to the data user as to the source of that personal data;
+(d) data subject’s right to request access to and to request correction of the personal data
+(e) third parties to whom the data user discloses or may disclose the personal data;
+ (f) choices and means the data user offers the data subject for limiting the processing of personal data,including personal data relating to other persons who may be identified from that personal data;
+ (g) whether it is obligatory or voluntary for the data subject to supply the personal data; and
+ (h) where it is obligatory for the data subject to supply the personal data, the consequences for the data subject if he fails to supply the personal data.
+• data user may withdraw consent","(1) The personal data processed for any purpose shall not be kept longer than is necessary for the fulfilment of that purpose.
+(2) Data user must take all reasonable steps to ensure that all personal data is destroyed or permanently deleted if it is no longer required for the purpose for which it was to be processed.","Data User must not disclose personal data:
+- for any purpose other than the purpose for which the data was to be disclosed at the time of collection; or
+- to any party not related to that purpose.","A Data User may not transfer personal data outside Malaysia unless:
+
+-the destination country is on the Commissioner’s approved list, or
+-the data subject has given consent, or
+-the transfer is necessary for contractual, legal, or public interest purposes or
+-the Data User has taken sufficient safeguards to protect the data.","Data User must take reasonable steps to ensure that the personal data it processes is accurate, complete, not misleading, kept up‑to‑date, having regard to the purpose of the data
+Data subjects have the right to access their data and request corrections. This ensures integrity by enabling verification, correction, and updating
+Data User to take practical steps to protect the data from loss, misuse, modification, unauthorized access, alteration, or destruction",No explicit provision,"-Where a data controller has reason to believe that a personal data breach has occurred, the data controller shall, as soon as practicable, notify the Commissioner in the manner and form as determined by the Commissioner","Where processing of personal data is carried out by a data
+processor on behalf of the data user, the data user shall, for the
+purpose of protecting the personal data from any loss, misuse,
+modification, unauthorized or accidental access or disclosure,
+alteration or destruction, ensure that the data processor—
+ (a) provides sufficient guarantees in respect of the technical
+and organizational security measures governing the
+processing to be carried out; and
+ (b) takes reasonable steps to ensure compliance with those
+measures
+
+The data controller shall, through a contract or other reasonable means, impose an obligation on the data processor to notify and provide all reasonable and necessary assistance to the data controller in complying with its obligations under Act 709.",No explicit provision,No explicit provision,https://www.pdp.gov.my/ppdpv1/en/akta/personal-data-protection-amendment-act-2024/,https://www.pdp.gov.my/ppdpv1/en/akta/personal-data-protection-amendment-act-2024/,
+Malaysia,"Personal Data Protection Commissioner (PDPC), Malaysia",Circular of the Personal Data Protection Commissioner No. 1/2025 – Data Breach Notification,2025.0,No explicit provision,Data controller's obligation includes notifying the Commissioner and data subjects if the data controller believes that a personal data breach has occurred.,No explicit provision,No explicit provision,The data controller shall maintain a record of the notification of the personal data breach in physical and electronic form. The record shall be kept for at least two (2) years from the date of the personal data breach.,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"Notification to the Commissioner shall be made as soon as practicable in accordance with the procedure provided for
+in this Circular.
+
+Data controller must submit to the commissioner within seventy two (72) hours from the occurrence of the personal data breach  the following information:
+a) details of the personal data breach that has occurred
+b)the likelihood of the personal data breach occuring
+c) “the chronology of the incident that resulted in the loss of control over the personal data;”
+d) the measures taken or proposed to be taken by the data controller to address the personal data breach, including the measures taken or to be taken to reduce the possible adverse effects of the personal data breach
+e) “the measures taken or proposed to be taken to address the affected data subjects;”
+f) “the details of the data protection officer or other contact information from whom further information regarding the personal data breach can be obtained.
+• If data controller can’t provide the information needed for the notification, such information shall be provided to the Commissioner in stages as soon as practicable and no later than thirty (30) days from the date of the notification made
+• Within seven (7) days after the personal data breach notification is made by the data controller to the Commissioner, the data controller shall provide the affected data subjects with the information",No explicit provision,No explicit provision,No explicit provision,https://www.pdp.gov.my/ppdpv1/en/akta/circular-of-personal-data-protection-commissioner-no-1-2025-data-breach-notification/,https://www.pdp.gov.my/ppdpv1/en/akta/circular-of-personal-data-protection-commissioner-no-1-2025-data-breach-notification/,
+Malaysia,Ministry of Domestic Trade and Cost of Living,Consumer Protection Act 1999 [Act 599] (Amended),2019.0,No explicit provision,No explicit provision,"A credit facility provider shall not disclose or circulate the personal data of a purchaser obtained under a credit sale transaction to a third party unless the purchaser has been informed of the purpose of such disclosure or circulation and a written consent
+of the purchaser has been obtained. ",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://lom.agc.gov.my/ilims/upload/portal/akta/outputaktap/1690994_BI/011121_Act%20599_final.pdf,https://aseanconsumer.org/file/pdf_file/CONSUMER%20PROTECTION%20ACT%201999%20AMENDMENT%202019%20.pdf,
+Malaysia,Bank Negara Malaysia (BNM),"Financial Services Act 2013, Part VIII – Business Conduct & Consumer Protection (Amended)",2021.0,No explicit provision,No explicit provision,"-Nothing in this Act shall authorize the Minister to direct the Bank or authorize the Bank to inquire specifically into the affairs or account of any customer of any authorized person.
+'-No person who has access to any document or information relating to the affairs or account of any customer of a financial institution shall disclose to another person any document or information relating to the affairs or account of any customer of the financial institution.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"https://lom.agc.gov.my/ilims/upload/portal/akta/outputaktap/1867218_BI/Act%20758%20Final.pdf
+https://www.investmalaysia.gov.my/media/xrnl0vfp/financial-services-act-2013.pdf","https://lom.agc.gov.my/ilims/upload/portal/akta/outputaktap/1867218_BI/Act%20758%20Final.pdf
+https://www.investmalaysia.gov.my/media/xrnl0vfp/financial-services-act-2013.pdf",
+Malaysia,Bank Negara Malaysia (BNM),"Participation Rules for Payments & Securities Services, 2021 (Revised)",2025.0,No explicit provision,No explicit provision,"-Participants shall, at all times, keep confidential all information obtained in the course of their participation in RENTAS and FAST.",-Personal information of an individual held by BNM relating to the relevant Payments and Securities Services shall be processed and/or used in accordance with Personal Data Protection Act 2010. The Participant hereby warrants that consent from the data subjects has been obtained by the Participants for all personal data transferred to BNM for the purpose of providing the services to the Participants. ,"Participants and BNM are required to retain documents, records and other information related to Payments and Securities Services as required under the Law.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://www.bnm.gov.my/documents/20124/943361/Participation_Rules_for_Payments_and_Securities_V3.pdf,https://www.bnm.gov.my/documents/20124/943361/Participation_Rules_for_Payments_and_Securities_V3.pdf,
+Malaysia,Bank Negara Malaysia (BNM),Fair Treatment of Financial Consumers,2024.0,No explicit provision,No explicit provision,"-When information delivered contains financial consumers’ financial information, such as in a periodic statement, a FSP must ensure that the information is adequately protected
+-A FSP shall have controls in place to ensure that its staff, representatives and agents preserve the confidentiality of the information disclosed by financial consumers, particularly those identified as vulnerable. The information shall only be used for purposes of providing advice on or recommending a financial service or product to the financial consumers and must not be used in a manner that could be detrimental to the financial consumers.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://www.bnm.gov.my/documents/20124/938039/pd_fair_treatment_march2024.pdf,https://www.bnm.gov.my/documents/20124/938039/pd_fair_treatment_march2024.pdf,
+Myanmar,Central Body of Electronic Transactions,Electronic Transactions Law and its 2021 amendments,2021.0,"The Personal Data Management Officer shall systematically store, protect and process personal data that he is responsible for according to its type, and level of security in accordance with the Law","Personal Data Management Officer means a person and its staff authorised by a governmental department or an organisation to be responsible for collecting, retaining, and using personal data in accordance with the law, or any existing laws","The investigation team, or the person mandated or instructed to act on their behalf,
+who receives information that includes personal data in accordance with the existing laws, shall keep the information confidential except when disclosing the information to persons permitted","The personal data management officer shall prohibit the examination, disclosure, informing, dissemination, transmission, alteration, destruction, copying, or submission as evidence of the personal data of an individual without the consent of such individual, or the permission by the provision of an existing law to any individual or organization;","The personal data management officer shall systematically destroy all personal data that are retained, within a retention period, after the designated period expires",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,Myanmar: The Electronic Transactions Law,Myanmar: The Electronic Transactions Law,
+Myanmar,Central Bank of Myanmar (CBM),Financial Institutions Law (FIL),2016.0,No explicit provision,No explicit provision,"-A bank shall keep secret the information relating to the affairs or the account, record, and transaction of a customer of a bank.
+- No director, officer or employee of any bank licensed institution whether during his tenure of office, or thereafter, and no person who has by any means, access to
+customer information, shall provide or otherwise disclose to any person, such customer information.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"https://www.cbm.gov.mm/content/1755
+https://myanmar-law-library.org/topics/myanmar-banking-law/fiml-laws/financial-institutions-law-2016.html","https://www.cbm.gov.mm/content/1755
+https://myanmar-law-library.org/topics/myanmar-banking-law/fiml-laws/financial-institutions-law-2016.html",
+Myanmar,Central Bank of Myanmar (CBM),Regulation on Mobile Financial Services (FIL/R/01/03‑2016),2016.0,No explicit provision,No explicit provision,"Each mobile financial service provider and its agents and intermediaries if any, shall ensure privacy and confidentiality of customer information and data. ",No explicit provision,"(a) Mobile financial service providers shall maintain accurate and complete records of MFS accounts, the identity of
+customers, agents, transactions undertaken by customers, and the individual balances
+held by customers and liquid assets in the trust account.
+ (b) These records shall be kept for a period of at least five years. ",No explicit provision,No explicit provision,No explicit provision,No explicit provision,"A  mobile financial service provider shall notify the Central Bank in writing promptly, but no later than two business days if there are any indications of loss of confidential data of the MFS system; and",No explicit provision,No explicit provision,No explicit provision,https://www.cbm.gov.mm/sites/default/files/regulate_launder/_fil-r-01_mobile_financial_services_regulation_eng_final_website_4-4-2016_-5.pdf,https://www.cbm.gov.mm/sites/default/files/regulate_launder/_fil-r-01_mobile_financial_services_regulation_eng_final_website_4-4-2016_-5.pdf,
+Myanmar,Central Bank of Myanmar (CBM),MyanmarPay - Digital Payment System (Code of Conduct & Rules and Procedures for Person to Merchants (P2M)),2024.0,No explicit provision,No explicit provision,"
+
+Data Security Policies: Implement strong and healthy data security policies that cover encryption, access control, and secure storage.","-Consumer Consent: All participants must Obtain explicit consent from consumers before collecting, storing, or processing personal information. Consumers must also be informed of their rights to access, correct, or delete their data.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,"-All sensitive data, including transaction and customer information, must be encrypted during transmission and at rest to ensure data integrity and confidentiality.","In the event of a data breach, participants must notify the Central Bank of Myanmar and affected consumers within three business days, detailing the nature of the breach and the steps being taken to mitigate its effects"," In the event of a data breach, participants must notify the Central Bank of Myanmar and affected consumers within three business days, detailing the nature of the breach and the steps being taken to mitigate its effects",No explicit provision,No explicit provision,https://myanmarpay.com.mm/frontend/assets/files/COCwithSetttlementandMFSP.pdf,https://myanmarpay.com.mm/frontend/assets/files/COCwithSetttlementandMFSP.pdf,
+Philippines,National Privacy Commission,Data Privacy Act and IRR,2012.0,"The Act covers the following
+Personal information refers to any information whether recorded in a material form or not, from which the identity of an individual is apparent or can be reasonably and directly ascertained by the entity holding the information, or when put together with other information would directly and certainly identify an individual.
+
+Sensitive personal information refers to personal information:
+
+(1) About an individual’s race, ethnic origin, marital status, age, color, and religious, philosophical or political affiliations;
+(2) About an individual’s health, education, genetic or sexual life of a person, or to any proceeding for any offense committed or alleged to have been committed by such person, the disposal of such proceedings, or the sentence of any court in such proceedings;
+(3) Issued by government agencies peculiar to an individual which includes, but not limited to, social security numbers, previous or current health records, licenses or its denials, suspension or revocation, and tax returns; and
+(4) Specifically established by an executive order or an act of Congress to be kept classified.","Each personal information controller is responsible for personal information under its control or custody, including information that have been transferred to a third party for processing, whether domestically or internationally, subject to cross-border arrangement and cooperation.
+
+(a) The personal information controller is accountable for complying with the requirements of this Act and shall use contractual or other reasonable means to provide a comparable level of protection while the information are being processed by a third party.
+
+(b) The personal information controller shall designate an individual or individuals who are accountable for the organization’s compliance with this Act. The identity of the individual(s) so designated shall be made known to any data subject upon request.","SEC. 20. Security of Personal Information. – (a) The personal information controller must implement reasonable and appropriate organizational, physical and technical measures intended for the protection of personal information against any accidental or unlawful destruction, alteration and disclosure, as well as against any other unlawful processing.
+
+(b) The personal information controller shall implement reasonable and appropriate measures to protect personal information against natural dangers such as accidental loss or destruction, and human dangers such as unlawful access, fraudulent misuse, unlawful destruction, alteration and contamination.
+
+(c) The determination of the appropriate level of security under this section must take into account the nature of the personal information to be protected, the risks represented by the processing, the size of the organization and complexity of its operations, current data privacy best practices and the cost of security implementation. Subject to guidelines as the Commission may issue from time to time, the measures implemented must include:
+
+(1) Safeguards to protect its computer network against accidental, unlawful or unauthorized usage or interference with or hindering of their functioning or availability;
+
+(2) A security policy with respect to the processing of personal information;
+
+(3) A process for identifying and accessing reasonably foreseeable vulnerabilities in its computer networks, and for taking preventive, corrective and mitigating action against security incidents that can lead to a security breach; and
+
+(4) Regular monitoring for security breaches and a process for taking preventive, corrective and mitigating action against security incidents that can lead to a security breach.
+
+(d) The personal information controller must further ensure that third parties processing personal information on its behalf shall implement the security measures required by this provision.
+
+(e) The employees, agents or representatives of a personal information controller who are involved in the processing of personal information shall operate and hold personal information under strict confidentiality if the personal information are not intended for public disclosure. This obligation shall continue even after leaving the public service, transfer to another position or upon termination of employment or contractual relations.
+
+(f) The personal information controller shall promptly notify the Commission and affected data subjects when sensitive personal information or other information that may, under the circumstances, be used to enable identity fraud are reasonably believed to have been acquired by an unauthorized person, and the personal information controller or the Commission believes that such unauthorized acquisition is likely to give rise to a real risk of serious harm to any affected data subject. The notification shall at least describe the nature of the breach, the sensitive personal information possibly involved, and the measures taken by the entity to address the breach. Notification may be delayed only to the extent necessary to determine the scope of the breach, to prevent further disclosures, or to restore reasonable integrity to the information and communications system.
+
+(1) In evaluating if notification is unwarranted, the Commission may take into account compliance by the personal information controller with this section and existence of good faith in the acquisition of personal information.
+
+(2) The Commission may exempt a personal information controller from notification where, in its reasonable judgment, such notification would not be in the public interest or in the interests of the affected data subjects.
+
+(3) The Commission may authorize postponement of notification where it may hinder the progress of a criminal investigation related to a serious breach."," Consent of the data subject refers to any freely given, specific, informed indication of will, whereby the data subject agrees to the collection and processing of personal information about and/or relating to him or her. Consent shall be evidenced by written, electronic or recorded means. It may also be given on behalf of the data subject by an agent specifically authorized by the data subject to do so
+
+Distinguishes consent for processing personal vs sensitive personal information
+For personal: consent must be given by data subject
+For sensitive personal: consent must be given by data subject; specific to the purpose prior to the processing, or in the case of privileged information, all parties to the exchange have given their consent prior to processing;","Retained only for as long as necessary for the fulfillment of the purposes for which the data was obtained or for the establishment, exercise or defense of legal claims, or for legitimate business purposes, or as provided by law;","""a. Data sharing shall be allowed when it is expressly authorized by law: Provided, that there are adequate safeguards for data privacy and security, and processing adheres to principle of transparency, legitimate purpose and proportionality.
+
+b. Data Sharing shall be allowed in the private sector if the data subject consents to data sharing, and the following conditions are complied with:
+
+1. Consent for data sharing shall be required even when the data is to be shared with an affiliate or mother company, or similar relationships;
+
+2. Data sharing for commercial purposes, including direct marketing, shall be covered by a data sharing agreement.
+
+(a) The data sharing agreement shall establish adequate safeguards for data privacy and security, and uphold rights of data subjects.
+
+(b) The data sharing agreement shall be subject to review by the Commission, on its own initiative or upon complaint of data subject;""
+.","""This Act applies to an act done or practice engaged in and outside of the Philippines by an entity if:
+
+(a) The act, practice or processing relates to personal information about a Philippine citizen or a resident;
+
+(b) The entity has a link with the Philippines, and the entity is processing personal information in the Philippines or even if the processing is outside the Philippines as long as it is about Philippine citizens or residents such as, but not limited to, the following:
+
+(1) A contract is entered in the Philippines;
+
+(2) A juridical entity unincorporated in the Philippines but has central management and control in the country; and
+
+(3) An entity that has a branch, agency, office or subsidiary in the Philippines and the parent or affiliate of the Philippine entity has access to personal information; and
+
+(c) The entity has other links in the Philippines such as, but not limited to:
+
+(1) The entity carries on business in the Philippines; and
+
+(2) The personal information was collected or held by an entity in the Philippines.""","Personal information must be  Accurate, relevant and, where necessary for purposes for which it is to be used the processing of personal information, kept up to date; inaccurate or incomplete data must be rectified, supplemented, destroyed or their further processing restricted;",No provision on encryption/decryption,"The personal information controller shall promptly notify the Commission and affected data subjects when sensitive personal information or other information that may, under the circumstances, be used to enable identity fraud are reasonably believed to have been acquired by an unauthorized person, and the personal information controller or the Commission believes that such unauthorized acquisition is likely to give rise to a real risk of serious harm to any affected data subject. The notification shall at least describe the nature of the breach, the sensitive personal information possibly involved, and the measures taken by the entity to address the breach. Notification may be delayed only to the extent necessary to determine the scope of the breach, to prevent further disclosures, or to restore reasonable integrity to the information and communications system.","A personal information controller may subcontract the processing of personal information: Provided, That the personal information controller shall be responsible for ensuring that proper safeguards are in place to ensure the confidentiality of the personal information processed, prevent its use for unauthorized purposes, and generally, comply with the requirements of this Act and other laws for processing of personal information. The personal information processor shall comply with all the requirements of this Act and other applicable laws.",No explicit provision on data localization,No explicit provision detailing data standards,"https://privacy.gov.ph/data-privacy-act/
+https://privacy.gov.ph/implementing-rules-regulations-data-privacy-act-2012/#20","https://privacy.gov.ph/data-privacy-act/
+https://privacy.gov.ph/implementing-rules-regulations-data-privacy-act-2012/#20",
+Philippines,Bangko Sentral ng Pilipinas,"Financial Products and Services Consumer Protection Act (RA 11765)
+BSP Circular No. 1160 (Implementing Regulations of RA 11765)",2022.0,No explicit provision,No explicit provision,"- Each financial service provider must respect the privacy and protect the data of their clients. Consistent with the provisions of Republic Act No. 10173, otherwise known as the “Data Privacy Act of 2012”, the financial regulators shall issue regulations in coordination with the National Privacy Commission, governing the disclosure of client data to a third party.
+
+'- Financial service providers shall adopt and implement information security standards to ensure the safety and protection of the confidentiality, integrity, availability, authenticity, and non­repudiation of the client's information and financial transactions and to ensure the data privacy of their clients. The financial regulators shall prescribe the minimum information security standards for compliance by all financial service providers.
+
+====
+The principles include having well-articulated privacy notices and policies, specifying and declaring the purpose/s for processing and criteria being relied on as the lawful basis for processing Client data, ensuring that the processing is necessary and not excessive in relation to the purpose, and implementing reasonable and appropriate information security measures and well-defined protocols for upholding data subject rights, among others.
+
+Under this consumer protection standard on client information, Financial Consumers have the right to expect implementation of the most appropriate safeguards ensuring the confidentiality, integrity, and availability of their financial transactions, as well as expect that all relevant personal information lawfully disclosed in the course of a transaction, are kept confidential and are secured.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"https://legacy.senate.gov.ph/republic_acts/ra%2011765.pdf
+https://www.bsp.gov.ph/Regulations/Issuances/2022/1160.pdf","https://legacy.senate.gov.ph/republic_acts/ra%2011765.pdf
+https://www.bsp.gov.ph/Regulations/Issuances/2022/1160.pdf",
+Philippines,Bangko Sentral ng Pilipinas,Harmonization with Internationally Accepted ISO 20022 Standard for Retail Payment Systems,2025.0,No explicit provision,No explicit provision,No explicit provision,Any additional customer information must be handled in compliance with user consent,"Participants must have the mechanism to maintain for at least five years all necessary records on transactions, both domestic and international, and enable the retrieval and interpretation of payment status and data efficiently.",Any additional customer information must be handled in compliance with data sharing,No explicit provision,"Automated Clearing House (ACH ) participants are responsible for ensuring the accuracy and completeness of transaction data, in strict compliance with applicable regulatory standards. ",No explicit provisions,No explicit provision,No explicit provision,No explicit provisions,"This policy mandates the harmonization withISO 20022, an international standard for exchanging electronic messages between financial institutions to facilitate seamless, efficient, and secure domestic and cross-border retail payments, with a particular focus on interoperability and straight-through processing.",https://www.bsp.gov.ph/Regulations/Issuances/2025/1223(corrected%20copy).pdf,https://www.bsp.gov.ph/Regulations/Issuances/2025/1223(corrected%20copy).pdf,
+Singapore,Personal Data Protection Commission (PDPC),Personal Data Protection Act (PDPA),2012.0,No explicit provision,"-An organisation is responsible for personal data in its possession or under its control.
+-An organisation must designate one or more individuals to be responsible for ensuring that the organisation complies with this Act.
+-An individual designated may delegate to another individual the responsibility conferred by that designation.
+-An organisation must make available to the public the business contact information of at least one of the individuals designated under the above requirements","An organisation must protect personal data in its possession or under its control by making reasonable security arrangements to prevent —
+(a) unauthorised access, collection, use, disclosure, copying, modification or disposal, or similar risks; and
+(b) the loss of any storage medium or device on which personal data is stored.","-Consent must be obtained with the information required and purpose in accordance with the act
+ - Organization must not attempt to obtain consent with false/misleading information or use of deceptive/misleading practices
+- Organization must not force someone to agree to the collection, use, or sharing of more personal data than what is reasonably needed to provide the product or service.
+
+Deemed consent considered if
+  - individual voluntary provides personal data; and it is reasonable that individual would voluntarily provide data
+  - If a person gives their personal data to an organization to enter into a contract, they are considered to have consented—when reasonably necessary—to the data being shared with another organization, used by that organization, and further disclosed again
+- the organization meets certain requirements, and the person does not object within the given time, except when
+the data is used for any prohibited or specially regulated purposes.
+
+Option to Withdraw consent ","An organisation must cease to retain its documents containing personal data, or remove the means by which the personal data can be associated with particular individuals, as soon as it is reasonable to assume that —
+(a) the purpose for which that personal data was collected is no longer being served by retention of the personal data; and
+(b) retention is no longer necessary for legal or business purpose","Individuals must be notified of the purposes for which their data will be collected, used, or disclosed.","An organisation must not transfer any personal data to a country or territory outside Singapore except in accordance with requirements prescribed under this Act to ensure that organisations provide a standard of protection to personal data so transferred that is comparable to the protection under this Act.
+(2)  The Commission may, on the application of any organisation, by written notice exempt the organisation from any requirement prescribed pursuant to subsection (1) in respect of any transfer of personal data by that organisation.
+(3)  An exemption under subsection (2) —
+(a) may be granted subject to such conditions as the Commission may specify in writing; and
+(b) need not be published in the Gazette and may be revoked at any time by the Commission.
+(4)  The Commission may at any time add to, vary or revoke any condition imposed under this section.","An organisation must make a reasonable effort to ensure that personal data collected by or on behalf of the organisation is accurate and complete,
+if the personal data is likely to be used to make a decision that affects the individual
+or is likely to be disclosed to another organisation.",No explicit provison on encryption and decryption,"Organisation must conduct, in a reasonable and expeditious manner, an assessment of whether a data breach is a notifiable data breach
+
+Data breach of significant scale is considered when number of affected individuals is 500","An organisation has the same obligation under this Act in respect of personal data processed on its behalf and for its purposes by a data intermediary as if the personal data were processed by the organisation itself.
+
+if an individual withdraws consent to the collection, use or disclosure of personal data about the individual by an organisation for any purpose, the organisation must cease (and cause its data intermediaries and agents to cease) collecting, using or disclosing the personal data (as the case may be) unless such collection, use or disclosure (as the case may be) without the individual’s consent is required or authorised under this Act or other written law.
+
+on breach: Where a data intermediary (other than a data intermediary mentioned in section 26E) has reason to believe that a data breach has occurred in relation to personal data that the data intermediary is processing on behalf of and for the purposes of another organisation —
+(a) the data intermediary must, without undue delay, notify that other organisation of the occurrence of the data breach; and
+(b) that other organisation must, upon notification by the data intermediary, conduct an assessment of whether the data breach is a notifiable data breach.
+
+Where an organisation —
+(a) is a data intermediary processing personal data on behalf of and for the purposes of a public agency; and
+(b) has reason to believe that a data breach has occurred in relation to that personal data,
+the organisation must, without undue delay, notify the public agency of the occurrence of the data breac",No explicit provision on data localization,No explicit provision on data standards,https://sso.agc.gov.sg/Act/PDPA2012,https://sso.agc.gov.sg/Act/PDPA2012,
+Singapore,Personal Data Protection Commission (PDPC),Personal Data Protection Regulations,2021.0,No explicit provision,"-An organisation is responsible for personal data in its possession or under its control.
+-An organisation must designate one or more individuals to be responsible for ensuring that the organisation complies with this Act.
+-An individual designated may delegate to another individual the responsibility conferred by that designation.
+-An organisation must make available to the public the business contact information of at least one of the individuals designated under the above requirements","An organisation must protect personal data in its possession or under its control by making reasonable security arrangements to prevent —
+(a) unauthorised access, collection, use, disclosure, copying, modification or disposal, or similar risks; and
+(b) the loss of any storage medium or device on which personal data is stored.","-Consent must be obtained with the information required and purpose in accordance with the act
+ - Organization must not attempt to obtain consent with false/misleading information or use of deceptive/misleading practices
+- Organization must not force someone to agree to the collection, use, or sharing of more personal data than what is reasonably needed to provide the product or service.
+
+Deemed consent considered if
+  - individual voluntary provides personal data; and it is reasonable that individual would voluntarily provide data
+  - If a person gives their personal data to an organization to enter into a contract, they are considered to have consented—when reasonably necessary—to the data being shared with another organization, used by that organization, and further disclosed again
+- the organization meets certain requirements, and the person does not object within the given time, except when
+the data is used for any prohibited or specially regulated purposes.
+
+Option to Withdraw consent ","An organisation must cease to retain its documents containing personal data, or remove the means by which the personal data can be associated with particular individuals, as soon as it is reasonable to assume that —
+(a) the purpose for which that personal data was collected is no longer being served by retention of the personal data; and
+(b) retention is no longer necessary for legal or business purpose","Individuals must be notified of the purposes for which their data will be collected, used, or disclosed.","An organisation must not transfer any personal data to a country or territory outside Singapore except in accordance with requirements prescribed under this Act to ensure that organisations provide a standard of protection to personal data so transferred that is comparable to the protection under this Act.
+(2)  The Commission may, on the application of any organisation, by written notice exempt the organisation from any requirement prescribed pursuant to subsection (1) in respect of any transfer of personal data by that organisation.
+(3)  An exemption under subsection (2) —
+(a) may be granted subject to such conditions as the Commission may specify in writing; and
+(b) need not be published in the Gazette and may be revoked at any time by the Commission.
+(4)  The Commission may at any time add to, vary or revoke any condition imposed under this section.","An organisation must make a reasonable effort to ensure that personal data collected by or on behalf of the organisation is accurate and complete,
+if the personal data is likely to be used to make a decision that affects the individual
+or is likely to be disclosed to another organisation.",No explicit provison on encryption and decryption,"Organisation must conduct, in a reasonable and expeditious manner, an assessment of whether a data breach is a notifiable data breach
+
+Data breach of significant scale is considered when number of affected individuals is 500","An organisation has the same obligation under this Act in respect of personal data processed on its behalf and for its purposes by a data intermediary as if the personal data were processed by the organisation itself.
+
+if an individual withdraws consent to the collection, use or disclosure of personal data about the individual by an organisation for any purpose, the organisation must cease (and cause its data intermediaries and agents to cease) collecting, using or disclosing the personal data (as the case may be) unless such collection, use or disclosure (as the case may be) without the individual’s consent is required or authorised under this Act or other written law.
+
+on breach: Where a data intermediary (other than a data intermediary mentioned in section 26E) has reason to believe that a data breach has occurred in relation to personal data that the data intermediary is processing on behalf of and for the purposes of another organisation —
+(a) the data intermediary must, without undue delay, notify that other organisation of the occurrence of the data breach; and
+(b) that other organisation must, upon notification by the data intermediary, conduct an assessment of whether the data breach is a notifiable data breach.
+
+Where an organisation —
+(a) is a data intermediary processing personal data on behalf of and for the purposes of a public agency; and
+(b) has reason to believe that a data breach has occurred in relation to that personal data,
+the organisation must, without undue delay, notify the public agency of the occurrence of the data breac",No explicit provision on data localization,No explicit provision on data standards,https://sso.agc.gov.sg/SL/PDPA2012-S63-2021,https://sso.agc.gov.sg/SL/PDPA2012-S64-2021,
+Singapore,Monetary Authority of Singapore,MAS TRM Guidelines,2021.0,"classification of an information asset based on its security classification
+or criticality","the FI should establish the ownership of information assets, and the roles and responsibilities of the staff managing the information assetsstablish","The FI should establish policies, standards and procedures and, where
+appropriate, incorporate industry standards and best practices to manage technology
+risks and safeguard information assets",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"-The FI should assess and manage its exposure to technology risks that may affect the confidentiality, integrity and availability of the IT systems and data at the third party before entering into a contractual agreement or partnership.
+-On an ongoing basis, the FI should ensure the third party employs a high standard of care and diligence in protecting data confidentiality and intgrity",No explicit provision,No explicit provision,https://www.mas.gov.sg/-/media/MAS/.../TRM-Guidelines-18-January-2021.pdf,https://www.mas.gov.sg/-/media/MAS/.../TRM-Guidelines-18-January-2021.pdf,
+Singapore,Monetary Authority of Singapore (MAS),E-Payments User Protection Duties Guidelines,2024.0,No explicit provision,No explicit provision,"An account user of a protected account should not do any of the following:
+(a) voluntarily disclose any access code to any third party, including the staff of any  responsible FI;
+(b) disclose the access code in a recognisable way on any payment account,  authentication device, or any container for the payment account
+(c) keep a record of any access code in a way that allows any third party to easily misuse the access code.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://www.mas.gov.sg/-/media/mas-media-library/regulation/guidelines/pso/e-payments-user-protection-guidelines-with-effect-from-16-dec-2024/e-payments-user-protection-guidelines-with-effect-from-16-december-2024.pdf,https://www.mas.gov.sg/-/media/mas-media-library/regulation/guidelines/pso/e-payments-user-protection-guidelines-with-effect-from-16-dec-2024/e-payments-user-protection-guidelines-with-effect-from-16-december-2024.pdf,
+Thailand,Personal Data Protection Committee (PDPC),PDPA B.E. 2562,2019.0,"Personal data and sensitive data distinguished with sensitive data including (pertaining to racial, ethnic origin,political opinions, cult, religious or philosophical beliefs, sexual behavior, criminal records, health data, disability, trade union information, genetic data, biometric data)","“Data Controller ” means a Person or a juristic person having the power and duties to make decisions regarding the collection, use, or disclosure of the Personal Data;
+“Data Processor ” means a Person or a juristic person who operates in relation to the collection, use or disclosure of the Personal Data pursuant to the orders given by or on behalf of a Data Controller, whereby such Person or juristic person is not the Data Controller.
+
+Duties of the Data Controller:
+security, third‑party control, erasure, breach notification, representative.","Data Security: data controllers and data processor are tasked to provide security measures for preventing the unauthorized or unlawful loss, access to, use, alteration, correction or disclosure of Personal Data, and such measures must be reviewed when it is necessary, or when the technology has changed in order to efficiently maintain the appropriate security and safety","consent prior to or at the time of such collection, use, or disclosure, except the case where it is permitted to do so by the provisions of this Act or any other laws
+
+-freely given
+- explicitly made in a written statement, or via electronic means
+- informed regarding its purpose
+- clear (presented in a manner which is clearly distinguishable from the
+other matters, in an easily accessible and intelligible form and statements, using clear and plain language, and does not deceptive or misleading to the data subject in respect to such purpose)
+
+-data subject may withdraw his or her consent at any time.
+
+For minors
+- holder of parental responsibility over the child.(legal guardian)","the Data Controller shall inform the data subject, prior to or at the time of such collection, of the Personal Data to be collected and the period for which the Personal Data will be retained. If it is not possible to specify the retention period, the expected data retention period according the data retention standard shall be specified
+
+the data controller shall put in place the examination system for erasure or destruction of the Personal Data when the retention period ends","The Data Controller shall not disclose personal data without consent, unless consent is not required by law.
+
+The Data subject has the right to request that the Data Controller send and transfer the data to another Data Controllers.","Destination country must have adequate data protection laws.
+Adequacy is determined by PDPC based on:
+
+Legal measures and safeguards
+Enforcement mechanisms
+Rights and remedies available to data subject
+
+Provides alternative safeguards: (PDPC Notification under Section 29, covering Binding Corporate Rules (BCRs) and appropriate safeguards, such as:
+
+Standard contractual clauses (SCCs)
+Certifications
+Binding arrangements between government entities
+
+Except where the transfer is required for compliance with the law, made with the data subject’s consent after being informed of inadequate data protection, or necessary for performing a contract, complying with a contract for the benefit of the data subject, preventing threats to life, body, or health where consent cannot be obtained, or carrying out activities in the substantial public interest.","The Data Controller and Data processor must provide appropriate security measures to prevent unauthorized or unlawful loss, access, use, alteration, correction, or disclosure of personal data.
+
+The Data Controller shall ensure that the personal data remain accurate, up-to-date, complete, and not misleading.
+
+",No explicit provision,"- The Data Controller must notify the Office of any Personal Data breach without delay and, where feasible, within 72 hours after becoming aware of it, unless the breach is unlikely to result in a risk to the rights and freedoms of persons.; If the personal data breach is likely to result in a high risk to the rights and freedoms of persons, the Data Controller shall also notify the data subject of the breach and the remedial measures without delay.","When Personal Data is provided to other persons or legal persons, the Data Controller shall take action to prevent such person from using or disclosing Personal Data unlawfully or without authorization.",No explicit provision,No explicit provision,https://www.pdpc.or.th/wp-content/uploads/2023/12/2_Personal-Data-Protection-Act-2019.pdf,https://www.pdpc.or.th/wp-content/uploads/2023/12/2_Personal-Data-Protection-Act-2019.pdf,
+Thailand,Personal Data Protection Committee (PDPC),PDPC Subordinate Regulations & Notifications,2023.0,"Personal data and sensitive data distinguished with sensitive data including (pertaining to racial, ethnic origin,political opinions, cult, religious or philosophical beliefs, sexual behavior, criminal records, health data, disability, trade union information, genetic data, biometric data)","“Data Controller ” means a Person or a juristic person having the power and duties to make decisions regarding the collection, use, or disclosure of the Personal Data;
+“Data Processor ” means a Person or a juristic person who operates in relation to the collection, use or disclosure of the Personal Data pursuant to the orders given by or on behalf of a Data Controller, whereby such Person or juristic person is not the Data Controller.
+
+Duties of the Data Controller:
+security, third‑party control, erasure, breach notification, representative.","Data Security: data controllers and data processor are tasked to provide security measures for preventing the unauthorized or unlawful loss, access to, use, alteration, correction or disclosure of Personal Data, and such measures must be reviewed when it is necessary, or when the technology has changed in order to efficiently maintain the appropriate security and safety","consent prior to or at the time of such collection, use, or disclosure, except the case where it is permitted to do so by the provisions of this Act or any other laws
+
+-freely given
+- explicitly made in a written statement, or via electronic means
+- informed regarding its purpose
+- clear (presented in a manner which is clearly distinguishable from the
+other matters, in an easily accessible and intelligible form and statements, using clear and plain language, and does not deceptive or misleading to the data subject in respect to such purpose)
+
+-data subject may withdraw his or her consent at any time.
+
+For minors
+- holder of parental responsibility over the child.(legal guardian)","the Data Controller shall inform the data subject, prior to or at the time of such collection, of the Personal Data to be collected and the period for which the Personal Data will be retained. If it is not possible to specify the retention period, the expected data retention period according the data retention standard shall be specified
+
+the data controller shall put in place the examination system for erasure or destruction of the Personal Data when the retention period ends","The Data Controller shall not disclose personal data without consent, unless consent is not required by law.
+
+The Data subject has the right to request that the Data Controller send and transfer the data to another Data Controllers.","Destination country must have adequate data protection laws.
+Adequacy is determined by PDPC based on:
+
+Legal measures and safeguards
+Enforcement mechanisms
+Rights and remedies available to data subject
+
+Provides alternative safeguards: (PDPC Notification under Section 29, covering Binding Corporate Rules (BCRs) and appropriate safeguards, such as:
+
+Standard contractual clauses (SCCs)
+Certifications
+Binding arrangements between government entities
+
+Except where the transfer is required for compliance with the law, made with the data subject’s consent after being informed of inadequate data protection, or necessary for performing a contract, complying with a contract for the benefit of the data subject, preventing threats to life, body, or health where consent cannot be obtained, or carrying out activities in the substantial public interest.","The Data Controller and Data processor must provide appropriate security measures to prevent unauthorized or unlawful loss, access, use, alteration, correction, or disclosure of personal data.
+
+The Data Controller shall ensure that the personal data remain accurate, up-to-date, complete, and not misleading.
+
+",No explicit provision,"- The Data Controller must notify the Office of any Personal Data breach without delay and, where feasible, within 72 hours after becoming aware of it, unless the breach is unlikely to result in a risk to the rights and freedoms of persons.; If the personal data breach is likely to result in a high risk to the rights and freedoms of persons, the Data Controller shall also notify the data subject of the breach and the remedial measures without delay.","When Personal Data is provided to other persons or legal persons, the Data Controller shall take action to prevent such person from using or disclosing Personal Data unlawfully or without authorization.",No explicit provision,No explicit provision,https://www.pdpc.or.th/en/category/notifications-of-the-pdpc/,https://www.pdpc.or.th/en/category/notifications-of-the-pdpc/,
+Thailand,Bank of Thailand (BOT) ,Bank of Thailand (BOT) Data Governance Policy Statement,2022.0,No explicit provision,"Data Governance Structure based on the three lines of defense principle.
+This could be done through
+(1) Designating the personnel and relevant divisions with direct roles and responsibilities for data governance which consists of the following:
+(1st line)
+1. Oversight committee
+2. Data Administrators (Senior Management or Division level)
+3. Officers authorizing data-related operations
+4. Data users
+(2nd line)
+5. risk management division
+6. compliance unit
+(3rd line)
+7. division responsible for data-related operations and data risk management audit",Data security and privacy throughout the data life cycle should be corresponding to the level of data risk and the relevant regulations and legislations,No explicit provision,"- Review the lifespan of data usage as well as guidelines for data obliteration so that they are in line with the level of data confidentiality, especially sensitive data that should be obliterated appropriately while not being in conflict with relevant regulations and legislations
+- Have a guideline in archiving the data according to its confidentiality level and store data only as needed
+-Have a guideline to appropriately control data access in order to prevent access by unauthorized parties
+- Have data back up that is ready to use at all times","Financial insitutions must have:
+-Control access rights in a way that is in line with the objectives approved and review the rights regularly.
+-Have a guideline for data disclosure or publishing that is in line with the level of data confidentiality while adhering to the relevant regulations and legislations.
+-For personal data, financial institutions should consider the privacy of data owners as well.",No explicit provision,"Financial institutions must put in place the data quality management to ensure that the data is of quality, reliability and applicability to be accurately and appropriately used in the analysis and business decision making while building confidence for data users ",No explicit provision,"Financial institutions must report the data breach incident according to the Personal Data Protection Act B.E. 2562
+For a data breach incident which carries a risk of having a severe impact on individual right and liberty, financial institutions must report the data breach incident to the owner of the personal data along with the remedy plan without any delay.","-Data governance policies should cover data governance for all types of data under financial institutions’ possession, including the services provided by third parties or related business partners.
+-Having a plan to continuously raise awareness on data governance for all levels of personnel as well as relevant third parties.",No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2564/EngPDF/25640163.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2564/EngPDF/25640163.pdf,
+Thailand,Bank of Thailand (BOT) ,BOT notifications on BAHTNET ISO 20022 migration (2022),2022.0,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"The Bank of Thailand (BOT) has adopted the ISO 20022 standards, a universal financial message scheme, for the BAHTNET services",https://www.bot.or.th/content/dam/bot/documents/en/our-roles/payment-systems/payment-systems-notification---circulars/bahtnet-system/notification/19_SorRorKhor_8-2565_MessageWithISO20022.pdf,https://www.bot.or.th/content/dam/bot/documents/en/our-roles/payment-systems/payment-systems-notification---circulars/bahtnet-system/notification/19_SorRorKhor_8-2565_MessageWithISO20022.pdf,
+Thailand,The Minister of Finance,Payment Systems Act B.E.2560,2017.0,No explicit provision,No explicit provision,- The BOT shall have the power to issue notifications prescribing rules of the provisions of designated payment systems and designated payment services in the storage and disclosure of personal data of service users,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/documents/en/laws-and-rules/laws-and-regulations/legal-department/4-payment-act/4.1%20LAW04_PaymentSystemAct.pdf,https://www.bot.or.th/content/dam/bot/documents/en/laws-and-rules/laws-and-regulations/legal-department/4-payment-act/4.1%20LAW04_PaymentSystemAct.pdf,
+Thailand,Bank of Thailand (BOT) ,BOT Notification No. SorNorChor. 1 /2561 Re: Regulations on Supervision for System Operator of the Highly Important Payment Systems,2018.0,No explicit provision,No explicit provision,"- The business providers must safely protect data privacy of system user.
+
+- Establish policy to protect data privacy of the users, determination of the level of confidentiality for data access, and identification of persons who have access rights to such data; and arrange the systems for data storage that is accurate and reliable; and prevent an unauthorized person who has no relevant authority from accessing to or modifying the data maintained.
+",No explicit provision,No explicit provision,Protect users’ confidentiality and data privacy by not disclosing such information during the course of services and after ceasing to provide services,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"- have in-place an appropriate risk management process of third parties or outsourcing. In this regard, risk assessment should cover risks relating to protection of confidentiality and data privacy.
+- Business providers must govern third‑party and outsourcing  to protect data confidentiality and privacy.",No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610084.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610084.pdf,
+Thailand,Bank of Thailand (BOT) ,BOT notification No. SorNorChor. 4/2561 Re:Regulations on  Supervision of  the Designated Payment Systems Business,2018.0,No explicit provision,No explicit provision,"- The business providers must safely protect data privacy of system user.
+
+- Establish policy to protect data privacy of the users, determination of the level of confidentiality for data access, and identification of persons who have access rights to such data; and arrange the systems for data storage that is accurate and reliable; and prevent an unauthorized person who has no relevant authority from accessing to or modifying the data maintained.
+",No explicit provision,No explicit provision,Protect users’ confidentiality and data privacy by not disclosing such information during the course of services and after ceasing to provide services,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"- have in-place an appropriate risk management process of third parties or outsourcing. In this regard, risk assessment should cover risks relating to protection of confidentiality and data privacy.
+- Business providers must govern third‑party and outsourcing  to protect data confidentiality and privacy.",No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610087.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610087.pdf,
+Thailand,Bank of Thailand (BOT) ,BOT Notification No. SorNorChor. 6/2561 Re: Regulations on General Supervision of Undertaking Designated Payment Service Business,2018.0,No explicit provision,No explicit provision,"- The business providers must safely protect data privacy of system user.
+
+- Establish policy to protect data privacy of the users, determination of the level of confidentiality for data access, and identification of persons who have access rights to such data; and arrange the systems for data storage that is accurate and reliable; and prevent an unauthorized person who has no relevant authority from accessing to or modifying the data maintained.
+",No explicit provision,No explicit provision,Protect users’ confidentiality and data privacy by not disclosing such information during the course of services and after ceasing to provide services,No explicit provision,No explicit provision,No explicit provision,No explicit provision,"- have in-place an appropriate risk management process of third parties or outsourcing. In this regard, risk assessment should cover risks relating to protection of confidentiality and data privacy.
+- Business providers must govern third‑party and outsourcing  to protect data confidentiality and privacy.",No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610082.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610082.pdf,
+Thailand,Bank of Thailand (BOT) ,BOT Notification No. SorNorChor. 2 /2561 Re: Regulations on Supervision for Members of the Highly Important Payment Systems,2018.0,No explicit provision,No explicit provision,- Have in place the data security and protectionof confidentiality relating to the process and information of the systems,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610085.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610085.pdf,
+Thailand,Bank of Thailand (BOT) ,Regulations on Market Conduct,2018.0,"There must be the protection of data security, as the data must be classified, kept and disposed, based on its security classification",The assignment of duties and responsibilities of each level of staff promotes the protection of customer data and is in accordance with the “3 lines of defense” concept,"customer data must be safeguarded, as service providers place importance on customer privacy and data security, while the transmission of customer information to other entities must not invade customer privacy
+-There must be systems, tools and processes to ensure that the sale of products and services does not invade customer privacy, while customer information is acquired legally, in accordance with the internal policy of the service provider, especially face-to-face sales and tele-sales. ","-FIs seek customers’ consent to the disclosure of data by giving them
+the rights to accept/decline, by using an approach that will ensure that the customers decide to give consent themselves and the customers must understand that this is not the condition for approving the products and services they have applied for   ",No explicit provision,No explicit provision,No explicit provision,No explicit provision,there must be the deployment of reliable and internationally accepted data encryption.,No explicit provision,"There must be the effective supervision and management of data access, data usage and data protection arrangements of third-party service providers or business counterparts.",No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610034.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610034.pdf,
+Thailand,Bank of Thailand (BOT) ,"BOT Notification No. SorNorChor. 1/2564
+Re: Regulations on Information Technology Risk under Payment System Act",2021.0,"There must be the protection of data security, as the data must be classified, kept and disposed, based on its security classification",The assignment of duties and responsibilities of each level of staff promotes the protection of customer data and is in accordance with the “3 lines of defense” concept,"customer data must be safeguarded, as service providers place importance on customer privacy and data security, while the transmission of customer information to other entities must not invade customer privacy
+-There must be systems, tools and processes to ensure that the sale of products and services does not invade customer privacy, while customer information is acquired legally, in accordance with the internal policy of the service provider, especially face-to-face sales and tele-sales. ","-FIs seek customers’ consent to the disclosure of data by giving them
+the rights to accept/decline, by using an approach that will ensure that the customers decide to give consent themselves and the customers must understand that this is not the condition for approving the products and services they have applied for   ",No explicit provision,No explicit provision,No explicit provision,No explicit provision,there must be the deployment of reliable and internationally accepted data encryption.,No explicit provision,"There must be the effective supervision and management of data access, data usage and data protection arrangements of third-party service providers or business counterparts.",No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FOG/2564/ThaiPDF/25640024.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FOG/2564/ThaiPDF/25640024.pdf,
+Timor-Leste,Banco Central de Timor Leste,BCTL Instruction No. 05/2017,2017.0,No explicit provision,Compliance Officers shall have direct access to Senior Management and shall have full access to all customers’ information and data in order to ensure compliance with the provisions established in this Instruction and the applicable laws and regulations.,No explicit provision,No explicit provision,"Banks, System Participants, System Operators and Payment Service Providers shall  retain all records obtained by them during the course of their operation and  administration for a minimum period of five years from the date of the establishment  of a record, or such other period as the Central Bank may require.",No explicit provision,No explicit provision,"Banks shall take reasonable and appropriate measures to ensure that the records of existing customers, including customer profiles, remain up to date and relevant throughout the business relationship",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://www.bancocentral.tl/uploads/documentos/documento_1519113147_6225.pdf,https://www.bancocentral.tl/uploads/documentos/documento_1519113147_6225.pdf,
+Viet Nam,National Assembly → Government of Viet Nam (central state management authority),Law on Data (No. 60/2024/QH15),2024.0,"Data Classification:
+State agencies shall classify data based on requirements for data administration, processing, and protection, including:
+a) Classification by the data sharing nature, including common data, private data, and open data;
+b) Classification by data importance nature, including core data, important data, and other data;
+c) Classification by other criteria, meeting the requirements for data administration, processing, and protection decided by data governing bodies
+
+Further, it distinguishes data through:
+Common data: data generally accessed, shared, utilized, and used in agencies of the CPV, the State, the Committee of the Vietnamese Fatherland Front, and socio-political Organizations.
+Private data : data accessed, shared, utilized, and used within the internal scope of agencies of the CPV, the State, the Committee of the Vietnamese Fatherland Front, and socio-political organizations.
+Important data: data that may affect national defense and security, foreign affairs, macroeconomic situations, social stabilization, and community health and safety, included in the list promulgated by the Prime Minister of Vietnam.
+Core data: important data that directly impact national defense and security, foreign affairs, macroeconomic situations, social stabilization, and community health and safety, included in the list promulgated by the Prime Minister of Vietnam.","
+'-Data owners refer to agencies, organizations, and individuals with the right to decide on the construction, development, protection, administration, processing, use, and exchange of the value of data under their ownership..
+- Data governing bodies shall assess and determine risks and adopt measures to protect data; promptly remedy arising risks and issue notices to data subject matters and relevant agencies, organizations, and individuals.","
+'-State agencies shall determine and establish mechanisms for early warnings of risks arising during data processing and develop measures to protect data
+-Data governing bodies not prescribed in Clause 2 of this Article shall assess and determine risks and adopt measures to protect data; promptly remedy arising risks and issue notices to data subject matters and relevant agencies, organizations, and individuals.
+- Data administration includes the development of policies, plans, programs, processes, and standards concerning data of data owners and data governing bodies in a continuous and effective manner, ensuring the adequacy, accuracy, integrity, consistency, standardization, safety, confidentiality, and timeliness of data.
+- Responsibilities of organizations providing products and services concerning data intermediation, data analysis and summary, and data platforms include Manage, inspect, and supervise data safety and confidentiality regularly; prevent, control, and handle data risks; supervise acts that may affect data protection.","- Private data and data concerning national defense and security, foreign affairs, and cipher shall be stored on the National Data Center's infrastructures upon data owners' consent.","- Organizations and individuals that are data owners may decide on the storage of data collected, generated, and owned by them; in case of storing core and important data,
+- National databases shall be permitted to store data on the infrastructures of the National Data Center.","- Data owners and data governing bodies shall conduct data connection and sharing for data users according to the law or under agreements, either in person or through intermediaries
+-The Prime Minister of Vietnam shall decide on the sharing of private data under the management of ministries, ministerial agencies, governmental agencies, and provincial People’s Committees in unexpected and urgent cases of preparation and management of natural disasters, epidemics, fire, and explosions or other necessary cases to settle arising issues in reality.
+- The disclosure of data shall reflect the correct data from the master data sources, ensuring convenience for organizations and individuals in utilizing, using, and sharing.
+- Whether data is subject to disclosure, conditional disclosure, or is not subject to disclosure shall be based on the information reflected by data under the law on information access.
+- State agencies shall disclose the list of open data and organize the disclosure of open data according to this Article for utilization, use, and sharing by organizations and individuals. The time of data disclosure for each field shall comply with the law.
+
+
+'-Other national databases, specialized databases, and information systems of agencies of the CPV, the State, the Vietnamese Fatherland Front, and socio-political organizations shall be connected with the National General Database through data coordination and sharing platforms; national data sharing and integration platforms; provincial and ministerial data sharing and integration platforms, Internet, computer networks, and information systems.
+- The data connection and sharing between the National General Database and other databases shall ensure efficiency, safety, and conformity with the functions, tasks, and entitlements of agencies, organizations, and individuals according to the law
+- The infrastructures of the National Data Center shall be designed, constructed, and used in compliance with the following requirements: Assurance of the main information technology components of the National Data center, including the National General Database; data coordination and sharing platform""","1. Agencies, organizations, and individuals may freely transfer data from overseas to Vietnam, process foreign data in Vietnam, and receive the State’s protection for their legitimate rights and benefits according to the law.
+2. Cross-border transfer and processing of core and important data include:
+a) Transfer of data stored in Vietnam to data storage systems placed outside of the territory of the Socialist Republic of Vietnam;
+b) Vietnamese agencies, organizations, and individuals transferring data to foreign organizations and individuals;
+c) Vietnamese agencies, organizations, and individuals using platforms outside of the territory of the Socialist Republic of Vietnam for data processing.
+3. The transfer and processing of data prescribed shall ensure national defense and security and protection of national benefits, public benefits, and legitimate rights and benefits of data subject matters and data owners according to the law of Vietnam and international treaties to which the Socialist Republic of Vietnam is a signatory.","1. Data quality assurance means assurance of the accuracy, validity, integrity, adequacy, timely update, and consistency of data.
+2. State agencies managing databases shall:
+a) Synchronously instruct, implement, and apply the national technical regulations and standards concerning data quality assurance and data quality assurance processes for application to databases under their management;
+b) Regularly inspect, supervise, and remedy mistakes; synchronize data within their premises and cooperate with relevant agencies and organizations on regular updates, adjustments, and assurance of data quality in the utilization and use.","1. Data included in the list of state secrets shall be encrypted using cipher codes during storage, transmission, receipt, and sharing on computer networks.
+2. Agencies, organizations, and individuals shall use one or more encryption solutions and encryption and decryption processes in conformity with their data administration and management.
+3. Data owners and data governing bodies shall decide on the encryption and decryption of data.
+4. Competent state agencies may apply measures to decrypt data without the consent of data owners and data governing bodies in the following cases:
+a) Emergencies;
+b) Upon threats to national security but not to the extent of declaring emergencies;
+c) Catastrophes;
+d) Prevention and combat against riots and terrorism.",No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://thuviennhadat.vn/van-ban-phap-luat-viet-nam/law-60-2024-qh15-data-639658.html,https://thuviennhadat.vn/van-ban-phap-luat-viet-nam/law-60-2024-qh15-data-639658.html,
+Viet Nam,Ministry of Public Security (MPS),"Personal Data Protection Law (PDPL) (Law No. 91/2025/QH15, with IRR (Decree 356/2025/ND‑CP )",2026.0,"Classification for personal data:
+-Basic personal data: personal data that reflects common and identifiable personal elements, frequently used in transactions and social relations,as prescribed in the list issued by the Government.
+-Sensitive personal data: personal data associated with the privacy of an individual that, once infringed upon, will directly affect lawful rights and interests of agencies, organizations or individual, as prescribed in the list issued by the Government","- Personal Data Controller — decides purposes/means of processing
+* The personal data controller or the personal data controlling and processing party shall modify personal data upon the request of the data subject or as required by law; and shall request the personal data processor or third party to modify the data subject’s personal data.
+-Personal Data Processor — processes data under controller’s instruction
+Personal Data Controlling and Processing Party — decides purposes and processes directly
+Third Party — involved in personal data processing","-The deletion or destruction of personal data must be carried out using secure measures to prevent unauthorized access and restoration of the deleted or destroyed personal data.
+-During the sensitive personal data processing, the agencies and organizations must establish regulations on access delegation limits, processing procedures, and confidentiality measures.","-Data subjects' rights include consent or refuse to consent or request withdraw of consent to personal data processing
+-Consent takes effect only when it is given voluntarily and based on full awareness of the following information:
+a) Type of personal data to be processed, purpose of personal data processing;
+b) The personal data controller or personal data controlling and processing party;
+c) Rights and obligations of data subjects.
+-The consent of a data subject must be expressed in a clear and specific manner, in a format that can be printed or copied in written form, including also in electronic form or verifiable format.
+-the consent of the data subject must comply with the following principles:
+a) Consent must be given for each specific purpose;
+b) Consent must not be subject to a condition requiring agreement to other purposes beyond the agreed content;
+c) Consent remains valid until the data subject changes it or as otherwise prescribed by law;
+d) Silence or non-response is not regarded as a consent.
+-A data subject is entitled to request the withdrawal of consent for personal data processing or request the restriction of processing of his/her personal data upon suspicion concerning the scope or purpose of personal data processing, or the accuracy of personal data",- Data subjects have the right to request deletion of their personal data.,"-A method must be established to enable the data subject to refuse data sharing; specify data retention periods; and delete or destroy data when no longer
+necessary
+- Personal data may only be disclosed for a specific purpose. The scope of disclosure and types of personal data to be disclosed must be consistent with
+the intended purpose. The disclosure of personal data must not infringe upon the lawful rights and interests of the data subject.
+-Personal data may only be disclosed in the following cases:
+*With the consent of the data subject;
+* In accordance with the law;
+* For the performance of contractual obligations.","""1. Cases of cross-border transfer of personal data include:
+a) Transfer of personal data stored in Vietnam to a data storage system located outside the territory of the Socialist Republic of Vietnam
+b) Agencies, organizations, or individuals in Vietnam transferring personal data to organizations or individuals abroad
+c) Vietnam-based or overseas agencies, organizations, or individuals using a platform located outside the territory of the Socialist Republic of Vietnam to
+process personal data collected in Vietnam Agencies, organizations, or individuals conducting cross-border
+personal data transfer activities must prepare a dossier on the impact assessment of the cross-border transfer of personal data and submit one original copy to the agency in charge of personal data protection within 60 days from the first day of cross-border personal data transfer
+-The impact assessment of the cross-border transfer of personal data shall be conducted once for the entire duration of operation of such agency, organization, or individual, and shall be updated
+-The agency in charge of personal data protection shall decide to carry out periodic inspections of cross-border personal data transfers not more than once per year, or extraordinary inspections upon detection of violations of the law on personal data protection or when incidents of personal data leakage or loss occur
+-The agency in charge of personal data protection shall decide to request the suspension of cross-border personal data transfer by any agency, organization,  or individual upon discovering that the transferred personal data is being used for activities that may harm national defense or national security.","Upon receipt of a request to access, correct, or request correction of personal data, or to provide personal data in accordance with proper procedures from a personal data subject, the personal data controller and the personal data controlling and processing party shall respond within 02 working days, provide full information to the personal data subject regarding the procedures, and implement the request within 10 days. In case it is necessary to require a personal data processor or a third party to correct the personal data of a personal data subject, such correction shall be carried out within 15 days.","-Personal data in big data processing: Implement encryption and anonymization of personal data (the processof separating data that identifies a specific individual for separate storage and security, whereby personal data after such processing is used for processing purposes without being able to identify a specific individual) during the transfer or provision of personal data, except where specialized laws provide otherwise or where processing requires data in clear form for the purposes of crime prevention and control, anti-money laundering, ensuring national security, or handling customer complaints and disputes. In such cases, the agencies and organizations must apply additional security solutions to ensure that personal data is not accessed or used unlawfully
+
+-Personal data protection in blockchain technology: Apply only secure encryption algorithms, hashing algorithms, and digital signature algorithms
+-Personal data protection in cloud computing: Personal data stored in cloud computing environments must be encrypted both at rest and during transmission, accompanied by strict access delegation mechanisms
+-Personal data processing services: Services for encrypting personal data during transmission and storage","""Notification of violations on personal position data and biometric data: In case of occurring an incident involving a violation on personal data related to position data or biometric data, the personal data controller or the personal data controlling and processing party shall have the following responsibilities:
+
+a) Notify the affected data subjects within 72 hours from the time the violation is detected;
+b) Report to the competent state agency
+c) Record, store, and update the violation dossier for inspection, examination, and handling purposes. The organization shall retain the violation dossier for at least 5 years from the date the incident has been fully remedied.
+
+2. The notification to the data subjects shall include at least the following contents:
+a) Time and method of detecting the violation;
+b) Type of data affected (position data, biometric data, or both);
+c) Level of severity and the potential risks to the lawful rights and interests of the data subjects;
+d) Measures that have been, are being, and will be implemented to remedy the incident and mitigate damages;
+dd) Guidance for data subjects on subsequent preventive and remedial measures
+e) Contact information of the personal data protection department, personal data protection personnel, or the organization or individual providing personal data protection services; and the department in charge of receiving and handling personal data incidents within the organization
+
+In case an organization or individual is unable to notify all affected personal data subjects within the time limit  due to technical or emergency reasons, the following measures shall be implemented:
+a) Public notification via the organization’s official electronic means, including its website or application;
+b) Sending notifications to the relevant personal data subjects as soon as technical conditions permit","- On personal data transfer: The roles of the personal data controller, personal data processor, and
+third parties in personal data transfer activities must be clearly identified;
+
+-In case of big data processing containing personal data, the relevant agencies, organizations, and individuals have the responsibility to enter into agreements with third parties, partners, and service providers to ensure full compliance with regulations on personal data protection
+- The organizations and individuals entering into contracts related to the processing of personal data with cloud computing service providers have the responsibility to
+a) Clearly stipulating in the contract compliance with Vietnamese law on
+personal data protection; providing information on the department and personnel
+in charge of personal data protection; and complying with administrative
+procedures related to personal data protection in accordance with the law;
+b) Clearly defining personal data processing flows, the roles of the parties
+involved in the provision of cloud computing services, and their corresponding
+responsibilities;
+c) Requiring specific security, technical, and organizational measures,
+which must be clearly stated in the contract;
+d) Promptly notifying relevant parties of any changes that may affect
+personal data;
+dd) Complying with time limits for personal data processing and
+requirements for deletion and destruction of personal data;
+e) Ensuring the exercise of the rights of personal data subjects;
+g) Fully implementing technical measures to ensure that access to personal
+data is appropriately decentralized.
+3. Cloud computing service providers shall:
+a) Comply with Vietnamese regulations on personal data protection;
+provide information on the department and personnel in charge of personal data
+protection; and comply with administrative procedures related to personal data
+protection in accordance with the law;
+b) Require subcontractors to comply with regulations and obligations on
+personal data protection in accordance with the law;
+c) Apply technical and organizational measures appropriate to the scale and level of their personal data processing
+d) Conduct periodic assessments of compliance with personal data
+protection regulations at least once per year",No explict provision,"No explicit provision detailing data standards, however required requirements for transfer agreements must include the following content:
+- Must specify purpose,
+- Types of data,
+- Duration,
+- Deletion/destruction requirements,
+- Responsibilities of parties","https://vanban.chinhphu.vn/?pageid=27160&docid=214590&classid=1&orggroupid=1
+https://static3.luatvietnam.vn/uploaded/vietlawfile/2026/1/356_2025_nd_cp_160126121401.pdf","https://vanban.chinhphu.vn/?pageid=27160&docid=214590&classid=1&orggroupid=1
+https://static3.luatvietnam.vn/uploaded/vietlawfile/2026/1/356_2025_nd_cp_160126121401.pdf",
+Viet Nam,Ministry of Industry and Trade (MOIT),Law on Protection of Consumer Rights (LPCR) – Law No. 19/2023/QH15,2023.0,No explicit provision,"In case consumers conduct transactions through a third party, the third party shall take responsibility for the protection of consumer information","Businesses, whether by themselves or by authorizing or hiring a third party to collect, store, use, modify, update, or cancel consumer information must ensure the safety and security of consumer information as stipulated by this Law and other relevant laws. In case businesses authorize or hire a third party to collect, store, use, modify, update or cancel consumer information, they must obtain the consumers’ consent
+-Businesses must ensure the safety and security of consumer information
+that they collect, store, or use, and take measures to prevent the following acts:
+a) Unauthorized theft or access to information;
+b) Unauthorized use of information;
+c) Unauthorized modification, update or deletion of information.",Businesses must obtain consumer consent, No explicit provision, No explicit provision, No explicit provision, No explicit provision, No explicit provision, No explicit provision,"
+In case traders authorize or hire a third party to collect, store, use, modify, update or cancel consumer information, they must obtain the consumers’ consent. The authorization or hiring of a third party must be in writing, clearly specifying the scope and responsibilities of each party in the protection of consumer information in accordance with this Law and other relevant laws", No explicit provision, No explicit provision,https://vanban.chinhphu.vn/?pageid=27160&docid=208363&classid=1&typegroupid=3,https://english.luatvietnam.vn/thuong-mai/law-on-protection-of-consumer-rights-no-19-2023-qh15-259732-d1.html,
+Viet Nam,State Bank of Viet Nam,Decree No. 52/2024/ND‑CP on Non‑Cash Payments,2024.0,No explicit provision,No explicit provision,"-Providers are prohibited from disclosing or providing information on the balances of payment accounts, bank cards, or e-wallets and payment transactions of clients at payment service providers or payment intermediary service providers unless consented by the clients",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://vanban.chinhphu.vn/?pageid=27160&docid=210262,https://static3.luatvietnam.vn/uploaded/vietlawfile/2024/5/52_2024_nd_cp_270524162102.pdf,
+Viet Nam,State Bank of Viet Nam,Circular No. 15/2024/TT‑NHNN – On Provision of Non‑Cash Payment Services,2024.0,No explicit provision,No explicit provision,"The information and data of electronic documents must be fully controlled to ensure the legality, validity, and integrity of the information. At the same time, the documents must be controlled and securely managed to prevent
+and avoid illegal exploitation, intrusion, and copy of information",No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,No explicit provision,https://congbao.chinhphu.vn/van-ban/thong-tu-so-15-2024-tt-nhnn-42185/50708.htm,https://static3.luatvietnam.vn/uploaded/vietlawfile/2024/7/15_2024_tt_nhnn_170724173412.pdf,

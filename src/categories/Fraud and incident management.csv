@@ -1,0 +1,227 @@
+Country,Regulator,Issuance,Year,Scope,Fraud Reporting,"Fraud controls (including authentication technology, IT related controls, user protection)",Incident management and reporting,Source_Original,Source_EN,Amendment_Of
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Notice on Reporting of Fraud Incidents (BU/N-3/2022/74),2022.0,"Banks
+","- Notify BDCB within 1 working day upon detection of suspected fraud incident
+- Submit report within 5 working days upon suspected fraud incident
+- Submit brief summary detailing necessary actions and duration taken to resolve the case within 10 working days upon resolution of case
+
+
+","Fraud policy approved by the Board of Directors, which includes defining the classification of fraud incidents (material or non-material)",,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192670269190.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192670269190.pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Guidelines on Technology Risk Management (Guidelines No. TRS/G-2/2022/1),2022.0,"- Banks
+- Licensed, registered, or regulated financial institutions  
+- Approved operators of payment systems",,"- System to monitor transactions for fraudulent activities, with capability to store and retain information or logs of such activities
+- Regular review and updating of monitoring system
+- Technology risk management framework, including annual IT audit, annual review of critical systems, mandatory user acceptance testing (UAT), vulnerability assessment and penetration testing for newly developed or acquired critical systems prior to going live, security monitoring
+- Subscription to reputable threat intelligence services ","- Root case and impact analysis for major incidents, including corrective and preventive measures
+- Identification of severity level for IT incidents, with resolution timeframes appropriate for the severity level
+- Escalation and resolution procedures, with regular tesing ot predetermine escalation and response plan for IT incidents",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192888872080.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192888872080.pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Notice on Technology Risk Management (TRM) (TRS/N-1/2023/2),2023.0,"- Banks
+- Licensed, registered, or regulated financial institutions  
+- Approved operators of payment systems",,"- Annual IT audit
+- Notification to BDCB prior to acquiring or developing new critical systems or application, introduction of new features within the critical system or application that may potentially affect the customer’s experience and personal data
+- Notification to BDCB  prior to integrating a third-party system or service with any of the critical systems
+- Mandatory user acceptance testing (UAT), vulnerability assessment and penetration testing for newly developed or acquired critical systems prior to going live",,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192628458350.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17111192628458350.pdf,
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),"Notice on Early Detection on Cyberintrusion and Incident Reporting (Notice No. TRS/N-1/2020/1), as amended",2024.0,"- Banks
+- Licensed, registered, or regulated financial institutions  ",,"- Regular risk assessment, gap analysis and testing against relevant technology-related BDCB Notices and Guidelines, international IT standards and industry best practices
+- Policies and procedures on incident handling (including incident categorization), business continuity and service restoration","- Notify BDCB within one (1) hour after the discovery of a suspected incident
+- Assess the suspected incident and notify BDCB within two (2) hours after first discovery of the suspected incident whether the incident is a successful cyber intrusion or otherise, and whether the incident is a major IT incident or otherwise
+- Updates to BDCB on progress of incident response to cyber intrusion and major IT incidents at least twice daily
+- Submit root case and impact analysis report within five (5) working days
+- Record and compile all near-miss IT incidents that are confirmed and submit details to BDCB within five (5) working days after the end of each month
+",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17138600253557400.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17138600253557400.pdf,
+Cambodia,National Bank of Cambodia (NBC),Technology Risk Management Guidelines,2019.0,All Banking and financial Institution (BFIs) regulated by NBC,"CAIFU requires Suspicious Transaction Reports (STRs) from banks, insurers, and payment service providers. Covered institutions are required to report fraud, money laundering, or unusual financial activity.
+
+","- Technology risk mangement framework covering cybersecurity and operational risks (IT Governance, cybersecurity essentials, 
+- Multi-factor authentication to secure user authentication processes
+- Security Information and Event Management tools for real-time threat detection and response
+- Continuous monitoring of logs and security events
+- Regular vulnerability assessments and penetration testing to identify and address security gaps
+- PSPs must implement secure systems to prevent hacking and unauthorized access.
+- Backup and recovery plans to prevent fraud during outages.","The BFI shall establish an incident management policy and procedure to detect,respond to, and mitigate IT incidents, including cyber security incidents.
+The BFI shall establish an incident response plan, including cyber incidents, to quickly
+contain and mitigate incidents and cyber threats, and to securely and timely resume affected
+services. The plan shall include communication channels, roles, and responsibilities of
+relevant internal and external parties to support effective incident response.
+The BFI shall report the incident as required by NBC periodically or on ad hoc basis",https://www.nbc.gov.kh/download_files/publication/itguideline_eng/NBC-Risk-Management-Guidelines-July%202019.pdf,https://www.nbc.gov.kh/download_files/publication/itguideline_eng/NBC-Risk-Management-Guidelines-July%202019.pdf,
+Cambodia,National Bank of Cambodia (NBC),Technology and Cyber Risk Management Guideline,2026.0,All Banking and financial Institution (BFIs) regulated by NBC,"CAIFU requires Suspicious Transaction Reports (STRs) from banks, insurers, and payment service providers. Covered institutions are required to report fraud, money laundering, or unusual financial activity.
+
+","- Technology risk mangement framework covering cybersecurity and operational risks (IT Governance, cybersecurity essentials, 
+- Multi-factor authentication to secure user authentication processes
+- Security Information and Event Management tools for real-time threat detection and response
+- Continuous monitoring of logs and security events
+- Regular vulnerability assessments and penetration testing to identify and address security gaps
+- PSPs must implement secure systems to prevent hacking and unauthorized access.
+- Backup and recovery plans to prevent fraud during outages.","The BFI shall establish an incident management policy and procedure to detect,respond to, and mitigate IT incidents, including cyber security incidents.
+The BFI shall establish an incident response plan, including cyber incidents, to quickly
+contain and mitigate incidents and cyber threats, and to securely and timely resume affected
+services. The plan shall include communication channels, roles, and responsibilities of
+relevant internal and external parties to support effective incident response.
+The BFI shall report the incident as required by NBC periodically or on ad hoc basis",https://www.nbc.gov.kh/download_files/publication/itguideline_eng/National_Bank_of_Cambodia_TCRMG_2026.pdf,https://www.nbc.gov.kh/download_files/publication/itguideline_eng/National_Bank_of_Cambodia_TCRMG_2026.pdf,Technology Risk Management Guidelines (2019)
+Indonesia,Bank Indonesia (BI),"PBI No. 2/2024 on Information System Security and Cyber Resilience  for Payment System Operators, Money Market Players and Foreign Exchange Markets, and Other Parties Regulated and Supervised by
+Bank Indonesia",2024.0,"Payment service providers (PJP), payment infrastructure providers (PIP), BI-FAST participants","- Identify and report fraud incidents to BI arising from unauthorized transacions, account takeover/credential compromise, social engineering/scams, and system misuse
+- Report transactions suspected to involve fraud even if loss is not yet confirmed and investigation is ongoing
+- Initial report must be submitted immediately upon detection or strong suspicion of fraud; follow-up report to be submitted after investigation/confirmation of impact","- Fraud management systems; cyber resilience; transaction monitoring
+- Strong authentication; security baselines; PRM/FDS analytics; IT minimum protections
+- Risk-based controls, transaction notifications, transaction limits, alerts for credit card; prevention of suspicious transfers; mechanism to compensate financial losses of electronic money users 
+- central Fraud Detection System (FDS), incident response teams, reconciliation, and enhanced IT protections
+- regular vulnerability assessments, penetration testing and system audits","- Incident handling must include detection of incidents, analysis and classificatin of incidents, response and containment, recovery, and post-incident evaluation
+- Procures to ensure timely detection of incidents, accurate identification of the source and impact of incidents, proper escalation of incidents based on severity, and coordination with relevant internal and external parties
+- Report significant incidents to Bank Indonesia promptly after detection, followed by detailed reports within a specified period
+- Maintain records of incidents and ensure availability of records",https://www.bi.go.id/id/publikasi/peraturan/Pages/PBI_022024.aspx,https://www.bi.go.id/id/publikasi/peraturan/Documents/PADG_242024.pdf,
+Indonesia,Bank Indonesia (BI),PBI No. 23/6/2021 on Payment Service Providers;,2021.0,"Payment service providers (PJP), payment infrastructure providers (PIP), BI-FAST participants",,,,https://www.bi.go.id/en/publikasi/peraturan/Pages/PBI_222321.aspx,https://www.bi.go.id/en/publikasi/peraturan/Pages/PBI_222321.aspx,
+Indonesia,Bank Indonesia (BI),PADG No. 1/2025 and No. 14/2025 on BI-FAST fraud management / Fraud Detection System;,2025.0,"Payment service providers (PJP), payment infrastructure providers (PIP), BI-FAST participants;",,,,https://www.bi.go.id/id/publikasi/peraturan/Pages/PADG_012025.aspx,https://www.bi.go.id/id/publikasi/peraturan/Pages/PADG_142025.aspx,
+Indonesia,Otoritas Jasa Keuangan (OJK),OJK POJK No. 12/2024 on Anti-Fraud Strategy,2024.0, all financial institutions under OJK (LJKs),"Submit to OJK:
+- Anti-Fraud Strategy Implementation Report (for banks and financing companies - every semester; for other financial institutions - annually)
+- Reports on Acts of Fraud with Significant Impact (for banks and financing companies - within 3 business days of discovery; for other financial institutions - within 6 business days of discovery)","Anti-Fraud Strategies that address prevention, detection, investigation, reporting and sanction, and monitoring, evaluation and follow-up of fraud incidents
+",,https://www.ojk.go.id/id/regulasi/Documents/Pages/Penerapan-Strategi-Anti-Fraud-Bagi-Lembaga-Jasa-Keuangan/POJK%2012%20Tahun%202024%20Penerapan%20Strategi%20Anti%20Fraud%20bagi%20Lembaga%20Jasa%20Keuangan.pdf,https://www.ojk.go.id/id/regulasi/Documents/Pages/Penerapan-Strategi-Anti-Fraud-Bagi-Lembaga-Jasa-Keuangan/POJK%2012%20Tahun%202024%20Penerapan%20Strategi%20Anti%20Fraud%20bagi%20Lembaga%20Jasa%20Keuangan.pdf,
+Lao PDR,Bank of the Lao PDR (BOL); National Assembly (law),Law on Payment System (Amended) No. 32/NA (2023),2023.0,All payment systems and services operating in Lao PDR,"- Same as AML requirements
+"," - General risk management and system security requirements
+-  The Payment Service Provider (PSP) shall have the right and the obligation to freeze any funds transferred to a payee’s account upon receipt of a customer report alleging a fraudulent transaction, provided that such freeze shall not exceed seventy-two (72) hours from the time of receipt of said report.",General risk management and system security requirements,https://www.bol.gov.la/en/fileupload/18-12-2025_1766051569.pdf,https://www.bol.gov.la/en/fileupload/18-12-2025_1766051569.pdf,
+Malaysia,Bank Negara Malaysia (BNM),Risk Management in Technology (RMiT) policy,2025.0,"- Licensed banks
+- Licensed investment banks
+- Licensed Islamic banks
+- Approved issuers of electronic money
+- Operator of a designated payment system
+- Registered merchant acquirers
+- Intermediary remittance institutions","- Report payment-related fraud, whether actual or near miss, by the 15th calendar day of the following month from the date of detection of event. Events with high reputational impact should be reported within one (1) working day from the date of event confirmation.
+- Report payment-related fraud with a new modus operandi that impacts the reporting entity for the first time individually, on a per transaction basis
+","- Technology Risk Management Framework and Cyber Risk Framework
+- Continuous surveillance and monitoring to detect any
+exploitation of the digital service application deployed to customers’
+mobile devices and ensure the swift upgrade of security controls to
+mitigate new vulnerabilities
+- Layered (defense-in-depth) security controls to protect the digital
+service application deployed to customers’ mobile devices and the
+relevant banking data contained in it
+- Continuous upgrade of fraud detection capabilities
+- Secure communication channel to mitigate risk of phishing
+- Secure self-service ""kill switch"" solution
+- Real-time detection and blocking of suspicious or fraudulent transactions","- Clearly defined and effective incident handling procedures to
+assist customers to contain the potential damage resulting from a cybersecurity breach involving digital services
+- Report the cyber incidents and events,  whether actual or near miss, and actual critical business disruptions and system failures, within 14 calendar days from the date of event confirmation. Events with high reputational impact should be reported within one (1) working day from the date of event confirmation.
+- Reporting entities that are subject to the Business Continuity Management Policy Document are required to notify BNM on the occurrence of a cyber incident and major disruptions within 2 hours upon the confirmation of such cyber incident
+",https://www.bnm.gov.my/documents/20124/938039/pd-rmit-nov25.pdf,https://www.bnm.gov.my/documents/20124/938039/pd-rmit-nov25.pdf,
+Malaysia,Bank Negara Malaysia (BNM),"Technology Requirements for Payment
+Services Regulatees",2026.0,"- Approved issuers of electronic money 
+- Registered merchant acquirers 
+- Licensed money service business 
+- Operator of designated payment system",,-do-,-do-,https://www.bnm.gov.my/documents/20124/943361/pd-tecreq-psr-mar2026.pdf,https://www.bnm.gov.my/documents/20124/943361/pd-tecreq-psr-mar2026.pdf,
+Malaysia,Bank Negara Malaysia (BNM),Payment System Operator Policy (BNM/RH/PD 029-54),2022.0,"- Approved operators of payment systems
+- Operators of designated payment systems",,-do-,-do-,https://www.bnm.gov.my/documents/20124/943361/PD-PSO-22122022.pdf,https://www.bnm.gov.my/documents/20124/943361/PD-PSO-22122022.pdf,
+Malaysia,Bank Negara Malaysia (BNM),Operational Risk Reporting (BNM/RH/PD 028 -128),2026.0,"- Licensed banks
+- Licensed investment banks
+- Licensed Islamic banks
+- Approved issuers of electronic money
+- Operator of a designated payment system
+- Registered merchant acquirers
+- Intermediary remittance institutions",,-do-,-do-,https://www.bnm.gov.my/documents/20124/938039/pd-ORR-jan2026.pdf,https://www.bnm.gov.my/documents/20124/938039/pd-ORR-jan2026.pdf,
+Myanmar,Central Bank of Myanmar (CBM),Mobile Financial Services Regulations (2016),2016.0,Mobile financial services providers; ACH participants,"Submit a summary of all detected fraudulent activities to CBM, including suspicious transactions, fraudulent accounts, and blocked transactions. Reports should include corrective actions taken and any open fraud cases under investigation.
+","- Real-time transaction monitoring, machine learnng, and rule-based algorithms to detect suspicious activities
+- Velocity checks
+- Geographical restriction
+- Blacklist management
+- Device fingerprinting","Regulation on Mobile Financial Services (MFS Regulation, FIL/R/01/03‑2016) — MFSPs & Agent networks: Incident reporting: MFSPs must notify CBM within 2 business days of suspected/confirmed fraud, security breaches, outages >2 hours, or loss of confidential data
+
+MyanmarPay participants to notify CBM within 24 hours upon discovery of a security breach, providing detaisls on the nature of the incident, affected systems, and planned remediation efforts. After the incident is resolved, a post-incident review must be conducted to identify the root cause and recommend corrective actions to prevent future occurrences. Detailed incident reports should be shared with CBM.
+
+",https://www.cbm.gov.mm/sites/default/files/regulate_launder/_fil-r-01_mobile_financial_services_regulation_eng_final_website_4-4-2016_-5.pdf,https://www.cbm.gov.mm/sites/default/files/regulate_launder/_fil-r-01_mobile_financial_services_regulation_eng_final_website_4-4-2016_-5.pdf,
+Myanmar,Central Bank of Myanmar (CBM),"CENTRAL BANK OF MYANMAR 
+Automated Clearing House",2021.0,,-do-,-do-,-do-,https://www.cbm.gov.mm/sites/default/files/cbm-net_ach_guideline.pdf,https://www.cbm.gov.mm/sites/default/files/cbm-net_ach_guideline.pdf,
+Myanmar,Central Bank of Myanmar (CBM),AML/CFT Risk Based Management Guidance Note,2015.0,,-do-,-do-,-do-,https://www.cbm.gov.mm/sites/default/files/regulate_launder/annex_vii_cbm_risk_management_guidance_note_eng_9-1-2015-5_.pdf,https://www.cbm.gov.mm/sites/default/files/regulate_launder/annex_vii_cbm_risk_management_guidance_note_eng_9-1-2015-5_.pdf,
+Myanmar,Central Bank of Myanmar (CBM),MyanmarPay - Digital Payment System Code of Conduct,2024.0,,-do-,-do-,-do-,https://myanmarpay.com.mm/frontend/assets/files/COCwithSetttlementandMFSP.pdf,https://myanmarpay.com.mm/frontend/assets/files/COCwithSetttlementandMFSP.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),Anti-Financial Account Scamming Act (RA 12010) and its Implementing Rules and Regulations;,2025.0,Banks and non-bank institutions subject to BSP supervision and/or regulation,"- Report on temporary holding of disputed funds to be submitted to the BSP every 15th of the month, covering data from the previous reference month
+- Submit Report on Crimes and Losses (whether the crime is consummated, frustrated or attempted) within ten (10) calendar days from knowledge of the crime/incident. Where a thorough investigation and evaluation of facts is necessary to complete the report submit an initial report within 10 calendar days and a complete report within 20 calendar days from the termination of the investigation","- Automated and real-time fraud monitoring and detection systems with transaction velocity checks or thresholds, monitoring of mobile device and account information changes, geolocation and behavioral anomalies, and blacklist screening;
+- Customer authentication controls; Any of the following: biometric authentication, behavioral biometrics, passwordless authentication, adaptive authentication
+- 24-hour Transaction Pause Period after applying key account changes
+- Temporary holding of funds subject of a disputed transaction; 
+- Real-time customer notification through secure channels;
+- Mechanisms to enable account holders to verify the identity of recipients of fund transfers; 
+- Self-service facility that enables account holders to suspend their account, block outgoing financial transactions and prevent unauthorized changes to account information
+- Money lock feature
+- Customizable transaction limits
+- Prohibition from sending clickable links or QR codes via email, instant messaging apps, or SMS
+","- Notify the BSP within two (2) hours from the discovery of the following:
+(i) Reportable major cyber-related incidents (events which may
+seriously jeopardize the confidentiality, integrity or availability of critical information, data or systems of BSFIs, including their customers and other stakeholders)
+(ii) Disruptions of financial services and operations which lasts for more than two (2) hours
+
+- Submit follow-up report to the BSP within 24 hours from the discovery of the major cyber-related incident and/or disruption, with the following details:
+(i) nature of the incident
+(ii) manner and time of initial detection
+(iii) impact of the incident based on initial assessment
+(iv) initial response or actions taken/to be taken
+(v) whether the incident resuts in activation of the business continuity plan and/or crisis management plan
+",https://www.bsp.gov.ph/Regulations/Banking%20Laws/AFASA-Booklet-with-IRRs.pdf,https://www.bsp.gov.ph/Regulations/Banking%20Laws/AFASA-Booklet-with-IRRs.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Circular No. 1140 (Amendments to Regulations on IT Risk Management);,2022.0,,-do-,-do-,-do-,https://www.bsp.gov.ph/Regulations/Issuances/2022/1140.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2022/1140.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Memorandum No. M-2020-053 (Reminder on Sound Risk Management Practices to Mitigate Risks from Scams or Frauds);,2020.0,,-do-,-do-,-do-,https://www.bsp.gov.ph/Regulations/Issuances/2020/m053.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2020/m053.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Memorandum M-2022-015 (Recommended Control Measures Against Cyber Fraud on Retail EPFS);,2022.0,,-do-,-do-,-do-,https://www.bsp.gov.ph/Regulations/Issuances/2022/M-2022-015.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2022/M-2022-015.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Memorandum No. M-2024-030 (Protection of Consumer Assets Against Fraud),2024.0,,-do-,-do-,-do-,https://www.bsp.gov.ph/Regulations/Issuances/2024/M-2024-030.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2024/M-2024-030.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Circular No. 1019 (Technology and Cyber Risk Reporting and Notification Requirements),2018.0,,-do-,-do-,-do-,https://www.bsp.gov.ph/Regulations/Issuances/2018/c1019.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2018/c1019.pdf,
+Singapore,Monetary Authority of Singapore (MAS),Guidelines on Shared Responsibility Framework (SRF) for e-payments (2024);,2024.0,"Banks and relevant payment service providers issuing protected accounts
+
+Major Payments Institutions","- Submit report to MAS within five (5) working days after the discovery of any suspicious activities and incidents of fraud where such activities or incidents are material to the safety, soundness or reputaton of the relevant entity
+- Lodge a police report and submit to MAS a copy of the police report. Otherwise, notify MAS of reasons for not lodging a police report.","- ScamShield mobile app, SMS Sender ID Registry regime, anti-malware controls, fraud surveillance, and detection capabilities, public education, through public advisories and sharing best practices
+- Preventive Measures, Detective Measures and Remedial Measures
+- Ability for users to block accounts or payment instruments
+- Measures to detect unauthorised transactions and shall ensure secure authentication and transaction verification mechanisms
+- Real-time monitoring, scam detection controls, and measures to prevent, detect and disrupt scams and movement of scam proceeds.","- Maximum unscheduled downtime for each critical system that affects the relevant entity’s operations or service to its customers
+should not exceed a total of 4 hours within any period of 12 months
+- Establish a recovery time objective (“RTO”) of not more than 4
+hours for each critical system
+- Notify MAS within one (1) hour from the discovery of a relevant incident
+- Submit a root cause and impact analysis report to MAS within 14 days or such longer period as the Authority may allow, from the discovery of the relevant incident",https://www.mas.gov.sg/-/media/mas-media-library/regulation/guidelines/pso/guidelines-on-shared-responsibility-framework/guidelines-on-shared-responsibility-framework.pdf,https://www.mas.gov.sg/-/media/mas-media-library/regulation/guidelines/pso/guidelines-on-shared-responsibility-framework/guidelines-on-shared-responsibility-framework.pdf,
+Singapore,Monetary Authority of Singapore (MAS),Anti-scam Measures by Major Payment Institutions that issue Personal Payment Accounts containing e-money,2024.0,Applies to Major Payment Institutions issuing e-wallets,,-do-,-do-,https://www.mas.gov.sg/-/media/mas-media-library/regulation/circulars/pd/circular-on-anti-scam-measures/circular-on-anti-scam-measures-by-major-payment-institutions-issuing-e-wallets.pdf,https://www.mas.gov.sg/-/media/mas-media-library/regulation/circulars/pd/circular-on-anti-scam-measures/circular-on-anti-scam-measures-by-major-payment-institutions-issuing-e-wallets.pdf,
+Singapore,Monetary Authority of Singapore (MAS),MAS Notice No. PSN03 - Notice on Reporting of Suspicious Activities and Incidents of Fraud,2019.0,All licensees and all operators and settlement institutions of designatred payment systems,,-do-,-do-,https://www.mas.gov.sg/-/media/mas/regulations-and-financial-stability/regulatory-and-supervisory-framework/anti_money-laundering_countering-the-financing-of-terrorism/psn03-notice-on-reporting-of-suspicious-activities-and-incidents-of-fraud.pdf,https://www.mas.gov.sg/-/media/mas/regulations-and-financial-stability/regulatory-and-supervisory-framework/anti_money-laundering_countering-the-financing-of-terrorism/psn03-notice-on-reporting-of-suspicious-activities-and-incidents-of-fraud.pdf,
+Singapore,Monetary Authority of Singapore (MAS),MAS Notice No. FSM-N13: Notice on Technology Risk Management,2024.0,"- Holders of payment services license
+- Operators and settlement institutions of designated payment systems",,-do-,-do-,https://www.mas.gov.sg/-/media/mas-media-library/regulation/notices/trpd/notice-fsm-n13/mas-notice-fsm-n13.pdf?sc_lang=en&hash=53049F1110A8CF2C70F252911DB15092,https://www.mas.gov.sg/-/media/mas-media-library/regulation/notices/trpd/notice-fsm-n13/mas-notice-fsm-n13.pdf?sc_lang=en&hash=53049F1110A8CF2C70F252911DB15092,
+Singapore,Monetary Authority of Singapore (MAS),MAS Notice No. FSM-N14: Notice on Cyber Hygiene,2024.0,"- Holders of payment services license
+- Operators and settlement institutions of designated payment systems",,-do-,-do-,https://www.mas.gov.sg/-/media/mas-media-library/regulation/notices/trpd/notice-fsm-n14/mas-notice-fsm-n14.pdf?sc_lang=en&hash=67839A4BD49C5FEEF28D095167FB170A,https://www.mas.gov.sg/-/media/mas-media-library/regulation/notices/trpd/notice-fsm-n14/mas-notice-fsm-n14.pdf?sc_lang=en&hash=67839A4BD49C5FEEF28D095167FB170A,
+Thailand,Bank of Thailand (BOT),BOT Notification No. SorNorChor. 2 /2561 Re: Regulations on Supervision for Members of the Highly Important Payment Systems,2018.0,Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,No explicit provision,No explicit provision,"- Have in place plans to prepare for any unusual incidents 
+which may cause disruptions or damages to the systems.
+- Mandatory incident recording and reporting to BOT through supervisory channels; Timely notification and post-incident reporting required.",https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610084.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610084.pdf,
+Thailand,Bank of Thailand (BOT),BOT notification No. SorNorChor. 4/2561 Re:Regulations on  Supervision of  the Designated Payment Systems Business,2018.0,Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,No explicit provision,No explicit provision,"- Have in place plans to prepare for any unusual incidents 
+which may cause disruptions or damages to the systems.
+- Mandatory incident recording and reporting to BOT through supervisory channels; Timely notification and post-incident reporting required.",https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610085.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610085.pdf,
+Thailand,Bank of Thailand (BOT),BOT Notification No. SorNorChor. 6/2561 Re: Regulations on General Supervision of Undertaking Designated Payment Service Business,2018.0,Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,No explicit provision,No explicit provision,"- Have in place plans to prepare for any unusual incidents 
+which may cause disruptions or damages to the systems.
+- Mandatory incident recording and reporting to BOT through supervisory channels; Timely notification and post-incident reporting required.",https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610087.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610087.pdf,
+Thailand,Ministry of Digital Economy and Society,"Emergency Decree on Measures for the Prevention and Suppression of Technological Crimes, B.E. 2566 (2023)",2023.0,"- financial institution
+- operator of a business under the law on payment
+systems.",No explicit provision,"'- Share suspected account and transaction information though Central fraud registry system
+-  Immediately suspend suspicious transactions and notify relevant authorities
+- Support victim‑initiated transaction freezes 
+- 24/7 fraud hotlines; Measures to prevent unauthorized transactions and support timely remediation.
+",,https://www.mdes.go.th/law/detail/7455-Emergency-Decree-on-Measures-for-the-Prevention-and-Suppression-of-Technological-Crimes--B-E--2566--2023-,https://www.mdes.go.th/law/detail/7455-Emergency-Decree-on-Measures-for-the-Prevention-and-Suppression-of-Technological-Crimes--B-E--2566--2023-,
+Thailand,Bank of Thailand (BOT),BOT Notification No. SorNorChor. 11/2561  Re: Policies and Measures on Security of Information Technology Systems,2018.0,Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,No explicit provision,"Maintain information system secuirty including access control, data confidentiality and integrity protection, system availabilty and IT security audits. ",Require incident management processes to ensure system availability.,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610093.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610093.pdf,
+Thailand,Bank of Thailand (BOT),BOT Notification No. 19/2568 Re: Regulations on Standards and Measures to Prevent Technological Crimes for Financial Institutions,2025.0,Financial institutions; Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,No explicit provision,"- Preventive, detective, and responsive controls; Mandatory transaction monitoring; Restrictions on phishing vectors (cancellation of all types of links via SMS and email, and cancellation of attachments to important information through social media); restriction of the number of mobile banking accounts of each social network
+- Monitoring and take down fake mobile application
+- Biometrics for high-value transfers or limit changes
+- Mandatory customer alerts and transaction notifications
+- Establish emergency contact channel (hotline)
+- limit losses and manage mule accounts",No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680154.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680154.pdf,
+Thailand,Bank of Thailand (BOT),BOT Notification No. 58/2568 Re: Regulations on Standards and Measures to Prevent Technological Crimes for Business Provider under Payment System Laws,2025.0,Financial institutions; Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,No explicit provision,"- Preventive, detective, and responsive controls; Mandatory transaction monitoring; Restrictions on phishing vectors (cancellation of all types of links via SMS and email, and cancellation of attachments to important information through social media); restriction of the number of mobile banking accounts of each social network
+- Monitoring and take down fake mobile application
+- Biometrics for high-value transfers or limit changes
+- Mandatory customer alerts and transaction notifications
+- Establish emergency contact channel (hotline)
+- limit losses and manage mule accounts",No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/ThaiPDF/25680259.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/ThaiPDF/25680259.pdf,
+Thailand,Bank of Thailand (BOT),BOT Notification No. 18/2568 Security of Financial Services and Mobile Payment Services for Electronic Money (e‑Money) Business Operators Providing e‑Money Mobile Applications,2025.0,Financial institutions; Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,No explicit provision,"- Preventive, detective, and responsive controls; Mandatory transaction monitoring; Restrictions on phishing vectors (cancellation of all types of links via SMS and email, and cancellation of attachments to important information through social media); restriction of the number of mobile banking accounts of each social network
+- Monitoring and take down fake mobile application
+- Biometrics for high-value transfers or limit changes
+- Mandatory customer alerts and transaction notifications
+- Establish emergency contact channel (hotline)
+- limit losses and manage mule accounts",No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FOG/2568/ThaiPDF/25680157.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FOG/2568/ThaiPDF/25680157.pdf,
+Thailand,Bank of Thailand (BOT),BOT Notification No. 57/2568 Regulations on Digital Fraud Management,2025.0,Financial institutions; Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,"- Incidents causing widespread customer impact or reputational damage must be promptly reported to the BOT through designated channels.
+- Submit fraud management report as specified by the BOT.","Adopt an end‑to‑end digital fraud management framework covering governance, detection, response, and post‑fraud customer care.",No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/ThaiPDF/25680254.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/ThaiPDF/25680254.pdf,
+Thailand,Bank of Thailand (BOT),"BOT Notification No. SorNorChor. 14/2561
+Re: Regulations on Reporting of Payment Information to the Bank of Thailand",2018.0,Highly Important Payment Systems; Designated Payment Systems; Designated Payment Services,Quarterly reporting to BOT of fraud through payment instruments and specific payment channels,No explicit provision,No explicit provision,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610096.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610096.pdf,
+Timor-Leste,Bank of Thailand (BOT),Decree-Law No. 17/2015 on the National Payment System,2015.0,National payment systems; banks; payment service providers and operators,Same as AML requirements,"General risk‑management requirements (liquidity, credit and settlement risk); AML/CFT obligations and agent‑management rules; e‑wallet pilot imposes KYC and transaction‑value limits
+","No specific incident reporting regime identified; the NPS law only requires authorised entities to follow operational, reporting and disclosure requirements as set by BCTL",https://www.bancocentral.tl/uploads/documentos/documento_1479943794_3295.pdf,https://www.bancocentral.tl/uploads/documentos/documento_1479943794_3295.pdf,
+Viet Nam,State Bank of Viet Nam (SBV),Circular No. 35/2016/TT-NHNN on safety and confidentiality of internet banking,2016.0,"Credit institutions, foreign bank branches, intermediary payment service providers","No later than the 10th day of each month, e-wallet service providers are required to submit to the SBV, upon request, information on e-wallets showing signs of fraud, scams, or other legal violations. In the event of any changes to such information, e-wallet service providers must promptly update and resubmit the information to the SBV, and remain responsible for the truthfulness and accuracy of the information and data provided.","- Strong authentication, transaction categorisation, monitoring, alerts, limits
+- Biometric or electronic ID matching; OTP; NFC/chip ID card integration
+- Enhanced authentication shielding customers for high-value transactions
+- Technical solutions to ensure the information safety and security, as well as customers’ data, ensuring compliance with the legal regulations on personal data protection and the regulations on ensuring the safety and security of information systems.","- The total downtime for online payment service, online intermediary payment service must not exceed 4 hours per year, 30 minutes per occurrence, except in cases of force majeure or system maintenance and upgrades that have been notified to customers 24 hours in advance and reported to SBV
+- Report to SBV within 4 hours upon detecting any disruptions lasting more than 30 minutes in the operation of online payment services, online intermediary payment services (including cases of force majeure or cases of exceeding the maintenance and upgrade that have been notified to customers 24 hours in advance). Send incident report within 3 working days from the incident resolution.",https://thuvienphapluat.vn/van-ban/EN/Tien-te-Ngan-hang/Circular-35-2016-TT-NHNN-safety-confidentiality-over-provision-of-banking-services-on-the-internet/337432/tieng-anh.aspx,https://thuvienphapluat.vn/van-ban/EN/Tien-te-Ngan-hang/Circular-35-2016-TT-NHNN-safety-confidentiality-over-provision-of-banking-services-on-the-internet/337432/tieng-anh.aspx,
+Viet Nam,State Bank of Viet Nam (SBV),Circular No. 41/2025/TT-NHNN on Intermediary Payment Service,2025.0,,-do-,-do-,-do-,https://thuvienphapluat.vn/van-ban/EN/Tien-te-Ngan-hang/Circular-41-2025-TT-NHNN-amendment-to-Circular-40-2024-TT-NHNN-intermediary-payment-service/682302/tieng-anh.aspx,https://thuvienphapluat.vn/van-ban/EN/Tien-te-Ngan-hang/Circular-41-2025-TT-NHNN-amendment-to-Circular-40-2024-TT-NHNN-intermediary-payment-service/682302/tieng-anh.aspx,
+Viet Nam,State Bank of Viet Nam (SBV),Circular No. 30/2025/TT-NHNN,2025.0,,-do-,-do-,-do-,https://thuvienphapluat.vn/van-ban/EN/Tien-te-Ngan-hang/Circular-30-2025-TT-NHNN-amendments-to-Circular-15-2024-TT-NHNN/677118/tieng-anh.aspx,https://thuvienphapluat.vn/van-ban/EN/Tien-te-Ngan-hang/Circular-30-2025-TT-NHNN-amendments-to-Circular-15-2024-TT-NHNN/677118/tieng-anh.aspx,
+Viet Nam,State Bank of Viet Nam (SBV),Decision No. 2345/QD-NHNN (2023) – measures for safe online and card payments;,2023.0,,-do-,-do-,-do-,https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Quyet-dinh-2345-QD-NHNN-2023-giai-phap-bao-mat-thanh-toan-truc-tuyen-va-the-ngan-hang-591895.aspx,https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Quyet-dinh-2345-QD-NHNN-2023-giai-phap-bao-mat-thanh-toan-truc-tuyen-va-the-ngan-hang-591895.aspx,
+Viet Nam,State Bank of Viet Nam (SBV),SBV Guidance Document No. 5262/NHNN-CNTT (2024),2024.0,,-do-,-do-,-do-,https://www.sbv.gov.vn/en/web/sbv_portal/w/sbv-s-guidance-on-implementation-of-decision-2345/qd-nhnn?p_l_back_url=%2Fen%2Fweb%2Fsbv_portal%2Ftim-kiem%3Fq%3DDocument%2BNo.%2B5262%252FNHNN-CNTT&p_l_back_url_title=T%C3%ACm+ki%E1%BA%BFm,https://www.sbv.gov.vn/en/web/sbv_portal/w/sbv-s-guidance-on-implementation-of-decision-2345/qd-nhnn?p_l_back_url=%2Fen%2Fweb%2Fsbv_portal%2Ftim-kiem%3Fq%3DDocument%2BNo.%2B5262%252FNHNN-CNTT&p_l_back_url_title=T%C3%ACm+ki%E1%BA%BFm,

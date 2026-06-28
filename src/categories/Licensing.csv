@@ -1,0 +1,638 @@
+Country,Regulator,Issuance,Year,Scope,License or Registration Required?,Types of Licenses Given,Separate Approval/License for Cross-Border Payments?,Detailed Requirements to Obtain License/Registration/Approval,Minimum Capital Requirement,Source_Original,Source_EN,Amendment_Of
+Brunei Darussalam,Brunei Darussalam Central Bank (BDCB),Notice on Requirements for Payment Systems (Notice No. PSO/ N-1 / 2020/ 1 - Amendment No. 2),2022.0,"Does not apply to:
+- banks 
+- finance companies
+- Islamic Trust Fund Corporation of Brunei Darussalam
+- virtual asset exchanges","Yes – approval required to operate payment systems or offer payment services: 
+-account issuing services; 
+-electronic money issuing services;
+-merchant acquiring services;
+-other payment system operations or payment-related products",Operator of payment system,No explicit separate authorization for cross-border payments,"- Must be a company incorporated or registered under the Companies Act
+- Director, CEO, shareholders, employees and applicant must be fit and proper
+- Satisfactory track record and financial standing, where applicable
+- Permanent place of business or registered office located in Brunei Darussalam
+- Base capital requirement
+- Demonstration of ability to comply with obigations under the regulations
+- Maintenance of security with BDCB amounting to no less than BND 50,000 (USD XXX) in the form of a bankers guarantee prior to commencing operations
+- Payment of application fee and annual fee
+","BND100,000 (~USD XXX)",https://cms.bdcb.gov.bn/storage/uploads/regulatories/17175012480946350.pdf,https://cms.bdcb.gov.bn/storage/uploads/regulatories/17175012480946350.pdf,
+Cambodia,National Bank of Cambodia (NBC),Prakas on Third-Party Processors,2010.0,"- Bank
+- Third-party processor (person entrusted by a bank to conduct one or more parts of its payment transactions services)",Yes - license,"Third-Party Processor (TPP) acting on behalf of a bank to provide one or more of the following services:
+- a communication facility
+- an interbank clearing facility
+- managing or operating bank customers' accounts
+- act as sending and receiving point for payment orders sent or received by the bank
+- service provider of money remittance by mobile phone or other means
+- service provider of clearing and settlement of debit and credit card payment",No explicit separate authorization for cross-border payments,"- Legal name and residential and business addresses of the TPP
+- Desciption of payment transactions services previously provided by TPP inside and outside Cambodia, as well as services that will be provided on behalf of the bank
+- Description of legal means to be undertaken to protect customers' funds from any risk coming from outsourcing of services
+- Agreement between bank and TPP 
+- Guarantee letter issued by the bank committing to undertake all responsibilities for the activities of the TPP
+- Payment of application fee and annual licensing fee",No minimum capital requirement for TPP,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/595B9-010-151.pdf,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/595B9-010-151.pdf,
+Cambodia,National Bank of Cambodia (NBC),Prakas on Management of Payment Service Providers,2017.0,"Payment Transactions Services provider:
+- services enabling cash to be placed on and withdrawn from a payment account, and any operations required for operating payment accounts
+- execution of payment transactions including transfer of funds on a payment account
+- execution of payment transaction where funds are covered by a credit line for a payment service user
+- issuing of payment instruments, including issuing of electronic money and/or acquiring of payment transaction
+- money remittance
+- payment initiation services",Yes - license,"Payment Service Institution (PSI) 
+",No explicit separate authorization for cross-border payments,"- Must be a company legally registered in Cambodia.
+- Formal application to NBC including business plan, scope of services, and governance structure
+- Minimum paid-up capital
+- Shareholders, directors, and senior management must meet NBC’s integrity and competency standards.
+- Adequate internal controls, IT security, and operational risk management frameworks, including businss continuity plan
+- Policies and systems to comply with anti-money laundering and counter-terrorism financing laws.
+- Transparent fees, dispute resolution mechanisms, and safeguarding of customer funds
+- Information pertaining to identity of statutory auditors and audit firms
+- Payment of consulting fee, application fee and annual licensing fee","8,000,000,000 riels, with 5% deposited with NBC as a guarantee",https://www.scribd.com/document/413836557/1-b-prakas-Payment-Service-Eng,https://www.scribd.com/document/413836557/1-b-prakas-Payment-Service-Eng,
+Cambodia,National Bank of Cambodia (NBC),Prakas on Minimum Registered Capital of Banking and Financial Institutions,2016.0,Sets minimum registered capital for banking and financial institutions under NBC supervision.,Yes - license,Applies to banking and financial institution license categories.,No explicit separate authorization for cross-border payments,Institutions must maintain the applicable registered capital level and comply with NBC implementation requirements.,"Below are the minimum registered capital of each types of institutions:
+Commercial Bank: 300,000,000,000 riel,
+Specialized Bank: 60,000,000,000 riel,
+Microfinance deposit taking institution: 120,000,000,000 riel,
+Microfinance institution: 6,000,000,000 riel
+",https://www.nbc.gov.kh/download_files/legislation/prakas_eng/7848B7-016-117-Pro.Kor_ENG.pdf,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/7848B7-016-117-Pro.Kor_ENG.pdf,
+Cambodia,National Bank of Cambodia (NBC),Prakas on Money Changer License / Authorization,2009.0,"Licensing or authorization for foreign exchange buying and selling business. Relevant to payment ecosystem where FX conversion is involved, but not a payment institution license.",Yes - license,Money changer license or authorization.,No explicit separate authorization for cross-border payments,"Applicant must obtain NBC license or authorization, operate at approved locations, comply with reporting requirements and NBC conditions.","Have minimum paid-up capital of KHR 80 million (eighty million Riel)
+kept in account at the National Bank of Cambodia permanently and it will
+generate interest set forth by the National Bank of Cambodia.",https://www.nbc.gov.kh/download_files/legislation/prakas_eng/4356B9-09-230.pdf,https://www.nbc.gov.kh/download_files/legislation/prakas_eng/4356B9-09-230.pdf,
+Indonesia,Bank Indonesia (BI),BI Regulation No.10/PBI/2025,2025.0,"- Penyelenggara Jasa Sistem Pembayaran (PSP) [Payment System Service Providers], comprising:
+   · Penyedia Jasa Pembayaran (PJP) [Payment Service Providers]
+   · Penyelenggara Infrastruktur Sistem Pembayaran (PIP) [Payment Infrastructure Providers]
+   · Commercial banks (included as PSP for fund transfer activities)
+- Supporting Service Providers (Penyelenggara Penunjang)
+- Participants of BI-operated payment infrastructure (BI-FAST, BI-RTGS, SKNBI)
+
+Does not apply to BI itself when acting in its central bank capacity.
+
+1. Penyelenggara Jasa Pembayaran (PJP) [Payment Service Providers]
+2. Penyelenggara Infrastruktur Sistem Pembayaran (PIP) [Payment Infrastructure Providers]",Yes – licence (PJP) / designation (PIP),"Penyedia Jasa Pembayaran (PJP) [Payment Service Provider] — Activity Bundle Licence
+
+PBI 10/2025 replaces the previous Category 1/2/3 model with an activity-bundling approach. Licences are granted based on the specific bundle of activities to be performed:
+
+a. Bundle 1A — Source of Funds Administration (deposits, e-money value, deferred payment/BNPL) + full payment transaction forwarding (data forwarding + digital/non-digital fund transfer). Available to Primary PSPs (PSP Utama) only.
+
+b. Bundle 1B — Same scope as Bundle 1A with certain restrictions on source-of-funds and/or fund transfer sub-activities. Available to both Primary and Non-Primary PSPs.
+
+c. Bundle 2 — Payment transaction forwarding only (acquiring/payment gateway, fund transfer digital and non-digital). No source-of-funds administration. Available to Primary and Non-Primary PSPs.
+
+d. Bundle 3 — Non-digital fund transfer / remittance services only. Available to Non-Primary PSPs; excluded for Commercial Banks and Rural Banks (BPR).
+
+Penyelenggara Infrastruktur Sistem Pembayaran (PIP) [Payment Infrastructure Provider]
+— Designation (Penetapan) by Bank Indonesia, not a standard licence. Activities: clearing and settlement (including principal, switching, clearing, and dispute-resolution services for PIP members). PIP must be a non-bank entity (LSB) incorporated as a limited liability company.
+
+PGSP:
+License as a Payment Service Provider (PJP) is required for any entity acting as a PJP that facilitates payment transactions for end-users.Entities: Commercial Banks (Bank Umum) and Non-Bank Entities (Lembaga Selain Bank Umum / LSBU). Activity Bundling: The license is granted alongside specific ""Activity Bundles 1, 2, and  3"". 
+These bundles dictate the exact scope of services the entity is legally permitted to including (i) Funds Management (management of payment accounts and the issuance of and/or provision of access to Funds) and (ii) the processing of payment transactions (the processing of payment transaction data and the processing of payment instructions, which may be accompanied by the facilitation of the receipt of payment proceeds through the provision of sub-accounts to Goods and/or Services Providers; and the processing of fund transfer instructions, both digital and non-digital).
+
+Designation as a Payment System Infrastructure Provider (PIP), Bank Indonesia issues a formal designation for entities operating the core infrastructure that facilitates fund transfers between participants. Entities: Non-Bank Entities formulated as Limited Liability Companies (Perseroan Terbatas). This designation is specifically granted for clearing and/or final settlement (setelmen) activities.","No explicit separate authorisation for cross-border payments.
+
+PSPs conducting cross-border activities are subject to:
+- Stricter cooperation and contractual requirements with overseas counterparties;
+- AML/CFT compliance obligations for cross-border transactions;
+- Requirement to process domestic payment transactions within Indonesian territory;
+- Prohibition on using crypto assets as a payment source of funds.
+
+Foreign principals already operating as PIP prior to PBI 10/2025 may benefit from grandfathering provisions, subject to submission of a letter of guarantee to BI.
+
+Under the regulatory framework established by Bank Indonesia, there is no separate cross-border payment license. Instead, cross-border payment capabilities are treated as an extension of an entity's licenses. 
+To conduct cross-border transactions or utilize payment channels for cross-border purposes, an authorized PJP or PIP must granted taking into account:
+the principle of reciprocity; (ii) equivalence of risk management standards; (iii) the benefits to the Indonesian economy; and (iv) compliance with statutory provisions.","BI processes applications through three stages:
+
+1. Administrative review — completeness and accuracy of submitted documents;
+
+2. Substantive analysis — across four aspects:
+   a. Institutional: legality, ownership structure, control, Board of Directors and Board of Commissioners composition, and fit and proper test (Uji Kemampuan dan Kepatutan) for all key persons;
+   b. Financial and capital: minimum paid-up capital (initial capital), ongoing capital adequacy, feasibility analysis, and business projection;
+   c. Risk management: legal, operational, liquidity, and technology risks; and
+   d. TIKMI capability (Transaksi/Transaction, Interkoneksi/Interconnection, Kompetensi/Competence, Manajemen Risiko/Risk Management, Infrastruktur TI/IT Infrastructure) — the new five-factor assessment framework introduced by PBI 10/2025 that determines PSP classification and eligible activity bundle;
+
+3. On-site visit (or request for additional operational-readiness documents in lieu thereof).
+
+Non-bank entities (LSBU) applying for Bundle 1 must be incorporated as a limited liability company (perseroan terbatas); Bundle 2 and Bundle 3 applicants may be other Indonesian legal entities.
+
+PSP Classification: Based on TIKMI results and criteria of size, interconnectedness, complexity, and substitutability, BI classifies each PSP as Primary PSP (PSP Utama) or Non-Primary PSP (PSP Selain PSP Utama). This classification determines the activity bundle eligible, ongoing capital level, and supervisory intensity.
+
+Business Planning: PSPs must submit a Strategic Business Plan (SBP, 3–5 years) and a Payment System Business Plan (RBSP, short-term), approved by BI, as a condition of and during the licence/designation.
+
+Others as deemed necessary by BI.","Initial Capital Requirements (Minimum Paid-Up Capital):
+
+PJP — by activity bundle (exact amounts specified in PADG 32/2025; relative hierarchy):
+• Bundle 1A (Primary PSPs only): Highest tier
+• Bundle 1B: Lower than Bundle 1A
+• Bundle 2: Lower than Bundle 1B
+• Bundle 3: Lowest tier
+
+Note: Legacy amounts under PBI 23/6/2021 (Cat. 1: IDR 15 billion; Cat. 2: IDR 5 billion; Cat. 3: IDR 500 million / IDR 1 billion) remain reference points pending full PADG 32/2025 publication.
+
+PIP: IDR 100 billion minimum paid-up capital.
+Foreign principals: grandfathering provisions with letter of guarantee to BI.
+
+Ongoing Capital (new requirement under PBI 10/2025):
+• Minimum 10% of risk-weighted transactions, plus
+• Surcharge of 1.5%–2.5% of risk-weighted transactions (PJP), or
+• Surcharge of 2.5%–5.0% of risk-weighted transactions (PIP)
+
+Transition: PJPs/PIPs that do not yet meet new requirements have 3 years from 31 March 2026 to comply (extendable by 2 years with BI approval).",https://www.bi.go.id/id/publikasi/peraturan/Documents/PBI-102025.pdf,https://www.bi.go.id/id/publikasi/peraturan/Documents/PBI-102025.pdf,
+Lao PDR,Bank of the Lao PDR (BOL),Law on Payment Systems,2023.0,Domestic and Cross-border Payment Systems Operator (PSO) and Payment Services Providers (PSPs) ,Yes - license,"1. Payment Systems Operator (PSO)
+2.  Payment Services Providers (PSPs) ",Yes,"1. Conditions for Retail Payment Systems Operator (RPS):
+- being a legal entity
+- Having sound financial position and capital for business operation as required by the Bank of the Lao PDR
+- Having economical and technical feasibility study
+- Having managers with qualifications and experiences in banking-finance, IT or relevant fields, and do not have record of criminal punishment as intentional offences such as fianncial criminal, banking, or money launderinf offence
+- Having skillful and knowledgable employees in banking-finance, IT or relevant field
+- Having a comprehensive internal operating system, including IT system and internal control system
+- Having a proper office location
+- Fullfilling other conditions as required by the Bank of the Lao PDR
+2. Conditions for Payment Services Providers (PSPs):
+- Having conditions as specified in Clause 1 
+- Having a protective system on asset acquired from end users or through other PSPs
+- Having its own system connected wiht other payment systems in the Lao PDR",Specify in secondary regulations,https://www.bol.gov.la/en/fileupload/18-12-2025_1766051569.pdf,https://www.bol.gov.la/en/fileupload/18-12-2025_1766051569.pdf,
+Lao PDR,Bank of the Lao PDR (BOL),Decision on the Payment Service System No.511/BOL Dated 19 June 2025,2025.0,Domestic and cross-border payment service providers,Yes - license,"1. Payment Service Provider License
+- card payment services
+- electronic money (e-money)issuance service
+- electronic acceptance (merchant acquiring) service
+- bills payment service
+- electronic funds transfer service
+
+2. Cross-Border Payment Service Provider License
+- card services under an international card network
+- electronic acceptance through foreign payment instruments (including 03 types:  card issuance and acquiring, e-money acquiring, payment facilitating)
+- cross-border funds transfer services
+",Yes,"Domestic
+- Business documents (registration certificate, business license, company formation agreement, as applicable)
+- Shareholders' approval of the economic-technical analysis, internal regulations, and appointment of initial managing director, as applicable
+- Economic-technical analysis report
+- Business plan outlining the proposed payment services and payment channels
+- Internal regulations and organizational structure of the company
+- Documentation on the source of funds and letter of consent authorizing the Bank of Lao PDR to verify the source of funds
+- Credit report for the past year
+- CV, qualifications, experience, criminal record clearances, and valid identification documents for the applicant and key management personnel
+- Criminal certificate issued by relevant authorization
+- Business rule (details of payment services, governance procedure, risk management, accounting, internal control, dispute resolution and others as request by the Bank of the Lao PDR, if any)
+
+Cross-border PSP
+- Must have provided domestic payment services in the Lao PDR for a minimum of 3 consecutive years
+- Compliance with financial stability ratios prescribed by BOL
+- Have sufficient foreign currency capital
+- Approval or certification from relevant foreign authorities for cross-border payment system connectivity and ensure that transaction data is stored within Lao PDR
+- Comprehensive business plan, including clear accounting and fee deduction mechanisms 
+- Agreement/MOU or other relevant documents concerning cooperation with a general payment system regulator or foreign cross-border PSP
+- Detailed documentation regarding the provision of cross-border payment services
+- Report on applicant's payment service performance over the past 3 years
+- Documentation describing mechanism for linking payment and cross-border debit data","Domestic
+1. For card payment services: 20 billion kip
+2. For e-money issuance services: 10 billion kip
+3. For electronic acceptance (merchant acquiring) services: 01 billion kip
+4. For bill payment services: 01 billion kip
+5. For electronic funds transfer services: 01 billion kip
+
+Applicants intending to provide more than one type of payment service must meet the capital requirement corresponding to the service with the highest capital threshold.
+
+Cross-border
+1. For payment card issuance services under an international card network: 20 billion kip
+2. For payment services involving any type of foreign payment instrument: 01 billion kip
+3. For cross-border electronic funds transfer services: 01 billion kip",https://www.bol.gov.la/fileupload/30-06-2025_1751250479.pdf,https://www.bol.gov.la/fileupload/30-06-2025_1751250479.pdf,
+Malaysia,Bank Negara Malaysia (BNM),"Money Services Business
+(Minimum Capital Funds) Regulations 2011, as amended Money Service Business (Licensing) Regulations 2012, as amended",2011.0,Non-banks,Yes - license,"Class A - License to carry on money-changing business and remittance business
+Class B - License to carry on remittance business only
+Class C - License to carry on money-changing business only
+Class D - License to carry on wholesale currency business only
+",No explicit separate authorization for cross-border payments,"- Details of the shareholders, directors and senior management of the applicant
+- Proposed corporate structure, including related parties
+- Proposed business plan of the money service business
+- Proposed governance arrangements, internal controls, and risk management framework
+- Proposed internal control mechanisms and compliance programs 
+- Payment of licensing fee","Class A - RM 2,000,000
+
+Class B or C 
+- With > than five (5) branch offices: RM 2,000,000
+- With ≤ five (5) branch offices: RM 500,000
+- With no branch office or it is also a money service business agent of a licensee of a different class and has no branch office: RM 300,000
+
+Class A and D (all types of money services) - RM 12,000,000",https://www.bnm.gov.my/documents/20124/964944/pua_20111130_P.U.%2B%28A%29%2B392%2BPERATURAN-PERATURAN%2BPERNIAGAAN%2BPERKHIDMATAN%2BWANG.pdf/fca9901c-b1e4-a936-de26-5b65bde0e027?t=1592853330893,https://www.bnm.gov.my/documents/20124/964944/Peraturan-Peraturan_Perniagaan_Perkhidmatan_Wang_2013+att2.pdf/3b20c4fb-4168-097b-c689-bd08ccba0e8d?t=1592882139821,
+Malaysia,Bank Negara Malaysia (BNM),Requirements for the Conduct of Money Services Business by Banking Institutions,2015.0,Banks,No - only prior notification to BNM ,,No explicit separate authorization for cross-border payments,"- Prior notification to BNM at least 14 days before commencement of money services business operations
+- Written internal policies and procedures on the conduct of money services business activities
+- Transparency in dealings
+- Issuance of receipts
+- Protection of customer information
+- Maintenance of records
+- Management information system",No additional capital requirement,https://www.bnm.gov.my/documents/20124/964944/Requirements_for_the_Conduct_of_MSB_by_BIs_v2.pdf/4071450f-0fb9-cce4-7383-66112558fd29?t=1593340647262,https://www.bnm.gov.my/documents/20124/964944/Requirements_for_the_Conduct_of_MSB_by_BIs_v2.pdf/4071450f-0fb9-cce4-7383-66112558fd29?t=1593340647262,
+Malaysia,Bank Negara Malaysia (BNM),Financial Services Act 2013 and Islamic Financial Services Act 2013,2013.0,"- Operators of a payment system
+- Issuers of designated payment instruments (except e-money): charge card, credit card, debit card",Yes - prior BNM approval,"Approval to:
+- Operate a Payment System
+- Issue a Designated Payment Instrument",No explicit separate authorization for cross-border payments,"- Certified true copy of memorandum and articles of association or other constituent documents under which it is established
+- Certified true copy of certificate of incorporation or business registration
+- Certified true copy of latest audited financial statements (AFS) or, in the case of a new company, return on allotment of shares, latest bank statement, latest unaudited management account, and latest AFS of holding company, as applicable
+- Details of the applicant, substantial shareholders, key responsible persons, parent company, subsidiaries and related companies
+- Financial resources to fund or support the business
+- Statutory declaration that the applicant has not been subject to any regulatory actions, criminal convictions, records of dishonesty, fraud, or violence, or breaches of statutory or other administrative or regulatory enactments
+- Undertaking to keep BNM informed of any material adverse developments affecting its financial soundness and/or reputation globally
+- Details of any approval, authorisation, licence or permit required by or obtained from any regulatory authority, including a certified true copy of such approval, authorisation, licence or permit
+- If applicable, a letter from the home country supervisory authority which includes a statement of no objection towards the applicant’s establishment of operations in Malaysia and that the applicant is of good financial standing and meets the prudential regulatory requirements in the home jurisdiction and has no record of breaches of statutory or other administrative or regulatory enactments
+- Details on internal controls, internal audit and compliance 
+- Certified true copy of board resolution or resolution of the highest decision making body of the applicant approving the application to operate a payment system
+- Business plan
+- Policies and procedures on rights and liabilities of the applicant and payment system participant/user of designated payment instrument, dispute resolution, measures to ensure safety, security and operational reliability , system security, risk management, fees and charges imposed
+- Attestation from a qualified Shariah advisor on the
+Shariah aspects of the payment system including application of Shariah contracts and operational arrangement of the payment system to ensure compliance with Shariah
+- Payment of fee",,https://www.bnm.gov.my/documents/20124///35ed2b4c-1995-f91d-3891-75d69d247d55,https://www.bnm.gov.my/documents/20124///8102422b-e6dd-d149-8db0-e3637e89ed5c,
+Malaysia,Bank Negara Malaysia (BNM),Merchant Acquiring Services,2021.0,Bank and non-bank merchant acquirers,Yes - registration,Registered merchant acquirer,No explicit separate authorization for cross-border payments,"- Certified true copy of memorandum and articles of association or other constituent documents under which it is established
+- Certified true copy of certificate of incorporation or business registration
+- Certified true copy of latest audited financial statements (AFS) or, in the case of a new company, return on allotment of shares, latest bank statement, latest unaudited management account, and latest AFS of holding company, as applicable
+- Details of the applicant, substantial shareholders, key responsible persons, parent company, subsidiaries and related companies
+- Financial resources to fund or support the business
+- Statutory declaration that the applicant has not been subject to any regulatory actions, criminal convictions, records of dishonesty, fraud, or violence, or breaches of statutory or other administrative or regulatory enactments
+- Undertaking to keep BNM informed of any material adverse developments affecting its financial soundness and/or reputation globally
+- Details of any approval, authorisation, licence or permit required by or obtained from any regulatory authority, including a certified true copy of such approval, authorisation, licence or permit
+- If applicable, a letter from the home country supervisory authority which includes a statement of no objection towards the applicant’s establishment of operations in Malaysia and that the applicant is of good financial standing and meets the prudential regulatory requirements in the home jurisdiction and has no record of breaches of statutory or other administrative or regulatory enactments
+- Certified true copy of board resolution or resolution of the highest decision making body of the applicant approving the application to provide merchant acquiring services
+- Draft agreement/copy of appointment letter as a direct member of the payment network for the acceptance of proposed payment instruments at applicant's merchants
+- Agreement/draft agreement with the merchants
+- Details of roles and responsibilities, system and security, internal audit, risk management and compliance functions
+- Payment of processing fee
+","- Small non-bank acquirers [with actual or projected amount of average monthly transaction value (MTV) of less than RM 10 million) - RM 300,000
+- Large non-bank acquirers (with actual or projected amount of average MTV of more than RM 10 million) - RM 1,000,000
+- No additional capital requirement for bank acquirers",https://www.bnm.gov.my/documents/20124/943361/PD_Merchant+Acquiring+Services+.pdf/0fc482d7-3af0-4d3a-75f3-0719493d2e63?t=1631667855977,https://www.bnm.gov.my/documents/20124/57659/MAS-Application-Form-2023.doc,
+Malaysia,Bank Negara Malaysia (BNM),"Financial Services (Minimum Amount of Capital Funds) Order 2022, as amended",2022.0,Electronic money issuers (EMI),Yes - prior BNM approval,"- Eligible EMI (has at least 500,000 active users for a consecutive period of six months; or has a market share of at least 5% of the total e-money transaction volume, value or outstanding e-money liabilities in Malaysia for a given year)
+- Standard EMI (EMI other than an eligible EMI) ",No explicit separate authorization for cross-border payments,"- Certified true copy of registration form or memorandum and articles of association or other constituent documents under which it is established
+- Certified true copy of certificate of incorporation or business registration
+- Certified true copy of latest audited financial statements (AFS) or, in the case of a new company, return on allotment of shares, latest bank statement, latest unaudited management account, and latest AFS of holding company, as applicable
+- Details of the applicant, substantial shareholders, key responsible persons, parent company, subsidiaries and related companies, including organization chart
+- Financial resources to fund or support the business
+- Statutory declaration that the applicant has not been subject to any regulatory actions, criminal convictions, records of dishonesty, fraud, or violence, or breaches of statutory or other administrative or regulatory enactments
+- Undertaking to keep BNM informed of any material adverse developments affecting its financial soundness and/or reputation globally
+- Details of any approval, authorisation, licence or permit required by or obtained from any regulatory authority, including a certified true copy of such approval, authorisation, licence or permit
+- Certified true copy of board resolution or resolution of the highest decision making body of the applicant approving the application to issue electronic money
+- Detailed description of proposed payment instrument, system and security, internal audit, risk managemet and compliance functions
+- Payment of processing fee","•	Standard EMI: RM1 million or 8% of its outstanding electronic money liabilities, whichever is higher
+
+•	Eligible EMI: RM5 million or 8% of its outstanding electronic money liabilities, whichever is higher",https://lom.agc.gov.my/ilims/upload/portal/akta/outputp/1754230/P.U.%20(A)%20403_2022%20(Perintah%20Perkhidmatan%20Kewangan%20(Amaun%20Minimum%20Dana%20Modal).pdf,https://lom.agc.gov.my/ilims/upload/portal/akta/outputp/1754230/P.U.%20(A)%20403_2022%20(Perintah%20Perkhidmatan%20Kewangan%20(Amaun%20Minimum%20Dana%20Modal).pdf,
+Malaysia,Bank Negara Malaysia (BNM),E-Money Policy Document,2025.0,Electronic money issuers (EMI),Yes - prior BNM approval,"- Eligible EMI (has at least 500,000 active users for a consecutive period of six months; or has a market share of at least 5% of the total e-money transaction volume, value or outstanding e-money liabilities in Malaysia for a given year)
+- Standard EMI (EMI other than an eligible EMI) ",No explicit separate authorization for cross-border payments,"- Certified true copy of registration form or memorandum and articles of association or other constituent documents under which it is established
+- Certified true copy of certificate of incorporation or business registration
+- Certified true copy of latest audited financial statements (AFS) or, in the case of a new company, return on allotment of shares, latest bank statement, latest unaudited management account, and latest AFS of holding company, as applicable
+- Details of the applicant, substantial shareholders, key responsible persons, parent company, subsidiaries and related companies, including organization chart
+- Financial resources to fund or support the business
+- Statutory declaration that the applicant has not been subject to any regulatory actions, criminal convictions, records of dishonesty, fraud, or violence, or breaches of statutory or other administrative or regulatory enactments
+- Undertaking to keep BNM informed of any material adverse developments affecting its financial soundness and/or reputation globally
+- Details of any approval, authorisation, licence or permit required by or obtained from any regulatory authority, including a certified true copy of such approval, authorisation, licence or permit
+- Certified true copy of board resolution or resolution of the highest decision making body of the applicant approving the application to issue electronic money
+- Detailed description of proposed payment instrument, system and security, internal audit, risk managemet and compliance functions
+- Payment of processing fee","•	Standard EMI: RM1 million or 8% of its outstanding electronic money liabilities, whichever is higher
+
+•	Eligible EMI: RM5 million or 8% of its outstanding electronic money liabilities, whichever is higher",https://www.bnm.gov.my/documents/20124/943361/27012025_Revised_E-Money_PD_v2.pdf,https://www.bnm.gov.my/documents/20124/57659/E-money_Application_Form_v2.doc,
+Myanmar,Central Bank of Myanmar (CBM),Regulation on Mobile Financial Services (FIL/R/01/03-2016),2016.0,"Mobile financial services provider (MFSP)
+
+*mobile financial services (MFS) - provision of payments and financial services through the use of mobile technology infrastructure","Yes - registration/ product approval
+","- Registration certificate for non-bank MFSP
+- Product approval for banks seeking to conduct MFS",Allowed services include domestic payments transactions only,"- Details on the nature and functionality of the mobile financial services operations
+- Proposed types of mobile financial services to be offered
+- Proposed business plan for a minimum of coming three years 
+- Details of the board of directors and senior managers of the applicant, including compliance with fit and proper requirements
+- In the case of mobile network operators, a letter of no objection from the Ministry of Communication and Information Technology and in the case of a non-bank financial institution, a no objection letter from the primary regulatory of that entity
+- Payment of application fee","- Non-bank MFSP: Three billion kyat
+- No additional capital requirement for banks",https://www.cbm.gov.mm/sites/default/files/regulate_launder/_fil-r-01_mobile_financial_services_regulation_eng_final_website_4-4-2016_-5.pdf,https://www.cbm.gov.mm/sites/default/files/regulate_launder/_fil-r-01_mobile_financial_services_regulation_eng_final_website_4-4-2016_-5.pdf,
+Myanmar,Central Bank of Myanmar (CBM),Remittance Business Regulations (Notification No. 21/2019),2019.0,"Companies incorporated in Myanmar that wish to conduct remittance business
+
+*Remittance business means the service to receive and transfer money from Myanmar to foreign countries, or vice versa, conducted through representatives or branch offices in foreign countries",Yes - license,Remittance Business License,Remittance Business License for cross‑border remittance under Remittance Business Regulations,"- Company incorporation documents
+- Proof of financial sources for security deposit
+- Background record of beneficial owner of the company, management personnel, shareholders with 10% or more shares, compliance officer in charge of AML/CFT compliance, agents and sub-agents to be engaged in representative or branch office abroad (if any)
+- Certificate of completion of the AML/CFT compliance training course
+- Modes of remittance to be employed in operations
+- Signed commitment letter to comply with the FX Management Law, Financial Institutions Law and AML/CFT Law
+- Comprehensive plan to fulfill fundamental obligations
+- Plan to remit money from workers abroad
+- Procedures to deal with customer complaints procedures","No minimum capital requirement
+- security deposit of 100 million kyats in an escrow account
+- separate revolving fund account ",https://www.cbm.gov.mm/sites/default/files/admin_it/remittance_business_regulations_english_version_issued_version_.pdf,https://www.cbm.gov.mm/sites/default/files/admin_it/remittance_business_regulations_english_version_issued_version_.pdf,
+Myanmar,Central Bank of Myanmar (CBM),Merchant Acquiring Service Regulation,2020.0,"Entities intending to provide merchant acquiring services
+
+*Merchant acquiring service means a service provided by an acquirer to enable merchants to accept payment instruments under a payment scheme",Yes - license,Merchant Acquiring Services,Covers international payment schemes,"- Business plan
+- Transaction flow and settlement flow
+- Payment scheme details and agreements
+- Data security standards documentation
+- Merchant Agreement and Payment Scheme Agreement
+- Fraud detection, control mechanism and participant liability framework
+- Risk management and internal control systems
+- Security deposit maintained in an escrow account at a licensed authorized dealer bank","None stated
+",https://www.cbm.gov.mm/sites/default/files/pdf/acquiring.pdf,https://www.cbm.gov.mm/sites/default/files/pdf/acquiring.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),Regulations on Money Service Businesses,2024,"- Remittance and Transfer Companies (RTC)
+- Money Changers/Foreign Exchange Dealers (MC/FXD)
+- Virtual Asset Service Providers (VASPs)",Yes - registration,"- Large-scale operator: with average monthly network volume of transactions of at least P75 million
+- Small-scale operator: with average monthly network volume of transactions of less than P75 million
+- Remittance Platform Provider
+- VASP with safekeeping and/or administration services for virtual assets (VAs)
+- VASP without safekeeping and/or administration services for VAs",No explicit separate authorization for cross-border payments,"- Business plan, including target markets
+- List of owners/controlling shareholders, directors, and principal officers, as applicable, and compliance with fitness and propriety requirements
+- Notarized Deed of Undertaking
+- Business license/permit
+- Proof of provisional registration with the Anti-Money Laundering Council Secretariat","- Large-scale operator: P50 million
+- Small-scale operator: less than P50 million
+- Remittance platform provider: P10 million
+- VASP with safekeeping and/or administration services: P50 million
+- VASP without safekeeping and/or administration services: P10 million",https://www.bsp.gov.ph/Regulations/Issuances/2024/1206.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2024/1206.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Circular No. 1033 (Electronic Payment and Financial Services),2019.0,BSP-supervised financial institutions (banks and non-banks),Yes - license for electronic payment and financial services (EPFS),"- Basic EPFS license (receiving of funds only)
+- Advanced EPFS (sending and receiving of funds; initiation of other financial transactions)",No explicit separate authorization for cross-border payments,"Basic EPFS license 
+- notification letter
+- details of the features and functionalities of the EPFS
+- process flow/brief narration of how transaction and data flow through the network
+
+Advanced EPFS license 
+- eligibility test and self-assessment
+- certification that the insitution has meet the minimum pre-conditions on policies and procedures and risk management
+- details of the features and functionalities of the EPFS
+- process flow/brief narration of how transaction and data flow through the network
+- diagram of the configuration of the system supporting the EPFS
+-  pro-forma client application form and terms and conditions for the availment of and/or use of the EPFS
+- results of UAT; articles of incorporation/by-laws
+- marketing materials for the proposed EPFS
+- pro-forma agreements with accredited agents for the delivery/issuance of EPFS
+- AML policies
+- latest audited financial statements
+- payment of processing and licensing fees
+","- No additional capital requirement for universal and commercial banks
+- Minimum capital requirement thrift banks, rural banks and cooperative banks applying for advanced EPFS license: P1 billion by Year 2027 (Sec. 121 of the MORB)
+
+",https://www.bsp.gov.ph/Regulations/Issuances/2019/c1033.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2019/c1033.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Circular No. 1049 (Registration of Operators of Payment Systems),2019.0,"Operators of payment systems (OPS)
+- maintains the platform that enables payments or fund transfers
+- operates the system or network the enables payments or fund transfers to be made through the use of a payment instrument
+- provides a system that processes payments on behalf of any person or the government",Yes – registration of Operators of Payment Systems (OPS),Certificate of Registration,No explicit separate authorization for cross-border payments,"- application for registration
+- business plan
+- business registration/permit
+- payment of registration fee",,https://www.bsp.gov.ph/Regulations/Issuances/2019/c1049.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2019/c1049.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Circular No. 1166 (Regulations on Electronic Money and the operations of Electronic Money Issuers),2023.0,BSP-supervised financial institutions (banks and non-banks) that issue electronic money,Yes - additional authority,Additional authority under EPFS license,No explicit separate authorization for cross-border payments,Same requirements for EPFS license,"Based on 12-month average value of aggregated inflow and outflow transactions:
+•	<P25 billion:  P100 million
+•	≥P25 billion: P200 million",https://www.bsp.gov.ph/Regulations/Issuances/2023/1166.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2023/1166.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Circular No. 1198 (Regulatory Framework for Merchant Payment Acceptance Activities),2024.0,OPS engaged in or intending to engage in merchant acquisition,Yes - license,Merchant acquisition license (MAL) for OPS ,No explicit separate authorization for cross-border payments,"- business documents (e.g., by-laws, articles of incorporation); business plan; business license/permit
+- proof of financial capacity; compliance with fitness and propriety requirements by directors and senior management
+- certification and self-assessment on compliance with governance regulations
+- risk management policies and procedures
+- merchant management and protection policies and procedures
+- templates of agreements/contracts necessary in the provision of merchant acquisition services
+- payment of filing fee and licensing fee","Based on average monthly value of collected funds transferred to merchants
+• < P100 million : P5 million
+• ≥ P100 million: P10 million",https://www.bsp.gov.ph/Regulations/Issuances/2024/1198.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2024/1198.pdf,
+Philippines,Bangko Sentral ng Pilipinas (BSP),BSP Memorandum No. M-2025-002 (Guidelines on Application for Merchant Acquisition License),2025.0,OPS engaged in or intending to engage in merchant acquisition,Yes - license,Merchant acquisition license (MAL) for OPS ,No explicit separate authorization for cross-border payments,"- business documents (e.g., by-laws, articles of incorporation); business plan; business license/permit
+- proof of financial capacity; compliance with fitness and propriety requirements by directors and senior management
+- certification and self-assessment on compliance with governance regulations
+- risk management policies and procedures
+- merchant management and protection policies and procedures
+- templates of agreements/contracts necessary in the provision of merchant acquisition services
+- payment of filing fee and licensing fee","Based on average monthly value of collected funds transferred to merchants
+• < P100 million : P5 million
+• ≥ P100 million: P10 million",https://www.bsp.gov.ph/Regulations/Issuances/2025/M-2025-002.pdf,https://www.bsp.gov.ph/Regulations/Issuances/2025/M-2025-002.pdf,
+Singapore,Monetary Authority of Singapore (MAS),Payment Services Act 2019,2019.0,"Provider of the following services:
+- account issuance
+- domestic money transfer
+- cross-border money transfer
+- merchant acquisition
+- e-money issuance
+- digital payment token
+- money-changing",Yes - license,"- Standard payment institution (SPI) license: payment services should meet the following thresholds- SGD 3 million monthly transactions for any payment service (other than e-money account issuance and money-changing services); SGD 6 million monthly transactions for two or more payment services (other than e-money account issuance and money-changing services); SGD 5 million of daily outstanding electronic money (e-money)
+- Major payment institution (MPI) license: can conduct multiple payment services without being subjected to the threshold limits on transaction volume or float of an SPI
+- Money-changing license: buying or selling of foreign currency",Cross-border money transfer is a licensable activity within PSA scope,"For SPI
+- Must be a company incorporated in Singapore or a Singapore branch of a foreign corporation
+- Must have a permanent place of business or registered office and at least one person present at the place of business/registered office 
+- Should have either 1 executive director who is a Singapore Citizen or Singapore Permanent Resident (PR), or 1 executive director who is a Singapore Employment Pass (EP) holder and at least 1 other director who is a Singapore citizen or Singapore PR
+- Fit and proper controllers and directors; competent key individuals
+- Plans for adequate compliance and independent audit arrangements
+- Conduct of a penetration test of proposed online financial services, remediation of all high-risk findings, and independent validation of the effectiveness of remediation actions
+- Plans to meet annual audit requirements
+- Letter of Responsibility or a Letter of Undertaking from the entity's majority shareholders, parent company and related company, where appropriate
+- Business profile
+- Scanned copies of audited financial statements (consolidated for group) for the past 3 years
+- Organization chart and shareding chart, including all controlling interests
+- Business plan
+- Legal opinion on the regulated payment services conducted given your proposed business model
+- AML/CFT policies and procedures, enterprise-wide risk assessment and implementation plans
+- Supporting documents for shareholders/owners, as applicable
+- Payment of application fee
+
+For MPI - in addition to the requirements for SPI
+- Security in the form of cash deposit with MAS or bank guarantee amounting to SGD 100,000 for monthly payment transactions where the total value does not exceed S$6 million on average for any payment service within a calendar year, and SGD 200,000 for all other cases","SPI: SGD 100,000 
+MPI: SGD 250,000 ",https://sso.agc.gov.sg/act/psa2019,https://sso.agc.gov.sg/act/psa2019,
+Singapore,Monetary Authority of Singapore (MAS),Payment Services Regulations 2019,2019.0,"Provider of the following services:
+- account issuance
+- domestic money transfer
+- cross-border money transfer
+- merchant acquisition
+- e-money issuance
+- digital payment token
+- money-changing",Yes - license,"- Standard payment institution (SPI) license: payment services should meet the following thresholds- SGD 3 million monthly transactions for any payment service (other than e-money account issuance and money-changing services); SGD 6 million monthly transactions for two or more payment services (other than e-money account issuance and money-changing services); SGD 5 million of daily outstanding electronic money (e-money)
+- Major payment institution (MPI) license: can conduct multiple payment services without being subjected to the threshold limits on transaction volume or float of an SPI
+- Money-changing license: buying or selling of foreign currency",Cross-border money transfer is a licensable activity within PSA scope,"For SPI
+- Must be a company incorporated in Singapore or a Singapore branch of a foreign corporation
+- Must have a permanent place of business or registered office and at least one person present at the place of business/registered office 
+- Should have either 1 executive director who is a Singapore Citizen or Singapore Permanent Resident (PR), or 1 executive director who is a Singapore Employment Pass (EP) holder and at least 1 other director who is a Singapore citizen or Singapore PR
+- Fit and proper controllers and directors; competent key individuals
+- Plans for adequate compliance and independent audit arrangements
+- Conduct of a penetration test of proposed online financial services, remediation of all high-risk findings, and independent validation of the effectiveness of remediation actions
+- Plans to meet annual audit requirements
+- Letter of Responsibility or a Letter of Undertaking from the entity's majority shareholders, parent company and related company, where appropriate
+- Business profile
+- Scanned copies of audited financial statements (consolidated for group) for the past 3 years
+- Organization chart and shareding chart, including all controlling interests
+- Business plan
+- Legal opinion on the regulated payment services conducted given your proposed business model
+- AML/CFT policies and procedures, enterprise-wide risk assessment and implementation plans
+- Supporting documents for shareholders/owners, as applicable
+- Payment of application fee
+
+For MPI - in addition to the requirements for SPI
+- Security in the form of cash deposit with MAS or bank guarantee amounting to SGD 100,000 for monthly payment transactions where the total value does not exceed S$6 million on average for any payment service within a calendar year, and SGD 200,000 for all other cases","SPI: SGD 100,000 
+MPI: SGD 250,000 ",https://sso.agc.gov.sg/SL/PSA2019-RG2?DocDate=20251216&ValidDate=20251217,https://sso.agc.gov.sg/SL/PSA2019-RG2?DocDate=20251216&ValidDate=20251217,
+Thailand,The Minister of Finance,"Notification of the Ministry of Finance
+Re: Stipulation on Designated Payment Systems BOT Notification No. SorNorChor. 3/2561 Re: Regulations, Procedures and Conditions on Application for License to Undertake Designated Payment Systems Business",2023.0,"Designated payment system:
+- payment system which is the center or network between the service users of the system for fund transfer, clearing or settlement such as the system for retail fund transfer among service users of the systems, payment card network or settlement system; or
+- any other payment system which may affect public interest, public confidence or stability and security of the payment system.",Yes - license,License to undertake designated payment systems business,No explicit separate authorization for cross-border payments,"- Must be a juristic person of the following type: (i) limited company or public limited company that is registered in Thailand with objective to undertake the payment systems business or (ii) financial institution, specialized financial institution
+or state enterprise or (iii) foreign juristic person specifically for those who intends to undertake the Payment Card Network business
+- Sound financial position and operation status
+- No history of temporary suspension or revocation of license or registration
+- Not currently being temporarily suspended
+- Must not have been convicted by a final judgment for forfeiture of assets to the state, money laundering, terrorim offences, or terrorist financing
+-  Never been any business providers of financial business or designated payment systems business or designated payment services business without authorization or registration as required by the law
+- Must have qualified directors and key management personnel, and at least 1 director with Thai nationality and domiciled within Thailand
+- Foreign juristic person intending to undertake Payment Card Network business must have branch office or representative office in Thailand, and appoint at least 1 person as a person responsible for engaging in affairs for and on behalf of the juristic person in that office
+
+Documents, information, and evidences for consideration of license application as follow:
+A. Details, evidences, information of person intending to undertake the designated payment system business:
+- Business documents (registration certificate, objective of company, memorandum of association, articles of association, register of shareholders)
+- Names, nationalities, domiciles, working experiences and qualification of all directors and persons with managerial power
+- Certification of qualifications of person appointed as directors or persons with managerial power of the person intending to undertake designated payment systems business, or the business provider of designated payment systems.
+- Corporate group structure, organizational and supervisory structures
+- Audited annual financial statements for the past 3 years and the latest 6-month financial statements, if any
+- For foreign juristic person, require license certificate to undertake payment systems business according to foreign law and certificate for business operation of foreigners or company registration certificate, showing the establishment of branch office or representative office in Thailand.
+- Information about shareholders that hold shares in an amount exceeding 10 percent of the total share sold, including the shares held by related persons of such person, to the BOT in accordance with the form stipulated in the manual for the public. 
+
+B. Details of operations of designated payment system business:
+- Organizational and supervisory structures
+- Details of service (business model, process, methods and procedures; fees and expenses related to access and exit regime; total number and name list of system users; related parties; system design diagram)
+- Policies and measures on security of IT systems
+- Policies and business plans for undertaking the designated payment systems business for a 3-year period
+- Action plan for undertaking the business which indicates detailed preparation activities for each periods
+- Risk management policy and risk assessment
+- Business impact analysis and business continuity management
+- Internal control process
+- Guidelines and details on outsourcing of IT systems and services
+- AML/CFTP policies and measures
+- System user protection
+- Additional specific detailes for Inter-institution Fund Transder System service and Payment Card Network servic including settlement risk management and fallback procedure and practices.
+- Additional specific detailes for Settlement System service including guidelines, conditions, and procedures on settlement finality.","Inter-institution Fund Transfer System: 50 million Baht
+
+Payment Card Network service: 50 million Baht
+
+Settlement System service: 200 million Baht",https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610194.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610086.pdf,
+Thailand,Bank of Thailand (BOT),"Notification of the Ministry of Finance
+Re: Stipulation on Designated Payment Services BOT Notification No. SorNorChor. 5/2561 Re: Regulations, Procedures and Conditions on Application for License and Registration to Undertake Designated Payment Services Business",2023.0,"Provider of the following designated payment services:
+- credit card, debit card, or ATM card
+- electronic money
+- receiving electronic payment for and on behalf of sellers, service providers or creditors
+- transferring money by electronic means
+- other payment services which may affect the financial system or public interest",Yes - license and registration,"- License to undertake designated payment services business
+
+- Registration for provision of (1) payment services that uses innovative technology and still in the testing stage under BOT's Regulatory Sandbox; and (2) e-money service, used for payment of goods, services or any other things from several merchants or service providers, with the 6-month moving average outstanding of money received in advance exceeding/reaching the balance of 50 million baht or
+more and has any one of the following characteristics: (i)  For payment of a single and specific type of goods or services which is pre-defined in advance or business under the same franchise; (ii) For payment of goods or services to merchants located situated within
+the same location or vicinity nearby; (iii) For payment of goods or services to merchants in which the business provider directly holds shares in excess of 50 percentages",No explicit separate authorization for cross-border payments,"- Must be a juristic person of the following type: (i) limited company or public limited company that is registered in Thailand with objective to undertake the payment services business or (ii) financial institution, specialized financial institution
+or state enterprise 
+- Sound financial position and operation status
+- No history of temporary suspension or revocation of license or registration
+- Not currently being temporarily suspended 
+- Must not have been convicted by a final judgment for forfeiture of assets to the state, money laundering, terrorim offences, or terrorist financing
+-  Never been any business providers of financial business or designated payment systems business or designated payment services business without authorization or registration as required by the law
+- Must have qualified directors and key management personnel, and at least 1 director with Thai nationality and domiciled within Thailand
+
+Documents, information, and evidences for consideration of license application as follow:
+A. Details, evidences, information of person intending to undertake the designated payment service business:
+- Business documents (registration certificate, objective of company, memorandu of association, articles of association, register of shareholders)
+- Names, nationalities, domiciles, working experiences and qualification of all directors and persons with managerial power
+- Certification of qualifications of person appointed as directors or persons with managerial power of the person intending to undertake designated payment systems business, or the business provider of designated payment systems.
+- Corporate group structure, organizational and supervisory structures
+- Audited annual financial stateents for the past 3 years and the latest 6-month financial statements, if any
+
+B. Details of operations of designated payment service business:
+- Organizational and supervisory structures
+- Details of service (business model, process, methods and procedures, related parties, system design diagram)
+- Policies and measures on security of IT systems
+- Policies and business plans for undertaking the designated payment services business for a 3-year period
+- Action plan for undertaking the business which indicates detailed preparation activities for each periods
+- Risk management policy and risk assessment
+- Business impact analysis and business continuity management
+- Internal control process
+- Guidelines and details on outsourcing of IT systems and services
+- AML/CFTP policies and measures
+- Guidelines on service user protection
+- Additional specific details for the provision of e‑money services, including procedures for managing funds received in advance from service users, and internal controls over the creation and modification of e‑money value, storage, custody and distribution of e‑money, and determination of e‑money limits.","Provision of e-money service: 100 million Baht
+
+Provision of acquiring service: 50 million Baht
+
+Provision of payment facilitating service: 10 million Baht
+
+Provision of a service of receiving payment on behalf: 10 million Baht
+
+Provision of a service of transferring money by an electronic means: 10 million Baht",https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610195.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2561/EngPDF/25610088.pdf,
+Thailand,Bank of Thailand (BOT),BOT Notification No. SorKorChor. 1/2567 Re: Fee rates for licensing and registration of designated payment system business and designated payment service business,2024.0,,,,,"Fee rates for licensing and registration for business operations as follow:
+(1) Designated payment system business: 0 Baht
+(2) Designated payment service business: 0 Baht",,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2567/EngPDF/25670196.pdf,https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2567/EngPDF/25670196.pdf,
+Timor-Leste,Banco Central de Timor-Leste (BCTL),BCTL Instruction No. 1/2013 on the Licensing and Supervision of Money Transfer Operators,2013.0,"Money transfer operator (MTO) - provides remittance services, and no other type of financial services, to persons in Timor-Leste",Yes- license,MTO,No explicit separate authorization for cross-border transactions,"- AML/CFT procedures
+- Appropriate risk management, internal controls and internal audit processes
+- Adequate premises
+- Maintenance of at least USD 10,000 in a separate bank account in a licensed commercial bank in Timor-Leste
+- Identification card, business registration documents
+- CV of proposed administrators and shareholders and police clearance certificate
+- Statement from tax authority stating that the applicant has complied with all past and current tax obligations
+- Most recent bank statement
+- Personal declaration
+- Purpose to establish the MTO
+- Payment of application processing fee",,https://www.bancocentral.tl/uploads/documentos/documento_1459177763_6326.pdf,https://www.bancocentral.tl/uploads/documentos/documento_1459177763_6326.pdf,
+Timor-Leste,Banco Central de Timor-Leste (BCTL),Decree Law No. 17/2015 (National Payment System),2015.0,"1. Provider of payment services:
+- services enabling cash deposits and withdrawals
+- execution of payment transactions
+- issuing and/or acquisition of payment instruments
+- provision of remittance services
+- any other services functional to the transfer of money, including e-money and e-money instruments
+
+2. Payment system","Yes - authorization
+
+*banks not required to obtain new authorization to provide payment services","- Payment services provider
+- Payment system operator",No explicit separate authorization for cross-border payments,No information available on publicly accessible sources,No information available on publicly accessible sources,https://www.bancocentral.tl/uploads/documentos/documento_1479943794_3295.pdf,https://www.bancocentral.tl/uploads/documentos/documento_1479943794_3295.pdf,
+Viet Nam,State Bank of Viet Nam (SBV),Decree 52/2024/ND-CP on Cashless Payments (replaced Decree 101/2012/ND-CP and Decree 80/2016/ND-CP),2024.0,"- Cashless payment service providers
+- Payment intermediary service providers
+- Organizations and individuals relevant to the provision of cashless payment services and payment intermediary services
+- Organizations and individuals using cashless payment services and payment intermediary services (i.e., clients)","Yes – license for non-banks and foreign bank branch to provide payment intermediary services 
+
+Authority to participate in international payment systems for commercial banks and foreign bank branches","Payment Intermediary License (financial switch services, international financial switch services, electronic clearing services, e-wallet services, collection and payment services, and electronic payment portal services)
+
+Authority to participate in international payment systems for commercial banks and foreign bank branches
+",Yes - authority to participate in international payment systems for commercial banks and foreign bank branches,"Participation in international payment systems
+- License to engage in basic FX operations in domestic and international markets
+- AML/CFTP policies and procedures
+- Information systems that meet legal and regulatory requirements
+- Organizations operating international payment systems should be legally established and operated abroad
+
+Provision of payment intermediary services
+- Establishment license or certificate of enterprise registration
+- Compliant with personnel qualification requirements
+- Presentation on technical measures to provide payment intermediary services
+- Resolution of the Members’ Council / Board of Directors / General Meeting of Shareholders approving the provision of intermediary payment services
+- Business plan and technical solution dossier
+- Policies and procedures on risk management, internal controls, AML/CFTP compliance, information security, complaint handling and customer protection (translated into Vietnamese and notarized/certified)
+- For e-wallet services and collection and payment services: have a provider of financial switch services and electronic clearing services licensed by SBV carry out the financial transaction switch and handle the clearing of arising obligations 
+- For financial switch services and electronic clearing services: have another organization carry out the settlement of clearing result between concerned parties; have connection agreements with at least 50 banks and foreign bank branches with a total charter capital in the year before the year of applying for licenses account for at least 65% of the total charter capital of banks and foreign bank branches in the system of credit institutions and connection agreements with at least 20 providers of payment intermediary services; have information infrastructures meeting at least the requirement for safety assurance of information systems grade 4 according to the law, ensuring the capacity for integrating and connecting with technical systems of participating organizations with connection agreements; have a server system the complies with the law and has the capacity for processing at least 10 million payment transactions per day
+- For international financial switch services: have another organization carry out the settlement of clearing results between concerned parties; have intramural regulations on standards of the selection of connections to international payment systems to carry out the financial switch of international payment transactions; have intramural regulations on professional and technical procedures for international financial switch services 
+","Financial switch services, international financial switch services, and electronic clearing services: VND 300 billion
+
+E-wallet services, collection and payment services, and electronic payment portal services: VND 50 billion",https://cdn.thuvienphapluat.vn/uploads/khoinghiep/2025/06/05/52_2024_ND-CP_TA.doc,https://cdn.thuvienphapluat.vn/uploads/khoinghiep/2025/06/05/52_2024_ND-CP_TA.doc,
+Viet Nam,State Bank of Viet Nam (SBV),Circular No. 41/2025/TT-NHNN (amending and supplementing Circular No. 40/2024/TT-NHNN),2025.0,"- Cashless payment service providers
+- Payment intermediary service providers
+- Organizations and individuals relevant to the provision of cashless payment services and payment intermediary services
+- Organizations and individuals using cashless payment services and payment intermediary services (i.e., clients)","Yes – license for non-banks and foreign bank branch to provide payment intermediary services 
+
+Authority to participate in international payment systems for commercial banks and foreign bank branches","Payment Intermediary License (financial switch services, international financial switch services, electronic clearing services, e-wallet services, collection and payment services, and electronic payment portal services)
+
+Authority to participate in international payment systems for commercial banks and foreign bank branches
+",Yes - authority to participate in international payment systems for commercial banks and foreign bank branches,"Participation in international payment systems
+- License to engage in basic FX operations in domestic and international markets
+- AML/CFTP policies and procedures
+- Information systems that meet legal and regulatory requirements
+- Organizations operating international payment systems should be legally established and operated abroad
+
+Provision of payment intermediary services
+- Establishment license or certificate of enterprise registration
+- Compliant with personnel qualification requirements
+- Presentation on technical measures to provide payment intermediary services
+- Resolution of the Members’ Council / Board of Directors / General Meeting of Shareholders approving the provision of intermediary payment services
+- Business plan and technical solution dossier
+- Policies and procedures on risk management, internal controls, AML/CFTP compliance, information security, complaint handling and customer protection (translated into Vietnamese and notarized/certified)
+- For e-wallet services and collection and payment services: have a provider of financial switch services and electronic clearing services licensed by SBV carry out the financial transaction switch and handle the clearing of arising obligations 
+- For financial switch services and electronic clearing services: have another organization carry out the settlement of clearing result between concerned parties; have connection agreements with at least 50 banks and foreign bank branches with a total charter capital in the year before the year of applying for licenses account for at least 65% of the total charter capital of banks and foreign bank branches in the system of credit institutions and connection agreements with at least 20 providers of payment intermediary services; have information infrastructures meeting at least the requirement for safety assurance of information systems grade 4 according to the law, ensuring the capacity for integrating and connecting with technical systems of participating organizations with connection agreements; have a server system the complies with the law and has the capacity for processing at least 10 million payment transactions per day
+- For international financial switch services: have another organization carry out the settlement of clearing results between concerned parties; have intramural regulations on standards of the selection of connections to international payment systems to carry out the financial switch of international payment transactions; have intramural regulations on professional and technical procedures for international financial switch services 
+","Financial switch services, international financial switch services, and electronic clearing services: VND 300 billion
+
+E-wallet services, collection and payment services, and electronic payment portal services: VND 50 billion",https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Thong-tu-66-2025-TT-NHNN-sua-doi-Thong-tu-34-2024-TT-NHNN-688386.aspx,https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Thong-tu-66-2025-TT-NHNN-sua-doi-Thong-tu-34-2024-TT-NHNN-688386.aspx,
+Viet Nam,State Bank of Viet Nam (SBV),Circular No. 66/2025/TT-NHNN (amending and supplementing Circular No. 34/2024/TT-NHNN),2025.0,"- Cashless payment service providers
+- Payment intermediary service providers
+- Organizations and individuals relevant to the provision of cashless payment services and payment intermediary services
+- Organizations and individuals using cashless payment services and payment intermediary services (i.e., clients)","Yes – license for non-banks and foreign bank branch to provide payment intermediary services 
+
+Authority to participate in international payment systems for commercial banks and foreign bank branches","Payment Intermediary License (financial switch services, international financial switch services, electronic clearing services, e-wallet services, collection and payment services, and electronic payment portal services)
+
+Authority to participate in international payment systems for commercial banks and foreign bank branches
+",Yes - authority to participate in international payment systems for commercial banks and foreign bank branches,"Participation in international payment systems
+- License to engage in basic FX operations in domestic and international markets
+- AML/CFTP policies and procedures
+- Information systems that meet legal and regulatory requirements
+- Organizations operating international payment systems should be legally established and operated abroad
+
+Provision of payment intermediary services
+- Establishment license or certificate of enterprise registration
+- Compliant with personnel qualification requirements
+- Presentation on technical measures to provide payment intermediary services
+- Resolution of the Members’ Council / Board of Directors / General Meeting of Shareholders approving the provision of intermediary payment services
+- Business plan and technical solution dossier
+- Policies and procedures on risk management, internal controls, AML/CFTP compliance, information security, complaint handling and customer protection (translated into Vietnamese and notarized/certified)
+- For e-wallet services and collection and payment services: have a provider of financial switch services and electronic clearing services licensed by SBV carry out the financial transaction switch and handle the clearing of arising obligations 
+- For financial switch services and electronic clearing services: have another organization carry out the settlement of clearing result between concerned parties; have connection agreements with at least 50 banks and foreign bank branches with a total charter capital in the year before the year of applying for licenses account for at least 65% of the total charter capital of banks and foreign bank branches in the system of credit institutions and connection agreements with at least 20 providers of payment intermediary services; have information infrastructures meeting at least the requirement for safety assurance of information systems grade 4 according to the law, ensuring the capacity for integrating and connecting with technical systems of participating organizations with connection agreements; have a server system the complies with the law and has the capacity for processing at least 10 million payment transactions per day
+- For international financial switch services: have another organization carry out the settlement of clearing results between concerned parties; have intramural regulations on standards of the selection of connections to international payment systems to carry out the financial switch of international payment transactions; have intramural regulations on professional and technical procedures for international financial switch services 
+","Financial switch services, international financial switch services, and electronic clearing services: VND 300 billion
+
+E-wallet services, collection and payment services, and electronic payment portal services: VND 50 billion",https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Thong-tu-41-2025-TT-NHNN-sua-doi-Thong-tu-40-2024-TT-NHNN-679853.aspx,https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Thong-tu-41-2025-TT-NHNN-sua-doi-Thong-tu-40-2024-TT-NHNN-679853.aspx,

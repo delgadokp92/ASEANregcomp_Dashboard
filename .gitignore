@@ -10,6 +10,8 @@ venv/
 # Data (avoid committing sensitive files)
 *.xlsx
 *.csv
+# Allow category source data
+!src/categories/*.csv
 
 # OS
 .DS_Store
