@@ -409,15 +409,18 @@ td.vc{{font-size:13.5px}}
   }}
   sendHeight();
   window.addEventListener('load', sendHeight);
-  setTimeout(sendHeight, 150);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
   new ResizeObserver(sendHeight).observe(tbl);
 }})();
 </script>
 </body></html>"""
 
-    # Generous initial estimate; JS will correct via getBoundingClientRect
-    est = max(200, 44 + len(rows) * 120)
-    components.html(html, height=est, scrolling=False)
+    # Generous initial estimate; JS grows the iframe to exact height via postMessage.
+    # scrolling=True is a fallback: if postMessage undershoots, user can still scroll.
+    total_chars = sum(len(str(row.get(col, ""))) for row in rows for col in columns[1:])
+    est = max(300, 60 + len(rows) * 60 + (total_chars // 60) * 22)
+    components.html(html, height=est, scrolling=True)
 
 
 def _render_data_table(df: pd.DataFrame, highlighted: set | None = None, row_height: int = 72) -> None:
