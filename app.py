@@ -301,6 +301,13 @@ ASEAN_ISO3 = {
     "Timor-Leste":       "TLS",
 }
 
+# Countries too small for Plotly's Natural Earth polygons — need a marker overlay
+_ASEAN_CENTROIDS = {
+    "Brunei Darussalam": (4.53,  114.73),
+    "Singapore":         (1.35,  103.82),
+    "Timor-Leste":       (-8.87, 125.73),
+}
+
 
 def _html_src(html: str) -> str:
     """Encode HTML as a base64 data URL for st.iframe."""
@@ -2679,6 +2686,30 @@ if _active_page == "Map":
         showlakes=True, lakecolor="rgba(10, 16, 26, 1)",
         bgcolor="rgba(0,0,0,0)",
     )
+
+    # Marker overlay for countries too small for choropleth polygons
+    import plotly.graph_objects as go
+    for _sm_country, (_sm_lat, _sm_lon) in _ASEAN_CENTROIDS.items():
+        _sm_row = by_country[by_country["Country"] == _sm_country]
+        if _sm_row.empty:
+            continue
+        _sm_selected = _country_selected and map_country == _sm_country
+        _sm_reg_count = int(_sm_row["Regulation_Count"].iloc[0])
+        _sm_hover = _sm_row["Latest_10"].iloc[0]
+        _asean_fig.add_trace(go.Scattergeo(
+            lat=[_sm_lat], lon=[_sm_lon],
+            mode="markers",
+            marker=dict(
+                size=14 if _sm_selected else 9,
+                color="#facc15" if _sm_selected else "#2563eb",
+                line=dict(width=1.5, color="#ffffff"),
+                symbol="circle",
+            ),
+            customdata=[[_sm_country, _sm_reg_count, _sm_hover]],
+            hovertemplate="<b>%{customdata[0]}</b><br><br>%{customdata[2]}<extra></extra>",
+            showlegend=False,
+        ))
+
     _asean_fig.layout.width = None
 
     st.plotly_chart(_asean_fig, width="stretch", key="asean_main_map", config=_map_cfg)
