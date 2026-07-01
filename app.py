@@ -2529,14 +2529,23 @@ _NAV_HELP: dict[str, list[tuple[str, str]]] = {
 }
 
 _nc      = len(_nav_pages)
-_nav_col_widths = [0.9] + [1] * _nc + [1.1] + [0.18]
+_nav_col_widths = [0.9] + [1] * _nc + [0.18]
 _nav_cols       = st.columns(_nav_col_widths, vertical_alignment="center")
 
-# Title
+# Title + user badge stacked in col 0
+if IS_AUTHENTICATED:
+    _badge_label = f"{_auth_user} · admin access" if IS_ADMIN else f"{_auth_user} · {_auth_country}"
+    _badge_html  = (
+        f"<br><span style='font-size:0.62rem;color:#64748b;white-space:nowrap'>"
+        f"👤 {_badge_label}</span>"
+    )
+else:
+    _badge_html = ""
 _nav_cols[0].markdown(
     f"<span style='font-size:0.88rem;font-weight:700;color:#e2e8f0;white-space:nowrap'>"
     f"<abbr title='ASEAN Regulatory Information System' style='text-decoration:none;cursor:default'>ARIS</abbr></span>"
-    f"<span style='font-size:0.58rem;color:#475569;margin-left:5px'>v{_APP_VERSION}</span>",
+    f"<span style='font-size:0.58rem;color:#475569;margin-left:5px'>v{_APP_VERSION}</span>"
+    f"{_badge_html}",
     unsafe_allow_html=True,
 )
 
@@ -2549,21 +2558,6 @@ for _ni, _page in enumerate(_nav_pages):
         width="stretch",
     ):
         _nav_to(_page)
-
-# User badge — second-to-last column (authenticated only)
-_user_col = _nav_cols[-2]
-if IS_AUTHENTICATED:
-    if IS_ADMIN:
-        _badge_label = f"{_auth_user} · admin access"
-    else:
-        _badge_label = f"{_auth_user} · {_auth_country}"
-    _user_col.markdown(
-        f"<div style='text-align:right;padding-right:6px'>"
-        f"<span style='font-size:0.72rem;color:#64748b'>👤 </span>"
-        f"<span style='font-size:0.72rem;color:#94a3b8;white-space:nowrap'>{_badge_label}</span>"
-        f"</div>",
-        unsafe_allow_html=True,
-    )
 
 # Help popover — last column
 with _nav_cols[-1].popover("❓", help="Page help"):
