@@ -101,30 +101,40 @@ def _inject_css(t: dict) -> None:
         color: {t['TEXT']} !important;
         border-color: {t['BORDER']} !important;
     }}
-    [data-baseweb="popover"] ul, [data-baseweb="menu"] {{
+    /* Dropdown menu container + all descendants */
+    [data-baseweb="popover"] ul,
+    [data-baseweb="menu"],
+    [data-baseweb="list"] {{
         background-color: {t['MENU_BG']} !important;
         color: {t['TEXT']} !important;
     }}
-    [data-baseweb="menu"] li:hover {{ background-color: {t['BTN_HOVER']} !important; }}
-    /* Dropdown option items */
-    [data-baseweb="option"] {{
+    /* Option rows — use * to reach inline-styled nested spans */
+    [data-baseweb="option"],
+    [data-baseweb="option"] *,
+    [data-baseweb="menu"] li,
+    [data-baseweb="menu"] li * {{
         background-color: {t['MENU_BG']} !important;
         color: {t['TEXT']} !important;
     }}
-    [data-baseweb="option"]:hover {{
+    [data-baseweb="option"]:hover,
+    [data-baseweb="option"]:hover *,
+    [data-baseweb="menu"] li:hover,
+    [data-baseweb="menu"] li:hover * {{
         background-color: {t['BTN_HOVER']} !important;
-    }}
-    /* Selected value text + placeholder inside selectbox */
-    [data-baseweb="select"] span,
-    [data-baseweb="select"] div,
-    [data-testid="stSelectbox"] span,
-    [data-testid="stSelectbox"] div {{
         color: {t['TEXT']} !important;
     }}
-    /* Dropdown arrow/chevron icon */
-    [data-baseweb="select"] svg {{
-        fill: {t['MUTED']} !important;
+    /* Selected value display + placeholder */
+    [data-baseweb="select"] *,
+    [data-testid="stSelectbox"] * {{
+        color: {t['TEXT']} !important;
     }}
+    [data-baseweb="select"] > div,
+    [data-testid="stSelectbox"] > div > div {{
+        background-color: {t['INPUT_BG']} !important;
+        border-color: {t['BORDER']} !important;
+    }}
+    /* Chevron icon */
+    [data-baseweb="select"] svg {{ fill: {t['MUTED']} !important; }}
     [data-testid="stExpander"] summary {{
         background-color: {t['EXP_BG']} !important;
         color: {t['TEXT']} !important;
