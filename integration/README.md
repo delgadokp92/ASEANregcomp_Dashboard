@@ -202,12 +202,10 @@ Displays all decoded claims and highlights the fields ARIS uses.
 ## Keycloak setup checklist
 
 - [ ] Client created: `asean-regdash`, protocol `openid-connect`
-- [ ] Valid Redirect URI includes the ARIS app URL
 - [ ] Custom mapper added: User Attribute → Token Claim Name `country`, add to access token ✓
 - [ ] Realm roles created: `dashboard-admin`, `dashboard-editor`
 - [ ] Test user has `country` attribute set (e.g. `Singapore`)
 - [ ] Test user assigned a realm role
-- [ ] Token delivered to app as `?token=<jwt>` in the redirect URL
 
 ---
 
@@ -234,16 +232,6 @@ curl $KEYCLOAK_JWKS_URL
 
 Once `check_token.py` shows `[OK] Authenticated as editor for <country>` (or admin), the token handoff is proven. The only remaining step is wiring the same redirect into the live app.
 
-### How it works in production
-
-```
-User logs in via Keycloak
-    → Keycloak issues JWT
-    → Redirect to ARIS with token in URL:
-      https://your-aris-server/?token=<jwt>
-    → ARIS reads ?token=, calls parse_auth_token(), grants access
-```
-
 ### What the ARIS team needs to do (already done in app.py)
 
 The `parse_auth_token()` function in `app.py` is already wired and waiting. No code changes are needed on the ARIS side — just:
@@ -256,9 +244,7 @@ The `parse_auth_token()` function in `app.py` is already wired and waiting. No c
 
 2. Uncomment the JWT validation block inside `parse_auth_token()` in `app.py` (marked with `# TODO`).
 
-3. Configure Keycloak to redirect to `https://your-aris-server/?token=<access_token>` after login.
-
-4. Restart the ARIS app.
+3. Restart the ARIS app.
 
 That's it. The dummy tokens (`dummy-admin`, `dummy-vietnam`, `dummy-singapore`) will still work for testing after the real token path is live — remove them only when going to full production.
 
@@ -270,4 +256,3 @@ That's it. The dummy tokens (`dummy-admin`, `dummy-vietnam`, `dummy-singapore`) 
 - [ ] Admin user token contains `realm_roles: ["dashboard-admin"]`
 - [ ] ARIS server environment variables set
 - [ ] TODO block in `parse_auth_token()` uncommented
-- [ ] Redirect URI in Keycloak client points to the live ARIS URL
