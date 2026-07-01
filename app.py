@@ -2412,75 +2412,122 @@ def _dlg_edit_mapping(
 # =========================
 # Authentication — Keycloak integration point
 # =========================
-# Token flow:  ?token=<jwt>  (production: Keycloak-signed JWT)
-# Legacy flow: ?country=X&user=Y  (fallback while migrating to token flow)
+# Token flow:  ?token=<value>
+#   WordPress login returns a JSON wrapper; ARIS accepts either the full
+#   JSON string or just the inner JWT string.
 #
-# Claims extracted from token:
-#   preferred_username  — display name shown in UI / audit log
-#   country             — ASEAN country name, or "NA" for admin
-#   realm_roles         — list; "dashboard-admin" grants IS_ADMIN
+#   WordPress JSON format:
+#     { "token": "<jwt>", "user_email": "...", "user_nicename": "...",
+#       "user_display_name": "...", "user_roles": [...], "acf": {...} }
 #
-# To plug in real Keycloak:
-#   1. pip install python-jose[cryptography] requests
-#   2. Set env vars KEYCLOAK_JWKS_URL and KEYCLOAK_CLIENT_ID
-#   3. Replace the TODO block below with the jose.jwt.decode() call
+#   Normalised internal claims (after parse_auth_token):
+#     preferred_username  — from user_nicename / user_display_name / sub
+#     email               — from user_email
+#     country             — custom WP field (to be added by WordPress team)
+#     realm_roles         — from user_roles; "administrator" or "dashboard-admin" → IS_ADMIN
+#     acf                 — raw ACF fields (sectoralBody, etc.)
+#
+# Signature verification: set JWT_SECRET env var (WordPress HS256 secret).
+# Legacy fallback: ?country=X&user=Y still works during transition.
 
 _DUMMY_TOKENS: dict[str, dict] = {
-    # Dummy tokens for development — remove or extend before production
+    # Dummy tokens for development — remove before production
     "dummy-admin": {
         "sub": "dev-admin-001",
         "preferred_username": "Admin",
         "country": "NA",
-        "realm_roles": ["dashboard-admin", "dashboard-editor"],
+        "realm_roles": ["administrator"],
     },
     "dummy-vietnam": {
         "sub": "dev-vn-001",
         "preferred_username": "VN_Editor",
         "country": "Viet Nam",
-        "realm_roles": ["dashboard-editor"],
+        "realm_roles": ["editor"],
     },
     "dummy-singapore": {
         "sub": "dev-sg-001",
         "preferred_username": "SG_Editor",
         "country": "Singapore",
-        "realm_roles": ["dashboard-editor"],
+        "realm_roles": ["editor"],
     },
 }
 
 
 def parse_auth_token(token: str) -> dict:
     """
-    Parse and validate an auth token; return claims dict (empty = invalid/unauthenticated).
+    Parse a WordPress JWT response and return normalised claims.
 
-    Dummy tokens are accepted when KEYCLOAK_JWKS_URL is not configured.
-    In production, replace the TODO block with real JWT validation.
+    Accepts:
+      - Full WordPress JSON wrapper string (starts with '{')
+      - Raw JWT string (3 dot-separated parts)
+      - Dummy dev tokens
+
+    Set JWT_SECRET env var (= WordPress JWT_AUTH_SECRET_KEY) to enable
+    HS256 signature verification. Without it, the payload is decoded
+    without verification — safe for development, not for production.
     """
-    import os
+    import os, json as _json, base64
+
     token = token.strip()
 
-    # ── Dummy tokens (development only) ─────────────────────────────────────
+    # ── Dummy tokens (development) ────────────────────────────────────────────
     if token in _DUMMY_TOKENS:
         return _DUMMY_TOKENS[token]
 
-    # ── TODO: Real Keycloak JWT validation ───────────────────────────────────
-    # jwks_url   = os.environ.get("KEYCLOAK_JWKS_URL", "")
-    # client_id  = os.environ.get("KEYCLOAK_CLIENT_ID", "")
-    # if jwks_url and client_id:
-    #     try:
-    #         from jose import jwt as _jwt, JWTError
-    #         from jose.backends import RSAKey
-    #         import requests, json as _json
-    #         jwks = requests.get(jwks_url, timeout=5).json()
-    #         claims = _jwt.decode(
-    #             token, jwks, algorithms=["RS256"],
-    #             audience=client_id, options={"verify_at_hash": False},
-    #         )
-    #         return claims
-    #     except Exception:
-    #         return {}
-    # ─────────────────────────────────────────────────────────────────────────
+    # ── Unwrap WordPress JSON envelope if present ─────────────────────────────
+    wrapper: dict = {}
+    jwt_str = token
+    if token.startswith("{"):
+        try:
+            wrapper = _json.loads(token)
+            jwt_str = wrapper.get("token", "")
+            if not jwt_str:
+                return {}
+        except Exception:
+            return {}
 
-    return {}  # Unknown token → public view
+    # ── Decode JWT ─────────────────────────────────────────────────────────────
+    secret = os.environ.get("JWT_SECRET", "")
+    if secret:
+        try:
+            import jwt as _pyjwt
+            jwt_claims = _pyjwt.decode(jwt_str, secret, algorithms=["HS256"])
+        except Exception:
+            return {}
+    else:
+        # Unverified decode — payload only, no signature check
+        parts = jwt_str.split(".")
+        if len(parts) < 2:
+            return {}
+        try:
+            padded = parts[1] + "=" * (-len(parts[1]) % 4)
+            jwt_claims = _json.loads(base64.urlsafe_b64decode(padded))
+        except Exception:
+            return {}
+
+    # ── Normalise claim names ─────────────────────────────────────────────────
+    # JWT claims take priority over wrapper fields for overlapping keys
+    merged = {**wrapper, **jwt_claims}
+
+    username = (
+        merged.get("preferred_username")
+        or merged.get("user_nicename")
+        or merged.get("user_display_name")
+        or merged.get("sub", "")
+    )
+    roles  = merged.get("realm_roles") or merged.get("user_roles") or []
+    email  = merged.get("user_email") or merged.get("email", "")
+    # country not yet in WP token — will be a custom ACF/meta field
+    country = merged.get("country", "")
+
+    return {
+        "sub":                merged.get("sub", ""),
+        "preferred_username": username,
+        "email":              email,
+        "country":            country,
+        "realm_roles":        roles,
+        "acf":                merged.get("acf", {}),
+    }
 
 
 def _sanitize(s: str, pattern: str, maxlen: int = 50) -> Optional[str]:
@@ -2501,7 +2548,8 @@ if _claims:
     _auth_country = _sanitize(_claims.get("country") or "", r"[^A-Za-z0-9 \-_]")
     _auth_user    = _sanitize(_claims.get("preferred_username") or "", r"[^A-Za-z0-9 \-_@.]")
     _auth_roles: list[str] = _claims.get("realm_roles", [])
-    IS_ADMIN         = "dashboard-admin" in _auth_roles
+    _admin_roles  = {"administrator", "dashboard-admin"}   # WP admin or legacy Keycloak role
+    IS_ADMIN         = bool(_admin_roles & set(_auth_roles))
     IS_AUTHENTICATED = True
 else:
     # Legacy fallback: ?country=X&user=Y (used until token flow is live)
