@@ -18,11 +18,11 @@ import streamlit.components.v1 as components
 # App config
 # =========================
 st.set_page_config(
-    page_title="ASEAN Regulatory Dashboard",
+    page_title="ARIS",
     layout="wide",
     initial_sidebar_state="collapsed",
     menu_items={
-        "About": "ASEAN Regulatory Dashboard: interactive view of regional regulations.",
+        "About": "ARIS — ASEAN Regulatory Information System: interactive view of regional regulations.",
     },
 )
 
@@ -2535,7 +2535,7 @@ _nav_cols       = st.columns(_nav_col_widths, vertical_alignment="center")
 # Title
 _nav_cols[0].markdown(
     f"<span style='font-size:0.88rem;font-weight:700;color:#e2e8f0;white-space:nowrap'>"
-    f"ASEAN RegDash</span>"
+    f"<abbr title='ASEAN Regulatory Information System' style='text-decoration:none;cursor:default'>ARIS</abbr></span>"
     f"<span style='font-size:0.58rem;color:#475569;margin-left:5px'>v{_APP_VERSION}</span>",
     unsafe_allow_html=True,
 )
