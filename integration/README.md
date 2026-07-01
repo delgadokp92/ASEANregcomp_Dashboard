@@ -2,7 +2,9 @@
 
 Tools for the integration team to validate that a Keycloak-issued JWT reaches the ARIS app correctly and contains the right claims.
 
-No need to run the full ARIS app — these tools work completely standalone.
+**No need to run the full ARIS app.** These tools work completely standalone on any server.
+
+Once the token handoff is confirmed working here, the only remaining step is pointing the same redirect URL at the main `app.py` — the auth logic is identical.
 
 ---
 
@@ -16,12 +18,68 @@ No need to run the full ARIS app — these tools work completely standalone.
 
 ---
 
-## Setup
+## Step 0 — Install Python (fresh server)
 
-Requires **Python 3.10+**. Run these commands once:
+Skip this section if Python 3.10+ is already installed (`python --version` to check).
+
+### Linux (Ubuntu / Debian)
 
 ```bash
-python -m venv .venv
+sudo apt update
+sudo apt install -y python3 python3-venv python3-pip git
+python3 --version   # should say 3.10 or higher
+```
+
+If the version is below 3.10 (e.g. Ubuntu 20.04 ships 3.8):
+
+```bash
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install -y python3.11 python3.11-venv
+python3.11 --version
+```
+
+Use `python3.11` instead of `python3` in all commands below.
+
+### Windows Server / Windows 10+
+
+1. Download the installer from **https://www.python.org/downloads/** — choose the latest **3.11.x** or **3.12.x** Windows installer (64-bit).
+2. Run the installer. **Tick "Add python.exe to PATH"** before clicking Install.
+3. Open a new PowerShell window and verify:
+   ```powershell
+   python --version   # should say 3.11.x or 3.12.x
+   ```
+
+### macOS
+
+```bash
+# Using Homebrew (recommended)
+brew install python@3.11
+python3 --version
+```
+
+---
+
+## Step 1 — Get the integration tools
+
+### Option A — Clone the repo (if you have git)
+
+```bash
+git clone https://github.com/delgadokp92/ASEANregcomp_Dashboard.git
+cd ASEANregcomp_Dashboard/integration
+```
+
+### Option B — Download just this folder
+
+Download the zip of the repo from GitHub → Code → Download ZIP, then extract and navigate to the `integration/` folder.
+
+---
+
+## Step 2 — Set up the environment
+
+```bash
+# Create virtual environment (run once)
+python3 -m venv .venv
 
 # Activate — Linux / Mac
 source .venv/bin/activate
@@ -29,7 +87,10 @@ source .venv/bin/activate
 # Activate — Windows PowerShell
 .\.venv\Scripts\Activate.ps1
 
-# Install
+# Windows PowerShell: if you get an execution policy error, run this first:
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -166,3 +227,47 @@ Confirm `KEYCLOAK_JWKS_URL` is the correct JWKS endpoint for your realm and is r
 ```bash
 curl $KEYCLOAK_JWKS_URL
 ```
+
+---
+
+## What's next — connecting to the full ARIS app
+
+Once `check_token.py` shows `[OK] Authenticated as editor for <country>` (or admin), the token handoff is proven. The only remaining step is wiring the same redirect into the live app.
+
+### How it works in production
+
+```
+User logs in via Keycloak
+    → Keycloak issues JWT
+    → Redirect to ARIS with token in URL:
+      https://your-aris-server/?token=<jwt>
+    → ARIS reads ?token=, calls parse_auth_token(), grants access
+```
+
+### What the ARIS team needs to do (already done in app.py)
+
+The `parse_auth_token()` function in `app.py` is already wired and waiting. No code changes are needed on the ARIS side — just:
+
+1. Set the two environment variables on the ARIS server:
+   ```bash
+   KEYCLOAK_JWKS_URL=https://your-keycloak/realms/your-realm/protocol/openid-connect/certs
+   KEYCLOAK_CLIENT_ID=asean-regdash
+   ```
+
+2. Uncomment the JWT validation block inside `parse_auth_token()` in `app.py` (marked with `# TODO`).
+
+3. Configure Keycloak to redirect to `https://your-aris-server/?token=<access_token>` after login.
+
+4. Restart the ARIS app.
+
+That's it. The dummy tokens (`dummy-admin`, `dummy-vietnam`, `dummy-singapore`) will still work for testing after the real token path is live — remove them only when going to full production.
+
+### Go/no-go checklist before switching to live
+
+- [ ] `check_token.py` shows all required claims present for a real Keycloak token
+- [ ] Signature verification passes (`KEYCLOAK_JWKS_URL` + `KEYCLOAK_CLIENT_ID` set)
+- [ ] Country name in token matches exactly one of the 11 ASEAN country names used in ARIS
+- [ ] Admin user token contains `realm_roles: ["dashboard-admin"]`
+- [ ] ARIS server environment variables set
+- [ ] TODO block in `parse_auth_token()` uncommented
+- [ ] Redirect URI in Keycloak client points to the live ARIS URL
