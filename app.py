@@ -2538,6 +2538,8 @@ if IS_AUTHENTICATED:
     _badge_html  = (
         f"<br><span style='font-size:0.62rem;color:#64748b;white-space:nowrap'>"
         f"👤 {_badge_label}</span>"
+        f"<br><span style='font-size:0.58rem;color:#334155;white-space:nowrap'>"
+        f"AMS-exclusive</span>"
     )
 else:
     _badge_html = ""
