@@ -108,7 +108,7 @@ def _inject_css(t: dict) -> None:
         background-color: {t['MENU_BG']} !important;
         color: {t['TEXT']} !important;
     }}
-    /* Option rows — use * to reach inline-styled nested spans */
+    /* Option rows via data-baseweb */
     [data-baseweb="option"],
     [data-baseweb="option"] *,
     [data-baseweb="menu"] li,
@@ -122,6 +122,22 @@ def _inject_css(t: dict) -> None:
     [data-baseweb="menu"] li:hover * {{
         background-color: {t['BTN_HOVER']} !important;
         color: {t['TEXT']} !important;
+    }}
+    /* ARIA role selectors — portal renders at body level, outside .stApp */
+    [role="listbox"] {{
+        background-color: {t['MENU_BG']} !important;
+    }}
+    [role="option"] {{
+        background-color: {t['MENU_BG']} !important;
+        color: {t['TEXT']} !important;
+    }}
+    [role="option"] * {{
+        color: {t['TEXT']} !important;
+        background-color: transparent !important;
+    }}
+    [role="option"]:hover,
+    [role="option"][aria-selected="true"] {{
+        background-color: {t['BTN_HOVER']} !important;
     }}
     /* Selected value display + placeholder */
     [data-baseweb="select"] *,
