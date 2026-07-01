@@ -301,11 +301,19 @@ ASEAN_ISO3 = {
     "Timor-Leste":       "TLS",
 }
 
-# Countries too small for Plotly's Natural Earth polygons — need a marker overlay
+# Centroids for all ASEAN countries — used for consistent marker overlay on the map
 _ASEAN_CENTROIDS = {
-    "Brunei Darussalam": (4.53,  114.73),
-    "Singapore":         (1.35,  103.82),
-    "Timor-Leste":       (-8.87, 125.73),
+    "Brunei Darussalam": (4.53,   114.73),
+    "Cambodia":          (12.57,  104.99),
+    "Indonesia":         (-2.50,  118.00),
+    "Lao PDR":           (17.97,  102.64),
+    "Malaysia":          (3.14,   109.45),
+    "Myanmar":           (17.11,   95.96),
+    "Philippines":       (12.88,  121.77),
+    "Singapore":         (1.35,   103.82),
+    "Thailand":          (15.87,  100.99),
+    "Timor-Leste":       (-8.87,  125.73),
+    "Viet Nam":          (14.06,  108.28),
 }
 
 
@@ -2687,28 +2695,32 @@ if _active_page == "Map":
         bgcolor="rgba(0,0,0,0)",
     )
 
-    # Marker overlay for countries too small for choropleth polygons
+    # Marker overlay for all ASEAN countries — consistent dots, gold when selected
     import plotly.graph_objects as go
-    for _sm_country, (_sm_lat, _sm_lon) in _ASEAN_CENTROIDS.items():
-        _sm_row = by_country[by_country["Country"] == _sm_country]
-        if _sm_row.empty:
+    _mk_lats, _mk_lons, _mk_colors, _mk_sizes, _mk_custom = [], [], [], [], []
+    for _mk_country, (_mk_lat, _mk_lon) in _ASEAN_CENTROIDS.items():
+        _mk_row = by_country[by_country["Country"] == _mk_country]
+        if _mk_row.empty:
             continue
-        _sm_selected = _country_selected and map_country == _sm_country
-        _sm_reg_count = int(_sm_row["Regulation_Count"].iloc[0])
-        _sm_hover = _sm_row["Latest_10"].iloc[0]
-        _asean_fig.add_trace(go.Scattergeo(
-            lat=[_sm_lat], lon=[_sm_lon],
-            mode="markers",
-            marker=dict(
-                size=14 if _sm_selected else 9,
-                color="#facc15" if _sm_selected else "#2563eb",
-                line=dict(width=1.5, color="#ffffff"),
-                symbol="circle",
-            ),
-            customdata=[[_sm_country, _sm_reg_count, _sm_hover]],
-            hovertemplate="<b>%{customdata[0]}</b><br><br>%{customdata[2]}<extra></extra>",
-            showlegend=False,
-        ))
+        _mk_sel = _country_selected and map_country == _mk_country
+        _mk_lats.append(_mk_lat)
+        _mk_lons.append(_mk_lon)
+        _mk_colors.append("#facc15" if _mk_sel else "#2563eb")
+        _mk_sizes.append(14 if _mk_sel else 8)
+        _mk_custom.append([_mk_country, int(_mk_row["Regulation_Count"].iloc[0]), _mk_row["Latest_10"].iloc[0]])
+    _asean_fig.add_trace(go.Scattergeo(
+        lat=_mk_lats, lon=_mk_lons,
+        mode="markers",
+        marker=dict(
+            size=_mk_sizes,
+            color=_mk_colors,
+            line=dict(width=1, color="rgba(255,255,255,0.5)"),
+            symbol="circle",
+        ),
+        customdata=_mk_custom,
+        hovertemplate="<b>%{customdata[0]}</b><br><br>%{customdata[2]}<extra></extra>",
+        showlegend=False,
+    ))
 
     _asean_fig.layout.width = None
 
