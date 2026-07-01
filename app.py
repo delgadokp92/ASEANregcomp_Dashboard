@@ -106,6 +106,25 @@ def _inject_css(t: dict) -> None:
         color: {t['TEXT']} !important;
     }}
     [data-baseweb="menu"] li:hover {{ background-color: {t['BTN_HOVER']} !important; }}
+    /* Dropdown option items */
+    [data-baseweb="option"] {{
+        background-color: {t['MENU_BG']} !important;
+        color: {t['TEXT']} !important;
+    }}
+    [data-baseweb="option"]:hover {{
+        background-color: {t['BTN_HOVER']} !important;
+    }}
+    /* Selected value text + placeholder inside selectbox */
+    [data-baseweb="select"] span,
+    [data-baseweb="select"] div,
+    [data-testid="stSelectbox"] span,
+    [data-testid="stSelectbox"] div {{
+        color: {t['TEXT']} !important;
+    }}
+    /* Dropdown arrow/chevron icon */
+    [data-baseweb="select"] svg {{
+        fill: {t['MUTED']} !important;
+    }}
     [data-testid="stExpander"] summary {{
         background-color: {t['EXP_BG']} !important;
         color: {t['TEXT']} !important;
