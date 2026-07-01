@@ -4,8 +4,8 @@ __pycache__/
 .venv/
 venv/
 
-# Streamlit
-.streamlit/
+# Streamlit — track config.toml (theme), ignore secrets only
+.streamlit/secrets.toml
 
 # Data (avoid committing sensitive files)
 *.xlsx

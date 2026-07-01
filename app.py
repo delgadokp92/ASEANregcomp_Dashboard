@@ -81,6 +81,84 @@ st.markdown(
     }
     [data-testid="stDataFrame"] ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
+    /* ── Force dark theme on all Streamlit controls (overrides OS light-mode default) ── */
+    /* Secondary buttons */
+    [data-testid="stBaseButton-secondary"] {
+        background-color: #1e293b !important;
+        color: #e2e8f0 !important;
+        border: 1px solid #334155 !important;
+    }
+    [data-testid="stBaseButton-secondary"]:hover {
+        background-color: #273548 !important;
+        border-color: #475569 !important;
+        color: #f1f5f9 !important;
+    }
+    /* Primary buttons */
+    [data-testid="stBaseButton-primary"] {
+        background-color: #3b82f6 !important;
+        color: #ffffff !important;
+        border: none !important;
+    }
+    [data-testid="stBaseButton-primary"]:hover {
+        background-color: #2563eb !important;
+    }
+    /* Download buttons */
+    [data-testid="stDownloadButton"] > button {
+        background-color: #1e293b !important;
+        color: #e2e8f0 !important;
+        border: 1px solid #334155 !important;
+    }
+    [data-testid="stDownloadButton"] > button:hover {
+        background-color: #273548 !important;
+        border-color: #475569 !important;
+    }
+    /* Selectbox, text input, text area */
+    [data-testid="stSelectbox"] > div > div,
+    [data-baseweb="select"] > div,
+    [data-testid="stTextInput"] > div > div > input,
+    [data-testid="stTextArea"] > div > div > textarea {
+        background-color: #1e293b !important;
+        color: #e2e8f0 !important;
+        border-color: #334155 !important;
+    }
+    /* Dropdown menu list */
+    [data-baseweb="popover"] ul,
+    [data-baseweb="menu"] {
+        background-color: #1e293b !important;
+        color: #e2e8f0 !important;
+    }
+    [data-baseweb="menu"] li:hover {
+        background-color: #273548 !important;
+    }
+    /* Expander headers */
+    [data-testid="stExpander"] summary {
+        background-color: #0d1526 !important;
+        color: #e2e8f0 !important;
+    }
+    /* Tabs (st.tabs) */
+    [data-testid="stTabs"] [data-baseweb="tab-list"] {
+        background-color: #0f172a !important;
+    }
+    [data-testid="stTabs"] [data-baseweb="tab"] {
+        color: #94a3b8 !important;
+        background-color: transparent !important;
+    }
+    [data-testid="stTabs"] [aria-selected="true"] {
+        color: #e2e8f0 !important;
+        border-bottom-color: #3b82f6 !important;
+    }
+    /* Popover panel */
+    [data-testid="stPopover"] > div {
+        background-color: #1e293b !important;
+        border: 1px solid #334155 !important;
+        color: #e2e8f0 !important;
+    }
+    /* Dialog / modal */
+    [data-testid="stModal"] > div > div {
+        background-color: #0f172a !important;
+        color: #e2e8f0 !important;
+    }
+
     /* ── Typography ── */
     .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
         color: #e2e8f0; letter-spacing: 0.01em;
