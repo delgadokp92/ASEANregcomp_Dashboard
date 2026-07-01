@@ -26,167 +26,141 @@ st.set_page_config(
     },
 )
 
-st.markdown(
-    """
-    <style>
-    /* ── Base ── */
-    .stApp { background-color: #071014; color: #f8fafc; }
+def _inject_css(t: dict) -> None:
+    st.markdown(f"""<style>
+    .stApp {{ background-color: {t['BG_DEEP']}; color: {t['TEXT']}; }}
 
-    /* ── Collapse the Streamlit header to zero height ── */
-    header[data-testid="stHeader"] {
+    header[data-testid="stHeader"] {{
         height: 0 !important; min-height: 0 !important;
         background: transparent !important; border-bottom: none !important;
         pointer-events: none !important; overflow: hidden !important;
-    }
-
-    /* ── Hide sidebar and its toggle permanently ── */
+    }}
     [data-testid="stSidebar"],
     [data-testid="stSidebarCollapseButton"],
-    [data-testid="collapsedControl"] {
-        display: none !important;
-    }
+    [data-testid="collapsedControl"] {{ display: none !important; }}
 
-    /* ── Full-width main content, flush to top ── */
-    section[data-testid="stMain"] { margin-left: 0 !important; width: 100% !important; }
-    .block-container { padding-top: 0.5rem !important; }
+    section[data-testid="stMain"] {{ margin-left: 0 !important; width: 100% !important; }}
+    .block-container {{ padding-top: 0.5rem !important; }}
 
-    /* ── Top nav bar ── */
-    .nav-bar {
+    .nav-bar {{
         display: flex; align-items: center; gap: 6px;
-        background: #0d1526; border-bottom: 1px solid #1e293b;
+        background: {t['NAV_BG']}; border-bottom: 1px solid {t['NAV_BORDER']};
         padding: 6px 12px; margin: -0.5rem -1rem 0.75rem -1rem;
         position: sticky; top: 0; z-index: 100;
-    }
-    .nav-title {
-        font-size: 0.95rem; font-weight: 700; color: #e2e8f0;
+    }}
+    .nav-title {{
+        font-size: 0.95rem; font-weight: 700; color: {t['TEXT']};
         white-space: nowrap; margin-right: 8px; letter-spacing: 0.01em;
-    }
-    .nav-version {
-        font-size: 0.62rem; color: #475569; white-space: nowrap; margin-right: 12px;
-    }
+    }}
+    .nav-version {{
+        font-size: 0.62rem; color: {t['FAINT']}; white-space: nowrap; margin-right: 12px;
+    }}
 
-    /* ── Native dataframe — match custom HTML table palette ── */
-    /* Outer border and radius match the iframe tables */
-    [data-testid="stDataFrame"] {
-        border: 1px solid #334155 !important;
-        border-radius: 6px !important;
-        overflow: hidden !important;
-    }
-    [data-testid="stDataFrame"] > div { border-radius: 6px !important; }
-    /* Scrollbar track — match dark bg */
-    [data-testid="stDataFrame"] ::-webkit-scrollbar { width: 6px; height: 6px; }
-    [data-testid="stDataFrame"] ::-webkit-scrollbar-track { background: #0d1526; }
-    [data-testid="stDataFrame"] ::-webkit-scrollbar-thumb {
-        background: #334155; border-radius: 3px;
-    }
-    [data-testid="stDataFrame"] ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    [data-testid="stDataFrame"] {{
+        border: 1px solid {t['BORDER']} !important;
+        border-radius: 6px !important; overflow: hidden !important;
+    }}
+    [data-testid="stDataFrame"] > div {{ border-radius: 6px !important; }}
+    [data-testid="stDataFrame"] ::-webkit-scrollbar {{ width: 6px; height: 6px; }}
+    [data-testid="stDataFrame"] ::-webkit-scrollbar-track {{ background: {t['BG_CARD']}; }}
+    [data-testid="stDataFrame"] ::-webkit-scrollbar-thumb {{
+        background: {t['BORDER']}; border-radius: 3px;
+    }}
+    [data-testid="stDataFrame"] ::-webkit-scrollbar-thumb:hover {{ background: {t['FAINT']}; }}
 
-    /* ── Force dark theme on all Streamlit controls (overrides OS light-mode default) ── */
-    /* Secondary buttons */
-    [data-testid="stBaseButton-secondary"] {
-        background-color: #1e293b !important;
-        color: #e2e8f0 !important;
-        border: 1px solid #334155 !important;
-    }
-    [data-testid="stBaseButton-secondary"]:hover {
-        background-color: #273548 !important;
-        border-color: #475569 !important;
-        color: #f1f5f9 !important;
-    }
-    /* Primary buttons */
-    [data-testid="stBaseButton-primary"] {
+    [data-testid="stBaseButton-secondary"] {{
+        background-color: {t['BTN_BG']} !important;
+        color: {t['TEXT']} !important;
+        border: 1px solid {t['BTN_BORDER']} !important;
+    }}
+    [data-testid="stBaseButton-secondary"]:hover {{
+        background-color: {t['BTN_HOVER']} !important;
+        border-color: {t['FAINT']} !important;
+        color: {t['TEXT']} !important;
+    }}
+    [data-testid="stBaseButton-primary"] {{
         background-color: #3b82f6 !important;
         color: #ffffff !important;
         border: none !important;
-    }
-    [data-testid="stBaseButton-primary"]:hover {
-        background-color: #2563eb !important;
-    }
-    /* Download buttons */
-    [data-testid="stDownloadButton"] > button {
-        background-color: #1e293b !important;
-        color: #e2e8f0 !important;
-        border: 1px solid #334155 !important;
-    }
-    [data-testid="stDownloadButton"] > button:hover {
-        background-color: #273548 !important;
-        border-color: #475569 !important;
-    }
-    /* Selectbox, text input, text area */
+    }}
+    [data-testid="stBaseButton-primary"]:hover {{ background-color: #2563eb !important; }}
+    [data-testid="stDownloadButton"] > button {{
+        background-color: {t['BTN_BG']} !important;
+        color: {t['TEXT']} !important;
+        border: 1px solid {t['BTN_BORDER']} !important;
+    }}
+    [data-testid="stDownloadButton"] > button:hover {{
+        background-color: {t['BTN_HOVER']} !important;
+        border-color: {t['FAINT']} !important;
+    }}
     [data-testid="stSelectbox"] > div > div,
     [data-baseweb="select"] > div,
     [data-testid="stTextInput"] > div > div > input,
-    [data-testid="stTextArea"] > div > div > textarea {
-        background-color: #1e293b !important;
-        color: #e2e8f0 !important;
-        border-color: #334155 !important;
-    }
-    /* Dropdown menu list */
-    [data-baseweb="popover"] ul,
-    [data-baseweb="menu"] {
-        background-color: #1e293b !important;
-        color: #e2e8f0 !important;
-    }
-    [data-baseweb="menu"] li:hover {
-        background-color: #273548 !important;
-    }
-    /* Expander headers */
-    [data-testid="stExpander"] summary {
-        background-color: #0d1526 !important;
-        color: #e2e8f0 !important;
-    }
-    /* Tabs (st.tabs) */
-    [data-testid="stTabs"] [data-baseweb="tab-list"] {
-        background-color: #0f172a !important;
-    }
-    [data-testid="stTabs"] [data-baseweb="tab"] {
-        color: #94a3b8 !important;
-        background-color: transparent !important;
-    }
-    [data-testid="stTabs"] [aria-selected="true"] {
-        color: #e2e8f0 !important;
-        border-bottom-color: #3b82f6 !important;
-    }
-    /* Popover panel */
-    [data-testid="stPopover"] > div {
-        background-color: #1e293b !important;
-        border: 1px solid #334155 !important;
-        color: #e2e8f0 !important;
-    }
-    /* Dialog / modal */
-    [data-testid="stModal"] > div > div {
-        background-color: #0f172a !important;
-        color: #e2e8f0 !important;
-    }
+    [data-testid="stTextArea"] > div > div > textarea {{
+        background-color: {t['INPUT_BG']} !important;
+        color: {t['TEXT']} !important;
+        border-color: {t['BORDER']} !important;
+    }}
+    [data-baseweb="popover"] ul, [data-baseweb="menu"] {{
+        background-color: {t['MENU_BG']} !important;
+        color: {t['TEXT']} !important;
+    }}
+    [data-baseweb="menu"] li:hover {{ background-color: {t['BTN_HOVER']} !important; }}
+    [data-testid="stExpander"] summary {{
+        background-color: {t['EXP_BG']} !important;
+        color: {t['TEXT']} !important;
+    }}
+    [data-testid="stTabs"] [data-baseweb="tab-list"] {{ background-color: {t['TAB_BG']} !important; }}
+    [data-testid="stTabs"] [data-baseweb="tab"] {{
+        color: {t['MUTED']} !important; background-color: transparent !important;
+    }}
+    [data-testid="stTabs"] [aria-selected="true"] {{
+        color: {t['TEXT']} !important; border-bottom-color: #3b82f6 !important;
+    }}
+    [data-testid="stPopover"] > div {{
+        background-color: {t['POP_BG']} !important;
+        border: 1px solid {t['BORDER']} !important;
+        color: {t['TEXT']} !important;
+    }}
+    /* Popover trigger button */
+    [data-testid="stPopover"] button {{
+        background-color: {t['BTN_BG']} !important;
+        color: {t['TEXT']} !important;
+        border: 1px solid {t['BTN_BORDER']} !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }}
+    [data-testid="stPopover"] button:hover {{
+        background-color: {t['BTN_HOVER']} !important;
+        border-color: {t['FAINT']} !important;
+    }}
+    [data-testid="stModal"] > div > div {{
+        background-color: {t['MODAL_BG']} !important;
+        color: {t['TEXT']} !important;
+    }}
 
-    /* ── Typography ── */
-    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
-        color: #e2e8f0; letter-spacing: 0.01em;
-    }
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {{
+        color: {t['TEXT']}; letter-spacing: 0.01em;
+    }}
+    .regulations-table a {{
+        color: {t['LINK_COLOR']}; text-decoration: none; transition: color 0.15s ease;
+    }}
+    .regulations-table a:hover {{ color: {t['LINK_HOVER']}; text-decoration: underline; }}
 
-    /* ── Regulation table links ── */
-    .regulations-table a {
-        color: #7dd3fc; text-decoration: none; transition: color 0.15s ease;
-    }
-    .regulations-table a:hover { color: #bae6fd; text-decoration: underline; }
-
-    /* ── Mobile ── */
-    @media (max-width: 768px) {
-        .stApp { font-size: 14px; }
-        h1 { font-size: 1.4rem !important; }
-        h2 { font-size: 1.2rem !important; }
-        h3 { font-size: 1.05rem !important; }
-        .regulations-table td {
+    @media (max-width: 768px) {{
+        .stApp {{ font-size: 14px; }}
+        h1 {{ font-size: 1.4rem !important; }}
+        h2 {{ font-size: 1.2rem !important; }}
+        h3 {{ font-size: 1.05rem !important; }}
+        .regulations-table td {{
             display: block; width: 100% !important;
             text-align: left !important; padding: 4px 0 !important;
-        }
-    }
+        }}
+    }}
 
-    /* ── Print / Save as PDF — landscape, white bg, black fonts, map preserved ── */
-    @page { size: A4 landscape; margin: 1.2cm; }
-
-    @media print {
-        /* White backgrounds on Streamlit containers — not on SVG elements */
+    @page {{ size: A4 landscape; margin: 1.2cm; }}
+    @media print {{
         html, body, .stApp,
         section[data-testid="stMain"],
         div[data-testid="stMainBlockContainer"],
@@ -199,51 +173,30 @@ st.markdown(
         div[data-testid="stExpander"],
         div[data-testid="stPlotlyChart"],
         div[data-testid="stPlotlyChart"] > div,
-        div[class*="st-emotion-cache"] {
+        div[class*="st-emotion-cache"] {{
             background: #ffffff !important;
             background-color: #ffffff !important;
             box-shadow: none !important;
             border-color: #cccccc !important;
-        }
-
-        /* Black text universally — CSS `color` does NOT affect SVG fill so map stays.
-           opacity:1 removes Streamlit's muted/secondary element fading. */
-        * { color: #000000 !important; opacity: 1 !important; }
-        a, a:visited { color: #0055aa !important; }
-
-        /* Plotly SVG annotation/axis text → black */
+        }}
+        * {{ color: #000000 !important; opacity: 1 !important; }}
+        a, a:visited {{ color: #0055aa !important; }}
         [data-testid="stPlotlyChart"] svg text,
-        [data-testid="stPlotlyChart"] svg tspan { fill: #000000 !important; }
-
-        /* Map: stretch to full page width, left-aligned, preserve flex layout */
-        [data-testid="stPlotlyChart"] {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin-left: 0 !important;
-        }
+        [data-testid="stPlotlyChart"] svg tspan {{ fill: #000000 !important; }}
+        [data-testid="stPlotlyChart"] {{
+            width: 100% !important; max-width: 100% !important; margin-left: 0 !important;
+        }}
         [data-testid="stPlotlyChart"] .js-plotly-plot,
-        [data-testid="stPlotlyChart"] .plot-container { width: 100% !important; }
-
-        /* Hide interactive chrome */
-        [data-testid="stSidebar"],
-        header[data-testid="stHeader"],
-        [data-testid="stToolbar"],
-        button,
-        [data-testid="stBaseButton-secondary"],
-        [data-testid="stBaseButton-primary"],
-        [data-testid="stDownloadButton"],
-        [data-testid="stExpanderToggleIcon"],
-        [data-testid="stDecoration"],
-        .modebar, .modebar-container { display: none !important; }
-
-        /* Page breaks */
-        h2, h3 { page-break-after: avoid; }
-        table, [data-testid="stPlotlyChart"] { page-break-inside: avoid; }
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+        [data-testid="stPlotlyChart"] .plot-container {{ width: 100% !important; }}
+        [data-testid="stSidebar"], header[data-testid="stHeader"],
+        [data-testid="stToolbar"], button,
+        [data-testid="stBaseButton-secondary"], [data-testid="stBaseButton-primary"],
+        [data-testid="stDownloadButton"], [data-testid="stExpanderToggleIcon"],
+        [data-testid="stDecoration"], .modebar, .modebar-container {{ display: none !important; }}
+        h2, h3 {{ page-break-after: avoid; }}
+        table, [data-testid="stPlotlyChart"] {{ page-break-inside: avoid; }}
+    }}
+    </style>""", unsafe_allow_html=True)
 DATA_DIR = Path("src") / "categories"
 ARCHIVE_FILE = Path("src") / "CBregs_audit_log.csv"
 
@@ -342,12 +295,45 @@ COUNTRY_ISO_CODES = {
 _APP_VERSION = "3.9"
 _APP_DATE    = "2026-06-30"
 
-# Design tokens (use in inline styles for consistency)
-_C_BG_DEEP  = "#071014"; _C_BG_BASE  = "#0f172a"; _C_BG_CARD  = "#0d1526"
-_C_BG_ROW1  = "#111e33"; _C_BG_PANEL = "#1e293b"; _C_BORDER   = "#334155"
-_C_TEXT     = "#e2e8f0"; _C_MUTED    = "#94a3b8"; _C_FAINT    = "#475569"
-_C_LINK     = "#93c5fd"; _C_GREEN    = "#22c55e"; _C_AMBER    = "#f59e0b"
-_C_RED      = "#ef4444"; _C_GRAY     = "#64748b"
+_THEMES = {
+    "dark": dict(
+        BG_DEEP="#071014", BG_BASE="#0f172a", BG_CARD="#0d1526",
+        BG_ROW1="#111e33", BG_PANEL="#1e293b", BORDER="#334155",
+        TEXT="#e2e8f0",    MUTED="#94a3b8",    FAINT="#475569",
+        LINK="#93c5fd",    GREEN="#22c55e",    AMBER="#f59e0b",
+        RED="#ef4444",     GRAY="#64748b",
+        BTN_BG="#1e293b",  BTN_HOVER="#273548", BTN_BORDER="#334155",
+        INPUT_BG="#1e293b", MENU_BG="#1e293b",  EXP_BG="#0d1526",
+        TAB_BG="#0f172a",  POP_BG="#1e293b",   MODAL_BG="#0f172a",
+        ROW_SEL="#1a3a5c", ROW_HOVER="#1a2d4a", ROW_SEL_HOVER="#20446b",
+        NAV_BG="#0d1526",  NAV_BORDER="#1e293b",
+        LINK_COLOR="#7dd3fc", LINK_HOVER="#bae6fd",
+        CHK_COLOR="#4ade80",
+    ),
+    "light": dict(
+        BG_DEEP="#f1f5f9", BG_BASE="#ffffff",  BG_CARD="#ffffff",
+        BG_ROW1="#eef2f7", BG_PANEL="#dde3ed", BORDER="#94a3b8",
+        TEXT="#0f172a",    MUTED="#334155",    FAINT="#475569",
+        LINK="#2563eb",    GREEN="#16a34a",    AMBER="#b45309",
+        RED="#b91c1c",     GRAY="#475569",
+        BTN_BG="#e2e8f0",  BTN_HOVER="#cbd5e1", BTN_BORDER="#94a3b8",
+        INPUT_BG="#ffffff", MENU_BG="#ffffff",  EXP_BG="#f8fafc",
+        TAB_BG="#f1f5f9",  POP_BG="#ffffff",   MODAL_BG="#ffffff",
+        ROW_SEL="#dbeafe", ROW_HOVER="#eff6ff", ROW_SEL_HOVER="#bfdbfe",
+        NAV_BG="#ffffff",  NAV_BORDER="#e2e8f0",
+        LINK_COLOR="#1d4ed8", LINK_HOVER="#1e40af",
+        CHK_COLOR="#15803d",
+    ),
+}
+
+# Design tokens — defaults to dark; re-bound per-request in the nav bar block
+_C_BG_DEEP  = _THEMES["dark"]["BG_DEEP"];  _C_BG_BASE  = _THEMES["dark"]["BG_BASE"]
+_C_BG_CARD  = _THEMES["dark"]["BG_CARD"];  _C_BG_ROW1  = _THEMES["dark"]["BG_ROW1"]
+_C_BG_PANEL = _THEMES["dark"]["BG_PANEL"]; _C_BORDER   = _THEMES["dark"]["BORDER"]
+_C_TEXT     = _THEMES["dark"]["TEXT"];     _C_MUTED    = _THEMES["dark"]["MUTED"]
+_C_FAINT    = _THEMES["dark"]["FAINT"];    _C_LINK     = _THEMES["dark"]["LINK"]
+_C_GREEN    = _THEMES["dark"]["GREEN"];    _C_AMBER    = _THEMES["dark"]["AMBER"]
+_C_RED      = _THEMES["dark"]["RED"];      _C_GRAY     = _THEMES["dark"]["GRAY"]
 
 
 def country_code_to_emoji(code: str) -> str:
@@ -503,9 +489,10 @@ def html_escape(text: str) -> str:
     )
 
 
-def _render_provision_table(rows: list[dict], columns: list[str]) -> None:
+def _render_provision_table(rows: list[dict], columns: list[str], theme: dict | None = None) -> None:
     """Render a provision table as a fixed-height iframe (scrollable if content overflows)."""
     import html as _hl
+    t = theme or _THEMES["dark"]
 
     # Build <th> cells — each has a drag handle div
     th_cells = "".join(
@@ -513,6 +500,8 @@ def _render_provision_table(rows: list[dict], columns: list[str]) -> None:
         f'<div class="resizer" title="Drag to resize"></div></th>'
         for c in columns
     )
+
+    _lnk = t["LINK_COLOR"]
 
     def _cell_html(raw: str) -> str:
         """Escape HTML but convert [text](url) markdown links to <a> tags first."""
@@ -524,7 +513,7 @@ def _render_provision_table(rows: list[dict], columns: list[str]) -> None:
             url = _hl.escape(m.group(2).strip())
             parts.append(
                 f'<a href="{url}" target="_blank" rel="noopener"'
-                f' style="color:#7dd3fc;text-decoration:underline">{txt}</a>'
+                f' style="color:{_lnk};text-decoration:underline">{txt}</a>'
             )
             last = m.end()
         parts.append(_hl.escape(raw[last:]))
@@ -546,22 +535,22 @@ def _render_provision_table(rows: list[dict], columns: list[str]) -> None:
 <html><head><meta charset="utf-8">
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
-body{{background:transparent;font-family:"Source Sans Pro",sans-serif;font-size:14px;color:#e2e8f0}}
+body{{background:transparent;font-family:"Source Sans Pro",sans-serif;font-size:14px;color:{t['TEXT']}}}
 table{{width:100%;border-collapse:collapse;table-layout:fixed}}
-thead tr{{background:#1e293b}}
-th{{position:relative;padding:7px 10px 7px 8px;text-align:left;color:#94a3b8;
-    font-size:13px;font-weight:600;border-bottom:2px solid #334155;
+thead tr{{background:{t['BG_PANEL']}}}
+th{{position:relative;padding:7px 10px 7px 8px;text-align:left;color:{t['MUTED']};
+    font-size:13px;font-weight:600;border-bottom:2px solid {t['BORDER']};
     white-space:normal;overflow:visible;user-select:none;vertical-align:bottom}}
 .col-label{{display:block;padding-right:6px;line-height:1.35;word-break:break-word}}
 .resizer{{position:absolute;right:0;top:0;bottom:0;width:5px;cursor:col-resize;
           background:transparent;z-index:1}}
 .resizer:hover,.resizer.active{{background:#3b82f6;opacity:.7}}
-tr.r0{{background:#0d1526}}
-tr.r1{{background:#111e33}}
-tr:hover{{background:#1a2d4a}}
-td{{padding:6px 10px;vertical-align:top;border-bottom:1px solid #1e293b;
+tr.r0{{background:{t['BG_CARD']}}}
+tr.r1{{background:{t['BG_ROW1']}}}
+tr:hover{{background:{t['ROW_HOVER']}}}
+td{{padding:6px 10px;vertical-align:top;border-bottom:1px solid {t['NAV_BORDER']};
     line-height:1.6;word-break:break-word;overflow-wrap:anywhere;font-size:13.5px}}
-td.fc{{color:#7dd3fc;font-size:13px;font-weight:600;word-break:break-word;overflow-wrap:anywhere}}
+td.fc{{color:{t['LINK_COLOR']};font-size:13px;font-weight:600;word-break:break-word;overflow-wrap:anywhere}}
 td.vc{{font-size:13.5px}}
 @media (max-width:600px){{td,th{{font-size:11px!important;padding:4px 6px!important}}}}
 @media print{{body,table,thead tr,tr.r0,tr.r1,td,th{{background:#fff!important;color:#111!important;border-color:#ccc!important}}a{{color:#0055aa!important}}}}
@@ -631,11 +620,12 @@ td.vc{{font-size:13.5px}}
     st.iframe(src=_html_src(html), height=est)
 
 
-def _render_data_table(df: pd.DataFrame, highlighted: set | None = None, row_height: int = 72) -> None:
+def _render_data_table(df: pd.DataFrame, highlighted: set | None = None, row_height: int = 72, theme: dict | None = None) -> None:
     """Render a DataFrame as a resizable HTML table; newlines in cells become <br>.
     First column (flag) is centred; second column (country) is bold.
     Rows whose Country value is in `highlighted` are tinted."""
     import html as _hl
+    t = theme or _THEMES["dark"]
 
     CHECK = "✓"
     # Detect which columns (beyond Flag/Country) contain only checkmarks or blanks
@@ -700,25 +690,25 @@ def _render_data_table(df: pd.DataFrame, highlighted: set | None = None, row_hei
 <html><head><meta charset="utf-8">
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
-body{{background:transparent;font-family:"Source Sans Pro",sans-serif;font-size:14px;color:#e2e8f0}}
+body{{background:transparent;font-family:"Source Sans Pro",sans-serif;font-size:14px;color:{t['TEXT']}}}
 table{{border-collapse:collapse;table-layout:auto;width:100%}}
-thead tr{{background:#1e293b}}
-th{{position:relative;padding:7px 10px 7px 8px;text-align:left;color:#94a3b8;
-    font-size:13px;font-weight:600;border-bottom:2px solid #334155;
+thead tr{{background:{t['BG_PANEL']}}}
+th{{position:relative;padding:7px 10px 7px 8px;text-align:left;color:{t['MUTED']};
+    font-size:13px;font-weight:600;border-bottom:2px solid {t['BORDER']};
     white-space:normal;overflow:visible;user-select:none;vertical-align:bottom}}
 .col-label{{display:block;padding-right:6px;line-height:1.35;word-break:break-word;hyphens:auto}}
 .resizer{{position:absolute;right:0;top:0;bottom:0;width:5px;cursor:col-resize;
           background:transparent;z-index:1}}
 .resizer:hover,.resizer.active{{background:#3b82f6;opacity:.7}}
-tr.r0{{background:#0d1526}}
-tr.r1{{background:#111e33}}
-tr.sel{{background:#1a3a5c}}
-tr:hover{{background:#1a2d4a}}
-tr.sel:hover{{background:#20446b}}
-td{{padding:6px 10px;vertical-align:top;border-bottom:1px solid #1e293b;
+tr.r0{{background:{t['BG_CARD']}}}
+tr.r1{{background:{t['BG_ROW1']}}}
+tr.sel{{background:{t['ROW_SEL']}}}
+tr:hover{{background:{t['ROW_HOVER']}}}
+tr.sel:hover{{background:{t['ROW_SEL_HOVER']}}}
+td{{padding:6px 10px;vertical-align:top;border-bottom:1px solid {t['NAV_BORDER']};
     line-height:1.6;word-break:break-word;overflow-wrap:anywhere;font-size:13.5px}}
 .vc{{font-size:13.5px}}
-.chk{{text-align:center;color:#4ade80;font-size:15px;vertical-align:middle;}}
+.chk{{text-align:center;color:{t['CHK_COLOR']};font-size:15px;vertical-align:middle;}}
 @media (max-width:600px){{td,th{{font-size:11px!important;padding:4px 6px!important}}}}
 @media print{{body,table,thead tr,tr.r0,tr.r1,td,th{{background:#fff!important;color:#111!important;border-color:#ccc!important}}a{{color:#0055aa!important}}}}
 </style>
@@ -1293,10 +1283,10 @@ ASEAN_COUNTRIES_ORDERED = [
 
 GAP_STATUS_OPTIONS = ["Meets", "Partially meets", "Does not meet", "Not assessed"]
 GAP_STATUS_META: dict[str, dict] = {
-    "Meets":           {"emoji": "✅", "color": _C_GREEN,  "bg": "#14532d", "text": "#86efac"},
-    "Partially meets": {"emoji": "⚠️", "color": _C_AMBER,  "bg": "#78350f", "text": "#fcd34d"},
-    "Does not meet":   {"emoji": "✗",  "color": _C_RED,    "bg": "#450a0a", "text": "#fca5a5"},
-    "Not assessed":    {"emoji": "—",  "color": _C_GRAY,   "bg": "#0f172a", "text": _C_FAINT},
+    "Meets":           {"emoji": "✅", "color": "#22c55e", "bg": "rgba(34,197,94,0.15)",   "text": "#22c55e"},
+    "Partially meets": {"emoji": "⚠️", "color": "#f59e0b", "bg": "rgba(245,158,11,0.15)",  "text": "#f59e0b"},
+    "Does not meet":   {"emoji": "✗",  "color": "#ef4444", "bg": "rgba(239,68,68,0.15)",   "text": "#ef4444"},
+    "Not assessed":    {"emoji": "—",  "color": "#64748b", "bg": "rgba(100,116,139,0.08)", "text": "#64748b"},
 }
 
 
@@ -1399,53 +1389,53 @@ def _render_mapping_card(
             _url = str(_rr.get("Source_URL", ""))
             _yr  = str(_rr.get("Year", ""))
             _yr_s = (
-                f" <span style='color:#94a3b8;font-size:0.78rem'>({int(float(_yr))})</span>"
+                f" <span style='color:{_C_MUTED};font-size:0.78rem'>({int(float(_yr))})</span>"
                 if _yr and _yr not in ("nan", "") else ""
             )
             _inner = (
-                f'<a href="{_url}" target="_blank" style="color:#93c5fd;text-decoration:none">{_t}</a>{_yr_s}'
+                f'<a href="{_url}" target="_blank" style="color:{_C_LINK};text-decoration:none">{_t}</a>{_yr_s}'
                 if _url and _url not in ("", "nan") else f"{_t}{_yr_s}"
             )
             _pills.append(
-                f"<div style='background:#1e293b;border:1px solid #334155;border-radius:6px;"
-                f"padding:6px 10px;margin-bottom:5px;font-size:0.85rem;color:#e2e8f0;"
+                f"<div style='background:{_C_BG_PANEL};border:1px solid {_C_BORDER};border-radius:6px;"
+                f"padding:6px 10px;margin-bottom:5px;font-size:0.85rem;color:{_C_TEXT};"
                 f"line-height:1.4'>{_inner}</div>"
             )
         regs_html = "".join(_pills)
     else:
-        regs_html = "<span style='color:#64748b;font-size:0.83rem;font-style:italic'>No regulations linked yet.</span>"
+        regs_html = f"<span style='color:{_C_GRAY};font-size:0.83rem;font-style:italic'>No regulations linked yet.</span>"
 
     notes_html = ""
     if cur_notes or cur_status in ("Partially meets", "Does not meet"):
         _nb = (
             cur_notes if cur_notes
-            else "<em style='color:#64748b'>No gap assessment provided — edit the mapping to describe what is still needed.</em>"
+            else f"<em style='color:{_C_GRAY}'>No gap assessment provided — edit the mapping to describe what is still needed.</em>"
         )
         notes_html = (
             "<div style='margin-top:14px'>"
-            "<div style='font-size:0.72rem;font-weight:600;letter-spacing:0.07em;"
-            "text-transform:uppercase;color:#94a3b8;margin-bottom:5px'>Gap assessment</div>"
-            "<div style='background:#1e293b;border-left:3px solid #f59e0b;"
-            f"border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.85rem;color:#e2e8f0;line-height:1.5'>{_nb}</div>"
+            f"<div style='font-size:0.72rem;font-weight:600;letter-spacing:0.07em;"
+            f"text-transform:uppercase;color:{_C_MUTED};margin-bottom:5px'>Gap assessment</div>"
+            f"<div style='background:{_C_BG_PANEL};border-left:3px solid {_C_AMBER};"
+            f"border-radius:0 6px 6px 0;padding:10px 12px;font-size:0.85rem;color:{_C_TEXT};line-height:1.5'>{_nb}</div>"
             "</div>"
         )
 
     upd_html = ""
     if not is_new_map and em_row is not None:
         upd_html = (
-            f"<div style='font-size:0.72rem;color:#475569;margin-top:12px'>"
+            f"<div style='font-size:0.72rem;color:{_C_FAINT};margin-top:12px'>"
             f"Last updated {str(em_row.get('Updated_At',''))[:10]} by {em_row.get('Updated_By','')}</div>"
         )
 
     st.markdown(
-        f"<div style='background:#0f172a;border:1px solid #1e293b;border-radius:10px;"
+        f"<div style='background:{_C_BG_BASE};border:1px solid {_C_BG_PANEL};border-radius:10px;"
         f"padding:16px 18px;margin:10px 0'>"
         f"<div style='display:flex;align-items:center;gap:10px;margin-bottom:14px'>"
         f"<span style='background:{sc}22;border:1px solid {sc}55;border-radius:20px;padding:3px 12px;"
         f"font-size:0.82rem;font-weight:600;color:{sc}'>"
         f"{GAP_STATUS_META.get(cur_status, GAP_STATUS_META['Not assessed'])['emoji']} {cur_status}</span></div>"
         f"<div style='font-size:0.72rem;font-weight:600;letter-spacing:0.07em;"
-        f"text-transform:uppercase;color:#94a3b8;margin-bottom:7px'>Linked regulations</div>"
+        f"text-transform:uppercase;color:{_C_MUTED};margin-bottom:7px'>Linked regulations</div>"
         f"{regs_html}{notes_html}{upd_html}</div>",
         unsafe_allow_html=True,
     )
@@ -1453,9 +1443,10 @@ def _render_mapping_card(
     # edit button rendered by caller (needs dialog call with full context)
 
 
-def _render_gap_matrix(df_bench: pd.DataFrame, df_map: pd.DataFrame, countries: list[str]) -> None:
+def _render_gap_matrix(df_bench: pd.DataFrame, df_map: pd.DataFrame, countries: list[str], theme: dict | None = None) -> None:
     """Render the gap analysis status matrix: benchmarks (rows) × countries (cols)."""
     import html as _hl
+    t = theme or _THEMES["dark"]
     if df_bench.empty:
         st.info("No benchmarks have been defined yet. Admin can add them in the Benchmarks tab.")
         return
@@ -1487,9 +1478,9 @@ def _render_gap_matrix(df_bench: pd.DataFrame, df_map: pd.DataFrame, countries: 
         bid   = str(b.get("Benchmark_ID", ""))
         std   = str(b.get("Standard", ""))
         topic = str(b.get("Topic", ""))
-        bg    = "#0d1526" if i % 2 == 0 else "#111e33"
+        bg    = t["BG_CARD"] if i % 2 == 0 else t["BG_ROW1"]
         cells = (
-            f'<td style="font-size:11px;color:#94a3b8">{_hl.escape(std)}</td>'
+            f'<td style="font-size:11px;color:{t["MUTED"]}">{_hl.escape(std)}</td>'
             f'<td style="font-size:13px">{_hl.escape(topic)}</td>'
         )
         for c in countries:
@@ -1504,12 +1495,12 @@ def _render_gap_matrix(df_bench: pd.DataFrame, df_map: pd.DataFrame, countries: 
     html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
-body{{background:transparent;font-family:"Source Sans Pro",sans-serif;color:#e2e8f0}}
+body{{background:transparent;font-family:"Source Sans Pro",sans-serif;color:{t['TEXT']}}}
 table{{width:100%;border-collapse:collapse}}
-thead tr{{background:#1e293b;position:sticky;top:0;z-index:2}}
-th{{padding:7px 10px 7px 8px;text-align:left;color:#94a3b8;font-size:13px;font-weight:600;border-bottom:2px solid #334155;vertical-align:middle}}
-td{{padding:6px 10px;border-bottom:1px solid #1e293b;vertical-align:middle;word-break:break-word;font-size:13.5px}}
-tr:hover td{{filter:brightness(1.2)}}
+thead tr{{background:{t['BG_PANEL']};position:sticky;top:0;z-index:2}}
+th{{padding:7px 10px 7px 8px;text-align:left;color:{t['MUTED']};font-size:13px;font-weight:600;border-bottom:2px solid {t['BORDER']};vertical-align:middle}}
+td{{padding:6px 10px;border-bottom:1px solid {t['NAV_BORDER']};vertical-align:middle;word-break:break-word;font-size:13.5px}}
+tr:hover td{{filter:brightness({"0.93" if t["BG_DEEP"] != _THEMES["dark"]["BG_DEEP"] else "1.2"})}}
 @media print{{body,table,thead tr,td,th{{background:#fff!important;color:#111!important;border-color:#ccc!important;filter:none!important}}}}
 </style></head><body>
 <table id="t"><thead><tr>{th}</tr></thead><tbody>{rows_html}</tbody></table>
@@ -1796,6 +1787,7 @@ def _build_country_minimap(country: str) -> "go.Figure":
         hover_name="Country",
     )
     fig.update_traces(showscale=False, hovertemplate="<extra></extra>")
+    _mini_dark = st.session_state.get("_theme", "dark") == "dark"
     fig.update_geos(
         scope="asia",
         projection_type="mercator",
@@ -1803,15 +1795,15 @@ def _build_country_minimap(country: str) -> "go.Figure":
         lataxis=dict(range=[-11, 24]),
         visible=True,
         showcoastlines=True,
-        coastlinecolor="rgba(255,255,255,0.35)",
+        coastlinecolor="rgba(255,255,255,0.35)" if _mini_dark else "rgba(0,0,0,0.2)",
         showcountries=True,
-        countrycolor="rgba(255,255,255,0.85)",
+        countrycolor="rgba(255,255,255,0.85)" if _mini_dark else "rgba(0,0,0,0.4)",
         showland=True,
-        landcolor="rgba(20, 30, 45, 1)",
+        landcolor="rgba(20,30,45,1)" if _mini_dark else "rgba(226,232,240,1)",
         showocean=True,
-        oceancolor="rgba(10, 16, 26, 1)",
+        oceancolor="rgba(10,16,26,1)" if _mini_dark else "rgba(186,230,253,1)",
         showlakes=True,
-        lakecolor="rgba(10, 16, 26, 1)",
+        lakecolor="rgba(10,16,26,1)" if _mini_dark else "rgba(186,230,253,1)",
         bgcolor="rgba(0,0,0,0)",
     )
     fig.update_layout(
@@ -1941,7 +1933,7 @@ def show_country_modal(country: str, df: pd.DataFrame, key_suffix: str = "", sho
             continue
 
         st.markdown(f"#### {cat}")
-        _render_provision_table(rows, ["Field", "Values"])
+        _render_provision_table(rows, ["Field", "Values"], theme=_t)
         shown_any_category = True
 
     if not shown_any_category:
@@ -2030,7 +2022,7 @@ def show_country_comparison(countries: List[str], df: pd.DataFrame, key_suffix: 
             continue
 
         st.markdown(f"#### {cat}")
-        _render_provision_table(rows, ["Field"] + col_labels)
+        _render_provision_table(rows, ["Field"] + col_labels, theme=_t)
         shown_any_category = True
 
     if not shown_any_category:
@@ -2284,7 +2276,7 @@ def _dlg_benchmark_detail(
 
     if detail_rows:
         st.caption("Only jurisdictions with mapped regulations are shown.")
-        _render_provision_table(detail_rows, ["Country", "Status", "Regulations", "Gap assessment"])
+        _render_provision_table(detail_rows, ["Country", "Status", "Regulations", "Gap assessment"], theme=_t)
     else:
         st.info("No jurisdictions have tagged regulations for this benchmark yet.")
 
@@ -2543,25 +2535,40 @@ _NAV_HELP: dict[str, list[tuple[str, str]]] = {
     ],
 }
 
+# Resolve theme for this request
+st.session_state.setdefault("_theme", "dark")
+_t = _THEMES[st.session_state["_theme"]]
+
+# Re-bind _C_* aliases so downstream code using them picks up the active theme
+_C_BG_DEEP  = _t["BG_DEEP"];  _C_BG_BASE  = _t["BG_BASE"]
+_C_BG_CARD  = _t["BG_CARD"];  _C_BG_ROW1  = _t["BG_ROW1"]
+_C_BG_PANEL = _t["BG_PANEL"]; _C_BORDER   = _t["BORDER"]
+_C_TEXT     = _t["TEXT"];     _C_MUTED    = _t["MUTED"]
+_C_FAINT    = _t["FAINT"];    _C_LINK     = _t["LINK"]
+_C_GREEN    = _t["GREEN"];    _C_AMBER    = _t["AMBER"]
+_C_RED      = _t["RED"];      _C_GRAY     = _t["GRAY"]
+
+_inject_css(_t)
+
 _nc      = len(_nav_pages)
-_nav_col_widths = [0.9] + [1] * _nc + [0.18]
+_nav_col_widths = [0.9] + [1] * _nc + [0.24] + [0.24]
 _nav_cols       = st.columns(_nav_col_widths, vertical_alignment="center")
 
 # Title + user badge stacked in col 0
 if IS_AUTHENTICATED:
     _badge_label = f"{_auth_user} · admin access" if IS_ADMIN else f"{_auth_user} · {_auth_country}"
     _badge_html  = (
-        f"<br><span style='font-size:0.62rem;color:#64748b;white-space:nowrap'>"
+        f"<br><span style='font-size:0.62rem;color:{_t['MUTED']};white-space:nowrap'>"
         f"👤 {_badge_label}</span>"
-        f"<br><span style='font-size:0.58rem;color:#334155;white-space:nowrap'>"
+        f"<br><span style='font-size:0.58rem;color:{_t['FAINT']};white-space:nowrap'>"
         f"AMS-exclusive</span>"
     )
 else:
     _badge_html = ""
 _nav_cols[0].markdown(
-    f"<span style='font-size:0.88rem;font-weight:700;color:#e2e8f0;white-space:nowrap'>"
+    f"<span style='font-size:0.88rem;font-weight:700;color:{_t['TEXT']};white-space:nowrap'>"
     f"<abbr title='ASEAN Regulatory Information System' style='text-decoration:none;cursor:default'>ARIS</abbr></span>"
-    f"<span style='font-size:0.58rem;color:#475569;margin-left:5px'>v{_APP_VERSION}</span>"
+    f"<span style='font-size:0.58rem;color:{_t['FAINT']};margin-left:5px'>v{_APP_VERSION}</span>"
     f"{_badge_html}",
     unsafe_allow_html=True,
 )
@@ -2575,6 +2582,12 @@ for _ni, _page in enumerate(_nav_pages):
         width="stretch",
     ):
         _nav_to(_page)
+
+# Theme toggle — second-to-last column
+_theme_icon = "☀" if st.session_state["_theme"] == "dark" else "☾"
+if _nav_cols[-2].button(_theme_icon, key="theme_toggle", help="Switch theme", use_container_width=True):
+    st.session_state["_theme"] = "light" if st.session_state["_theme"] == "dark" else "dark"
+    st.rerun()
 
 # Help popover — last column
 with _nav_cols[-1].popover("❓", help="Page help"):
@@ -2683,15 +2696,21 @@ if _active_page == "Map":
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
         margin=dict(l=0, r=0, t=10, b=0),
     )
+    _is_dark_map = st.session_state.get("_theme", "dark") == "dark"
     _asean_fig.update_geos(
         scope="asia", projection_type="mercator",
         lonaxis=dict(range=[92, 141]), lataxis=dict(range=[-11, 24]),
         visible=True,
-        showcoastlines=True, coastlinecolor="rgba(255,255,255,0.35)",
-        showcountries=True, countrycolor="rgba(255,255,255,0.85)",
-        showland=True, landcolor="rgba(20, 30, 45, 1)",
-        showocean=True, oceancolor="rgba(10, 16, 26, 1)",
-        showlakes=True, lakecolor="rgba(10, 16, 26, 1)",
+        showcoastlines=True,
+        coastlinecolor="rgba(255,255,255,0.35)" if _is_dark_map else "rgba(0,0,0,0.2)",
+        showcountries=True,
+        countrycolor="rgba(255,255,255,0.85)" if _is_dark_map else "rgba(0,0,0,0.4)",
+        showland=True,
+        landcolor="rgba(20,30,45,1)" if _is_dark_map else "rgba(226,232,240,1)",
+        showocean=True,
+        oceancolor="rgba(10,16,26,1)" if _is_dark_map else "rgba(186,230,253,1)",
+        showlakes=True,
+        lakecolor="rgba(10,16,26,1)" if _is_dark_map else "rgba(186,230,253,1)",
         bgcolor="rgba(0,0,0,0)",
     )
 
@@ -2714,7 +2733,7 @@ if _active_page == "Map":
         marker=dict(
             size=_mk_sizes,
             color=_mk_colors,
-            line=dict(width=1, color="rgba(255,255,255,0.5)"),
+            line=dict(width=1, color="rgba(255,255,255,0.5)" if _is_dark_map else "rgba(0,0,0,0.3)"),
             symbol="circle",
         ),
         customdata=_mk_custom,
@@ -2788,7 +2807,7 @@ elif _active_page == "Table":
             placeholder="Choose one or more countries…",
             key="table_a_country_sel",
         )
-        _render_data_table(t, highlighted=set(a_sel), row_height=36)
+        _render_data_table(t, highlighted=set(a_sel), row_height=36, theme=_t)
         if a_sel:
             if len(a_sel) == 1:
                 show_country_modal(a_sel[0], df_f, key_suffix="table_0")
@@ -2840,7 +2859,7 @@ elif _active_page == "Table":
                     overview_rows.append(row)
                 if overview_rows:
                     overview_df = pd.DataFrame(overview_rows)
-                    _render_data_table(overview_df, row_height=36)
+                    _render_data_table(overview_df, row_height=36, theme=_t)
                 else:
                     st.caption("No data available for this category.")
             else:
@@ -2873,7 +2892,7 @@ elif _active_page == "Table":
                     rows.append(row)
 
             if rows:
-                _render_provision_table(rows, col_headers)
+                _render_provision_table(rows, col_headers, theme=_t)
             else:
                 st.caption("No provisions data available for the selected countries and category.")
 
@@ -2900,7 +2919,7 @@ elif _active_page == "Gap Analysis" and IS_AUTHENTICATED:
         if "gap_subtab" not in st.session_state:
             st.session_state["gap_subtab"] = "Overview"
         _gsub_names = ["Overview", "Benchmarks", "Mappings"]
-        st.markdown("<div style='border-bottom:1px solid #1e293b;margin-bottom:8px'></div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='border-bottom:1px solid {_C_BORDER};margin-bottom:8px'></div>", unsafe_allow_html=True)
         _gsub_cols  = st.columns(len(_gsub_names))
         for _gi, _gn in enumerate(_gsub_names):
             if _gsub_cols[_gi].button(
@@ -3198,7 +3217,7 @@ elif _active_page == "Gap Analysis" and IS_AUTHENTICATED:
                                 _mstd_bench = _mcat_bench[_mcat_bench["Standard"] == _mstd].copy()
                                 st.markdown(
                                     f"<div style='font-size:0.78rem;font-weight:600;"
-                                    f"color:#94a3b8;text-transform:uppercase;"
+                                    f"color:{_C_MUTED};text-transform:uppercase;"
                                     f"letter-spacing:0.06em;margin:10px 0 4px'>{_mstd}</div>",
                                     unsafe_allow_html=True,
                                 )
